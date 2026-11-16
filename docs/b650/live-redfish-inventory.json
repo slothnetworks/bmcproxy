@@ -1,0 +1,7222 @@
+[
+ {
+  "uri": "/redfish/v1/",
+  "status": 200,
+  "type": "#ServiceRoot.v1_7_0.ServiceRoot",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 316.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/AccountService",
+  "status": 200,
+  "type": "#AccountService.v1_8_0.AccountService",
+  "etag": "\"1641013241\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 132.5,
+  "notes": "Allow: GET, PATCH; ETag \"1641013241\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts",
+  "status": 200,
+  "type": "#ManagerAccountCollection.ManagerAccountCollection",
+  "etag": "\"1641013241\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 61.4,
+  "notes": "Allow: GET, POST; ETag \"1641013241\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/1",
+  "status": 200,
+  "type": "#ManagerAccount.v1_5_0.ManagerAccount",
+  "etag": "\"1641013241\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 189.7,
+  "notes": "Allow: GET, PATCH, DELETE; ETag \"1641013241\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/1/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.9,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/2",
+  "status": 200,
+  "type": "#ManagerAccount.v1_5_0.ManagerAccount",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 162.9,
+  "notes": "Allow: GET, PATCH, DELETE"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/2/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.6,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/4",
+  "status": 200,
+  "type": "#ManagerAccount.v1_5_0.ManagerAccount",
+  "etag": "\"1641013241\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 116.1,
+  "notes": "Allow: GET, PATCH, DELETE; ETag \"1641013241\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/4/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.4,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/ExternalAccountProviders",
+  "status": 200,
+  "type": "#ExternalAccountProviderCollection.ExternalAccountProviderCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 55.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/AccountService/ExternalAccountProviders/RADIUS",
+  "status": 200,
+  "type": "#ExternalAccountProvider.v1_1_2.ExternalAccountProvider",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 231.7,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Oem/Ami/Configurations",
+  "status": 200,
+  "type": "#AMIAccountServiceConfigurations.v1_0_0.AMIAccountServiceConfigurations",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.1,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles",
+  "status": 200,
+  "type": "#RoleCollection.RoleCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.2,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles/Administrator",
+  "status": 200,
+  "type": "#Role.v1_3_0.Role",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles/HostInterfaceAdministrator",
+  "status": 200,
+  "type": "#Role.v1_3_0.Role",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles/Operator",
+  "status": 200,
+  "type": "#Role.v1_3_0.Role",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles/ReadOnly",
+  "status": 200,
+  "type": "#Role.v1_3_0.Role",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CertificateService",
+  "status": 200,
+  "type": "#CertificateService.v1_0_2.CertificateService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#CertificateService.GenerateCSR",
+    "target": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR",
+    "allowable": null
+   },
+   {
+    "name": "#CertificateService.ReplaceCertificate",
+    "target": "/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 58.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CertificateService/CertificateLocations",
+  "status": 200,
+  "type": "#CertificateLocations.v1_0_2.CertificateLocations",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 81.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CertificateService/CertificateService.GenerateCSRActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CertificateService/CertificateService.ReplaceCertificateActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 101.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis",
+  "status": 200,
+  "type": "#ChassisCollection.ChassisCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 68.3,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self",
+  "status": 200,
+  "type": "#Chassis.v1_15_0.Chassis",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#Chassis.Reset",
+    "target": "/redfish/v1/Chassis/Self/Actions/Chassis.Reset",
+    "allowable": [
+     "ForceOff",
+     "ForceRestart",
+     "GracefulShutdown",
+     "On",
+     "PowerCycle"
+    ]
+   }
+  ],
+  "latency_ms": 154.7,
+  "notes": "Allow: GET, PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/LogServices",
+  "status": 200,
+  "type": "#LogServiceCollection.LogServiceCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 61.7,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/LogServices/Logs",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/Chassis/Self/LogServices/Logs/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 110.0,
+  "notes": "Allow: GET, PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/LogServices/Logs/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/MediaControllers",
+  "status": 200,
+  "type": "#MediaControllerCollection.MediaControllerCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters",
+  "status": 200,
+  "type": "#NetworkAdapterCollection.NetworkAdapterCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0",
+  "status": 200,
+  "type": "#NetworkAdapter.v1_8_0.NetworkAdapter",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions",
+  "status": 200,
+  "type": "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions/NetworkDeviceFunction0",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions/NetworkDeviceFunction0/Ethernet/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.6,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions/NetworkDeviceFunction0/SD",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 127.3,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions/NetworkDeviceFunction1",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions/NetworkDeviceFunction1/Ethernet/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.3,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/NetworkDeviceFunctions/NetworkDeviceFunction1/SD",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 130.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/Ports",
+  "status": 200,
+  "type": "#PortCollection.PortCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/Ports/DevTypeE_Slot1_Instance0_PORT0",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 97.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/Ports/DevTypeE_Slot1_Instance1_PORT1",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC0/Processors",
+  "status": 200,
+  "type": "#ProcessorCollection.ProcessorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1",
+  "status": 200,
+  "type": "#NetworkAdapter.v1_8_0.NetworkAdapter",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 80.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/NetworkDeviceFunctions",
+  "status": 200,
+  "type": "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/NetworkDeviceFunctions/NetworkDeviceFunction2",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/NetworkDeviceFunctions/NetworkDeviceFunction2/Ethernet/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.4,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/NetworkDeviceFunctions/NetworkDeviceFunction2/SD",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 122.8,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/Ports",
+  "status": 200,
+  "type": "#PortCollection.PortCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/Ports/DevTypeE_Slot0_Instance2_PORT0",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC1/Processors",
+  "status": 200,
+  "type": "#ProcessorCollection.ProcessorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2",
+  "status": 200,
+  "type": "#NetworkAdapter.v1_8_0.NetworkAdapter",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/NetworkDeviceFunctions",
+  "status": 200,
+  "type": "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/NetworkDeviceFunctions/NetworkDeviceFunction3",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/NetworkDeviceFunctions/NetworkDeviceFunction3/Ethernet/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.0,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/NetworkDeviceFunctions/NetworkDeviceFunction3/SD",
+  "status": 200,
+  "type": "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 129.8,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/Ports",
+  "status": 200,
+  "type": "#PortCollection.PortCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/Ports/DevTypeE_Slot0_Instance3_PORT0",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/NetworkAdapters/DevType7_NIC2/Processors",
+  "status": 200,
+  "type": "#ProcessorCollection.ProcessorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices",
+  "status": 200,
+  "type": "#PCIeDeviceCollection.PCIeDeviceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 115.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 107.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_GNBD_DevIndex13",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT10_DevIndexD",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT11_DevIndexE",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT12_DevIndexF",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT13_DevIndex10",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT5_DevIndex2",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT6_DevIndex3",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT7_DevIndex4",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 79.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT8_DevIndex0",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLT9_DevIndex1",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 81.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLTA_DevIndex7",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLTB_DevIndex8",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLTC_DevIndex9",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLTD_DevIndexA",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 284.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLTE_DevIndexB",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_00/PCIeFunctions/DevType3_SLTF_DevIndexC",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_01",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_01/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_01/PCIeFunctions/DevType3_GPP0_DevIndex15",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 108.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_01/PCIeFunctions/DevType3__DevIndex14",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_02",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_02/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_02/PCIeFunctions/DevType3_GPP7_DevIndex17",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_02/PCIeFunctions/DevType3_GPP8_DevIndex27",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_02/PCIeFunctions/DevType3__DevIndex16",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_03",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 84.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_03/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_03/PCIeFunctions/DevType3__DevIndex28",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 151.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_04",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_04/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_04/PCIeFunctions/DevType3__DevIndex29",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_08",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_08/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_08/PCIeFunctions/DevType3_GP17_DevIndex2B",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_08/PCIeFunctions/DevType3_GP19_DevIndex33",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 240.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_08/PCIeFunctions/DevType3__DevIndex2A",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_14",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_14/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_14/PCIeFunctions/DevType3_SBRG_DevIndex36",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 121.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_14/PCIeFunctions/DevType3__DevIndex35",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex37",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex38",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex39",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 156.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex3A",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex3B",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex3C",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex3D",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_00_18/PCIeFunctions/DevType3_DMMY_DevIndex3E",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 181.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_01_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_01_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_01_00/PCIeFunctions/DevType3__DevIndex11",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_01_00/PCIeFunctions/DevType3__DevIndex12",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_02_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_02_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_02_00/PCIeFunctions/DevType3__DevIndex5",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 192.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_00/PCIeFunctions/DevType3_GPP7_DevIndex18",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 108.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_01",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_01/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_01/PCIeFunctions/DevType3_GPP7_DevIndex19",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 240.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_02",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_02/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_02/PCIeFunctions/DevType3_GPP7_DevIndex1B",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_03",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_03/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_03/PCIeFunctions/DevType3_GPP7_DevIndex1D",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 242.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_04",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_04/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_04/PCIeFunctions/DevType3_GPP7_DevIndex20",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_08",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 76.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_08/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_08/PCIeFunctions/DevType3_GPP7_DevIndex21",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_0C",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_0C/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_0C/PCIeFunctions/DevType3_GPP7_DevIndex23",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_0D",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 92.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_0D/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_03_0D/PCIeFunctions/DevType3_GPP7_DevIndex25",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_05_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 76.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_05_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 196.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_05_00/PCIeFunctions/DevType3_GPP7_DevIndex1A",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_06_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 209.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_06_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_06_00/PCIeFunctions/DevType3_GPP7_DevIndex1C",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_07_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_07_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_07_00/PCIeFunctions/DevType3_GPP7_DevIndex1E",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 88.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_08_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_08_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_08_00/PCIeFunctions/DevType3_GPP7_DevIndex1F",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0A_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0A_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0A_00/PCIeFunctions/DevType3_GPP7_DevIndex22",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0B_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 209.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0B_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0B_00/PCIeFunctions/DevType3_GPP7_DevIndex24",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 181.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0C_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 171.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0C_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0C_00/PCIeFunctions/DevType3_GPP7_DevIndex26",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0D_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0D_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0D_00/PCIeFunctions/DevType3__DevIndex6",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 76.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_ACP__DevIndex31",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 100.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_APSP_DevIndex2E",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_AZAL_DevIndex32",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_HDAU_DevIndex2D",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_VGA__DevIndex2C",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_XHC0_DevIndex2F",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0E_00/PCIeFunctions/DevType3_XHC1_DevIndex30",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0F_00",
+  "status": 200,
+  "type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0F_00/PCIeFunctions",
+  "status": 200,
+  "type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 196.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeDevices/00_0F_00/PCIeFunctions/DevType3_XHC2_DevIndex34",
+  "status": 200,
+  "type": "#PCIeFunction.v1_2_3.PCIeFunction",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PCIeSlots",
+  "status": 200,
+  "type": "#PCIeSlots.v1_1_1.PCIeSlots",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 190.9,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/PowerControl/0",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 148.4,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/0",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 108.2,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/1",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 147.0,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/10",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 105.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/11",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 147.3,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/12",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 147.4,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/13",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 147.7,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/14",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 283.7,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/2",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 150.0,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/3",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 145.8,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/4",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.8,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/5",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 147.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/6",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 150.2,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/7",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 148.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/8",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 148.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Power#/Voltages/9",
+  "status": 200,
+  "type": "#Power.v1_5_4.Power",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 148.0,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem",
+  "status": 200,
+  "type": "#PowerSubsystem.v1_1_0.PowerSubsystem",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies",
+  "status": 200,
+  "type": "#PowerSupplyCollection.PowerSupplyCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/114",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/114/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/115",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/115/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/122",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 203.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/122/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/123",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/123/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/178",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/178/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/179",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/179/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 196.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/185",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/185/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/186",
+  "status": 200,
+  "type": "#PowerSupply.v1_3_0.PowerSupply",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/PowerSubsystem/PowerSupplies/186/Metrics",
+  "status": 200,
+  "type": "#PowerSupplyMetrics.v1_0_1.PowerSupplyMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ResetActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors",
+  "status": 200,
+  "type": "#SensorCollection.SensorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 123.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/1",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/112",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/113",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 119.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/114",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/115",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/116",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/117",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 116.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/120",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/121",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 116.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/122",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/123",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/124",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 115.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/125",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/13",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/14",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/15",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/16",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/17",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/176",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 118.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/177",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 117.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/178",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/179",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/18",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/184",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 117.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/185",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/186",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/19",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/2",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/20",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/208",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 117.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/209",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 118.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/21",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/212",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 118.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/216",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 118.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/22",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/23",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 249.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/25",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 172.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/26",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/27",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/28",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 248.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/29",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 115.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/3",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/30",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/31",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/4",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/42",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/43",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/48",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 114.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/49",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/5",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/50",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 290.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/51",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 117.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/6",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/7",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 116.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/8",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/80",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/81",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 246.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/83",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/84",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 116.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors/9",
+  "status": 200,
+  "type": "#Sensor.v1_0_2.Sensor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 115.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Sensors?$skip=50",
+  "status": 200,
+  "type": "#SensorCollection.SensorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 164.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 219.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/0",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 151.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/1",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/10",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/11",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 154.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/12",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/13",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/14",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/15",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 289.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/2",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/3",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 285.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/4",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 151.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/5",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/6",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/7",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/8",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 154.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Fans/9",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 156.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/0",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 159.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/1",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 155.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/10",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 154.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/11",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/2",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/3",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/4",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 156.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/5",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/6",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 110.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/7",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 154.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/8",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 155.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/Thermal#/Temperatures/9",
+  "status": 200,
+  "type": "#Thermal.v1_5_3.Thermal",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem",
+  "status": 200,
+  "type": "#ThermalSubsystem.v1_0_0.ThermalSubsystem",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 101.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans",
+  "status": 200,
+  "type": "#FanCollection.FanCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/117",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 85.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/125",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/17",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/18",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/19",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/20",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/21",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/22",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/23",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 203.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/25",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/26",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/27",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/28",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/29",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/30",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/Fans/31",
+  "status": 200,
+  "type": "#Fan.v1_1_1.Fan",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Chassis/Self/ThermalSubsystem/ThermalMetrics",
+  "status": 200,
+  "type": "#ThermalMetrics.v1_0_1.ThermalMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CompositionService",
+  "status": 200,
+  "type": "#CompositionService.v1_1_2.CompositionService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 104.3,
+  "notes": "Allow: GET,PATCH"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceBlocks",
+  "status": 200,
+  "type": "#ResourceBlockCollection.ResourceBlockCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock",
+  "status": 200,
+  "type": "#ResourceBlock.v1_3_2.ResourceBlock",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.4,
+  "notes": "Allow: GET,PATCH"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceBlocks/DrivesBlock",
+  "status": 200,
+  "type": "#ResourceBlock.v1_3_2.ResourceBlock",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.0,
+  "notes": "Allow: GET,PATCH"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock",
+  "status": 200,
+  "type": "#ResourceBlock.v1_3_2.ResourceBlock",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.0,
+  "notes": "Allow: GET,PATCH"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceZones",
+  "status": 200,
+  "type": "#ZoneCollection.ZoneCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceZones/1",
+  "status": 200,
+  "type": "#Zone.v1_3_1.Zone",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/EventService",
+  "status": 200,
+  "type": "#EventService.v1_5_0.EventService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#EventService.SubmitTestEvent",
+    "target": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 62.9,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Oem/Ami/SMTP/Certificates",
+  "status": 200,
+  "type": "#AMISMTPCertificateCollection.v1_0_0.AMISMTPCertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 58.1,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/EventService/SubmitTestEventActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 172.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/EventService/Subscriptions",
+  "status": 200,
+  "type": "#EventDestinationCollection.EventDestinationCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.1,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas",
+  "status": 200,
+  "type": "#JsonSchemaFileCollection.JsonSchemaFileCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 103.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIAccountService.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIAccountServiceConfigurations.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIAdvanceRADIUSSetting.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIBIOSInventoryCRC.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 192.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIBiosTable.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIBiosTableTags.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMICaCert.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMICertificateCollection.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIChassisPowerThermal.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIConfigurations.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIDNSConfiguration.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 76.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIEventService",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIEventService.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIExternalAccountProvider.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIIPV6.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIInventoryStatus.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 191.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIManager.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIManagerAccount.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIRADIUS.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMISMTP.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMISMTPCertificate",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMISMTPCertificate.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMISMTPCertificateCollection",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMISMTPCertificateCollection.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIServiceRoot.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMITriggers.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIUpdateService.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AMIVirtualMedia.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/AmiBios.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/BiosStaticFile.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/BiosStaticFileCollection",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/ChangePassword.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/InventoryCRC.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/ResetBios.v1_0_0",
+  "status": 200,
+  "type": "#JsonSchemaFile.v1_1_4.JsonSchemaFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers",
+  "status": 200,
+  "type": "#ManagerCollection.ManagerCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 235.6,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self",
+  "status": 200,
+  "type": "#Manager.v1_13_0.Manager",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#Manager.Reset",
+    "target": "/redfish/v1/Managers/Self/Actions/Manager.Reset",
+    "allowable": [
+     "ForceRestart"
+    ]
+   },
+   {
+    "name": "#AMIManager.BackupConfig",
+    "target": "/redfish/v1/Managers/Self/Actions/Oem/AMIManager.BackupConfig",
+    "allowable": null
+   },
+   {
+    "name": "#AMIManager.RedfishPowerSaveMode",
+    "target": "/redfish/v1/Managers/Self/Actions/Oem/AMIManager.RedfishPowerSaveMode",
+    "allowable": null
+   },
+   {
+    "name": "#AMIManager.RestoreConfig",
+    "target": "/redfish/v1/Managers/Self/Actions/Oem/AMIManager.RestoreConfig",
+    "allowable": null
+   },
+   {
+    "name": "#AMIVirtualMedia.ConfigureCDInstance",
+    "target": "/redfish/v1/Managers/Self/Actions/Oem/AMIVirtualMedia.ConfigureCDInstance",
+    "allowable": null
+   },
+   {
+    "name": "#AMIVirtualMedia.EnableRMedia",
+    "target": "/redfish/v1/Managers/Self/Actions/Oem/AMIVirtualMedia.EnableRMedia",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 294.9,
+  "notes": "Allow: GET, PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/EthernetInterfaces",
+  "status": 200,
+  "type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+  "etag": "\"1641013275\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 67.6,
+  "notes": "ETag \"1641013275\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/EthernetInterfaces/bond0",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 84.6,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/EthernetInterfaces/eth0",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1641013275\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 82.0,
+  "notes": "Allow: GET, PATCH; ETag \"1641013275\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/EthernetInterfaces/eth1",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/EthernetInterfaces/usb0",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/HostInterfaces",
+  "status": 200,
+  "type": "#HostInterfaceCollection.HostInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/HostInterfaces/Self",
+  "status": 200,
+  "type": "#HostInterface.v1_3_0.HostInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.6,
+  "notes": "Allow: GET,PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/HostInterfaces/Self/HostEthernetInterfaces",
+  "status": 200,
+  "type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 80.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices",
+  "status": 200,
+  "type": "#LogServiceCollection.LogServiceCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 275.2,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662185\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/Managers/Self/LogServices/AuditLog/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 111.4,
+  "notes": "Allow: GET, PATCH; ETag \"1793662185\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662185\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 348.9,
+  "notes": "ETag \"1793662185\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/1",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819788\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 138.2,
+  "notes": "ETag \"1744819788\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/10",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819979\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.7,
+  "notes": "ETag \"1744819979\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/11",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819979\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 56.0,
+  "notes": "ETag \"1744819979\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/12",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819980\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 151.1,
+  "notes": "ETag \"1744819980\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/13",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 144.5,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/14",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 95.2,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/15",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.6,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/16",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.2,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/17",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.4,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/18",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 138.5,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/19",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 138.3,
+  "notes": "ETag \"1744819981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/2",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819858\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 140.6,
+  "notes": "ETag \"1744819858\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/20",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819982\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 145.0,
+  "notes": "ETag \"1744819982\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/21",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819982\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 137.2,
+  "notes": "ETag \"1744819982\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/22",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819982\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 65.8,
+  "notes": "ETag \"1744819982\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/23",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819984\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 89.9,
+  "notes": "ETag \"1744819984\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/24",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819984\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 159.6,
+  "notes": "ETag \"1744819984\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/25",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819984\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 98.1,
+  "notes": "ETag \"1744819984\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/26",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819984\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.4,
+  "notes": "ETag \"1744819984\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/27",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 157.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/28",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803508\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 158.0,
+  "notes": "ETag \"1791803508\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/29",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803618\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.9,
+  "notes": "ETag \"1791803618\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/3",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819876\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 98.2,
+  "notes": "ETag \"1744819876\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/30",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803654\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 146.5,
+  "notes": "ETag \"1791803654\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/31",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803664\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 148.2,
+  "notes": "ETag \"1791803664\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/32",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803935\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.7,
+  "notes": "ETag \"1791803935\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/33",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803971\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.8,
+  "notes": "ETag \"1791803971\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/34",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791803981\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 156.5,
+  "notes": "ETag \"1791803981\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/35",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804004\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.4,
+  "notes": "ETag \"1791804004\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/36",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804115\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.5,
+  "notes": "ETag \"1791804115\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/37",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804152\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 95.2,
+  "notes": "ETag \"1791804152\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/38",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804161\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.2,
+  "notes": "ETag \"1791804161\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/39",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804207\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 107.3,
+  "notes": "ETag \"1791804207\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/4",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819882\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 96.9,
+  "notes": "ETag \"1744819882\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/40",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804214\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 212.6,
+  "notes": "ETag \"1791804214\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/41",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804214\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 57.0,
+  "notes": "ETag \"1791804214\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/42",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804215\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 112.9,
+  "notes": "ETag \"1791804215\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/43",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804216\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 271.5,
+  "notes": "ETag \"1791804216\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/44",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804216\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 95.6,
+  "notes": "ETag \"1791804216\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/45",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804218\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 231.6,
+  "notes": "ETag \"1791804218\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/46",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804218\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 140.8,
+  "notes": "ETag \"1791804218\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/47",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804218\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 95.7,
+  "notes": "ETag \"1791804218\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/48",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1791804218\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 98.0,
+  "notes": "ETag \"1791804218\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/49",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662122\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 102.7,
+  "notes": "ETag \"1793662122\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/5",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819894\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 160.9,
+  "notes": "ETag \"1744819894\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/50",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662158\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 141.1,
+  "notes": "ETag \"1793662158\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/51",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662167\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 139.5,
+  "notes": "ETag \"1793662167\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/52",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662174\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.0,
+  "notes": "ETag \"1793662174\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/53",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662181\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 71.1,
+  "notes": "ETag \"1793662181\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/54",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662181\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 58.0,
+  "notes": "ETag \"1793662181\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/55",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662181\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 235.6,
+  "notes": "ETag \"1793662181\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/56",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662182\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 100.6,
+  "notes": "ETag \"1793662182\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/57",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662182\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 99.3,
+  "notes": "ETag \"1793662182\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/58",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662184\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 188.5,
+  "notes": "ETag \"1793662184\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/59",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662185\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 98.6,
+  "notes": "ETag \"1793662185\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/6",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819948\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.8,
+  "notes": "ETag \"1744819948\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/60",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662185\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 98.8,
+  "notes": "ETag \"1793662185\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/61",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662185\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 99.8,
+  "notes": "ETag \"1793662185\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/7",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819966\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.4,
+  "notes": "ETag \"1744819966\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/8",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819972\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.6,
+  "notes": "ETag \"1744819972\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries/9",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1744819979\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 97.7,
+  "notes": "ETag \"1744819979\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/AuditLog/Entries?$skip=50",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662185\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 169.5,
+  "notes": "ETag \"1793662185\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/EventLog",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/Managers/Self/LogServices/EventLog/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 112.3,
+  "notes": "Allow: GET, PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/EventLog/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/Managers/Self/LogServices/SEL/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 121.3,
+  "notes": "Allow: GET, PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 131.4,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/1",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 153.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/10",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 99.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/11",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 154.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/2",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 94.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/3",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 230.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/4",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 138.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/5",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 138.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/6",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 142.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/7",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 103.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/8",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 154.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/LogServices/SEL/Entries/9",
+  "status": 200,
+  "type": "#LogEntry.v1_4_3.LogEntry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 99.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/NetworkProtocol",
+  "status": 200,
+  "type": "#ManagerNetworkProtocol.v1_6_0.ManagerNetworkProtocol",
+  "etag": "\"1641013285\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 167.7,
+  "notes": "Allow: GET, PATCH; ETag \"1641013285\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/NetworkProtocol/HTTPS/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/NetworkProtocol/HTTPS/Certificates/1",
+  "status": 200,
+  "type": "#Certificate.v1_4_0.Certificate",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#Certificate.Rekey",
+    "target": "/redfish/v1/Managers/Self/NetworkProtocol/HTTPS/Certificates/1/Actions/Certificate.Rekey",
+    "allowable": null
+   },
+   {
+    "name": "#Certificate.Renew",
+    "target": "/redfish/v1/Managers/Self/NetworkProtocol/HTTPS/Certificates/1/Actions/Certificate.Renew",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 101.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/NetworkProtocol/HTTPS/Certificates/1/Certificate.RekeyActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/NetworkProtocol/HTTPS/Certificates/1/Certificate.RenewActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Oem/BackupConfigActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Oem/ConfigureCDInstanceActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Oem/EnableRMediaActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Oem/RedfishPowerSaveModeActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Oem/RestoreConfigActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/ResetActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/SerialInterfaces",
+  "status": 200,
+  "type": "#SerialInterfaceCollection.SerialInterfaceCollection",
+  "etag": "\"1641013285\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 66.3,
+  "notes": "ETag \"1641013285\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/SerialInterfaces/IPMI-SOL",
+  "status": 200,
+  "type": "#SerialInterface.v1_1_5.SerialInterface",
+  "etag": "\"1641013285\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 77.9,
+  "notes": "Allow: GET, PATCH; ETag \"1641013285\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/SerialInterfaces/ttyS3",
+  "status": 200,
+  "type": "#SerialInterface.v1_1_5.SerialInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 82.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/SerialInterfaces/ttyS4",
+  "status": 200,
+  "type": "#SerialInterface.v1_1_5.SerialInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 148.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/VirtualMedia",
+  "status": 200,
+  "type": "#VirtualMediaCollection.VirtualMediaCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/BiosStaticFiles",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 55.6,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/Configurations",
+  "status": 200,
+  "type": "#AMIConfigurations.v1_0_0.AMIConfigurations",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.2,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/InventoryData",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 192.8,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/InventoryData/Status",
+  "status": 200,
+  "type": "#AMIInventoryStatus.v1_0_0.AMIInventoryStatus",
+  "etag": "\"1793662189\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 119.9,
+  "notes": "ETag \"1793662189\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Registries",
+  "status": 200,
+  "type": "#MessageRegistryFileCollection.MessageRegistryFileCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/Ami.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/AmiOem.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/Base.1.12.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/BiosAttributeRegistryA2982.10.15.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/CertificateService.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/EventLog.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 207.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/HttpStatus.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/IPMI.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/RedfishDeviceEnablement.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 68.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/Redfish_1.3.0_PrivilegeRegistry",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/Redfish_1.3.0_PrivilegeRegistry.json",
+  "status": 200,
+  "type": "#PrivilegeRegistry.v1_1_4.PrivilegeRegistry",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 360.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/Security.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/StorageDevice.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/SyncAgent.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 79.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/Task.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/TaskEvent.1.0.1",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Registries/UpdateService.1.0.0",
+  "status": 200,
+  "type": "#MessageRegistryFile.v1_1_3.MessageRegistryFile",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/SessionService",
+  "status": 200,
+  "type": "#SessionService.v1_1_6.SessionService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.7,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/SessionService/Sessions",
+  "status": 200,
+  "type": "#SessionCollection.SessionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.1,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems",
+  "status": 200,
+  "type": "#ComputerSystemCollection.ComputerSystemCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 98.0,
+  "notes": "Allow: GET, POST; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Capabilities",
+  "status": 200,
+  "type": "#ComputerSystem.v1_16_0.ComputerSystem",
+  "etag": "\"1525957699\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 55.7,
+  "notes": "ETag \"1525957699\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self",
+  "status": 200,
+  "type": "#ComputerSystem.v1_16_0.ComputerSystem",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#ComputerSystem.Reset",
+    "target": "/redfish/v1/Systems/Self/Actions/ComputerSystem.Reset",
+    "allowable": [
+     "ForceOff",
+     "ForceRestart",
+     "GracefulShutdown",
+     "On",
+     "PowerCycle"
+    ]
+   }
+  ],
+  "latency_ms": 249.7,
+  "notes": "Allow: GET,PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Bios",
+  "status": 200,
+  "type": "#Bios.v1_2_0.Bios",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#Bios.ChangePassword",
+    "target": "/redfish/v1/Systems/Self/Bios/Actions/Bios.ChangePassword",
+    "allowable": null
+   },
+   {
+    "name": "#Bios.ResetBios",
+    "target": "/redfish/v1/Systems/Self/Bios/Actions/Bios.ResetBios",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 512.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Bios/ChangePasswordActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Bios/SD",
+  "status": 200,
+  "type": "#Bios.v1_2_0.Bios",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 567.3,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Boot/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.4,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Boot/Certificates/1",
+  "status": 200,
+  "type": "#Certificate.v1_4_0.Certificate",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#Certificate.Rekey",
+    "target": "/redfish/v1/Systems/Self/Boot/Certificates/1/Actions/Certificate.Rekey",
+    "allowable": null
+   },
+   {
+    "name": "#Certificate.Renew",
+    "target": "/redfish/v1/Systems/Self/Boot/Certificates/1/Actions/Certificate.Renew",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 105.8,
+  "notes": "Allow: GET,DELETE"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Boot/Certificates/1/Certificate.RekeyActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Boot/Certificates/1/Certificate.RenewActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions",
+  "status": 200,
+  "type": "#BootOptionCollection.BootOptionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 102.1,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0001",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0001/SD",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.0,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0002",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 106.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0002/SD",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 79.6,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0003",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 237.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0003/SD",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0004",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 175.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0004/SD",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0005",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 108.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0005/SD",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.6,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0006",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 146.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/BootOptions/0006/SD",
+  "status": 200,
+  "type": "#BootOption.v1_0_3.BootOption",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.3,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces",
+  "status": 200,
+  "type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 103.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface0",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface0/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.4,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface1",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface1/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.9,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface2",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface2/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.5,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface3",
+  "status": 200,
+  "type": "#EthernetInterface.v1_6_2.EthernetInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/EthernetInterfaces/EthernetInterface3/VLANs",
+  "status": 200,
+  "type": "#VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.7,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/GraphicsControllers",
+  "status": 200,
+  "type": "#GraphicsControllerCollection.GraphicsControllerCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 192.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/LogServices",
+  "status": 200,
+  "type": "#LogServiceCollection.LogServiceCollection",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 60.6,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/LogServices/BIOS",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/Systems/Self/LogServices/BIOS/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 108.2,
+  "notes": "Allow: GET, PATCH; ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/LogServices/BIOS/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/LogServices/SMI",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/Systems/Self/LogServices/SMI/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 109.2,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/LogServices/SMI/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory",
+  "status": 200,
+  "type": "#MemoryCollection.MemoryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM0",
+  "status": 200,
+  "type": "#Memory.v1_11_0.Memory",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#AmiBios.ChangeState",
+    "target": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM0/Actions/AmiBios.ChangeState",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 56.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM0/ChangeStateActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM0/MemoryMetrics",
+  "status": 200,
+  "type": "#MemoryMetrics.v1_3_0.MemoryMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 78.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM1",
+  "status": 200,
+  "type": "#Memory.v1_11_0.Memory",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#AmiBios.ChangeState",
+    "target": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM1/Actions/AmiBios.ChangeState",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 57.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM1/ChangeStateActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM1/MemoryMetrics",
+  "status": 200,
+  "type": "#MemoryMetrics.v1_3_0.MemoryMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM2",
+  "status": 200,
+  "type": "#Memory.v1_11_0.Memory",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#AmiBios.ChangeState",
+    "target": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM2/Actions/AmiBios.ChangeState",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 57.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM2/ChangeStateActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM2/MemoryMetrics",
+  "status": 200,
+  "type": "#MemoryMetrics.v1_3_0.MemoryMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM3",
+  "status": 200,
+  "type": "#Memory.v1_11_0.Memory",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#AmiBios.ChangeState",
+    "target": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM3/Actions/AmiBios.ChangeState",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 56.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM3/ChangeStateActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 191.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Memory/DevType2_DIMM3/MemoryMetrics",
+  "status": 200,
+  "type": "#MemoryMetrics.v1_3_0.MemoryMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 78.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/MemoryDomains",
+  "status": 200,
+  "type": "#MemoryDomainCollection.MemoryDomainCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/MemorySummary/MemoryMetrics",
+  "status": 200,
+  "type": "#MemoryMetrics.v1_3_0.MemoryMetrics",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces",
+  "status": 200,
+  "type": "#NetworkInterfaceCollection.NetworkInterfaceCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces/DevType7_NIC0",
+  "status": 200,
+  "type": "#NetworkInterface.v1_2_0.NetworkInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces/DevType7_NIC0/NetworkDeviceFunctions",
+  "status": 200,
+  "type": "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 104.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces/DevType7_NIC1",
+  "status": 200,
+  "type": "#NetworkInterface.v1_2_0.NetworkInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces/DevType7_NIC1/NetworkDeviceFunctions",
+  "status": 200,
+  "type": "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 63.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces/DevType7_NIC2",
+  "status": 200,
+  "type": "#NetworkInterface.v1_2_0.NetworkInterface",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 76.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/NetworkInterfaces/DevType7_NIC2/NetworkDeviceFunctions",
+  "status": 200,
+  "type": "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Oem/Ami/Inventory/Crc",
+  "status": 200,
+  "type": "#InventoryCRC.v1_0_0.InventoryCRC",
+  "etag": "\"1744819977\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 62.7,
+  "notes": "Allow: GET, POST, DELETE; ETag \"1744819977\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Pldm",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 53.8,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors",
+  "status": 200,
+  "type": "#ProcessorCollection.ProcessorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 95.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors",
+  "status": 200,
+  "type": "#ProcessorCollection.ProcessorCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 240.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core0_Thread0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core0_Thread1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 113.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core1_Thread0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core1_Thread1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core2",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 152.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core2_Thread0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core2_Thread1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 71.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core3",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core3_Thread0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core3_Thread1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core4",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 109.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core4_Thread0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 201.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core4_Thread1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core5",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 200.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core5_Thread0",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Processors/DevType1_CPU0/SubProcessors/DevType1_CPU0_Core5_Thread1",
+  "status": 200,
+  "type": "#Processor.v1_10_0.Processor",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 77.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/ResetActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SD",
+  "status": 200,
+  "type": "#ComputerSystem.v1_16_0.ComputerSystem",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 55.0,
+  "notes": "Allow: GET,PATCH"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot",
+  "status": 200,
+  "type": "#SecureBoot.v1_1_0.SecureBoot",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBoot.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/Actions/SecureBoot.ResetKeys",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 111.1,
+  "notes": "Allow: GET, PATCH; ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/ResetKeysActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases",
+  "status": 200,
+  "type": "#SecureBootDatabaseCollection.SecureBootDatabaseCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEK",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820014\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEK/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 57.3,
+  "notes": "ETag \"1744820014\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEK/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.5,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEK/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 58.8,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEKDefault",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEKDefault/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 273.4,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEKDefault/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 58.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEKDefault/Certificates/1",
+  "status": 200,
+  "type": "#Certificate.v1_4_0.Certificate",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 106.4,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/KEKDefault/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PK",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820014\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PK/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 55.3,
+  "notes": "ETag \"1744820014\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PK/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.5,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PK/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 55.7,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PKDefault",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PKDefault/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 55.2,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PKDefault/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.7,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PKDefault/Certificates/1",
+  "status": 200,
+  "type": "#Certificate.v1_4_0.Certificate",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 64.1,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/PKDefault/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 56.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/db",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820014\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/db/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 54.6,
+  "notes": "ETag \"1744820014\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/db/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.9,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/db/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.1,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbDefault",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbDefault/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 57.5,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbDefault/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbDefault/Certificates/1",
+  "status": 200,
+  "type": "#Certificate.v1_4_0.Certificate",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 235.5,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbDefault/Certificates/2",
+  "status": 200,
+  "type": "#Certificate.v1_4_0.Certificate",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 106.1,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbDefault/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 56.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbr",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820014\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbr/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 60.7,
+  "notes": "ETag \"1744820014\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbr/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.8,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbr/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.0,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbrDefault",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbrDefault/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 59.0,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbrDefault/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbrDefault/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 186.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbt",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820014\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbt/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 59.6,
+  "notes": "ETag \"1744820014\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbt/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 58.9,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbt/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 56.7,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbtDefault",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbtDefault/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 56.8,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbtDefault/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 57.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbtDefault/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 59.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbx",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820014\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbx/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 56.6,
+  "notes": "ETag \"1744820014\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbx/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 58.8,
+  "notes": "Allow: GET,POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbx/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 56.6,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbxDefault",
+  "status": 200,
+  "type": "#SecureBootDatabase.v1_0_0.SecureBootDatabase",
+  "etag": "\"1744820015\"",
+  "etag_differs": true,
+  "actions": [
+   {
+    "name": "#SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbxDefault/Actions/SecureBootDatabase.ResetKeys",
+    "allowable": [
+     "ResetAllKeysToDefault",
+     "DeleteAllKeys"
+    ]
+   }
+  ],
+  "latency_ms": 57.1,
+  "notes": "ETag \"1744820015\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbxDefault/Certificates",
+  "status": 200,
+  "type": "#CertificateCollection.CertificateCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 58.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SecureBoot/SecureBootDatabases/dbxDefault/Signatures",
+  "status": 200,
+  "type": "#SignatureCollection.SignatureCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 119.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage",
+  "status": 200,
+  "type": "#SimpleStorageCollection.SimpleStorageCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 102.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/0",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 286.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/1",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 111.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/2",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/3",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/4",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 70.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/5",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 69.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/SimpleStorage/6",
+  "status": 200,
+  "type": "#SimpleStorage.v1_3_0.SimpleStorage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Smbios",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 54.2,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage",
+  "status": 200,
+  "type": "#StorageCollection.StorageCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 186.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/0",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 185.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/1",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 187.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/2",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 235.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/3",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 234.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/4",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 145.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/5",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 240.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0#/StorageControllers/6",
+  "status": 200,
+  "type": "#Storage.v1_9_0.Storage",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 228.9,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers",
+  "status": 200,
+  "type": "#StorageControllerCollection.StorageControllerCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 98.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/0",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/1",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/2",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 77.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/3",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/4",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 78.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/5",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Controllers/6",
+  "status": 200,
+  "type": "#StorageController.v1_0_0.StorageController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Drives/NVMe_Device0_NSID1",
+  "status": 200,
+  "type": "#Drive.v1_13_0.Drive",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 90.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Drives/NVMe_Device1_NSID1",
+  "status": 200,
+  "type": "#Drive.v1_13_0.Drive",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 100.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/0",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 55.9,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/1",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 57.9,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/2",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 55.3,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/3",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 54.4,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/4",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 56.3,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/5",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 55.8,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/StorageControllers/6",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 186.1,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Volumes",
+  "status": 200,
+  "type": "#VolumeCollection.VolumeCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 65.5,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/Storage/StorageUnit_0/Volumes/VOL0",
+  "status": 200,
+  "type": "#Volume.v1_5_0.Volume",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 156.6,
+  "notes": "Allow: GET, DELETE"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers",
+  "status": 200,
+  "type": "#USBControllerCollection.USBControllerCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.2,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0",
+  "status": 200,
+  "type": "#USBController.v1_0_0.USBController",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 61.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0/Ports",
+  "status": 200,
+  "type": "#PortCollection.PortCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 101.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0/Ports/DevTypeE_USB4_Port1",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 76.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0/Ports/DevTypeE_USB5_Port2",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0/Ports/DevTypeE_USB6_Port3",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 74.8,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0/Ports/DevTypeE_USB7_Port4",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 75.0,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/Systems/Self/USBControllers/DevTypeC_USB_0/Ports/DevTypeE_USB8_Port5",
+  "status": 200,
+  "type": "#Port.v1_5_0.Port",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 73.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/TaskService",
+  "status": 200,
+  "type": "#TaskService.v1_1_4.TaskService",
+  "etag": "\"1793662044\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 77.7,
+  "notes": "ETag \"1793662044\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/TaskService/Tasks",
+  "status": 200,
+  "type": "#TaskCollection.TaskCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 66.5,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService",
+  "status": 200,
+  "type": "#TelemetryService.v1_2_1.TelemetryService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#TelemetryService.SubmitTestMetricReport",
+    "target": "/redfish/v1/TelemetryService/Actions/TelemetryService.SubmitTestMetricReport",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 62.0,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogService",
+  "status": 200,
+  "type": "#LogService.v1_1_3.LogService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#LogService.ClearLog",
+    "target": "/redfish/v1/TelemetryService/LogService/Actions/LogService.ClearLog",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 152.5,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogService/Entries",
+  "status": 200,
+  "type": "#LogEntryCollection.LogEntryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 60.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricDefinitions",
+  "status": 200,
+  "type": "#MetricDefinitionCollection.MetricDefinitionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 112.4,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricDefinitions/Voltage_Reading",
+  "status": 200,
+  "type": "#MetricDefinition.v1_0_3.MetricDefinition",
+  "etag": "\"1793662019\"",
+  "etag_differs": true,
+  "actions": [],
+  "latency_ms": 173.6,
+  "notes": "ETag \"1793662019\" (differs from service epoch)"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReportDefinitions",
+  "status": 200,
+  "type": "#MetricReportDefinitionCollection.MetricReportDefinitionCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 62.0,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReports",
+  "status": 200,
+  "type": "#MetricReportCollection.MetricReportCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 64.3,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/SubmitTestMetricReportActionInfo",
+  "status": 200,
+  "type": "#ActionInfo.v1_1_2.ActionInfo",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 171.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/Triggers",
+  "status": 200,
+  "type": "#TriggersCollection.TriggersCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 193.8,
+  "notes": "Allow: GET, POST"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService",
+  "status": 200,
+  "type": "#UpdateService.v1_6_0.UpdateService",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [
+   {
+    "name": "#UpdateService.SimpleUpdate",
+    "target": "/redfish/v1/UpdateService/Actions/SimpleUpdate",
+    "allowable": {
+     "TransferProtocol": [
+      "HTTP",
+      "FTP",
+      "HTTPS"
+     ]
+    }
+   },
+   {
+    "name": "#UpdateService.UploadCABundle",
+    "target": "/redfish/v1/UpdateService/Actions/Oem/UpdateService.UploadCABundle",
+    "allowable": null
+   }
+  ],
+  "latency_ms": 66.4,
+  "notes": "Allow: GET, PATCH"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/FirmwareInventory",
+  "status": 200,
+  "type": "#SoftwareInventoryCollection.SoftwareInventoryCollection",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 67.6,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/FirmwareInventory/BIOS",
+  "status": 200,
+  "type": "#SoftwareInventory.v1_2_3.SoftwareInventory",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/FirmwareInventory/BMC",
+  "status": 200,
+  "type": "#SoftwareInventory.v1_2_3.SoftwareInventory",
+  "etag": "\"1793662187\"",
+  "etag_differs": false,
+  "actions": [],
+  "latency_ms": 72.1,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/SimpleUpdateActionInfo",
+  "status": "skipped (action path)",
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": null,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/UploadCABundleActionInfo",
+  "status": "skipped (action path)",
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": null,
+  "notes": null
+ },
+ {
+  "uri": "/redfish/v1/bios/defaultSD",
+  "status": 404,
+  "type": null,
+  "etag": null,
+  "etag_differs": null,
+  "actions": [],
+  "latency_ms": 57.5,
+  "notes": "linked but returns 404 (not implemented / host powered off)"
+ }
+]

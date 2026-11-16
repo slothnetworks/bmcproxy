@@ -1,0 +1,3 @@
+replace github.com/slothnetworks/bmcproxy/pkg/transport.BreakerState string
+replace github.com/slothnetworks/bmcproxy/pkg/transport.TLSProfile string
+replace github.com/slothnetworks/bmcproxy/pkg/bmc.Tier string

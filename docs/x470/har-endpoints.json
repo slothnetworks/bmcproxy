@@ -1,0 +1,3344 @@
+{
+  "source": "harfiles/x470d4u.har (Chrome/Brave WebInspector HAR 1.2, 176 entries, 2026-11-16T05:58:44Z..06:02:38Z)",
+  "bmc": {
+    "board": "X470D4U",
+    "bmc_fw": "2.32.00 (built May 11 2021)",
+    "bios": "P4.20",
+    "server": "lighttpd",
+    "http": "HTTP/1.1 over TLS",
+    "host": "<BMC_HOST> (RFC1918 address in capture)"
+  },
+  "redaction": "Passwords, CSRF tokens, session ids, serial numbers and MAC addresses replaced with <REDACTED_*> placeholders. See har-analysis.md for formats/lengths.",
+  "auth": {
+    "login": "POST /api/session (application/x-www-form-urlencoded: username, password, certlogin=0)",
+    "csrf_header": "X-CSRFTOKEN: <CSRFToken from login response>",
+    "session_cookie": "QSESSIONID (name known from web UI JS; cookie values/attributes stripped from this HAR export)",
+    "logout": "DELETE /api/session (from web UI JS; not exercised in capture)"
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/session",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        8
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 197,
+      "timing_ms": {
+        "wait_min": 1491,
+        "wait_median": 1491,
+        "wait_max": 1491,
+        "total_min": 1494,
+        "total_median": 1494,
+        "total_max": 1494
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "Origin": "https://<BMC_HOST>",
+          "Referer": "https://<BMC_HOST>/",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": {
+          "username": "admin",
+          "password": "<REDACTED_PASSWORD>",
+          "certlogin": "0"
+        }
+      },
+      "response_example": {
+        "ok": 0,
+        "privilege": 4,
+        "extendedpriv": 259,
+        "racsession_id": "<REDACTED_SESSION_ID>",
+        "remote_addr": "10.0.0.252",
+        "server_name": "10.0.0.87",
+        "server_addr": "10.0.0.87",
+        "HTTPSEnabled": 1,
+        "CSRFToken": "<REDACTED_CSRF>"
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/users",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        10
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 3840,
+      "timing_ms": {
+        "wait_min": 1678,
+        "wait_median": 1678,
+        "wait_max": 1678,
+        "total_min": 1680,
+        "total_median": 1680,
+        "total_max": 1680
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "id": 1,
+          "name": "anonymous",
+          "access": 0,
+          "kvm": 1,
+          "vmedia": 1,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "administrator",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "none",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "ami_format",
+          "ssh_key": "Not Available",
+          "creation_time": 1794808795
+        },
+        {
+          "id": 2,
+          "name": "admin",
+          "access": 1,
+          "kvm": 1,
+          "vmedia": 1,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "administrator",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "none",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "ami_format",
+          "ssh_key": "Not Available",
+          "creation_time": 1649421370
+        },
+        {
+          "id": 3,
+          "name": "fwupd",
+          "access": 0,
+          "kvm": 1,
+          "vmedia": 1,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "administrator",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "none",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "ami_format",
+          "ssh_key": "Not Available",
+          "creation_time": 1788400303
+        },
+        {
+          "id": 4,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        },
+        {
+          "id": 5,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        },
+        {
+          "id": 6,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        },
+        {
+          "id": 7,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        },
+        {
+          "id": 8,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        },
+        {
+          "id": 9,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        },
+        {
+          "id": 10,
+          "name": "",
+          "access": 0,
+          "kvm": 0,
+          "vmedia": 0,
+          "snmp": 0,
+          "prev_snmp": 0,
+          "network_privilege": "",
+          "fixed_user_count": 2,
+          "snmp_access": "",
+          "OEMProprietary_level_Privilege": 1,
+          "privilege_limit_serial": "",
+          "snmp_authentication_protocol": "",
+          "snmp_privacy_protocol": "",
+          "email_id": "",
+          "email_format": "",
+          "ssh_key": "Not Available",
+          "creation_time": 0
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/firmware-info",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        14
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 266,
+      "timing_ms": {
+        "wait_min": 79,
+        "wait_median": 79,
+        "wait_max": 79,
+        "total_min": 87,
+        "total_median": 87,
+        "total_max": 87
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "device_id": 32,
+        "revision": 1,
+        "fw_rev_1": 2,
+        "fw_rev_2": 50,
+        "ipmi_version": 2,
+        "dev_support": 191,
+        "mfg_id_0": 214,
+        "mfg_id_1": 193,
+        "mfg_id_2": 0,
+        "prod_id": 514,
+        "aux": 0,
+        "fw_ver": "2.32.00",
+        "date": "May 11 2021",
+        "time": "17:53:41 CST",
+        "active_image": 0
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/configuration/project",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        15
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 1805,
+      "timing_ms": {
+        "wait_min": 123,
+        "wait_median": 123,
+        "wait_max": 123,
+        "total_min": 132,
+        "total_median": 132,
+        "total_max": 132
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "feature": "NWLINK"
+        },
+        {
+          "feature": "SYSTEM_FIREWALL"
+        },
+        {
+          "feature": "IPV6_SUPPORT"
+        },
+        {
+          "feature": "EXTENDED_PRIV"
+        },
+        {
+          "feature": "NWBONDING"
+        },
+        {
+          "feature": "SERVICES"
+        },
+        {
+          "feature": "SESSION_MANAGEMENT"
+        },
+        {
+          "feature": "FIRMWARE_FLASH_SUPPORT"
+        },
+        {
+          "feature": "VERSION_CMP_FLASH"
+        },
+        {
+          "feature": "FW_IMAGE"
+        },
+        {
+          "feature": "BACKUP_CONFIG"
+        },
+        {
+          "feature": "PRESERVECONF"
+        },
+        {
+          "feature": "NTP_SERVER_SUPPORT"
+        },
+        {
+          "feature": "SINGLE_PORT_APP"
+        },
+        {
+          "feature": "RUNTIME_SINGLEPORT_SUPPORT"
+        },
+        {
+          "feature": "SNMP"
+        },
+        {
+          "feature": "SAVE_SELLOG"
+        },
+        {
+          "feature": "WEB_APP_PROXY"
+        },
+        {
+          "feature": "TSIG"
+        },
+        {
+          "feature": "MDNS"
+        },
+        {
+          "feature": "TIMEZONE_SUPPORT"
+        },
+        {
+          "feature": "CIRCULAR_SEL"
+        },
+        {
+          "feature": "DISABLE_EMPTY_PASSWORD"
+        },
+        {
+          "feature": "OEM_PROPRIETARY_LEVEL_SUPPORT"
+        },
+        {
+          "feature": "IPV6_COMPLIANCE"
+        },
+        {
+          "feature": "INVENTORY_SUPPORT"
+        },
+        {
+          "feature": "YES"
+        },
+        {
+          "feature": "AUTOVDORECORD"
+        },
+        {
+          "feature": "AUTOVDORECORD_REMOTE"
+        },
+        {
+          "feature": "ADVISER_SUPPORT"
+        },
+        {
+          "feature": "KB_LANG_SELECT_SUPPORT"
+        },
+        {
+          "feature": "RUNTIME_HOST_LOCK"
+        },
+        {
+          "feature": "HOST_LOCK_AUTO"
+        },
+        {
+          "feature": "KVM_SESSION_TIMEOUT"
+        },
+        {
+          "feature": "KVM_SESSION_RECONNECT"
+        },
+        {
+          "feature": "HTML5_KVM"
+        },
+        {
+          "feature": "AUTO_RESIZE_KVM_CLIENT_WINDOW"
+        },
+        {
+          "feature": "JAVA_CD_IMAGE_REDIR"
+        },
+        {
+          "feature": "CAPTURE_BSOD_RAW"
+        },
+        {
+          "feature": "CAPTURE_BSOD_RAW"
+        },
+        {
+          "feature": "MULTIPLE_USER_VMEDIA"
+        },
+        {
+          "feature": "CD_SERVER_APP"
+        },
+        {
+          "feature": "FD_SERVER_APP"
+        },
+        {
+          "feature": "HD_SERVER_APP"
+        },
+        {
+          "feature": "IMG_REDIRECTION"
+        },
+        {
+          "feature": "RMEDIA"
+        },
+        {
+          "feature": "NCSI_SUPPORT"
+        },
+        {
+          "feature": "PAM_REORDERING"
+        },
+        {
+          "feature": "AD_SUPPORT"
+        },
+        {
+          "feature": "LDAP_SUPPORT"
+        },
+        {
+          "feature": "RADIUS_SUPPORT"
+        },
+        {
+          "feature": "REDFISH"
+        },
+        {
+          "feature": "REDFISH_HOSTINTERFACE"
+        },
+        {
+          "feature": "BONDING_SUPPORT"
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/chassis",
+      "query": [],
+      "calls": 31,
+      "har_entry_indexes": [
+        16,
+        32,
+        69,
+        79,
+        89,
+        94,
+        100,
+        106,
+        107,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        123,
+        129,
+        133,
+        136,
+        145,
+        152,
+        155,
+        169,
+        174,
+        175
+      ],
+      "status": {
+        "200": 31
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 38,
+      "timing_ms": {
+        "wait_min": 68,
+        "wait_median": 84,
+        "wait_max": 1724,
+        "total_min": 70,
+        "total_median": 87,
+        "total_max": 1727
+      },
+      "intervals_s": [
+        5.003,
+        16.732,
+        5.003,
+        4.094,
+        0.905,
+        5.01,
+        4.988,
+        5.0,
+        5.005,
+        5.008,
+        4.996,
+        4.995,
+        4.999,
+        5.004,
+        4.998,
+        5.003,
+        4.994,
+        5.007,
+        4.995,
+        4.998,
+        5.006,
+        4.992,
+        5.002,
+        5.009,
+        4.992,
+        5.002,
+        4.995,
+        5.003,
+        5.006,
+        4.994
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "power_status": 0,
+        "led_status": 0
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/chassis-status",
+      "query": [],
+      "calls": 5,
+      "har_entry_indexes": [
+        17,
+        34,
+        58,
+        102,
+        108
+      ],
+      "status": {
+        "200": 5
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 38,
+      "timing_ms": {
+        "wait_min": 74,
+        "wait_median": 107,
+        "wait_max": 111,
+        "total_min": 77,
+        "total_median": 120,
+        "total_max": 338
+      },
+      "intervals_s": [
+        5.558,
+        11.178,
+        21.363,
+        12.022
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "power_status": 0,
+        "led_status": 0
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/network",
+      "query": [],
+      "calls": 2,
+      "har_entry_indexes": [
+        18,
+        166
+      ],
+      "status": {
+        "200": 2
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 823,
+      "timing_ms": {
+        "wait_min": 952,
+        "wait_median": 1297,
+        "wait_max": 1643,
+        "total_min": 1606,
+        "total_median": 1627,
+        "total_max": 1648
+      },
+      "intervals_s": [
+        146.548
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "id": 1,
+          "interface_name": "eth0",
+          "channel_number": 1,
+          "lan_enable": 1,
+          "mac_address": "<REDACTED_MAC>",
+          "ipv4_enable": 1,
+          "ipv4_dhcp_enable": 0,
+          "ipv4_address": "10.0.0.87",
+          "ipv4_subnet": "255.255.255.0",
+          "ipv4_gateway": "10.0.0.1",
+          "ipv6_enable": 1,
+          "ipv6_dhcp_enable": 1,
+          "ipv6_address": "::",
+          "ipv6_index": 0,
+          "ipv6_prefix": 0,
+          "ipv6_gateway": "::",
+          "vlan_enable": 0,
+          "vlan_id": 0,
+          "vlan_priority": 0
+        },
+        {
+          "id": 2,
+          "interface_name": "eth1",
+          "channel_number": 8,
+          "lan_enable": 1,
+          "mac_address": "<REDACTED_MAC>",
+          "ipv4_enable": 1,
+          "ipv4_dhcp_enable": 1,
+          "ipv4_address": "0.0.0.0",
+          "ipv4_subnet": "0.0.0.0",
+          "ipv4_gateway": "0.0.0.0",
+          "ipv6_enable": 1,
+          "ipv6_dhcp_enable": 1,
+          "ipv6_address": "::",
+          "ipv6_index": 0,
+          "ipv6_prefix": 0,
+          "ipv6_gateway": "::",
+          "vlan_enable": 0,
+          "vlan_id": 0,
+          "vlan_priority": 0
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/model-name",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        19
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 24,
+      "timing_ms": {
+        "wait_min": 1260,
+        "wait_median": 1260,
+        "wait_max": 1260,
+        "total_min": 1976,
+        "total_median": 1976,
+        "total_max": 1976
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "mb_name": "X470D4U"
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/product-name",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        20
+      ],
+      "status": {
+        "500": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 57,
+      "timing_ms": {
+        "wait_min": 363,
+        "wait_median": 363,
+        "wait_max": 363,
+        "total_min": 689,
+        "total_median": 689,
+        "total_max": 689
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "error": "Error in Getting Model Name",
+        "code": 16005
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/fw-info",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        21
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 147,
+      "timing_ms": {
+        "wait_min": 376,
+        "wait_median": 376,
+        "wait_max": 376,
+        "total_min": 714,
+        "total_median": 714,
+        "total_max": 714
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "BMC_fw_version": "2.32.00",
+        "BIOS_fw_version": "P4.20",
+        "ME_fw_version": "0.14.0.27",
+        "Micro_Code_version": "0a201009",
+        "CPLD_version": "N/A"
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/sensors",
+      "query": [],
+      "calls": 5,
+      "har_entry_indexes": [
+        22,
+        93,
+        97,
+        101,
+        150
+      ],
+      "status": {
+        "200": 5
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 21975,
+      "timing_ms": {
+        "wait_min": 105,
+        "wait_median": 229,
+        "wait_max": 389,
+        "total_min": 152,
+        "total_median": 277,
+        "total_max": 831
+      },
+      "intervals_s": [
+        31.307,
+        2.337,
+        3.099,
+        97.819
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "id": 1,
+          "sensor_number": 1,
+          "name": "3VSB",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 170.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 3.4,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 2.88,
+          "lower_critical_threshold": 3.04,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 3.7,
+          "higher_non_recoverable_threshold": 3.88,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 2,
+          "sensor_number": 2,
+          "name": "5VSB",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 170.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 5.1,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 4.26,
+          "lower_critical_threshold": 4.5,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 5.49,
+          "higher_non_recoverable_threshold": 5.73,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 3,
+          "sensor_number": 3,
+          "name": "VCPU",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 130.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 1.3,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 12336,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 1.65,
+          "higher_non_recoverable_threshold": 1.73,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 4,
+          "sensor_number": 4,
+          "name": "VSOC",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 98.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 0.98,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 0.34,
+          "lower_critical_threshold": 0.36,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 1.54,
+          "higher_non_recoverable_threshold": 1.61,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 5,
+          "sensor_number": 5,
+          "name": "VCCM",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 119.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 1.19,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 1.02,
+          "lower_critical_threshold": 1.08,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 1.32,
+          "higher_non_recoverable_threshold": 1.38,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 6,
+          "sensor_number": 6,
+          "name": "APU_VDDP",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 95.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 0.95,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 0.77,
+          "lower_critical_threshold": 0.81,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 1.16,
+          "higher_non_recoverable_threshold": 1.21,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 7,
+          "sensor_number": 7,
+          "name": "1.05V_PROM_S5",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 106.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 1.06,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 0.89,
+          "lower_critical_threshold": 0.95,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 1.16,
+          "higher_non_recoverable_threshold": 1.21,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 8,
+          "sensor_number": 8,
+          "name": "2.5V_PROM",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 128.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 2.56,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 2.12,
+          "lower_critical_threshold": 2.26,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 2.74,
+          "higher_non_recoverable_threshold": 2.88,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 9,
+          "sensor_number": 9,
+          "name": "1.05V_PROM_RUN",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 104.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 1.04,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 0.85,
+          "lower_critical_threshold": 0.88,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 1.16,
+          "higher_non_recoverable_threshold": 1.21,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 10,
+          "sensor_number": 10,
+          "name": "BAT",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 157.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 3.14,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 2.0,
+          "lower_critical_threshold": 2.7,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 3.4,
+          "higher_non_recoverable_threshold": 3.56,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 11,
+          "sensor_number": 11,
+          "name": "3V",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 168.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 3.36,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 2.8,
+          "lower_critical_threshold": 2.98,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 3.62,
+          "higher_non_recoverable_threshold": 3.78,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 12,
+          "sensor_number": 12,
+          "name": "5V",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 169.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 5.07,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 4.26,
+          "lower_critical_threshold": 4.5,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 5.49,
+          "higher_non_recoverable_threshold": 5.73,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 13,
+          "sensor_number": 13,
+          "name": "12V",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 120.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 12.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 13878,
+          "lower_non_recoverable_threshold": 10.2,
+          "lower_critical_threshold": 10.8,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 13.2,
+          "higher_non_recoverable_threshold": 13.8,
+          "accessible": 0,
+          "unit": "V"
+        },
+        {
+          "id": 14,
+          "sensor_number": 24,
+          "name": "PSU1 VIN",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "V"
+        },
+        {
+          "id": 15,
+          "sensor_number": 25,
+          "name": "PSU2 VIN",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "voltage",
+          "type_number": 2,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "V"
+        },
+        {
+          "id": 16,
+          "sensor_number": 32,
+          "name": "PSU1 IOUT",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "current",
+          "type_number": 3,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "A"
+        },
+        {
+          "id": 17,
+          "sensor_number": 33,
+          "name": "PSU2 IOUT",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "current",
+          "type_number": 3,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "A"
+        },
+        {
+          "id": 18,
+          "sensor_number": 49,
+          "name": "MB Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 29.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 29.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 2056,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 55.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "°C"
+        },
+        {
+          "id": 19,
+          "sensor_number": 50,
+          "name": "Card Side Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 31.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 31.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 2056,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 68.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "°C"
+        },
+        {
+          "id": 20,
+          "sensor_number": 52,
+          "name": "CPU Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 52.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 52.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 6168,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 93.0,
+          "higher_critical_threshold": 94.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "°C"
+        },
+        {
+          "id": 21,
+          "sensor_number": 64,
+          "name": "DDR4_A2_Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 6168,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 84.0,
+          "higher_critical_threshold": 85.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "°C"
+        },
+        {
+          "id": 22,
+          "sensor_number": 65,
+          "name": "DDR4_A1_Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 6168,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 84.0,
+          "higher_critical_threshold": 85.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "°C"
+        },
+        {
+          "id": 23,
+          "sensor_number": 66,
+          "name": "DDR4_B2_Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 6168,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 84.0,
+          "higher_critical_threshold": 85.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "°C"
+        },
+        {
+          "id": 24,
+          "sensor_number": 67,
+          "name": "DDR4_B1_Temp",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "temperature",
+          "type_number": 1,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 6168,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 84.0,
+          "higher_critical_threshold": 85.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "°C"
+        },
+        {
+          "id": 25,
+          "sensor_number": 96,
+          "name": "FAN1",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "fan",
+          "type_number": 4,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 257,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 100.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "RPM"
+        },
+        {
+          "id": 26,
+          "sensor_number": 98,
+          "name": "FAN2",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "fan",
+          "type_number": 4,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 257,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 100.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "RPM"
+        },
+        {
+          "id": 27,
+          "sensor_number": 99,
+          "name": "FAN3",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "fan",
+          "type_number": 4,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 257,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 100.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "RPM"
+        },
+        {
+          "id": 28,
+          "sensor_number": 100,
+          "name": "FAN4",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 127.0,
+          "type": "fan",
+          "type_number": 4,
+          "reading": 12700.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 257,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 100.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "RPM"
+        },
+        {
+          "id": 29,
+          "sensor_number": 101,
+          "name": "FAN5",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 96.0,
+          "type": "fan",
+          "type_number": 4,
+          "reading": 9600.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 257,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 100.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "RPM"
+        },
+        {
+          "id": 30,
+          "sensor_number": 102,
+          "name": "FAN6",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "fan",
+          "type_number": 4,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 257,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 100.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "RPM"
+        },
+        {
+          "id": 31,
+          "sensor_number": 112,
+          "name": "PSU1 PIN",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "W"
+        },
+        {
+          "id": 32,
+          "sensor_number": 113,
+          "name": "PSU2 PIN",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "W"
+        },
+        {
+          "id": 33,
+          "sensor_number": 116,
+          "name": "PSU1 POUT",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "W"
+        },
+        {
+          "id": 34,
+          "sensor_number": 117,
+          "name": "PSU2 POUT",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 0.0,
+          "sensor_state": 1,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "W"
+        },
+        {
+          "id": 35,
+          "sensor_number": 144,
+          "name": "ChassisIntr",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "physical_security",
+          "type_number": 5,
+          "reading": 32768.0,
+          "sensor_state": 0,
+          "discrete_state": 111,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "unknown"
+        },
+        {
+          "id": 36,
+          "sensor_number": 145,
+          "name": "CPU_PROCHOT",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "processor",
+          "type_number": 7,
+          "reading": 32768.0,
+          "sensor_state": 0,
+          "discrete_state": 3,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "unknown"
+        },
+        {
+          "id": 37,
+          "sensor_number": 147,
+          "name": "CPU_THERMTRIP",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "processor",
+          "type_number": 7,
+          "reading": 32768.0,
+          "sensor_state": 0,
+          "discrete_state": 111,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "unknown"
+        },
+        {
+          "id": 38,
+          "sensor_number": 160,
+          "name": "PSU1 Status",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 32768.0,
+          "sensor_state": 0,
+          "discrete_state": 111,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "unknown"
+        },
+        {
+          "id": 39,
+          "sensor_number": 161,
+          "name": "PSU1 AC lost",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 0.0,
+          "sensor_state": 0,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "unknown"
+        },
+        {
+          "id": 40,
+          "sensor_number": 168,
+          "name": "PSU2 Status",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 32768.0,
+          "sensor_state": 0,
+          "discrete_state": 111,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 0,
+          "unit": "unknown"
+        },
+        {
+          "id": 41,
+          "sensor_number": 169,
+          "name": "PSU2 AC lost",
+          "owner_id": 32,
+          "owner_lun": 0,
+          "raw_reading": 0.0,
+          "type": "power_supply",
+          "type_number": 8,
+          "reading": 0.0,
+          "sensor_state": 0,
+          "discrete_state": 0,
+          "settable_readable_threshMask": 0,
+          "lower_non_recoverable_threshold": 0.0,
+          "lower_critical_threshold": 0.0,
+          "lower_non_critical_threshold": 0.0,
+          "higher_non_critical_threshold": 0.0,
+          "higher_critical_threshold": 0.0,
+          "higher_non_recoverable_threshold": 0.0,
+          "accessible": 213,
+          "unit": "unknown"
+        }
+      ],
+      "note": "example taken from entry 150 (host powered on); earlier samples (host off) show accessible=213 and zero readings for host-powered sensors"
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/selsummary",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        23
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 42,
+      "timing_ms": {
+        "wait_min": 311,
+        "wait_median": 311,
+        "wait_max": 311,
+        "total_min": 874,
+        "total_median": 874,
+        "total_max": 874
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "selentries": 489,
+        "freeentries": 3150
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/configuration/runtime",
+      "query": [],
+      "calls": 39,
+      "har_entry_indexes": [
+        24,
+        26,
+        30,
+        35,
+        37,
+        39,
+        42,
+        44,
+        49,
+        51,
+        54,
+        56,
+        59,
+        61,
+        66,
+        72,
+        74,
+        77,
+        82,
+        85,
+        87,
+        91,
+        95,
+        98,
+        103,
+        121,
+        125,
+        131,
+        134,
+        138,
+        140,
+        143,
+        156,
+        158,
+        161,
+        163,
+        167,
+        170,
+        172
+      ],
+      "status": {
+        "200": 39
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 210,
+      "timing_ms": {
+        "wait_min": 212,
+        "wait_median": 335,
+        "wait_max": 1895,
+        "total_min": 223,
+        "total_median": 346,
+        "total_max": 2068
+      },
+      "intervals_s": [
+        0.13,
+        2.657,
+        2.77,
+        1.698,
+        1.258,
+        1.456,
+        1.416,
+        1.145,
+        0.913,
+        0.719,
+        0.699,
+        1.874,
+        0.764,
+        1.049,
+        4.26,
+        1.069,
+        0.919,
+        3.607,
+        0.742,
+        0.962,
+        0.723,
+        1.99,
+        0.825,
+        4.453,
+        73.165,
+        1.279,
+        5.235,
+        8.035,
+        1.066,
+        2.978,
+        0.787,
+        11.633,
+        1.268,
+        0.868,
+        1.26,
+        0.879,
+        2.356,
+        1.014
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "feature": "LDAP",
+          "enabled": 0
+        },
+        {
+          "feature": "AD",
+          "enabled": 0
+        },
+        {
+          "feature": "RADIUS",
+          "enabled": 0
+        },
+        {
+          "feature": "SINGLE_PORT_APP",
+          "enabled": 1
+        },
+        {
+          "feature": "SD_MEDIA_SUPPORT",
+          "enabled": 0
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/maintenance/fwimage_location",
+      "query": [],
+      "calls": 3,
+      "har_entry_indexes": [
+        41,
+        47,
+        53
+      ],
+      "status": {
+        "200": 3
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 94,
+      "timing_ms": {
+        "wait_min": 93,
+        "wait_median": 99,
+        "wait_max": 125,
+        "total_min": 96,
+        "total_median": 102,
+        "total_max": 128
+      },
+      "intervals_s": [
+        2.563,
+        1.632
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "id": 1,
+        "protocol_type": "http",
+        "server_address": "",
+        "image_name": "",
+        "retry_count": 0
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/maintenance/signed-image-key",
+      "query": [],
+      "calls": 2,
+      "har_entry_indexes": [
+        46,
+        48
+      ],
+      "status": {
+        "200": 2
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 51,
+      "timing_ms": {
+        "wait_min": 82,
+        "wait_median": 174,
+        "wait_max": 266,
+        "total_min": 88,
+        "total_median": 219,
+        "total_max": 350
+      },
+      "intervals_s": [
+        0.005
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "id": 1,
+        "key_exists": 0,
+        "public_key_info": ""
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/getmcalog",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        63
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 16,
+      "timing_ms": {
+        "wait_min": 81,
+        "wait_median": 81,
+        "wait_max": 81,
+        "total_min": 89,
+        "total_median": 89,
+        "total_max": 89
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "MCADump": 0
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/date-time",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        64
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 206,
+      "timing_ms": {
+        "wait_min": 114,
+        "wait_median": 114,
+        "wait_max": 114,
+        "total_min": 121,
+        "total_median": 121,
+        "total_max": 121
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "id": 1,
+        "primary_ntp": "pool.ntp.org",
+        "secondary_ntp": "time.nist.gov",
+        "auto_date": 1,
+        "localized_timestamp": 1794808815,
+        "utc_minutes": 0,
+        "daylight": 0,
+        "timestamp": 1794808815,
+        "timezone": "GMT+0"
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/sdr",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        65
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 3918,
+      "timing_ms": {
+        "wait_min": 155,
+        "wait_median": 155,
+        "wait_max": 155,
+        "total_min": 163,
+        "total_median": 163,
+        "total_max": 163
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "id": 1,
+          "sensor_number": 1,
+          "name": "3VSB",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 2,
+          "sensor_number": 2,
+          "name": "5VSB",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 3,
+          "sensor_number": 3,
+          "name": "VCPU",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 4,
+          "sensor_number": 4,
+          "name": "VSOC",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 5,
+          "sensor_number": 5,
+          "name": "VCCM",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 6,
+          "sensor_number": 6,
+          "name": "APU_VDDP",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 7,
+          "sensor_number": 7,
+          "name": "1.05V_PROM_S5",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 8,
+          "sensor_number": 8,
+          "name": "2.5V_PROM",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 9,
+          "sensor_number": 9,
+          "name": "1.05V_PROM_RUN",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 10,
+          "sensor_number": 10,
+          "name": "BAT",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 11,
+          "sensor_number": 11,
+          "name": "3V",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 12,
+          "sensor_number": 12,
+          "name": "5V",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 13,
+          "sensor_number": 13,
+          "name": "12V",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 14,
+          "sensor_number": 24,
+          "name": "PSU1 VIN",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 15,
+          "sensor_number": 25,
+          "name": "PSU2 VIN",
+          "type": "voltage",
+          "type_number": 2
+        },
+        {
+          "id": 16,
+          "sensor_number": 32,
+          "name": "PSU1 IOUT",
+          "type": "current",
+          "type_number": 3
+        },
+        {
+          "id": 17,
+          "sensor_number": 33,
+          "name": "PSU2 IOUT",
+          "type": "current",
+          "type_number": 3
+        },
+        {
+          "id": 18,
+          "sensor_number": 49,
+          "name": "MB Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 19,
+          "sensor_number": 50,
+          "name": "Card Side Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 20,
+          "sensor_number": 52,
+          "name": "CPU Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 21,
+          "sensor_number": 64,
+          "name": "DDR4_A2_Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 22,
+          "sensor_number": 65,
+          "name": "DDR4_A1_Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 23,
+          "sensor_number": 66,
+          "name": "DDR4_B2_Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 24,
+          "sensor_number": 67,
+          "name": "DDR4_B1_Temp",
+          "type": "temperature",
+          "type_number": 1
+        },
+        {
+          "id": 25,
+          "sensor_number": 96,
+          "name": "FAN1",
+          "type": "fan",
+          "type_number": 4
+        },
+        {
+          "id": 26,
+          "sensor_number": 98,
+          "name": "FAN2",
+          "type": "fan",
+          "type_number": 4
+        },
+        {
+          "id": 27,
+          "sensor_number": 99,
+          "name": "FAN3",
+          "type": "fan",
+          "type_number": 4
+        },
+        {
+          "id": 28,
+          "sensor_number": 100,
+          "name": "FAN4",
+          "type": "fan",
+          "type_number": 4
+        },
+        {
+          "id": 29,
+          "sensor_number": 101,
+          "name": "FAN5",
+          "type": "fan",
+          "type_number": 4
+        },
+        {
+          "id": 30,
+          "sensor_number": 102,
+          "name": "FAN6",
+          "type": "fan",
+          "type_number": 4
+        },
+        {
+          "id": 31,
+          "sensor_number": 112,
+          "name": "PSU1 PIN",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 32,
+          "sensor_number": 113,
+          "name": "PSU2 PIN",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 33,
+          "sensor_number": 116,
+          "name": "PSU1 POUT",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 34,
+          "sensor_number": 117,
+          "name": "PSU2 POUT",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 35,
+          "sensor_number": 144,
+          "name": "ChassisIntr",
+          "type": "physical_security",
+          "type_number": 5
+        },
+        {
+          "id": 36,
+          "sensor_number": 145,
+          "name": "CPU_PROCHOT",
+          "type": "processor",
+          "type_number": 7
+        },
+        {
+          "id": 37,
+          "sensor_number": 147,
+          "name": "CPU_THERMTRIP",
+          "type": "processor",
+          "type_number": 7
+        },
+        {
+          "id": 38,
+          "sensor_number": 160,
+          "name": "PSU1 Status",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 39,
+          "sensor_number": 161,
+          "name": "PSU1 AC lost",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 40,
+          "sensor_number": 168,
+          "name": "PSU2 Status",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 41,
+          "sensor_number": 169,
+          "name": "PSU2 AC lost",
+          "type": "power_supply",
+          "type_number": 8
+        },
+        {
+          "id": 42,
+          "sensor_number": 232,
+          "name": "PEF",
+          "type": "system_event",
+          "type_number": 18
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/logs/eventlog",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        68
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 474940,
+      "timing_ms": {
+        "wait_min": 2383,
+        "wait_median": 2383,
+        "wait_max": 2383,
+        "total_min": 2986,
+        "total_median": 2986,
+        "total_max": 2986
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "id": 489,
+          "record_type": "system_event_record",
+          "timestamp": 1794446550,
+          "GenID1": 1,
+          "GenID2": 0,
+          "event_format_ipmi_version": 4,
+          "sensor_type": "system_event",
+          "sensor_name": "BIOS",
+          "sensor_number": 0,
+          "generator_type": "system_software_id",
+          "channel_number": 0,
+          "ipmb_lun": 0,
+          "event_direction": "asserted",
+          "sensor_reading_value": 0,
+          "triggered_value": 0,
+          "record_type_num": 2,
+          "sensor_type_num": 18,
+          "EventDirType": 111,
+          "EventData1": 5,
+          "EventData2": 128,
+          "EventData3": 255,
+          "event_reading_class": "discrete",
+          "pci_bus_num": 128,
+          "pci_device_num": 31,
+          "pci_function_num": 7,
+          "event_description": "timestamp_clock_sync",
+          "advanced_event_description": "unknown",
+          "EventData1_Description": "Timestamp Clock Synch",
+          "EventData2_Description": "N/A",
+          "EventData3_Description": "N/A",
+          "EventData1_Description_raw": "timestamp_clock_sync",
+          "EventData2_Description_raw": "N/A",
+          "EventData3_Description_raw": "N/A",
+          "system_software_type": "bios"
+        },
+        {
+          "id": 405,
+          "record_type": "system_event_record",
+          "timestamp": 1654991732,
+          "GenID1": 32,
+          "GenID2": 0,
+          "event_format_ipmi_version": 4,
+          "sensor_type": "temperature",
+          "sensor_name": "CPU Temp",
+          "sensor_number": 52,
+          "generator_type": "ipmb_slave_address",
+          "channel_number": 0,
+          "ipmb_lun": 0,
+          "event_direction": "deasserted",
+          "sensor_reading_value": 64,
+          "triggered_value": 0,
+          "record_type_num": 2,
+          "sensor_type_num": 1,
+          "EventDirType": 129,
+          "EventData1": 87,
+          "EventData2": 92,
+          "EventData3": 93,
+          "event_reading_class": "threshold",
+          "event_description": "upper_non_critical_going_high",
+          "advanced_event_description": "unknown",
+          "EventData1_Description": "Upper Non-critical - going high",
+          "EventData2_Description": "Reading that triggered event : 92 °C",
+          "EventData3_Description": "Threshold value that triggered event : 93 °C",
+          "EventData1_Description_raw": "upper_non_critical_going_high",
+          "EventData2_Description_raw": "Reading that triggered event : 92 ",
+          "EventData3_Description_raw": "Threshold value that triggered event : 93 ",
+          "system_software_type": "system_management_software"
+        },
+        {
+          "id": 396,
+          "record_type": "system_event_record",
+          "timestamp": 1654991072,
+          "GenID1": 32,
+          "GenID2": 0,
+          "event_format_ipmi_version": 4,
+          "sensor_type": "temperature",
+          "sensor_name": "CPU Temp",
+          "sensor_number": 52,
+          "generator_type": "ipmb_slave_address",
+          "channel_number": 0,
+          "ipmb_lun": 0,
+          "event_direction": "deasserted",
+          "sensor_reading_value": 64,
+          "triggered_value": 0,
+          "record_type_num": 2,
+          "sensor_type_num": 1,
+          "EventDirType": 129,
+          "EventData1": 89,
+          "EventData2": 93,
+          "EventData3": 94,
+          "event_reading_class": "threshold",
+          "event_description": "upper_critical_going_high",
+          "advanced_event_description": "unknown",
+          "EventData1_Description": "Upper Critical - going high",
+          "EventData2_Description": "Reading that triggered event : 93 °C",
+          "EventData3_Description": "Threshold value that triggered event : 94 °C",
+          "EventData1_Description_raw": "upper_critical_going_high",
+          "EventData2_Description_raw": "Reading that triggered event : 93 ",
+          "EventData3_Description_raw": "Threshold value that triggered event : 94 ",
+          "system_software_type": "system_management_software"
+        },
+        {
+          "id": 385,
+          "record_type": "system_event_record",
+          "timestamp": 1654990385,
+          "GenID1": 32,
+          "GenID2": 0,
+          "event_format_ipmi_version": 4,
+          "sensor_type": "processor",
+          "sensor_name": "CPU_PROCHOT",
+          "sensor_number": 145,
+          "generator_type": "ipmb_slave_address",
+          "channel_number": 0,
+          "ipmb_lun": 0,
+          "event_direction": "deasserted",
+          "sensor_reading_value": 0,
+          "triggered_value": 0,
+          "record_type_num": 2,
+          "sensor_type_num": 7,
+          "EventDirType": 131,
+          "EventData1": 1,
+          "EventData2": 255,
+          "EventData3": 255,
+          "event_reading_class": "discrete",
+          "event_description": "state_asserted",
+          "advanced_event_description": "unknown",
+          "EventData1_Description": "State Asserted",
+          "EventData2_Description": "N/A",
+          "EventData3_Description": "N/A",
+          "EventData1_Description_raw": "state_asserted",
+          "EventData2_Description_raw": "N/A",
+          "EventData3_Description_raw": "N/A",
+          "system_software_type": "system_management_software"
+        },
+        {
+          "id": 91,
+          "record_type": "oem_record",
+          "timestamp": 1650419169,
+          "GenID1": 0,
+          "GenID2": 0,
+          "event_format_ipmi_version": 0,
+          "sensor_type": "oem",
+          "sensor_name": "Unknown",
+          "sensor_number": 2,
+          "generator_type": "ipmb_slave_address",
+          "channel_number": 0,
+          "ipmb_lun": 0,
+          "event_direction": "deasserted",
+          "sensor_reading_value": 0,
+          "triggered_value": 0,
+          "record_type_num": 193,
+          "sensor_type_num": 192,
+          "EventDirType": 211,
+          "EventData1": 36,
+          "EventData2": 141,
+          "EventData3": 1,
+          "event_description": "oem_timestamped",
+          "advanced_event_description": "unknown",
+          "EventData1_Description": "OEM Timestamped",
+          "EventData2_Description": "N/A",
+          "EventData3_Description": "N/A",
+          "EventData1_Description_raw": "oem_timestamped",
+          "EventData2_Description_raw": "N/A",
+          "EventData3_Description_raw": "N/A",
+          "system_software_type": "bios"
+        },
+        {
+          "id": 2,
+          "record_type": "system_event_record",
+          "timestamp": 13,
+          "GenID1": 32,
+          "GenID2": 0,
+          "event_format_ipmi_version": 4,
+          "sensor_type": "version_change",
+          "sensor_name": "Unknown",
+          "sensor_number": 0,
+          "generator_type": "ipmb_slave_address",
+          "channel_number": 0,
+          "ipmb_lun": 0,
+          "event_direction": "asserted",
+          "sensor_reading_value": 0,
+          "triggered_value": 0,
+          "record_type_num": 2,
+          "sensor_type_num": 43,
+          "EventDirType": 111,
+          "EventData1": 1,
+          "EventData2": 2,
+          "EventData3": 32,
+          "event_reading_class": "discrete",
+          "pci_bus_num": 2,
+          "pci_device_num": 4,
+          "pci_function_num": 0,
+          "event_description": "firmware_or_software_change_detected",
+          "advanced_event_description": "unknown",
+          "EventData1_Description": "Firmware or software change detected",
+          "EventData2_Description": "N/A",
+          "EventData3_Description": "N/A",
+          "EventData1_Description_raw": "firmware_or_software_change_detected",
+          "EventData2_Description_raw": "N/A",
+          "EventData3_Description_raw": "N/A",
+          "system_software_type": "system_management_software"
+        }
+      ],
+      "note": "truncated: one example per (record_type,sensor_type,event_description); full response had 489 records"
+    },
+    {
+      "method": "GET",
+      "path": "/api/logs/video",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        70
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 3,
+      "timing_ms": {
+        "wait_min": 119,
+        "wait_median": 119,
+        "wait_max": 119,
+        "total_min": 121,
+        "total_median": 121,
+        "total_max": 121
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/video/remote-storage",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        71
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 213,
+      "timing_ms": {
+        "wait_min": 239,
+        "wait_median": 239,
+        "wait_max": 239,
+        "total_min": 242,
+        "total_median": 242,
+        "total_max": 242
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "id": 1,
+        "remote_support": 0,
+        "mount_status": -1,
+        "max_dumps": 2,
+        "max_duration": 20,
+        "max_size": 5,
+        "ip_address": "",
+        "remote_path": "",
+        "share_type": "NFS",
+        "user_name": "",
+        "password": "",
+        "domain_name": ""
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/host_inventory/host_interface_processor_info",
+      "query": [],
+      "calls": 5,
+      "har_entry_indexes": [
+        76,
+        124,
+        128,
+        142,
+        154
+      ],
+      "status": {
+        "200": 5
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 3,
+      "timing_ms": {
+        "wait_min": 81,
+        "wait_median": 91,
+        "wait_max": 203,
+        "total_min": 90,
+        "total_median": 93,
+        "total_max": 205
+      },
+      "intervals_s": [
+        87.748,
+        3.442,
+        14.658,
+        10.804
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/host_inventory/host_interface_memory_info",
+      "query": [],
+      "calls": 4,
+      "har_entry_indexes": [
+        80,
+        127,
+        146,
+        153
+      ],
+      "status": {
+        "200": 4
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 3,
+      "timing_ms": {
+        "wait_min": 76,
+        "wait_median": 77,
+        "wait_max": 103,
+        "total_min": 78,
+        "total_median": 79,
+        "total_max": 106
+      },
+      "intervals_s": [
+        87.847,
+        17.43,
+        8.168
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/host_inventory/host_interface_pcie_device_function_info",
+      "query": [],
+      "calls": 3,
+      "har_entry_indexes": [
+        81,
+        147,
+        148
+      ],
+      "status": {
+        "200": 3
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 49,
+      "timing_ms": {
+        "wait_min": 114,
+        "wait_median": 121,
+        "wait_max": 136,
+        "total_min": 116,
+        "total_median": 123,
+        "total_max": 138
+      },
+      "intervals_s": [
+        105.232,
+        0.308
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Content-Type": "application/json",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "PCIE_Devices": [],
+          "PCIE_Function": []
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/fru",
+      "query": [],
+      "calls": 2,
+      "har_entry_indexes": [
+        84,
+        137
+      ],
+      "status": {
+        "200": 2
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 844,
+      "timing_ms": {
+        "wait_min": 365,
+        "wait_median": 369,
+        "wait_max": 372,
+        "total_min": 377,
+        "total_median": 380,
+        "total_max": 382
+      },
+      "intervals_s": [
+        97.733
+      ],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "device": {
+            "id": 0,
+            "name": "BMC_FRU"
+          },
+          "common_header": {
+            "version": 1,
+            "internal_use_area_start_offset": 0,
+            "chassis_info_area_start_offset": 0,
+            "board_info_area_start_offset": 1,
+            "product_info_area_start_offset": 0,
+            "multi_record_area_start_offset": 0
+          },
+          "chassis": {
+            "version": 0,
+            "length": 0,
+            "type": "",
+            "part_number": "",
+            "serial_number": "",
+            "custom_fields": ""
+          },
+          "board": {
+            "version": 1,
+            "length": 9,
+            "language": 0,
+            "date": "Thu Jan 13 06:21:00 2022\\n",
+            "manufacturer": "ASRockRack",
+            "product_name": "X470D4U",
+            "serial_number": "<REDACTED_SERIAL>",
+            "part_number": "",
+            "fru_file_id": "",
+            "custom_fields": ""
+          },
+          "product": {
+            "version": 0,
+            "length": 0,
+            "language": 0,
+            "manufacturer": "",
+            "product_name": "",
+            "part_number": "",
+            "product_version": "",
+            "serial_number": "",
+            "asset_tag": "",
+            "fru_file_id": "",
+            "custom_fields": ""
+          }
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/PowerSource",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        90
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 2350,
+      "timing_ms": {
+        "wait_min": 458,
+        "wait_median": 458,
+        "wait_max": 458,
+        "total_min": 476,
+        "total_median": 476,
+        "total_max": 476
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "power_supply_status": 2,
+          "ac_input_voltage": "N/A",
+          "ac_input_voltage_fault": 0,
+          "ac_input_current": "N/A",
+          "ac_input_current_fault": 0,
+          "dc_12v_output_voltage": "N/A",
+          "dc_12v_output_voltage_fault": 0,
+          "dc_12v_output_current": "N/A",
+          "dc_12v_output_current_fault": 0,
+          "temperature1": "N/A",
+          "temperature1_fault": 0,
+          "temperature2": "N/A",
+          "temperature2_fault": 0,
+          "fan1": "N/A",
+          "fan1_fault": 0,
+          "fan2": "N/A",
+          "fan2_fault": 0,
+          "dc_12v_output_power": "N/A",
+          "dc_12v_output_power_fault": 0,
+          "ac_input_power": "N/A",
+          "ac_input_power_fault": 0,
+          "pws_serial_number": "N/A"
+        }
+      ],
+      "note": "truncated to 1 of 4 identical slot entries"
+    },
+    {
+      "method": "POST",
+      "path": "/api/actions/power",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        105
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 22,
+      "timing_ms": {
+        "wait_min": 87,
+        "wait_median": 87,
+        "wait_max": 87,
+        "total_min": 97,
+        "total_median": 97,
+        "total_max": 97
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Content-Type": "application/json",
+          "Origin": "https://<BMC_HOST>",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": {
+          "power_command": 1
+        }
+      },
+      "response_example": {
+        "power_command": 1
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/media/adviser",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        130
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 191,
+      "timing_ms": {
+        "wait_min": 161,
+        "wait_median": 161,
+        "wait_max": 161,
+        "total_min": 164,
+        "total_median": 164,
+        "total_max": 164
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "license": 1,
+        "status": 1,
+        "secure_channel": 0,
+        "kvm_port": 7578,
+        "mouse_mode": 2,
+        "web_port": 443,
+        "singleport_status": 1,
+        "retry_count": 3,
+        "retry_interval": 10,
+        "keyboard_layout": "AD"
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/host_inventory/host_interface_storage_info",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        149
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 57,
+      "timing_ms": {
+        "wait_min": 78,
+        "wait_median": 78,
+        "wait_max": 78,
+        "total_min": 80,
+        "total_median": 80,
+        "total_max": 80
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Content-Type": "application/json",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "Storage_Drives": null,
+          "Storage_Contoller": null
+        }
+      ],
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/asrr/GetFanDuty",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        151
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 154,
+      "timing_ms": {
+        "wait_min": 83,
+        "wait_median": 83,
+        "wait_max": 83,
+        "total_min": 85,
+        "total_median": 85,
+        "total_max": 85
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "*/*",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "FAN1_Duty": "55",
+        "FAN2_Duty": "55",
+        "FAN3_Duty": "55",
+        "FAN4_Duty": "55",
+        "FAN5_Duty": "55",
+        "FAN6_Duty": "55",
+        "FAN7_Duty": "55",
+        "FAN8_Duty": "55"
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/network-bond",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        160
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 91,
+      "timing_ms": {
+        "wait_min": 197,
+        "wait_median": 197,
+        "wait_max": 197,
+        "total_min": 206,
+        "total_median": 206,
+        "total_max": 206
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": {
+        "id": 1,
+        "bond_enable": 0,
+        "bond_mode": "active-backup",
+        "auto_configuration_enable": 1
+      },
+      "note": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/static-ipv6",
+      "query": [],
+      "calls": 1,
+      "har_entry_indexes": [
+        165
+      ],
+      "status": {
+        "200": 1
+      },
+      "response_content_type": "application/json",
+      "response_body_bytes_first": 2734,
+      "timing_ms": {
+        "wait_min": 869,
+        "wait_median": 869,
+        "wait_max": 869,
+        "total_min": 874,
+        "total_median": 874,
+        "total_max": 874
+      },
+      "intervals_s": [],
+      "request_example": {
+        "headers": {
+          "Accept": "application/json, text/javascript, */*; q=0.01",
+          "Referer": "https://<BMC_HOST>/",
+          "X-CSRFTOKEN": "<REDACTED_CSRF>",
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        "body": null
+      },
+      "response_example": [
+        {
+          "ipv6_index": 0,
+          "interface_name": "eth0",
+          "ipv6_address": "",
+          "ipv6_prefix": 0
+        },
+        {
+          "ipv6_index": 1,
+          "interface_name": "eth0",
+          "ipv6_address": "",
+          "ipv6_prefix": 0
+        }
+      ],
+      "note": "truncated to 2 of 32 entries (16 per interface, all empty)"
+    }
+  ]
+}

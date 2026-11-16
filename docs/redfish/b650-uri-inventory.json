@@ -1,0 +1,6005 @@
+[
+ {
+  "uri": "/redfish",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish-handler.lua",
+  "actions": [],
+  "schema_type": "Redfish version document",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "Version document {\"v1\": \"/redfish/v1/\"}; literal pattern `^/redfish$`; key is in PRIVILEGE_CHECKING_WHITELIST; route key resource_127"
+ },
+ {
+  "uri": "/redfish/*",
+  "methods": [
+   "*"
+  ],
+  "handler_file": "redfish/default-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "Authenticates then returns 404 ResourceMissingAtURI / 405 for unknown URIs; route key default"
+ },
+ {
+  "uri": "/redfish/... trailing \"/\"",
+  "methods": [
+   "GET",
+   "POST",
+   "PATCH",
+   "PUT",
+   "DELETE"
+  ],
+  "handler_file": "redirect-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "Pattern `^/redfish(.*)/+$`; strips trailing slashes and redirects (Location header); key is in PRIVILEGE_CHECKING_WHITELIST; route key resource_002"
+ },
+ {
+  "uri": "/redfish/v1",
+  "methods": [
+   "GET",
+   "POST",
+   "PATCH",
+   "PUT",
+   "DELETE"
+  ],
+  "handler_file": "redirect-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": "unknown"
+  },
+  "notes": "No trailing slash; pattern built as SERVICE_PREFIX .. \"$\"; route_options sets redirection_location from SERVICE_PREFIX, so it redirects to the service root (methods share the redirect list; inferred); route key resource_001"
+ },
+ {
+  "uri": "/redfish/v1/",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/service-root.lua",
+  "actions": [],
+  "schema_type": "ServiceRoot.v1_7_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "NoAuth GET (privilege registry ServiceRoot GET: Login|NoAuth); route key resource_000"
+ },
+ {
+  "uri": "/redfish/v1/$metadata",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "odata-handler.lua",
+  "actions": [],
+  "schema_type": "OData CSDL metadata (XML)",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "in PRIVILEGE_CHECKING_WHITELIST; handler detail: odata-handler.lua (static/metadata + static/oem_metadata); route key resource_115"
+ },
+ {
+  "uri": "/redfish/v1/AccountService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/account-service.lua",
+  "actions": [],
+  "schema_type": "AccountService.v1_8_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_094"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/account-service/account.lua",
+  "actions": [],
+  "schema_type": "ManagerAccountCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_091"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/account-service/account.lua",
+  "actions": [],
+  "schema_type": "ManagerAccountCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key accounts_members"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/{AccountId}",
+  "methods": [
+   "GET",
+   "PATCH",
+   "DELETE"
+  ],
+  "handler_file": "redfish/account-service/account.lua",
+  "actions": [],
+  "schema_type": "ManagerAccount.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_090"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_collection_for_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_members_for_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates/{CertificateId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_instance_for_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates/{CertificateId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-actions.lua",
+  "actions": [
+   {
+    "name": "Certificate.Rekey",
+    "target": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates/{CertificateId}/Actions/Certificate.Rekey",
+    "parameters": {
+     "ChallengePassword": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "KeyPairAlgorithm": []
+    }
+   },
+   {
+    "name": "Certificate.Renew",
+    "target": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates/{CertificateId}/Actions/Certificate.Renew",
+    "parameters": {
+     "ChallengePassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actions_for_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/{AccountId}/Certificates/{CertificateId}/{Id}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actioninfo_for_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/ExternalAccountProviders",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/account-service/additionalexternalaccountproviders.lua",
+  "actions": [],
+  "schema_type": "ExternalAccountProviderCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_radius_collection"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/ExternalAccountProviders/RADIUS/Oem/Ami/AdvancedRADIUSSetting",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "oem/ami/advanced_radius_setting.lua",
+  "actions": [],
+  "schema_type": "AMIAdvanceRADIUSSetting",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "RADIUSAuthorization: Administrator/Operator/User/Oem/NoAccess vendor strings; route key aimoem_redfish_extensions_radius_advanced_settings"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/ExternalAccountProviders/{ProviderId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/account-service/additionalexternalaccountproviders.lua",
+  "actions": [],
+  "schema_type": "ExternalAccountProvider.v1_3_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_radius"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/LDAP/Certificates",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_collection_for_ldap_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/LDAP/Certificates/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_members_for_ldap_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Oem/Ami/Configurations",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "oem/ami/accountservice-config-handler.lua",
+  "actions": [],
+  "schema_type": "AMIAccountServiceConfigurations",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "AMIAccountServiceConfigurations: PAMEnabled, PAMOrder (IPMI, LDAP, ACTIVE DIRECTORY, RADIUS); PATCH restarts web server; route key aimoem_redfish_extensions_account_service_config"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/account-service/role.lua",
+  "actions": [],
+  "schema_type": "RoleCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_093"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/account-service/role.lua",
+  "actions": [],
+  "schema_type": "RoleCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key roles_members"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Roles/{RoleId}",
+  "methods": [
+   "GET",
+   "PATCH",
+   "DELETE"
+  ],
+  "handler_file": "redfish/account-service/role.lua",
+  "actions": [],
+  "schema_type": "Role.v1_3_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "predefined roles Administrator/Operator/ReadOnly are GET-only; custom roles GET/PATCH/DELETE; route key resource_092"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/Oem/Ami/ClientCertificates",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "oem/ami/ldap_client_certificates.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "LDAP client certificate+key upload; route key aimoem_redfish_extensions_upload_ldap_client_certificates"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/Oem/Ami/ClientCertificates/{CertificateId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "oem/ami/ldap_client_certificates.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key aimoem_redfish_extensions_upload_ldap_client_certificates_instance"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/Oem/Ami/ClientCertificates/{CertificateId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-actions.lua",
+  "actions": [
+   {
+    "name": "Certificate.Rekey",
+    "target": "/redfish/v1/AccountService/{ServiceName}/Certificates/Oem/Ami/ClientCertificates/{CertificateId}/Actions/Certificate.Rekey",
+    "parameters": {
+     "ChallengePassword": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "KeyPairAlgorithm": []
+    }
+   },
+   {
+    "name": "Certificate.Renew",
+    "target": "/redfish/v1/AccountService/{ServiceName}/Certificates/Oem/Ami/ClientCertificates/{CertificateId}/Actions/Certificate.Renew",
+    "parameters": {
+     "ChallengePassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key aimoem_redfish_extensions_clientcertificate_actions_for_ldap_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/Oem/Ami/ClientCertificates/{CertificateId}/{Action}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key aimoem_redfish_extensions_upload_ldap_certificates_action_info"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/{CertificateId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_instance_for_ldap_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/{CertificateId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-actions.lua",
+  "actions": [
+   {
+    "name": "Certificate.Rekey",
+    "target": "/redfish/v1/AccountService/{ServiceName}/Certificates/{CertificateId}/Actions/Certificate.Rekey",
+    "parameters": {
+     "ChallengePassword": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "KeyPairAlgorithm": []
+    }
+   },
+   {
+    "name": "Certificate.Renew",
+    "target": "/redfish/v1/AccountService/{ServiceName}/Certificates/{CertificateId}/Actions/Certificate.Renew",
+    "parameters": {
+     "ChallengePassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actions_for_ldap_accounts"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/{ServiceName}/Certificates/{CertificateId}/{Id}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actioninfo_for_ldap_accounts"
+ },
+ {
+  "uri": "/redfish/v1/CertificateService",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/certificate-service.lua",
+  "actions": [],
+  "schema_type": "CertificateService.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_service"
+ },
+ {
+  "uri": "/redfish/v1/CertificateService/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-service-actions.lua",
+  "actions": [
+   {
+    "name": "CertificateService.GenerateCSR",
+    "target": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR",
+    "parameters": {
+     "CertificateCollection": [],
+     "CommonName": [],
+     "Country": [],
+     "State": [],
+     "City": [],
+     "Organization": [],
+     "OrganizationalUnit": [],
+     "KeyPairAlgorithm": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "AlternativeNames": [],
+     "Email": [],
+     "ChallengePassword": []
+    }
+   },
+   {
+    "name": "CertificateService.ReplaceCertificate",
+    "target": "/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate",
+    "parameters": {
+     "CertificateUri": [],
+     "CertificateString": [],
+     "CertificateType": [
+      "PEM"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_service_actions"
+ },
+ {
+  "uri": "/redfish/v1/CertificateService/CertificateLocations",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-locations.lua",
+  "actions": [],
+  "schema_type": "CertificateLocations.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_locations"
+ },
+ {
+  "uri": "/redfish/v1/CertificateService/{Id}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-service-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_service_actioninfo"
+ },
+ {
+  "uri": "/redfish/v1/Chassis",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis.lua",
+  "actions": [],
+  "schema_type": "ChassisCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_069"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/RDE{n}_*, /redfish/v1/Systems/RDE{n}_* (dynamic)",
+  "methods": [
+   "GET",
+   "PATCH",
+   "POST",
+   "DELETE",
+   "HEAD",
+   "PUT"
+  ],
+  "handler_file": "pldm-rde-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "PLDM RDE device resources, only when CONFIG_SPX_FEATURE_SELECT_RDE_DEVICE_SUPPORT is enabled; handler detail: pldm-rde-handler.lua + redfish/pldm-rde.lua; route key RDE:Collection / RDE:Instance"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis.lua",
+  "actions": [],
+  "schema_type": "Chassis.v1_15_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_067"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/$ref",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis.lua",
+  "actions": [],
+  "schema_type": "Chassis.v1_15_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "odata $ref form of the chassis instance; route key resource_068"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/chassis.lua",
+  "actions": [
+   {
+    "name": "Chassis.Reset",
+    "target": "/redfish/v1/Chassis/{ChassisId}/Actions/Chassis.Reset",
+    "parameters": {
+     "ResetType": [
+      "On",
+      "ForceOff",
+      "GracefulShutdown",
+      "ForceRestart",
+      "PowerCycle",
+      "GracefulRestart (action-info.rcmd only)"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_073"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_717"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/LogServices",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/log-service.lua",
+  "actions": [],
+  "schema_type": "LogEntryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_080"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis/log-service.lua",
+  "actions": [],
+  "schema_type": "LogService.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_079"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/chassis/log-service-actions.lua",
+  "actions": [
+   {
+    "name": "LogService.ClearLog",
+    "target": "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_077"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Entries",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_075"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntry.v1_4_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_076"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/MediaControllers",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/media-controllers.lua",
+  "actions": [],
+  "schema_type": "MediaControllerCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_148"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/MediaControllers/{MediaControllerId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/media-controllers.lua",
+  "actions": [],
+  "schema_type": "MediaController.v1_1_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_147"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/networkadapter-collection.lua",
+  "actions": [],
+  "schema_type": "NetworkAdapterCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_083"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/networkadapter-instance.lua",
+  "actions": [],
+  "schema_type": "NetworkAdapter.v1_8_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_082"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/chassis/networkadapter-actions.lua",
+  "actions": [
+   {
+    "name": "NetworkAdapter.ResetSettingsToDefault",
+    "target": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Actions/NetworkAdapter.ResetSettingsToDefault",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_081"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_710"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/networkdevicefunction-collection.lua",
+  "actions": [],
+  "schema_type": "NetworkDeviceFunctionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_087"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/networkdevicefunction-instance.lua",
+  "actions": [],
+  "schema_type": "NetworkDeviceFunction.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_086"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/Ethernet/VLANs",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_129"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/Ethernet/VLANs/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key resource_129_members"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/Ethernet/VLANs/{VlanId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterface.v1_2_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_128"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/Ethernet/VLANs/{VlanId}/SD",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterface.v1_2_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Settings object (@Redfish.Settings \"SD\" = pending settings, applied later); route key resource_128_SD"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/SD",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis/networkdevicefunction-instance.lua",
+  "actions": [],
+  "schema_type": "NetworkDeviceFunction.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Settings object (@Redfish.Settings \"SD\" = pending settings, applied later); route key resource_086_SD"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkPorts",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/networkport-collection.lua",
+  "actions": [],
+  "schema_type": "NetworkPortCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_085"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkPorts/{NetworkPortId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/networkport-instance.lua",
+  "actions": [],
+  "schema_type": "NetworkPort.v1_2_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_084"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Ports",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/ports.lua",
+  "actions": [],
+  "schema_type": "PortCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_142"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Ports/{PortId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/ports.lua",
+  "actions": [],
+  "schema_type": "Port.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_141"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Processors",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-collection.lua",
+  "actions": [],
+  "schema_type": "EventDestination.v1_7_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: redfish/system/processor-collection.lua / processor-instance.lua (assumed); route key NetworkAdaptersProcessorsCollection"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Processors/{ProcessorId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-collection.lua",
+  "actions": [],
+  "schema_type": "Processor.v1_10_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: redfish/system/processor-collection.lua / processor-instance.lua (assumed); route key NetworkAdaptersProcessorsInstance"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Processors/{ProcessorId}/AccelerationFunctions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/acceleration-function.lua",
+  "actions": [],
+  "schema_type": "AccelerationFunctionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: redfish/system/acceleration-function.lua (assumed); route key NetworkAdaptersProcessorsAccFunCollection"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelFnId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/acceleration-function.lua",
+  "actions": [],
+  "schema_type": "AccelerationFunction.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: redfish/system/acceleration-function.lua (assumed); route key NetworkAdaptersProcessorsAccFunInstance"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Processors/{ProcessorId}/OperatingConfigs",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/operatingconfig.lua",
+  "actions": [],
+  "schema_type": "OperatingConfigCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: redfish/system/operatingconfig.lua (assumed); route key NetworkAdaptersProcessorsOptCfgCollection"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Processors/{ProcessorId}/OperatingConfigs/{OpConfigId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/operatingconfig.lua",
+  "actions": [],
+  "schema_type": "OperatingConfig",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: redfish/system/operatingconfig.lua (assumed); route key NetworkAdaptersProcessorsOptCfgInstance"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Oem/Ami/MapoutPorting",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_bios/pciefunlist-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "methods marked ? are not in the allow table; the handler decides; handler attribution is inferred, not confirmed; handler detail: oem/ami_bios/pciefunlist-handler.lua (assumed); route key ami_bios_dre_chassis_mapoutporting"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/pcie-devices.lua",
+  "actions": [],
+  "schema_type": "PCIeDeviceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_131"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/pcie-devices.lua",
+  "actions": [],
+  "schema_type": "PCIeDevice.v1_4_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_088"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_709"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/pcie-device-functions.lua",
+  "actions": [],
+  "schema_type": "PCIeFunctionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_132"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/pcie-device-functions.lua",
+  "actions": [],
+  "schema_type": "PCIeFunction.v1_2_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_089"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami_bios/mapout-handler.lua",
+  "actions": [
+   {
+    "name": "AmiBios.ChangeState",
+    "target": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}/Actions/AmiBios.ChangeState",
+    "parameters": {
+     "State": [
+      "Enabled",
+      "Disabled"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: oem/ami_bios/mapout-handler.lua (assumed); route key ami_bios_dre_chassis_pciefunctions_actions"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}/ChangeStateActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_bios/changestate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key ami_bios_dre_chassis_pciefunctions_changestateactioninfo"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeSlots",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/pcie-slots.lua",
+  "actions": [],
+  "schema_type": "PCIeSlots.v1_1_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_708"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Power",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis/power.lua",
+  "actions": [],
+  "schema_type": "Power.v1_5_4",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_070"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/power-subsystem.lua",
+  "actions": [],
+  "schema_type": "PowerSubsystem.v1_1_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key PowerSubSys_1"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/powersupplies.lua",
+  "actions": [],
+  "schema_type": "PowerSupplyCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key PowerSubSys_2"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies/{PowerSupplyId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/powersupplies.lua",
+  "actions": [],
+  "schema_type": "PowerSupply",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key PowerSubSys_3"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PowerSubsystem/PowerSupplies/{PowerSupplyId}/Metrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/powersupplies-metrics.lua",
+  "actions": [],
+  "schema_type": "PowerSupplyMetrics",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key PowerSubSys_4"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/ResetActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/reset-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_074"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Sensors",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/sensor.lua",
+  "actions": [],
+  "schema_type": "SensorCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key sensor_collection"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Sensors/{SensorId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/sensor.lua",
+  "actions": [],
+  "schema_type": "Sensor.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key sensor"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Thermal",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/thermal.lua",
+  "actions": [],
+  "schema_type": "Thermal.v1_5_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_071"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Thermal/... (Thermal-Instance)",
+  "methods": [
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis/thermal-instance.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": "unknown"
+  },
+  "notes": "Key has allow entry (PATCH, label Thermal-Instance) but no literal URI pattern; likely threshold PATCH on Thermal members; route key resource_072"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/thermal-subsystem.lua",
+  "actions": [],
+  "schema_type": "ThermalSubsystem.v1_0_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key ThermalSubSys_1"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/Fans",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/fans.lua",
+  "actions": [],
+  "schema_type": "FanCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key ThermalSubSys_2"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/Fans/{FanId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/fans.lua",
+  "actions": [],
+  "schema_type": "Fan.v1_1_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key ThermalSubSys_3"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/ThermalSubsystem/ThermalMetrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/thermal-metrics.lua",
+  "actions": [],
+  "schema_type": "ThermalMetrics.v1_0_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key ThermalSubSys_4"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/compositionservice.lua",
+  "actions": [],
+  "schema_type": "CompositionService.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_118"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceBlocks",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/compositionservice/resourceblock-collection.lua",
+  "actions": [],
+  "schema_type": "ResourceBlockCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/compositionservice/resourceblock-collection.lua / resourceblock-instance.lua; route key resource_120"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/compositionservice/resourceblock-collection.lua",
+  "actions": [],
+  "schema_type": "ResourceBlock.v1_3_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/compositionservice/resourceblock-collection.lua / resourceblock-instance.lua; route key resource_119"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceZones",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/compositionservice/zone-collection.lua",
+  "actions": [],
+  "schema_type": "ZoneCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/compositionservice/zone-collection.lua / zone-instance.lua; route key resource_122"
+ },
+ {
+  "uri": "/redfish/v1/CompositionService/ResourceZones/{ZoneId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/compositionservice/zone-collection.lua",
+  "actions": [],
+  "schema_type": "Zone.v1_3_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/compositionservice/zone-collection.lua / zone-instance.lua; route key resource_121"
+ },
+ {
+  "uri": "/redfish/v1/EventService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/event-service.lua",
+  "actions": [],
+  "schema_type": "EventService.v1_4_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_103"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Actions/EventService.SubmitDelayedTestEvent",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/delayed-test-event.lua",
+  "actions": [
+   {
+    "name": "EventService.SubmitDelayedTestEvent",
+    "target": "/redfish/v1/EventService/Actions/EventService.SubmitDelayedTestEvent",
+    "parameters": {
+     "DelayTime": [],
+     "EventType": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIEventService",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Allow entry + handler file exist but no URI pattern registered in 9.05 (orphan); handler and allow entry ship in B650 but no URI pattern is registered (unreachable on B650); X470 registers this route (oem/ami/route.lua); B650 9.05/7.02 do not.; route key aimoem_redfish_extensions_delayed_event"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/event-service.lua",
+  "actions": [
+   {
+    "name": "EventService.SubmitTestEvent",
+    "target": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+    "parameters": {
+     "EventId": [],
+     "EventTimestamp": [],
+     "MessageArgs": [],
+     "MessageId": [],
+     "OriginOfCondition": [],
+     "Severity": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "Pattern built from default_constants.SEND_TEST_TARGET; route key resource_098"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Oem/Ami/SMTP/Certificates",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "oem/ami/event-service-certificate.lua",
+  "actions": [],
+  "schema_type": "AMISMTPCertificateCollection",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "AMISMTPCertificateCollection (Primary/Secondary SMTP CACert, Cert, PrivateKey); route key aimoem_redfish_extensions_eventservice_smtp_certificate_collection"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Oem/Ami/SMTP/Certificates/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/event-service-certificate.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias; route key aimoem_redfish_extensions_eventservice_smtp_certificate_collection_members"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Oem/Ami/SMTP/Certificates/{CertificateId}",
+  "methods": [
+   "GET",
+   "POST",
+   "DELETE"
+  ],
+  "handler_file": "oem/ami/event-service-certificate.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Instances 1 (primary) and 2 (secondary) exist by default; route key aimoem_redfish_extensions_eventservice_smtp_certificate_instance"
+ },
+ {
+  "uri": "/redfish/v1/EventService/SSE",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "event-service/ServerSentEvent.lua",
+  "actions": [],
+  "schema_type": "text/event-stream (Event / MetricReport payloads)",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Server-Sent Events stream; proxied by lighttpd to 127.0.0.1:9090; text/event-stream; supports $filter on EventFormatType/MessageId/OriginResource/RegistryPrefix/ResourceType; handler detail: event-service/ServerSentEvent.lua (lighttpd -> 127.0.0.1:9090); route key resource_140"
+ },
+ {
+  "uri": "/redfish/v1/EventService/SubmitDelayedTestEventActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/submitdelayedtestevent-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "AMIEventService",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "orphan (no URI pattern); handler and allow entry ship in B650 but no URI pattern is registered (unreachable on B650); X470 registers this route (oem/ami/route.lua); B650 9.05/7.02 do not.; route key aimoem_redfish_extensions_submit_delayed_test_event_action_info"
+ },
+ {
+  "uri": "/redfish/v1/EventService/SubmitTestEventActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/submittestevent-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_099"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Subscriptions",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/event-service.lua",
+  "actions": [],
+  "schema_type": "EventDestinationCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_102"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Subscriptions/Members",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/event-service.lua",
+  "actions": [],
+  "schema_type": "EventDestinationCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_101; also registered under a second key: POST alias for creating a member of the parent collection; route key subscriptions_members"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+  "methods": [
+   "GET",
+   "PATCH",
+   "DELETE"
+  ],
+  "handler_file": "redfish/event-service.lua",
+  "actions": [],
+  "schema_type": "EventDestination.v1_7_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_100"
+ },
+ {
+  "uri": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}/Actions/EventDestination.ResumeSubscription",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/resumesubscription-action.lua",
+  "actions": [
+   {
+    "name": "EventDestination.ResumeSubscription",
+    "target": "/redfish/v1/EventService/Subscriptions/{SubscriptionId}/Actions/EventDestination.ResumeSubscription",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resumesubscription_action_handler"
+ },
+ {
+  "uri": "/redfish/v1/Fabrics/{FabricId}/Endpoints",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/endpoint-collection.lua",
+  "actions": [],
+  "schema_type": "EndpointCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_117"
+ },
+ {
+  "uri": "/redfish/v1/Fabrics/{FabricId}/Endpoints/{EndpointId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/endpoint-instance.lua",
+  "actions": [],
+  "schema_type": "Endpoint.v1_3_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_116"
+ },
+ {
+  "uri": "/redfish/v1/GlobalLuaTables",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/global-lua-tables.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "AMI (non-standard debug resource)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "debug: lists/clears the server resource-metadata cache; key is in config.PRIVILEGE_CHECKING_WHITELIST; route key resource_126"
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/json-schema.lua",
+  "actions": [],
+  "schema_type": "JsonSchemaFileCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_112"
+ },
+ {
+  "uri": "/redfish/v1/JsonSchemas/{SchemaFile}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/json-schema.lua",
+  "actions": [],
+  "schema_type": "JsonSchemaFile.v1_1_4",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_111"
+ },
+ {
+  "uri": "/redfish/v1/Managers",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager.lua",
+  "actions": [],
+  "schema_type": "ManagerCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_020"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager.lua",
+  "actions": [],
+  "schema_type": "Manager.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_019"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIManager.BackupConfig",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/backup-config.lua",
+  "actions": [
+   {
+    "name": "AMIManager.BackupConfig",
+    "target": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIManager.BackupConfig",
+    "parameters": {
+     "BackupFeatures": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIManager",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Pattern built with get_env_managers_name() (only the real manager id); route key amioem_redfish_extensions_backupconfig"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIManager.RedfishPowerSaveMode",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/power-saver.lua",
+  "actions": [
+   {
+    "name": "AMIManager.RedfishPowerSaveMode",
+    "target": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIManager.RedfishPowerSaveMode",
+    "parameters": {
+     "PowerSaveMode": [
+      "Enable",
+      "Disable"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIManager",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key amioem_redfish_extensions_reset_powersavemode"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIManager.RestoreConfig",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/restore-config.lua",
+  "actions": [
+   {
+    "name": "AMIManager.RestoreConfig",
+    "target": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIManager.RestoreConfig",
+    "parameters": {
+     "conf_file (multipart part)": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIManager",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key amioem_redfish_extensions_restoreconfig"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIVirtualMedia.ConfigureCDInstance",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/configure-cdinstance.lua",
+  "actions": [
+   {
+    "name": "AMIVirtualMedia.ConfigureCDInstance",
+    "target": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIVirtualMedia.ConfigureCDInstance",
+    "parameters": {
+     "CDInstance": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIVirtualMedia",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key aimoem_redfish_extensions_configure_cd_instance"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIVirtualMedia.EnableRMedia",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/rmedia-support.lua",
+  "actions": [
+   {
+    "name": "AMIVirtualMedia.EnableRMedia",
+    "target": "/redfish/v1/Managers/{ManagerId}/Actions/Oem/AMIVirtualMedia.EnableRMedia",
+    "parameters": {
+     "RMediaState": [
+      "Enable",
+      "Disable"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIVirtualMedia",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key aimoem_redfish_extensions_rmedia_support"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/manager.lua",
+  "actions": [
+   {
+    "name": "Manager.Reset",
+    "target": "/redfish/v1/Managers/{ManagerId}/Actions/Manager.Reset",
+    "parameters": {
+     "ResetType": [
+      "ForceRestart"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_017"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Certificates",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_collection_for_managers"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Certificates/Members",
+  "methods": [],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "no method list in allow table (effectively not allowed); route key certificate_members_for_managers"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_instance_for_managers"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-actions.lua",
+  "actions": [
+   {
+    "name": "Certificate.Rekey",
+    "target": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}/Actions/Certificate.Rekey",
+    "parameters": {
+     "ChallengePassword": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "KeyPairAlgorithm": []
+    }
+   },
+   {
+    "name": "Certificate.Renew",
+    "target": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}/Actions/Certificate.Renew",
+    "parameters": {
+     "ChallengePassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actions_for_managers"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Certificates/{CertificateId}/{Id}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actioninfo_for_managers"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager/ethernet-interface.lua",
+  "actions": [],
+  "schema_type": "EthernetInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_016"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{EthernetInterfaceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager/ethernet-interface.lua",
+  "actions": [],
+  "schema_type": "EthernetInterface.v1_6_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "usb0 (host-interface NIC) is GET-only via allowed_methods override; route key resource_015"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{EthernetInterfaceId}/{Id}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager/ethernet-interface.lua",
+  "actions": [],
+  "schema_type": "EthernetInterface.v1_6_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_014"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/HostInterfaces",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "extensions/host-interface/hostinterface-collection.lua",
+  "actions": [],
+  "schema_type": "HostInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key hi_resource_02"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "extensions/host-interface/hostinterface-instance.lua",
+  "actions": [],
+  "schema_type": "HostInterface",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "Redfish Host Interface (usb0, 169.254.0.17/18); FirmwareAuthEnabled/KernelAuthEnabled/AuthNoneRoleId; route key hi_resource_01"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}/HostEthernetInterfaces",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "extensions/host-interface/host-ethernet-interface-collection.lua",
+  "actions": [],
+  "schema_type": "EthernetInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key hi_resource_05"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/IKVM",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/plugin/ikvm.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "ASRockRack plugin (non-standard resource, no Oem namespace)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "ASRock-Rack-added plugin (no Oem namespace); linked from Manager.IKVM; route key plugin_redfish_ikvm"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/LogServices",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager/log-service.lua",
+  "actions": [],
+  "schema_type": "LogServiceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_013"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager/log-service.lua",
+  "actions": [],
+  "schema_type": "LogService.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_012"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/manager/log-service-actions.lua",
+  "actions": [
+   {
+    "name": "LogService.ClearLog",
+    "target": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_010"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_009"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntry.v1_4_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_008"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager/network-protocol.lua",
+  "actions": [],
+  "schema_type": "ManagerNetworkProtocol.v1_6_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_007"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_collection_for_https"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates/{CertificateId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_instance_for_https"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates/{CertificateId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-actions.lua",
+  "actions": [
+   {
+    "name": "Certificate.Rekey",
+    "target": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates/{CertificateId}/Actions/Certificate.Rekey",
+    "parameters": {
+     "ChallengePassword": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "KeyPairAlgorithm": []
+    }
+   },
+   {
+    "name": "Certificate.Renew",
+    "target": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates/{CertificateId}/Actions/Certificate.Renew",
+    "parameters": {
+     "ChallengePassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actions_for_https"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates/{CertificateId}/{Id}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actioninfo_for_https"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Oem/BackupConfigActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/backupconfig-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key amioem_redfish_extensions_backupconfig_action_info"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Oem/ConfigureCDInstanceActionInfo",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "oem/ami/actioninfo/configurecdinstance-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "allow table lists GET, POST; route key aimoem_redfish_extensions_configure_cd_instance_action_info"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Oem/EnableRMediaActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/rmediasupport-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key aimoem_redfish_extensions_rmedia_support_action_info"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Oem/RedfishPowerSaveModeActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/powersaver-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key amioem_redfish_extensions_reset_powersavemode_action_info"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/Oem/RestoreConfigActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/restoreconfig-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key amioem_redfish_extensions_restoreconfig_action_info"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/ResetActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/reset-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_018"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/SerialInterfaces",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager/serial-interface.lua",
+  "actions": [],
+  "schema_type": "SerialInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_006"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/SerialInterfaces/{SerialInterfaceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager/serial-interface.lua",
+  "actions": [],
+  "schema_type": "SerialInterface.v1_1_5",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_005"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/VirtualMedia",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/manager/virtual-media.lua",
+  "actions": [],
+  "schema_type": "VirtualMediaCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_004"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/manager/virtual-media.lua",
+  "actions": [],
+  "schema_type": "VirtualMedia.v1_3_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_003"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/manager/virtual-media-actions.lua",
+  "actions": [
+   {
+    "name": "VirtualMedia.InsertMedia",
+    "target": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia",
+    "parameters": {
+     "Image": [],
+     "TransferProtocolType": [
+      "NFS",
+      "CIFS",
+      "HTTPS"
+     ],
+     "TransferMethod": [
+      "Stream"
+     ],
+     "Inserted": [],
+     "WriteProtected": [],
+     "UserName": [],
+     "Password": []
+    }
+   },
+   {
+    "name": "VirtualMedia.EjectMedia",
+    "target": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_700"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/EjectMediaActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/virtualmedia-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_701"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/InsertMediaActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/virtualmedia-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_702"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/BiosStaticFiles",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "oem/ami_hi/static-file-collection-hi.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "methods marked ? are not in the allow table; the handler decides; route key amioem_hi_redfish_extension_bios_static_file_collection"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/BiosStaticFiles/PostStatus/{Id}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/post-status.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": "unknown"
+  },
+  "notes": "methods marked ? are not in the allow table; the handler decides; X470 ami_hi has /BiosStaticFiles/PostStatus/{id} whose full prefix is not recoverable from strings.; route key amioem_hi_redfish_extension_bios_static_file_post_status"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/BiosStaticFiles/{FileId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/static-file-instance-hi.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": "unknown"
+  },
+  "notes": "X470 ami_hi has /BiosStaticFiles/{id} whose full prefix is not recoverable from strings.; route key amioem_hi_redfish_extension_bios_static_file_instance"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/Configurations",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "oem/ami/config-handler.lua",
+  "actions": [],
+  "schema_type": "AMIConfigurations",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "AMIConfigurations: CertificateAuthorityUrl; route key aimoem_redfish_extensions_config"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/InventoryData",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "oem/ami_hi/hi-inventory-data.lua",
+  "actions": [],
+  "schema_type": "BiosStaticFileCollection",
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "BIOS inventory upload (host interface); entity BiosStaticFileCollection; methods marked ? are not in the allow table; the handler decides; route key amioem_hi_redfish_extension_inventory_data"
+ },
+ {
+  "uri": "/redfish/v1/Oem/Ami/InventoryData/Status",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/inventory-data-status.lua",
+  "actions": [],
+  "schema_type": "AMIInventoryStatus",
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "AMIInventoryStatus; route key amioem_hi_redfish_extension_inventory_data_status"
+ },
+ {
+  "uri": "/redfish/v1/Registries",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/registry.lua",
+  "actions": [],
+  "schema_type": "MessageRegistryFileCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/registry.lua (overridden by extensions/host-interface/hi-handlers/registry-*-hi.lua); route key resource_110"
+ },
+ {
+  "uri": "/redfish/v1/PrivilegeRegistry/Redfish_1.3.0_PrivilegeRegistry.json",
+  "methods": [],
+  "handler_file": null,
+  "actions": [],
+  "schema_type": "PrivilegeRegistry.v1_1_4",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Pattern built as SERVICE_PREFIX .. \"/PrivilegeRegistry/\" .. PRIVILEGE_REGISTRY_JSON_FILE, but the key has no handler or allow entry, so the URI is probably unreachable (falls through to 404). The privilege registries are served under `/Registries/{RegistryFile}` instead; handler detail: none registered; route key resource_130"
+ },
+ {
+  "uri": "/redfish/v1/Registries/Static/{RegistryFile}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/registry.lua",
+  "actions": [],
+  "schema_type": "MessageRegistryFile.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/registry.lua (overridden by extensions/host-interface/hi-handlers/registry-*-hi.lua); route key resource_108"
+ },
+ {
+  "uri": "/redfish/v1/Registries/{RegistryFile}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/registry.lua",
+  "actions": [],
+  "schema_type": "MessageRegistryFile.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/registry.lua (overridden by extensions/host-interface/hi-handlers/registry-*-hi.lua); route key resource_109"
+ },
+ {
+  "uri": "/redfish/v1/SessionService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/session-service.lua",
+  "actions": [],
+  "schema_type": "SessionService.v1_1_6",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_097"
+ },
+ {
+  "uri": "/redfish/v1/SessionService/Sessions",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/session-service.lua",
+  "actions": [],
+  "schema_type": "SessionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_096"
+ },
+ {
+  "uri": "/redfish/v1/SessionService/Sessions/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/session-service.lua",
+  "actions": [],
+  "schema_type": "SessionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key sessions_members"
+ },
+ {
+  "uri": "/redfish/v1/SessionService/Sessions/{SessionId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/session-service.lua",
+  "actions": [],
+  "schema_type": "Session.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_095"
+ },
+ {
+  "uri": "/redfish/v1/Systems",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system.lua",
+  "actions": [],
+  "schema_type": "ComputerSystemCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_057"
+ },
+ {
+  "uri": "/redfish/v1/Systems/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system.lua",
+  "actions": [],
+  "schema_type": "ComputerSystemCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key systems_members"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}",
+  "methods": [
+   "GET",
+   "PATCH",
+   "DELETE"
+  ],
+  "handler_file": "redfish/system.lua",
+  "actions": [],
+  "schema_type": "ComputerSystem.v1_15_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "override table: target \"Capabilities\" listed; physical system GET/PATCH, composed systems also DELETE (inferred from table shape); route key resource_056"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system-actions.lua",
+  "actions": [
+   {
+    "name": "ComputerSystem.Reset",
+    "target": "/redfish/v1/Systems/{SystemId}/Actions/ComputerSystem.Reset",
+    "parameters": {
+     "ResetType": [
+      "On",
+      "ForceOff",
+      "GracefulShutdown",
+      "ForceRestart",
+      "PowerCycle"
+     ],
+     "@Redfish.OperationApplyTime": [
+      "Immediate",
+      "AtMaintenanceWindowStart"
+     ],
+     "MaintenanceWindowStartTime": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_054"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Bios",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/bios.lua",
+  "actions": [],
+  "schema_type": "Bios.v1_1_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/system/bios.lua (HI override: extensions/host-interface/hi-handlers/bios-hi.lua); route key resource_053"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Bios/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/bios-actions.lua",
+  "actions": [
+   {
+    "name": "Bios.ResetBios",
+    "target": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ResetBios",
+    "parameters": {}
+   },
+   {
+    "name": "Bios.ChangePassword",
+    "target": "/redfish/v1/Systems/{SystemId}/Bios/Actions/Bios.ChangePassword",
+    "parameters": {
+     "PasswordName": [],
+     "OldPassword": [],
+     "NewPassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/system/bios-actions.lua (HI override: extensions/host-interface/hi-handlers/bios-actions-hi.lua); route key resource_050"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Bios/ChangePasswordActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/changepassword-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_052"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Bios/SD",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system/bios.lua",
+  "actions": [],
+  "schema_type": "Bios.v1_1_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/system/bios.lua (HI override: extensions/host-interface/hi-handlers/bios-hi.lua); route key resource_049"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Boot/Certificates",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_collection_for_boot"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Boot/Certificates/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_members_for_boot"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Boot/Certificates/{CertificateId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/certificate-service/certificate.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_instance_for_boot"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Boot/Certificates/{CertificateId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/certificate-service/certificate-actions.lua",
+  "actions": [
+   {
+    "name": "Certificate.Rekey",
+    "target": "/redfish/v1/Systems/{SystemId}/Boot/Certificates/{CertificateId}/Actions/Certificate.Rekey",
+    "parameters": {
+     "ChallengePassword": [],
+     "KeyBitLength": [],
+     "KeyCurveId": [],
+     "KeyPairAlgorithm": []
+    }
+   },
+   {
+    "name": "Certificate.Renew",
+    "target": "/redfish/v1/Systems/{SystemId}/Boot/Certificates/{CertificateId}/Actions/Certificate.Renew",
+    "parameters": {
+     "ChallengePassword": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actions_for_boot"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Boot/Certificates/{CertificateId}/{Id}ActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/certificate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key certificate_actioninfo_for_boot"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/BootOptions",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system/bootoption.lua",
+  "actions": [],
+  "schema_type": "BootOptionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_124"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/BootOptions/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/bootoption.lua",
+  "actions": [],
+  "schema_type": "BootOptionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key bootoption_member"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/BootOptions/{BootOptionId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/bootoption.lua",
+  "actions": [],
+  "schema_type": "BootOption.v1_0_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_123"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/BootOptions/{BootOptionId}/SD",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system/bootoption.lua",
+  "actions": [],
+  "schema_type": "BootOption.v1_0_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Settings object (@Redfish.Settings \"SD\" = pending settings, applied later); route key resource_123_SD"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/ethernet-interface.lua",
+  "actions": [],
+  "schema_type": "EthernetInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_048"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/ethernet-interface.lua",
+  "actions": [],
+  "schema_type": "EthernetInterface.v1_6_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_047"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_046"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key resource_046_members"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VlanId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterface.v1_2_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_045"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VlanId}/SD",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system/vlan.lua",
+  "actions": [],
+  "schema_type": "VLanNetworkInterface.v1_2_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Settings object (@Redfish.Settings \"SD\" = pending settings, applied later); route key resource_045_SD"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/FruInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/plugin/fruinfo.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "ASRockRack plugin (non-standard resource, no Oem namespace)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Plugin FRU dump; route key plugin_redfish_fru_info"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/GraphicsControllers",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/graphics-controllers.lua",
+  "actions": [],
+  "schema_type": "GraphicsController.v1_0_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_150"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/GraphicsControllers/{ControllerId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/graphics-controllers.lua",
+  "actions": [],
+  "schema_type": "GraphicsControllerCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_149"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/GraphicsControllers/{ControllerId}/Ports",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/port.lua",
+  "actions": [],
+  "schema_type": "PortCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_156"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/GraphicsControllers/{ControllerId}/Ports/{PortId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/port.lua",
+  "actions": [],
+  "schema_type": "Port.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_155"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/LogServices",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/log-service.lua",
+  "actions": [],
+  "schema_type": "LogServiceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_044"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system/log-service.lua",
+  "actions": [],
+  "schema_type": "LogService.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_043"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/log-service-actions.lua",
+  "actions": [
+   {
+    "name": "LogService.ClearLog",
+    "target": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_041"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_040"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntry.v1_4_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_039"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memory.lua",
+  "actions": [],
+  "schema_type": "MemoryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_031"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memory.lua",
+  "actions": [],
+  "schema_type": "Memory.v1_8_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_030"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami_bios/mapout-handler.lua",
+  "actions": [
+   {
+    "name": "AmiBios.ChangeState",
+    "target": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/Actions/AmiBios.ChangeState",
+    "parameters": {
+     "State": [
+      "Enabled",
+      "Disabled"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "handler attribution is inferred, not confirmed; handler detail: oem/ami_bios/mapout-handler.lua (assumed); X470 registers the literal .../Actions/AmiBios.ChangeState (oem/ami/route.lua).; route key ami_bios_dre_system_memory_actions"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_713"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/ChangeStateActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_bios/changestate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key ami_bios_dre_system_memory_changestateactioninfo"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/MemoryMetrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorymetrics-instance.lua",
+  "actions": [],
+  "schema_type": "MemoryMetrics.v1_3_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_036"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/MemoryDomains",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorydomain.lua",
+  "actions": [],
+  "schema_type": "MemoryDomainCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_034"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/MemoryDomains/{MemoryDomainId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorydomain.lua",
+  "actions": [],
+  "schema_type": "MemoryDomain.v1_2_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_035"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/MemoryDomains/{MemoryDomainId}/MemoryChunks",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorychunks-collection.lua",
+  "actions": [],
+  "schema_type": "MemoryChunksCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_033"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/MemoryDomains/{MemoryDomainId}/MemoryChunks/{MemoryChunkId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorychunks-instance.lua",
+  "actions": [],
+  "schema_type": "MemoryChunks.v1_4_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_032"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/MemorySummary/MemoryMetrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorymetrics-instance.lua",
+  "actions": [],
+  "schema_type": "MemoryMetrics.v1_3_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_133"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/NetworkInterfaces",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/networkinterface-collection.lua",
+  "actions": [],
+  "schema_type": "NetworkInterfaceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_060"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/NetworkInterfaces/{NetworkInterfaceId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/networkinterface-instance.lua",
+  "actions": [],
+  "schema_type": "NetworkInterface.v1_2_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_059"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/NetworkInterfaces/{NetworkInterfaceId}/NetworkDeviceFunctions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/networkdevicefunction-collection.lua",
+  "actions": [],
+  "schema_type": "NetworkDeviceFunctionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_058"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Oem/Ami/BiosTable",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/bios-table-handler.lua",
+  "actions": [],
+  "schema_type": "AMIBiosTable",
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Written by BIOS over host interface; methods marked ? are not in the allow table; the handler decides; route key amioem_hi_redfish_extension_bios_table"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Oem/Ami/BiosTableTags",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/bios-tabletags-handler.lua",
+  "actions": [],
+  "schema_type": "AMIBiosTableTags",
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "methods marked ? are not in the allow table; the handler decides; route key amioem_hi_redfish_extension_bios_table_tags"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Oem/Ami/Inventory/Crc",
+  "methods": [
+   "GET",
+   "POST",
+   "DELETE"
+  ],
+  "handler_file": "oem/ami/inventory/crc-handler.lua",
+  "actions": [],
+  "schema_type": "AMIBIOSInventoryCRC",
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "BIOS<->BMC inventory CRC (GroupCrcList CERTIFICATE/CPU/DIMM/PCIE/SECUREBOOT); used by BIOS over host interface; route key aimoem_redfish_extensions_inventory_crc"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Pldm",
+  "methods": [
+   "POST",
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "oem/plugin_hi/pldm-hi.lua",
+  "actions": [],
+  "schema_type": "BiosNVRam",
+  "oem": "ASRockRack plugin (non-standard resource, no Oem namespace)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Host-interface: BIOS PLDM/NVRAM blob (entity BiosNVRam); route key plugin_hi_redfish_bios_nvram"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/ProcessorSummary/ProcessorMetrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-metrics.lua",
+  "actions": [],
+  "schema_type": "ProcessorMetrics.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key ProcessorSummaryMetrics"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-collection.lua",
+  "actions": [],
+  "schema_type": "ProcessorCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_026"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-instance.lua",
+  "actions": [],
+  "schema_type": "Processor.v1_10_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_025"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/AccelerationFunctions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/acceleration-function.lua",
+  "actions": [],
+  "schema_type": "AccelerationFunctionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_707"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelFnId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/acceleration-function.lua",
+  "actions": [],
+  "schema_type": "AccelerationFunction.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_706"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_716"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/OperatingConfigs",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/operatingconfig.lua",
+  "actions": [],
+  "schema_type": "OperatingConfigCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_146"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/OperatingConfigs/{OpConfigId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/operatingconfig.lua",
+  "actions": [],
+  "schema_type": "OperatingConfig",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_145"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/ProcessorMetrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-metrics.lua",
+  "actions": [],
+  "schema_type": "ProcessorMetrics.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_705"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-collection.lua",
+  "actions": [],
+  "schema_type": "ProcessorCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_024"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-instance.lua",
+  "actions": [],
+  "schema_type": "Processor.v1_10_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_023"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/AccelerationFunctions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/acceleration-function.lua",
+  "actions": [],
+  "schema_type": "AccelerationFunctionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "shares key with the non-SubProcessor pattern; route key resource_707"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/AccelerationFunctions/{AccelFnId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/acceleration-function.lua",
+  "actions": [],
+  "schema_type": "AccelerationFunction.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "shares key with the non-SubProcessor pattern; route key resource_706"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_714"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/ProcessorMetrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-metrics.lua",
+  "actions": [],
+  "schema_type": "ProcessorMetrics.v1_0_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_704"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/ResetActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/reset-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_055"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SD",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system.lua",
+  "actions": [],
+  "schema_type": "ComputerSystem.v1_15_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Settings object (@Redfish.Settings \"SD\" = pending settings, applied later); route key resource_056_SD"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/system/secureboot.lua",
+  "actions": [],
+  "schema_type": "SecureBoot.v1_1_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_027"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/secureboot-actions.lua",
+  "actions": [
+   {
+    "name": "SecureBoot.ResetKeys",
+    "target": "/redfish/v1/Systems/{SystemId}/SecureBoot/Actions/SecureBoot.ResetKeys",
+    "parameters": {
+     "ResetKeysType": [
+      "ResetAllKeysToDefault",
+      "DeleteAllKeys",
+      "DeletePK"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_028"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/ResetKeysActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/resetkeys-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_029"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/securebootdatabases.lua",
+  "actions": [],
+  "schema_type": "SecureBootDatabaseCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key secureboot_database_collection"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/securebootdatabases.lua",
+  "actions": [],
+  "schema_type": "SecureBootDatabase.v1_0_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key secureboot_database_instance"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/securebootdatabases-actions.lua",
+  "actions": [
+   {
+    "name": "SecureBootDatabase.ResetKeys",
+    "target": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Actions/SecureBootDatabase.ResetKeys",
+    "parameters": {
+     "ResetKeysType": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key secureboot_database_action"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Certificates",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system/securebootdatabases.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler detail: redfish/system/securebootdatabases.lua (certificate sub-resources; assumed); route key secureboot_database_certificate_collection"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Certificates/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/securebootdatabases.lua",
+  "actions": [],
+  "schema_type": "CertificateCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; handler detail: redfish/system/securebootdatabases.lua (certificate sub-resources; assumed); route key secureboot_database_certificate_members"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Certificates/{CertificateId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/system/securebootdatabases.lua",
+  "actions": [],
+  "schema_type": "Certificate.v1_2_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "handler detail: redfish/system/securebootdatabases.lua (certificate sub-resources; assumed); route key secureboot_database_certificate_instance"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Signatures",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system/securebootdatabases_signature.lua",
+  "actions": [],
+  "schema_type": "SignatureCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key secureboot_database_signature_collection"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Signatures/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/securebootdatabases_signature.lua",
+  "actions": [],
+  "schema_type": "SignatureCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key secureboot_database_signature_members"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SecureBoot/SecureBootDatabases/{DatabaseId}/Signatures/{SignatureId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/system/securebootdatabases_signature.lua",
+  "actions": [],
+  "schema_type": "Signature.v1_0_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key secureboot_database_signature_instance"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SimpleStorage",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/simple-storage.lua",
+  "actions": [],
+  "schema_type": "SimpleStorageCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_038"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/SimpleStorage/{SimpleStorageId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/simple-storage.lua",
+  "actions": [],
+  "schema_type": "SimpleStorage.v1_3_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_037"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Smbios",
+  "methods": [
+   "POST",
+   "DELETE"
+  ],
+  "handler_file": "oem/plugin_hi/smbios-hi.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "ASRockRack plugin (non-standard resource, no Oem namespace)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Host-interface: BIOS pushes SMBIOS tables; route key plugin_hi_redfish_bios_smbios"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/storage-collection.lua",
+  "actions": [],
+  "schema_type": "StorageCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_062"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/storage-instance.lua",
+  "actions": [],
+  "schema_type": "Storage.v1_7_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_061"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_712"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Controllers",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/controllers.lua",
+  "actions": [],
+  "schema_type": "StorageControllerCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_144"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Controllers/{ControllerId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/controllers.lua",
+  "actions": [],
+  "schema_type": "StorageController.v1_0_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_143"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Controllers/{ControllerId}/Ports",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/port.lua",
+  "actions": [],
+  "schema_type": "PortCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_181"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Controllers/{ControllerId}/Ports/{PortId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/port.lua",
+  "actions": [],
+  "schema_type": "Port.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_180"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Drives/{DriveId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/drives.lua",
+  "actions": [],
+  "schema_type": "Drive.v1_13_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_066"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Drives/{DriveId}/Assembly",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/assembly.lua",
+  "actions": [],
+  "schema_type": "Assembly.v1_2_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_711"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/system/volume-collection.lua",
+  "actions": [],
+  "schema_type": "VolumeCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_065"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/system/volume-instance.lua",
+  "actions": [],
+  "schema_type": "Volume.v1_4_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_064"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/system/volume-actions.lua",
+  "actions": [
+   {
+    "name": "Volume.Initialize",
+    "target": "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}/Actions/Volume.Initialize",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_063"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/USBControllers",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/usb-controllers.lua",
+  "actions": [],
+  "schema_type": "USBControllerCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_152"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/USBControllers/{ControllerId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/usb-controllers.lua",
+  "actions": [],
+  "schema_type": "USBController.v1_0_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_151"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/USBControllers/{ControllerId}/Ports",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/port.lua",
+  "actions": [],
+  "schema_type": "PortCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_154"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/USBControllers/{ControllerId}/Ports/{PortId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/port.lua",
+  "actions": [],
+  "schema_type": "Port.v1_5_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key resource_153"
+ },
+ {
+  "uri": "/redfish/v1/TaskService",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/task-service.lua",
+  "actions": [],
+  "schema_type": "TaskService.v1_1_4",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_107"
+ },
+ {
+  "uri": "/redfish/v1/TaskService/TaskMonitors/{TaskMonitorId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/task-monitor.lua",
+  "actions": [],
+  "schema_type": "TaskService.v1_1_4",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "GET returns 202 + Location/Retry-After while running, final response when done; DELETE cancels; route key TaskMonitor_Instance"
+ },
+ {
+  "uri": "/redfish/v1/TaskService/Tasks",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/task-service.lua",
+  "actions": [],
+  "schema_type": "TaskCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_106"
+ },
+ {
+  "uri": "/redfish/v1/TaskService/Tasks/Members",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/task-service.lua",
+  "actions": [],
+  "schema_type": "TaskCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_105"
+ },
+ {
+  "uri": "/redfish/v1/TaskService/Tasks/{TaskId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/task-service.lua",
+  "actions": [],
+  "schema_type": "Task.v1_4_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key resource_104"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/telemetry-service.lua",
+  "actions": [],
+  "schema_type": "TelemetryService",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_01"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/telemetry-actions.lua",
+  "actions": [
+   {
+    "name": "TelemetryService.SubmitTestMetricReport",
+    "target": "/redfish/v1/TelemetryService/Actions/TelemetryService.SubmitTestMetricReport",
+    "parameters": {
+     "MetricReportName": [],
+     "GeneratedMetricReportValues": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key telemetry_resource_71"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service.lua",
+  "actions": [],
+  "schema_type": "LogServiceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key telemetry_resource_10"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogService/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service-actions.lua",
+  "actions": [
+   {
+    "name": "LogService.ClearLog",
+    "target": "/redfish/v1/TelemetryService/LogService/Actions/LogService.ClearLog",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key telemetry_resource_14"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogService/Entries",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogService.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key telemetry_resource_12"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogService/Entries/{EntryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntry.v1_4_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key telemetry_resource_13"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricDefinitions",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/metricdefinitions.lua",
+  "actions": [],
+  "schema_type": "MetricDefinitionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_02"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricDefinitions/{MetricDefinitionId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/telemetry-service/metricdefinitions.lua",
+  "actions": [],
+  "schema_type": "MetricDefinition.v1_0_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "Voltage_Reading/Fan_Reading/Temperature_Reading are GET-only; others GET/PATCH (inferred from override table); route key telemetry_resource_03"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReportDefinitions",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/metricreportdefinitions.lua",
+  "actions": [],
+  "schema_type": "MetricReportDefinitionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_04"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReportDefinitions/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/metricreportdefinitions.lua",
+  "actions": [],
+  "schema_type": "MetricReportDefinitionCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key metric_report_definition_members"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReportDefinitions/{MetricReportDefinitionId}",
+  "methods": [
+   "GET",
+   "PATCH",
+   "DELETE"
+  ],
+  "handler_file": "redfish/telemetry-service/metricreportdefinitions.lua",
+  "actions": [],
+  "schema_type": "MetricReportDefinition.v1_3_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_05"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReports",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/metricreports.lua",
+  "actions": [],
+  "schema_type": "MetricReportCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_06"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/MetricReports/{MetricReportId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/metricreports.lua",
+  "actions": [],
+  "schema_type": "MetricReport.v1_2_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_07"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/SubmitTestMetricReportActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/submittestmetricreport-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key telemetry_resource_72"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/Triggers",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/triggers.lua",
+  "actions": [],
+  "schema_type": "TriggersCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_08"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/Triggers/Members",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/triggers.lua",
+  "actions": [],
+  "schema_type": "TriggersCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "POST alias for creating a member of the parent collection; route key triggers_members"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/Triggers/{TriggerId}",
+  "methods": [
+   "GET",
+   "DELETE"
+  ],
+  "handler_file": "redfish/telemetry-service/triggers.lua",
+  "actions": [],
+  "schema_type": "Triggers.v1_1_1",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key telemetry_resource_09"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/update-service.lua",
+  "actions": [],
+  "schema_type": "UpdateService.v1_6_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "PATCH: Oem.AMIUpdateService.PreserveConfiguration.*; MaxImageSizeBytes from redis; route key updateservice"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/Actions/Oem/UpdateService.UploadCABundle",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/upload-cabundle.lua",
+  "actions": [
+   {
+    "name": "UpdateService.UploadCABundle",
+    "target": "/redfish/v1/UpdateService/Actions/Oem/UpdateService.UploadCABundle",
+    "parameters": {
+     "ca_bundle (multipart part, PEM)": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIUpdateService",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "route key updateservice_upload_cabundle_action"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/Actions/SimpleUpdate",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/update-service.lua",
+  "actions": [
+   {
+    "name": "UpdateService.SimpleUpdate",
+    "target": "/redfish/v1/UpdateService/Actions/SimpleUpdate",
+    "parameters": {
+     "ImageURI": [],
+     "TransferProtocol": [
+      "HTTP",
+      "FTP",
+      "HTTPS"
+     ],
+     "Username": [],
+     "Password": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "route key updateservice_simpleupdate_action"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/FirmwareInventory",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/update-service/firmware-inventory.lua",
+  "actions": [],
+  "schema_type": "SoftwareInventoryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Members from redis Redfish:UpdateService:FirmwareInventory:*; route key updateservice_firmware_inventory_collection"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/FirmwareInventory/{InventoryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/update-service/firmware-inventory.lua",
+  "actions": [],
+  "schema_type": "SoftwareInventory.v1_2_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "SoftwareInventory v1_2_3: Name, Version, Updateable, Status (BMC, BIOS, CPLD, ME, BP, PSU, FPGA, RETIMER... depending on features); route key updateservice_firmware_inventory"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/upload",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/multipart-push.lua",
+  "actions": [
+   {
+    "name": "UpdateService.MultipartPush (MultipartHttpPushUri)",
+    "target": "/redfish/v1/UpdateService/upload",
+    "parameters": {
+     "UpdateParameters.Targets": [
+      "/redfish/v1/Managers/Self",
+      "/redfish/v1/Systems/Self/Bios",
+      "/redfish/v1/Systems/Self/Cpld"
+     ],
+     "UpdateParameters.@Redfish.OperationApplyTime": [],
+     "UpdateParameters.Oem.FlashType": [
+      "FULLFwUpdate",
+      "DUALIMAGEFwUpdate",
+      "HPMFwUpdate"
+     ],
+     "UpdateParameters.Oem.UploadSelector": [
+      "AutoInactive",
+      "Image1",
+      "Image2",
+      "ImageBoth",
+      "Default"
+     ],
+     "UpdateParameters.Oem.ImageType": [],
+     "UpdateParameters.Oem.preserveconf": [],
+     "UpdateFile": []
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Feature flags CONFIG_SPX_FEATURE_*_FW gate each component; route key updateservice_multipart_push_action"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/{ActionInfoName}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/update-service.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "SimpleUpdateActionInfo (ImageURI req., TransferProtocol HTTP|FTP|HTTPS, User, Password), UploadCABundleActionInfo; route key updateservice_update_action_info"
+ },
+ {
+  "uri": "/redfish/v1/bios/defaultSD",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_bios/load-default-handler.lua",
+  "actions": [],
+  "schema_type": "Bios.v1_1_0",
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "BIOS default settings (Bios entity); methods not in allow table; methods marked ? are not in the allow table; the handler decides; route key ami_bios_dre_bios_defaultsd"
+ },
+ {
+  "uri": "/redfish/v1/odata",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/odata-service-root.lua",
+  "actions": [],
+  "schema_type": "OData service document",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "in PRIVILEGE_CHECKING_WHITELIST; route key resource_114"
+ },
+ {
+  "uri": "/redfish/v1/odata/",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/odata-service-root.lua",
+  "actions": [],
+  "schema_type": "OData service document",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": true
+  },
+  "notes": "in PRIVILEGE_CHECKING_WHITELIST; route key resource_113"
+ },
+ {
+  "uri": "/redfish/v1/oem/MappingOut",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_bios/mapstatus-handler.lua",
+  "actions": [],
+  "schema_type": "OemMappingOut",
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "OemMappingOut; methods marked ? are not in the allow table; the handler decides; route key ami_bios_dre_mappingout"
+ },
+ {
+  "uri": "/redfish/v1/oem/ami/inventory/crc",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_bios/inventory-crc-handler.lua",
+  "actions": [],
+  "schema_type": "AMIBIOSInventoryCRC",
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "AMIBiosInventoryCRC; methods marked ? are not in the allow table; the handler decides; route key ami_bios_dre_inventory_crc"
+ },
+ {
+  "uri": "/redfish/v1/openapi.yaml",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/openapi.lua",
+  "actions": [],
+  "schema_type": "OpenAPI document (YAML)",
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "in PRIVILEGE_CHECKING_WHITELIST; handler detail: redfish/openapi.lua (static/openapi.yaml.gz); route key resource_openapi"
+ },
+ {
+  "uri": "/redfish/v1/{any}.Deep",
+  "methods": [
+   "POST",
+   "PATCH"
+  ],
+  "handler_file": "redfish/deep_operation.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": true,
+   "b650_905": true,
+   "x470_302": false
+  },
+  "notes": "Redfish DeepPATCH/DeepPOST; ServiceRoot advertises ProtocolFeaturesSupported.DeepOperations with MaxLevels; route key deep_operation"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/KCS",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "oem/plugin/kcs.lua",
+  "actions": [],
+  "schema_type": "KCS.v1_0_0",
+  "oem": "ASRockRack plugin (non-standard resource, no Oem namespace)",
+  "firmware": {
+   "b650_702": true,
+   "b650_905": false,
+   "x470_302": false
+  },
+  "notes": "Removed in 9.05 (section 8). Reads/toggles in-band KCS access (InterfaceEnabled) via raw IPMI; route key plugin_redfish_kcs"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Functions/{FunctionId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/chassis/pcie-device-functions.lua",
+  "actions": [],
+  "schema_type": "PCIeFunction.v1_2_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Older path; B650 uses .../PCIeFunctions/{id}. Normalise in the proxy; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Actions/AmiBios.ChangeState",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami",
+  "actions": [
+   {
+    "name": "AmiBios.ChangeState",
+    "target": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Actions/AmiBios.ChangeState",
+    "parameters": {
+     "State": [
+      "Enabled",
+      "Disabled"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "B650 moved this to .../PCIeFunctions/{id}/Actions/{Action}; handler detail: oem/ami (bios-handler, assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/ChangeStateActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/changestate-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "AmiBios",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/Thermal/Fans/{FanId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/chassis/thermal-instance.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Probably the Thermal-Instance (PATCH) route that has no literal pattern on B650; handler detail: redfish/chassis/thermal-instance.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/clearlog-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/clearlog-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/clearlog-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/clearlog-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Bios/ResetBiosActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/actioninfo/biosreset-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/Metrics",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/memorymetrics-instance.lua",
+  "actions": [],
+  "schema_type": "MemoryMetrics.v1_3_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "B650 uses .../MemoryMetrics; handler detail: redfish/system/memorymetrics-instance.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/SubProcessors",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-collection.lua",
+  "actions": [],
+  "schema_type": "ProcessorCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Second-level SubProcessors; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/SubProcessors/{SubProcessorId2}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/system/processor-instance.lua",
+  "actions": [],
+  "schema_type": "Processor.v1_10_0",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Second-level SubProcessors; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogServices",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service.lua",
+  "actions": [],
+  "schema_type": "LogServiceCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "B650 uses singular TelemetryService/LogService; handler detail: redfish/telemetry-service/log-service.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogServices/{LogServiceId}",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service.lua",
+  "actions": [],
+  "schema_type": "LogService.v1_1_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "B650 uses singular TelemetryService/LogService; handler detail: redfish/telemetry-service/log-service.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Actions/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service-actions.lua",
+  "actions": [
+   {
+    "name": "LogService.ClearLog",
+    "target": "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Actions/LogService.ClearLog",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/telemetry-service/log-service-actions.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Entries",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntryCollection",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/telemetry-service/log-service-entries.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "redfish/telemetry-service/log-service-entries.lua",
+  "actions": [],
+  "schema_type": "LogEntry.v1_4_3",
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "handler detail: redfish/telemetry-service/log-service-entries.lua (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/HI-FW",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "extensions/host-interface",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Host-interface firmware account collection (hi_routes.lua); handler detail: extensions/host-interface (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Accounts/HI-FW/{AccountId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "extensions/host-interface",
+  "actions": [],
+  "schema_type": null,
+  "oem": false,
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "hi_routes.lua; handler detail: extensions/host-interface (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/oem/ami/configuredbsnapshot",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "extensions/host-interface",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "hi_routes.lua; handler detail: extensions/host-interface (assumed); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/AccountService/Configurations",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "oem/ami/accountservice-config-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "B650 moved this to /AccountService/Oem/Ami/Configurations; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/configurations",
+  "methods": [
+   "GET",
+   "PATCH"
+  ],
+  "handler_file": "oem/ami/config-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "B650 moved this to /Oem/Ami/Configurations; still linked from the B650 /redfish/v1/odata document (dead link there); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/Actions/RedfishDBReset",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/factory-reset.lua",
+  "actions": [
+   {
+    "name": "AMIManager.RedfishDBReset",
+    "target": "/redfish/v1/Managers/Self/Actions/RedfishDBReset",
+    "parameters": {}
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIManager",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Literal Self; advertised but unrouted on B650 9.05; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/Managers/Self/FactoryResetActionInfo",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami/actioninfo/factoryreset-actioninfo.lua",
+  "actions": [],
+  "schema_type": "ActionInfo.v1_1_2",
+  "oem": "AMIManager",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/Actions/AmiOemBMCUpdate",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "oem/ami/update-service_AmiOem.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "AMIUpdateService",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Pattern appears unanchored in strings; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/Actions/Oem/UpdateService.UploadFirmwareImage",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/upload-file.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "AMIUpdateService",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Plain-text Lua (extensions/routes/update_service_routes.lua); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/UpdateService/Actions/Oem/{Action}",
+  "methods": [
+   "POST"
+  ],
+  "handler_file": "redfish/update-service.lua",
+  "actions": [
+   {
+    "name": "UpdateService.BMCFwUpdate",
+    "target": "/redfish/v1/UpdateService/Actions/Oem/UpdateService.BMCFwUpdate",
+    "parameters": {
+     "FlashType": [
+      "FULLFwUpdate",
+      "DUALIMAGEFwUpdate"
+     ],
+     "UploadSelector": [
+      "AutoInactive",
+      "Image1",
+      "Image2",
+      "ImageBoth",
+      "Default"
+     ]
+    }
+   }
+  ],
+  "schema_type": null,
+  "oem": "AMIUpdateService",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Plain-text Lua; BMCFwUpdateActionInfo; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/BiosStaticFiles",
+  "methods": [
+   "GET",
+   "POST"
+  ],
+  "handler_file": "oem/ami_hi/static-file-collection-hi.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Full prefix not recoverable from strings (may be under /Oem/Ami); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/BiosStaticFiles/{FileId}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/static-file-instance-hi.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Full prefix not recoverable from strings (may be under /Oem/Ami); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/BiosStaticFiles/PostStatus/{Id}",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/ami_hi/post-status.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (host interface)",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "Full prefix not recoverable from strings (may be under /Oem/Ami); X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ },
+ {
+  "uri": "/redfish/v1/DynamicExtension",
+  "methods": [
+   "GET"
+  ],
+  "handler_file": "oem/dre/dynamic-root-handler.lua",
+  "actions": [],
+  "schema_type": null,
+  "oem": "Ami (Dynamic Redfish Extension)",
+  "firmware": {
+   "b650_702": false,
+   "b650_905": false,
+   "x470_302": true
+  },
+  "notes": "oem/dre routes are built at runtime (plain-text Lua); sub-resources depend on what BIOS registers; X470-only; methods inferred from X470 allow_method_header_table labels, not verified"
+ }
+]

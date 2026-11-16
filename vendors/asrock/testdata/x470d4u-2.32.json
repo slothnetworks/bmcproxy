@@ -1,0 +1,2153 @@
+{
+ "_comment": "Sanitized from docs/*/har-endpoints.json (already <REDACTED_*>; private IPs mapped to 192.0.2.0/24). Keys are \"METHOD /api/path[?query]\".",
+ "responses": {
+  "GET /api/asrr/GetFanDuty": {
+   "body": {
+    "FAN1_Duty": "55",
+    "FAN2_Duty": "55",
+    "FAN3_Duty": "55",
+    "FAN4_Duty": "55",
+    "FAN5_Duty": "55",
+    "FAN6_Duty": "55",
+    "FAN7_Duty": "55",
+    "FAN8_Duty": "55"
+   },
+   "status": 200
+  },
+  "GET /api/asrr/PowerSource": {
+   "body": [
+    {
+     "ac_input_current": "N/A",
+     "ac_input_current_fault": 0,
+     "ac_input_power": "N/A",
+     "ac_input_power_fault": 0,
+     "ac_input_voltage": "N/A",
+     "ac_input_voltage_fault": 0,
+     "dc_12v_output_current": "N/A",
+     "dc_12v_output_current_fault": 0,
+     "dc_12v_output_power": "N/A",
+     "dc_12v_output_power_fault": 0,
+     "dc_12v_output_voltage": "N/A",
+     "dc_12v_output_voltage_fault": 0,
+     "fan1": "N/A",
+     "fan1_fault": 0,
+     "fan2": "N/A",
+     "fan2_fault": 0,
+     "power_supply_status": 2,
+     "pws_serial_number": "N/A",
+     "temperature1": "N/A",
+     "temperature1_fault": 0,
+     "temperature2": "N/A",
+     "temperature2_fault": 0
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/asrr/fw-info": {
+   "body": {
+    "BIOS_fw_version": "P4.20",
+    "BMC_fw_version": "2.32.00",
+    "CPLD_version": "N/A",
+    "ME_fw_version": "0.14.0.27",
+    "Micro_Code_version": "0a201009"
+   },
+   "status": 200
+  },
+  "GET /api/asrr/getmcalog": {
+   "body": {
+    "MCADump": 0
+   },
+   "status": 200
+  },
+  "GET /api/asrr/model-name": {
+   "body": {
+    "mb_name": "X470D4U"
+   },
+   "status": 200
+  },
+  "GET /api/asrr/product-name": {
+   "body": {
+    "code": 16005,
+    "error": "Error in Getting Model Name"
+   },
+   "status": 500
+  },
+  "GET /api/asrr/selsummary": {
+   "body": {
+    "freeentries": 3150,
+    "selentries": 489
+   },
+   "status": 200
+  },
+  "GET /api/chassis": {
+   "body": {
+    "led_status": 0,
+    "power_status": 0
+   },
+   "status": 200
+  },
+  "GET /api/chassis-status": {
+   "body": {
+    "led_status": 0,
+    "power_status": 0
+   },
+   "status": 200
+  },
+  "GET /api/configuration/project": {
+   "body": [
+    {
+     "feature": "NWLINK"
+    },
+    {
+     "feature": "SYSTEM_FIREWALL"
+    },
+    {
+     "feature": "IPV6_SUPPORT"
+    },
+    {
+     "feature": "EXTENDED_PRIV"
+    },
+    {
+     "feature": "NWBONDING"
+    },
+    {
+     "feature": "SERVICES"
+    },
+    {
+     "feature": "SESSION_MANAGEMENT"
+    },
+    {
+     "feature": "FIRMWARE_FLASH_SUPPORT"
+    },
+    {
+     "feature": "VERSION_CMP_FLASH"
+    },
+    {
+     "feature": "FW_IMAGE"
+    },
+    {
+     "feature": "BACKUP_CONFIG"
+    },
+    {
+     "feature": "PRESERVECONF"
+    },
+    {
+     "feature": "NTP_SERVER_SUPPORT"
+    },
+    {
+     "feature": "SINGLE_PORT_APP"
+    },
+    {
+     "feature": "RUNTIME_SINGLEPORT_SUPPORT"
+    },
+    {
+     "feature": "SNMP"
+    },
+    {
+     "feature": "SAVE_SELLOG"
+    },
+    {
+     "feature": "WEB_APP_PROXY"
+    },
+    {
+     "feature": "TSIG"
+    },
+    {
+     "feature": "MDNS"
+    },
+    {
+     "feature": "TIMEZONE_SUPPORT"
+    },
+    {
+     "feature": "CIRCULAR_SEL"
+    },
+    {
+     "feature": "DISABLE_EMPTY_PASSWORD"
+    },
+    {
+     "feature": "OEM_PROPRIETARY_LEVEL_SUPPORT"
+    },
+    {
+     "feature": "IPV6_COMPLIANCE"
+    },
+    {
+     "feature": "INVENTORY_SUPPORT"
+    },
+    {
+     "feature": "YES"
+    },
+    {
+     "feature": "AUTOVDORECORD"
+    },
+    {
+     "feature": "AUTOVDORECORD_REMOTE"
+    },
+    {
+     "feature": "ADVISER_SUPPORT"
+    },
+    {
+     "feature": "KB_LANG_SELECT_SUPPORT"
+    },
+    {
+     "feature": "RUNTIME_HOST_LOCK"
+    },
+    {
+     "feature": "HOST_LOCK_AUTO"
+    },
+    {
+     "feature": "KVM_SESSION_TIMEOUT"
+    },
+    {
+     "feature": "KVM_SESSION_RECONNECT"
+    },
+    {
+     "feature": "HTML5_KVM"
+    },
+    {
+     "feature": "AUTO_RESIZE_KVM_CLIENT_WINDOW"
+    },
+    {
+     "feature": "JAVA_CD_IMAGE_REDIR"
+    },
+    {
+     "feature": "CAPTURE_BSOD_RAW"
+    },
+    {
+     "feature": "CAPTURE_BSOD_RAW"
+    },
+    {
+     "feature": "MULTIPLE_USER_VMEDIA"
+    },
+    {
+     "feature": "CD_SERVER_APP"
+    },
+    {
+     "feature": "FD_SERVER_APP"
+    },
+    {
+     "feature": "HD_SERVER_APP"
+    },
+    {
+     "feature": "IMG_REDIRECTION"
+    },
+    {
+     "feature": "RMEDIA"
+    },
+    {
+     "feature": "NCSI_SUPPORT"
+    },
+    {
+     "feature": "PAM_REORDERING"
+    },
+    {
+     "feature": "AD_SUPPORT"
+    },
+    {
+     "feature": "LDAP_SUPPORT"
+    },
+    {
+     "feature": "RADIUS_SUPPORT"
+    },
+    {
+     "feature": "REDFISH"
+    },
+    {
+     "feature": "REDFISH_HOSTINTERFACE"
+    },
+    {
+     "feature": "BONDING_SUPPORT"
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/configuration/runtime": {
+   "body": [
+    {
+     "enabled": 0,
+     "feature": "LDAP"
+    },
+    {
+     "enabled": 0,
+     "feature": "AD"
+    },
+    {
+     "enabled": 0,
+     "feature": "RADIUS"
+    },
+    {
+     "enabled": 1,
+     "feature": "SINGLE_PORT_APP"
+    },
+    {
+     "enabled": 0,
+     "feature": "SD_MEDIA_SUPPORT"
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/firmware-info": {
+   "body": {
+    "active_image": 0,
+    "aux": 0,
+    "date": "May 11 2021",
+    "dev_support": 191,
+    "device_id": 32,
+    "fw_rev_1": 2,
+    "fw_rev_2": 50,
+    "fw_ver": "2.32.00",
+    "ipmi_version": 2,
+    "mfg_id_0": 214,
+    "mfg_id_1": 193,
+    "mfg_id_2": 0,
+    "prod_id": 514,
+    "revision": 1,
+    "time": "17:53:41 CST"
+   },
+   "status": 200
+  },
+  "GET /api/fru": {
+   "body": [
+    {
+     "board": {
+      "custom_fields": "",
+      "date": "Thu Jan 13 06:21:00 2022\\n",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 9,
+      "manufacturer": "ASRockRack",
+      "part_number": "",
+      "product_name": "X470D4U",
+      "serial_number": "<REDACTED_SERIAL>",
+      "version": 1
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 0,
+      "part_number": "",
+      "serial_number": "",
+      "type": "",
+      "version": 0
+     },
+     "common_header": {
+      "board_info_area_start_offset": 1,
+      "chassis_info_area_start_offset": 0,
+      "internal_use_area_start_offset": 0,
+      "multi_record_area_start_offset": 0,
+      "product_info_area_start_offset": 0,
+      "version": 1
+     },
+     "device": {
+      "id": 0,
+      "name": "BMC_FRU"
+     },
+     "product": {
+      "asset_tag": "",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 0,
+      "manufacturer": "",
+      "part_number": "",
+      "product_name": "",
+      "product_version": "",
+      "serial_number": "",
+      "version": 0
+     }
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/host_inventory/host_interface_memory_info": {
+   "body": [],
+   "status": 200
+  },
+  "GET /api/host_inventory/host_interface_pcie_device_function_info": {
+   "body": [
+    {
+     "PCIE_Devices": [],
+     "PCIE_Function": []
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/host_inventory/host_interface_processor_info": {
+   "body": [],
+   "status": 200
+  },
+  "GET /api/host_inventory/host_interface_storage_info": {
+   "body": [
+    {
+     "Storage_Contoller": null,
+     "Storage_Drives": null
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/logs/eventlog": {
+   "body": [
+    {
+     "EventData1": 5,
+     "EventData1_Description": "Timestamp Clock Synch",
+     "EventData1_Description_raw": "timestamp_clock_sync",
+     "EventData2": 128,
+     "EventData2_Description": "N/A",
+     "EventData2_Description_raw": "N/A",
+     "EventData3": 255,
+     "EventData3_Description": "N/A",
+     "EventData3_Description_raw": "N/A",
+     "EventDirType": 111,
+     "GenID1": 1,
+     "GenID2": 0,
+     "advanced_event_description": "unknown",
+     "channel_number": 0,
+     "event_description": "timestamp_clock_sync",
+     "event_direction": "asserted",
+     "event_format_ipmi_version": 4,
+     "event_reading_class": "discrete",
+     "generator_type": "system_software_id",
+     "id": 489,
+     "ipmb_lun": 0,
+     "pci_bus_num": 128,
+     "pci_device_num": 31,
+     "pci_function_num": 7,
+     "record_type": "system_event_record",
+     "record_type_num": 2,
+     "sensor_name": "BIOS",
+     "sensor_number": 0,
+     "sensor_reading_value": 0,
+     "sensor_type": "system_event",
+     "sensor_type_num": 18,
+     "system_software_type": "bios",
+     "timestamp": 1794446550,
+     "triggered_value": 0
+    },
+    {
+     "EventData1": 87,
+     "EventData1_Description": "Upper Non-critical - going high",
+     "EventData1_Description_raw": "upper_non_critical_going_high",
+     "EventData2": 92,
+     "EventData2_Description": "Reading that triggered event : 92 °C",
+     "EventData2_Description_raw": "Reading that triggered event : 92 ",
+     "EventData3": 93,
+     "EventData3_Description": "Threshold value that triggered event : 93 °C",
+     "EventData3_Description_raw": "Threshold value that triggered event : 93 ",
+     "EventDirType": 129,
+     "GenID1": 32,
+     "GenID2": 0,
+     "advanced_event_description": "unknown",
+     "channel_number": 0,
+     "event_description": "upper_non_critical_going_high",
+     "event_direction": "deasserted",
+     "event_format_ipmi_version": 4,
+     "event_reading_class": "threshold",
+     "generator_type": "ipmb_slave_address",
+     "id": 405,
+     "ipmb_lun": 0,
+     "record_type": "system_event_record",
+     "record_type_num": 2,
+     "sensor_name": "CPU Temp",
+     "sensor_number": 52,
+     "sensor_reading_value": 64,
+     "sensor_type": "temperature",
+     "sensor_type_num": 1,
+     "system_software_type": "system_management_software",
+     "timestamp": 1654991732,
+     "triggered_value": 0
+    },
+    {
+     "EventData1": 89,
+     "EventData1_Description": "Upper Critical - going high",
+     "EventData1_Description_raw": "upper_critical_going_high",
+     "EventData2": 93,
+     "EventData2_Description": "Reading that triggered event : 93 °C",
+     "EventData2_Description_raw": "Reading that triggered event : 93 ",
+     "EventData3": 94,
+     "EventData3_Description": "Threshold value that triggered event : 94 °C",
+     "EventData3_Description_raw": "Threshold value that triggered event : 94 ",
+     "EventDirType": 129,
+     "GenID1": 32,
+     "GenID2": 0,
+     "advanced_event_description": "unknown",
+     "channel_number": 0,
+     "event_description": "upper_critical_going_high",
+     "event_direction": "deasserted",
+     "event_format_ipmi_version": 4,
+     "event_reading_class": "threshold",
+     "generator_type": "ipmb_slave_address",
+     "id": 396,
+     "ipmb_lun": 0,
+     "record_type": "system_event_record",
+     "record_type_num": 2,
+     "sensor_name": "CPU Temp",
+     "sensor_number": 52,
+     "sensor_reading_value": 64,
+     "sensor_type": "temperature",
+     "sensor_type_num": 1,
+     "system_software_type": "system_management_software",
+     "timestamp": 1654991072,
+     "triggered_value": 0
+    },
+    {
+     "EventData1": 1,
+     "EventData1_Description": "State Asserted",
+     "EventData1_Description_raw": "state_asserted",
+     "EventData2": 255,
+     "EventData2_Description": "N/A",
+     "EventData2_Description_raw": "N/A",
+     "EventData3": 255,
+     "EventData3_Description": "N/A",
+     "EventData3_Description_raw": "N/A",
+     "EventDirType": 131,
+     "GenID1": 32,
+     "GenID2": 0,
+     "advanced_event_description": "unknown",
+     "channel_number": 0,
+     "event_description": "state_asserted",
+     "event_direction": "deasserted",
+     "event_format_ipmi_version": 4,
+     "event_reading_class": "discrete",
+     "generator_type": "ipmb_slave_address",
+     "id": 385,
+     "ipmb_lun": 0,
+     "record_type": "system_event_record",
+     "record_type_num": 2,
+     "sensor_name": "CPU_PROCHOT",
+     "sensor_number": 145,
+     "sensor_reading_value": 0,
+     "sensor_type": "processor",
+     "sensor_type_num": 7,
+     "system_software_type": "system_management_software",
+     "timestamp": 1654990385,
+     "triggered_value": 0
+    },
+    {
+     "EventData1": 36,
+     "EventData1_Description": "OEM Timestamped",
+     "EventData1_Description_raw": "oem_timestamped",
+     "EventData2": 141,
+     "EventData2_Description": "N/A",
+     "EventData2_Description_raw": "N/A",
+     "EventData3": 1,
+     "EventData3_Description": "N/A",
+     "EventData3_Description_raw": "N/A",
+     "EventDirType": 211,
+     "GenID1": 0,
+     "GenID2": 0,
+     "advanced_event_description": "unknown",
+     "channel_number": 0,
+     "event_description": "oem_timestamped",
+     "event_direction": "deasserted",
+     "event_format_ipmi_version": 0,
+     "generator_type": "ipmb_slave_address",
+     "id": 91,
+     "ipmb_lun": 0,
+     "record_type": "oem_record",
+     "record_type_num": 193,
+     "sensor_name": "Unknown",
+     "sensor_number": 2,
+     "sensor_reading_value": 0,
+     "sensor_type": "oem",
+     "sensor_type_num": 192,
+     "system_software_type": "bios",
+     "timestamp": 1650419169,
+     "triggered_value": 0
+    },
+    {
+     "EventData1": 1,
+     "EventData1_Description": "Firmware or software change detected",
+     "EventData1_Description_raw": "firmware_or_software_change_detected",
+     "EventData2": 2,
+     "EventData2_Description": "N/A",
+     "EventData2_Description_raw": "N/A",
+     "EventData3": 32,
+     "EventData3_Description": "N/A",
+     "EventData3_Description_raw": "N/A",
+     "EventDirType": 111,
+     "GenID1": 32,
+     "GenID2": 0,
+     "advanced_event_description": "unknown",
+     "channel_number": 0,
+     "event_description": "firmware_or_software_change_detected",
+     "event_direction": "asserted",
+     "event_format_ipmi_version": 4,
+     "event_reading_class": "discrete",
+     "generator_type": "ipmb_slave_address",
+     "id": 2,
+     "ipmb_lun": 0,
+     "pci_bus_num": 2,
+     "pci_device_num": 4,
+     "pci_function_num": 0,
+     "record_type": "system_event_record",
+     "record_type_num": 2,
+     "sensor_name": "Unknown",
+     "sensor_number": 0,
+     "sensor_reading_value": 0,
+     "sensor_type": "version_change",
+     "sensor_type_num": 43,
+     "system_software_type": "system_management_software",
+     "timestamp": 13,
+     "triggered_value": 0
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/logs/video": {
+   "body": [],
+   "status": 200
+  },
+  "GET /api/maintenance/fwimage_location": {
+   "body": {
+    "id": 1,
+    "image_name": "",
+    "protocol_type": "http",
+    "retry_count": 0,
+    "server_address": ""
+   },
+   "status": 200
+  },
+  "GET /api/maintenance/signed-image-key": {
+   "body": {
+    "id": 1,
+    "key_exists": 0,
+    "public_key_info": ""
+   },
+   "status": 200
+  },
+  "GET /api/sdr": {
+   "body": [
+    {
+     "id": 1,
+     "name": "3VSB",
+     "sensor_number": 1,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 2,
+     "name": "5VSB",
+     "sensor_number": 2,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 3,
+     "name": "VCPU",
+     "sensor_number": 3,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 4,
+     "name": "VSOC",
+     "sensor_number": 4,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 5,
+     "name": "VCCM",
+     "sensor_number": 5,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 6,
+     "name": "APU_VDDP",
+     "sensor_number": 6,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 7,
+     "name": "1.05V_PROM_S5",
+     "sensor_number": 7,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 8,
+     "name": "2.5V_PROM",
+     "sensor_number": 8,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 9,
+     "name": "1.05V_PROM_RUN",
+     "sensor_number": 9,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 10,
+     "name": "BAT",
+     "sensor_number": 10,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 11,
+     "name": "3V",
+     "sensor_number": 11,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 12,
+     "name": "5V",
+     "sensor_number": 12,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 13,
+     "name": "12V",
+     "sensor_number": 13,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 14,
+     "name": "PSU1 VIN",
+     "sensor_number": 24,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 15,
+     "name": "PSU2 VIN",
+     "sensor_number": 25,
+     "type": "voltage",
+     "type_number": 2
+    },
+    {
+     "id": 16,
+     "name": "PSU1 IOUT",
+     "sensor_number": 32,
+     "type": "current",
+     "type_number": 3
+    },
+    {
+     "id": 17,
+     "name": "PSU2 IOUT",
+     "sensor_number": 33,
+     "type": "current",
+     "type_number": 3
+    },
+    {
+     "id": 18,
+     "name": "MB Temp",
+     "sensor_number": 49,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 19,
+     "name": "Card Side Temp",
+     "sensor_number": 50,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 20,
+     "name": "CPU Temp",
+     "sensor_number": 52,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 21,
+     "name": "DDR4_A2_Temp",
+     "sensor_number": 64,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 22,
+     "name": "DDR4_A1_Temp",
+     "sensor_number": 65,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 23,
+     "name": "DDR4_B2_Temp",
+     "sensor_number": 66,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 24,
+     "name": "DDR4_B1_Temp",
+     "sensor_number": 67,
+     "type": "temperature",
+     "type_number": 1
+    },
+    {
+     "id": 25,
+     "name": "FAN1",
+     "sensor_number": 96,
+     "type": "fan",
+     "type_number": 4
+    },
+    {
+     "id": 26,
+     "name": "FAN2",
+     "sensor_number": 98,
+     "type": "fan",
+     "type_number": 4
+    },
+    {
+     "id": 27,
+     "name": "FAN3",
+     "sensor_number": 99,
+     "type": "fan",
+     "type_number": 4
+    },
+    {
+     "id": 28,
+     "name": "FAN4",
+     "sensor_number": 100,
+     "type": "fan",
+     "type_number": 4
+    },
+    {
+     "id": 29,
+     "name": "FAN5",
+     "sensor_number": 101,
+     "type": "fan",
+     "type_number": 4
+    },
+    {
+     "id": 30,
+     "name": "FAN6",
+     "sensor_number": 102,
+     "type": "fan",
+     "type_number": 4
+    },
+    {
+     "id": 31,
+     "name": "PSU1 PIN",
+     "sensor_number": 112,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 32,
+     "name": "PSU2 PIN",
+     "sensor_number": 113,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 33,
+     "name": "PSU1 POUT",
+     "sensor_number": 116,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 34,
+     "name": "PSU2 POUT",
+     "sensor_number": 117,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 35,
+     "name": "ChassisIntr",
+     "sensor_number": 144,
+     "type": "physical_security",
+     "type_number": 5
+    },
+    {
+     "id": 36,
+     "name": "CPU_PROCHOT",
+     "sensor_number": 145,
+     "type": "processor",
+     "type_number": 7
+    },
+    {
+     "id": 37,
+     "name": "CPU_THERMTRIP",
+     "sensor_number": 147,
+     "type": "processor",
+     "type_number": 7
+    },
+    {
+     "id": 38,
+     "name": "PSU1 Status",
+     "sensor_number": 160,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 39,
+     "name": "PSU1 AC lost",
+     "sensor_number": 161,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 40,
+     "name": "PSU2 Status",
+     "sensor_number": 168,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 41,
+     "name": "PSU2 AC lost",
+     "sensor_number": 169,
+     "type": "power_supply",
+     "type_number": 8
+    },
+    {
+     "id": 42,
+     "name": "PEF",
+     "sensor_number": 232,
+     "type": "system_event",
+     "type_number": 18
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/sensors": {
+   "body": [
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 3.7,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 3.88,
+     "id": 1,
+     "lower_critical_threshold": 3.04,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 2.88,
+     "name": "3VSB",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 170.0,
+     "reading": 3.4,
+     "sensor_number": 1,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 5.49,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 5.73,
+     "id": 2,
+     "lower_critical_threshold": 4.5,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 4.26,
+     "name": "5VSB",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 170.0,
+     "reading": 5.1,
+     "sensor_number": 2,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 1.65,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 1.73,
+     "id": 3,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "VCPU",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 130.0,
+     "reading": 1.3,
+     "sensor_number": 3,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 12336,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 1.54,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 1.61,
+     "id": 4,
+     "lower_critical_threshold": 0.36,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.34,
+     "name": "VSOC",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 98.0,
+     "reading": 0.98,
+     "sensor_number": 4,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 1.32,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 1.38,
+     "id": 5,
+     "lower_critical_threshold": 1.08,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 1.02,
+     "name": "VCCM",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 119.0,
+     "reading": 1.19,
+     "sensor_number": 5,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 1.16,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 1.21,
+     "id": 6,
+     "lower_critical_threshold": 0.81,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.77,
+     "name": "APU_VDDP",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 95.0,
+     "reading": 0.95,
+     "sensor_number": 6,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 1.16,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 1.21,
+     "id": 7,
+     "lower_critical_threshold": 0.95,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.89,
+     "name": "1.05V_PROM_S5",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 106.0,
+     "reading": 1.06,
+     "sensor_number": 7,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 2.74,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 2.88,
+     "id": 8,
+     "lower_critical_threshold": 2.26,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 2.12,
+     "name": "2.5V_PROM",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 128.0,
+     "reading": 2.56,
+     "sensor_number": 8,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 1.16,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 1.21,
+     "id": 9,
+     "lower_critical_threshold": 0.88,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.85,
+     "name": "1.05V_PROM_RUN",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 104.0,
+     "reading": 1.04,
+     "sensor_number": 9,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 3.4,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 3.56,
+     "id": 10,
+     "lower_critical_threshold": 2.7,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 2.0,
+     "name": "BAT",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 157.0,
+     "reading": 3.14,
+     "sensor_number": 10,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 3.62,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 3.78,
+     "id": 11,
+     "lower_critical_threshold": 2.98,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 2.8,
+     "name": "3V",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 168.0,
+     "reading": 3.36,
+     "sensor_number": 11,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 5.49,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 5.73,
+     "id": 12,
+     "lower_critical_threshold": 4.5,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 4.26,
+     "name": "5V",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 169.0,
+     "reading": 5.07,
+     "sensor_number": 12,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 13.2,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 13.8,
+     "id": 13,
+     "lower_critical_threshold": 10.8,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 10.2,
+     "name": "12V",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 120.0,
+     "reading": 12.0,
+     "sensor_number": 13,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 13878,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 14,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU1 VIN",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 24,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 15,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU2 VIN",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 25,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "voltage",
+     "type_number": 2,
+     "unit": "V"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 16,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU1 IOUT",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 32,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "current",
+     "type_number": 3,
+     "unit": "A"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 17,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU2 IOUT",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 33,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "current",
+     "type_number": 3,
+     "unit": "A"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 55.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 18,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "MB Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 29.0,
+     "reading": 29.0,
+     "sensor_number": 49,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 2056,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 68.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 19,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "Card Side Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 31.0,
+     "reading": 31.0,
+     "sensor_number": 50,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 2056,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 94.0,
+     "higher_non_critical_threshold": 93.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 20,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "CPU Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 52.0,
+     "reading": 52.0,
+     "sensor_number": 52,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 6168,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 85.0,
+     "higher_non_critical_threshold": 84.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 21,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "DDR4_A2_Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 64,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 6168,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 85.0,
+     "higher_non_critical_threshold": 84.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 22,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "DDR4_A1_Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 65,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 6168,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 85.0,
+     "higher_non_critical_threshold": 84.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 23,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "DDR4_B2_Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 66,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 6168,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 85.0,
+     "higher_non_critical_threshold": 84.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 24,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "DDR4_B1_Temp",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 67,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 6168,
+     "type": "temperature",
+     "type_number": 1,
+     "unit": "°C"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 25,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 100.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "FAN1",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 96,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 257,
+     "type": "fan",
+     "type_number": 4,
+     "unit": "RPM"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 26,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 100.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "FAN2",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 98,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 257,
+     "type": "fan",
+     "type_number": 4,
+     "unit": "RPM"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 27,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 100.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "FAN3",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 99,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 257,
+     "type": "fan",
+     "type_number": 4,
+     "unit": "RPM"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 28,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 100.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "FAN4",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 127.0,
+     "reading": 12700.0,
+     "sensor_number": 100,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 257,
+     "type": "fan",
+     "type_number": 4,
+     "unit": "RPM"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 29,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 100.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "FAN5",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 96.0,
+     "reading": 9600.0,
+     "sensor_number": 101,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 257,
+     "type": "fan",
+     "type_number": 4,
+     "unit": "RPM"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 30,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 100.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "FAN6",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 102,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 257,
+     "type": "fan",
+     "type_number": 4,
+     "unit": "RPM"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 31,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU1 PIN",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 112,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "W"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 32,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU2 PIN",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 113,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "W"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 33,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU1 POUT",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 116,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "W"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 34,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU2 POUT",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 117,
+     "sensor_state": 1,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "W"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 111,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 35,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "ChassisIntr",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 32768.0,
+     "sensor_number": 144,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "physical_security",
+     "type_number": 5,
+     "unit": "unknown"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 3,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 36,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "CPU_PROCHOT",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 32768.0,
+     "sensor_number": 145,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "processor",
+     "type_number": 7,
+     "unit": "unknown"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 111,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 37,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "CPU_THERMTRIP",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 32768.0,
+     "sensor_number": 147,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "processor",
+     "type_number": 7,
+     "unit": "unknown"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 111,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 38,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU1 Status",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 32768.0,
+     "sensor_number": 160,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "unknown"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 39,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU1 AC lost",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 161,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "unknown"
+    },
+    {
+     "accessible": 0,
+     "discrete_state": 111,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 40,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU2 Status",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 32768.0,
+     "sensor_number": 168,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "unknown"
+    },
+    {
+     "accessible": 213,
+     "discrete_state": 0,
+     "higher_critical_threshold": 0.0,
+     "higher_non_critical_threshold": 0.0,
+     "higher_non_recoverable_threshold": 0.0,
+     "id": 41,
+     "lower_critical_threshold": 0.0,
+     "lower_non_critical_threshold": 0.0,
+     "lower_non_recoverable_threshold": 0.0,
+     "name": "PSU2 AC lost",
+     "owner_id": 32,
+     "owner_lun": 0,
+     "raw_reading": 0.0,
+     "reading": 0.0,
+     "sensor_number": 169,
+     "sensor_state": 0,
+     "settable_readable_threshMask": 0,
+     "type": "power_supply",
+     "type_number": 8,
+     "unit": "unknown"
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/settings/date-time": {
+   "body": {
+    "auto_date": 1,
+    "daylight": 0,
+    "id": 1,
+    "localized_timestamp": 1794808815,
+    "primary_ntp": "pool.ntp.org",
+    "secondary_ntp": "time.nist.gov",
+    "timestamp": 1794808815,
+    "timezone": "GMT+0",
+    "utc_minutes": 0
+   },
+   "status": 200
+  },
+  "GET /api/settings/media/adviser": {
+   "body": {
+    "keyboard_layout": "AD",
+    "kvm_port": 7578,
+    "license": 1,
+    "mouse_mode": 2,
+    "retry_count": 3,
+    "retry_interval": 10,
+    "secure_channel": 0,
+    "singleport_status": 1,
+    "status": 1,
+    "web_port": 443
+   },
+   "status": 200
+  },
+  "GET /api/settings/network": {
+   "body": [
+    {
+     "channel_number": 1,
+     "id": 1,
+     "interface_name": "eth0",
+     "ipv4_address": "192.0.2.10",
+     "ipv4_dhcp_enable": 0,
+     "ipv4_enable": 1,
+     "ipv4_gateway": "192.0.2.11",
+     "ipv4_subnet": "255.255.255.0",
+     "ipv6_address": "::",
+     "ipv6_dhcp_enable": 1,
+     "ipv6_enable": 1,
+     "ipv6_gateway": "::",
+     "ipv6_index": 0,
+     "ipv6_prefix": 0,
+     "lan_enable": 1,
+     "mac_address": "<REDACTED_MAC>",
+     "vlan_enable": 0,
+     "vlan_id": 0,
+     "vlan_priority": 0
+    },
+    {
+     "channel_number": 8,
+     "id": 2,
+     "interface_name": "eth1",
+     "ipv4_address": "0.0.0.0",
+     "ipv4_dhcp_enable": 1,
+     "ipv4_enable": 1,
+     "ipv4_gateway": "0.0.0.0",
+     "ipv4_subnet": "0.0.0.0",
+     "ipv6_address": "::",
+     "ipv6_dhcp_enable": 1,
+     "ipv6_enable": 1,
+     "ipv6_gateway": "::",
+     "ipv6_index": 0,
+     "ipv6_prefix": 0,
+     "lan_enable": 1,
+     "mac_address": "<REDACTED_MAC>",
+     "vlan_enable": 0,
+     "vlan_id": 0,
+     "vlan_priority": 0
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/settings/network-bond": {
+   "body": {
+    "auto_configuration_enable": 1,
+    "bond_enable": 0,
+    "bond_mode": "active-backup",
+    "id": 1
+   },
+   "status": 200
+  },
+  "GET /api/settings/static-ipv6": {
+   "body": [
+    {
+     "interface_name": "eth0",
+     "ipv6_address": "",
+     "ipv6_index": 0,
+     "ipv6_prefix": 0
+    },
+    {
+     "interface_name": "eth0",
+     "ipv6_address": "",
+     "ipv6_index": 1,
+     "ipv6_prefix": 0
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/settings/users": {
+   "body": [
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 1794808795,
+     "email_format": "ami_format",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 1,
+     "kvm": 1,
+     "name": "anonymous",
+     "network_privilege": "administrator",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "<REDACTED_PRIVILEGE_LIMIT_SERIAL>",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 1
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 1,
+     "creation_time": 1649421370,
+     "email_format": "ami_format",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 2,
+     "kvm": 1,
+     "name": "admin",
+     "network_privilege": "administrator",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "<REDACTED_PRIVILEGE_LIMIT_SERIAL>",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 1
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 1788400303,
+     "email_format": "ami_format",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 3,
+     "kvm": 1,
+     "name": "fwupd",
+     "network_privilege": "administrator",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "<REDACTED_PRIVILEGE_LIMIT_SERIAL>",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 1
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 4,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 5,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 6,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 7,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 8,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 9,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    },
+    {
+     "OEMProprietary_level_Privilege": 1,
+     "access": 0,
+     "creation_time": 0,
+     "email_format": "",
+     "email_id": "",
+     "fixed_user_count": 2,
+     "id": 10,
+     "kvm": 0,
+     "name": "",
+     "network_privilege": "",
+     "prev_snmp": 0,
+     "privilege_limit_serial": "",
+     "snmp": 0,
+     "snmp_access": "",
+     "snmp_authentication_protocol": "",
+     "snmp_privacy_protocol": "",
+     "ssh_key": "Not Available",
+     "vmedia": 0
+    }
+   ],
+   "status": 200
+  },
+  "GET /api/settings/video/remote-storage": {
+   "body": {
+    "domain_name": "",
+    "id": 1,
+    "ip_address": "",
+    "max_dumps": 2,
+    "max_duration": 20,
+    "max_size": 5,
+    "mount_status": -1,
+    "password": "",
+    "remote_path": "",
+    "remote_support": 0,
+    "share_type": "NFS",
+    "user_name": ""
+   },
+   "status": 200
+  },
+  "POST /api/actions/power": {
+   "body": {
+    "power_command": 1
+   },
+   "status": 200
+  }
+ }
+}

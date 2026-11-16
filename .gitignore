@@ -1,0 +1,7 @@
+firmware-dumped/*
+harfiles/*
+bmc-firmware/*
+*.env
+/bin/
+/bmcprobe
+/bmcproxy

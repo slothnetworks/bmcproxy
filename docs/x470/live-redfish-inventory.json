@@ -1,0 +1,755 @@
+{
+ "_meta": {
+  "bmc": "<x470-bmc>",
+  "board": "X470D4U",
+  "probe_date_utc": "2026-11-16",
+  "live_firmware": {
+   "BMC": "2.32.00 (build May 11 2021)",
+   "BIOS": "P4.20",
+   "ME": "0.11.0.65",
+   "microcode": "0a50000b",
+   "CPLD": "N/A"
+  },
+  "static_docs_firmware": "3.02.00 (NOT the live version)",
+  "auth_status": "Redfish rejected the probe account (the same admin credentials that work for /api) with both HTTP Basic and POST SessionService/Sessions (401 Security.1.0.AccessDenied). The authenticated crawl was therefore NOT possible; this file covers only what is reachable without credentials plus the $metadata schema list.",
+  "sanitized": "No serials, UUIDs, MACs, IPs or hostnames were present in the unauthenticated responses; the ServiceRoot has no UUID field.",
+  "crawl_cap": 600,
+  "crawl_resources": 24
+ },
+ "service_root": {
+  "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
+  "@odata.etag": "W/\"1794669113\"",
+  "@odata.id": "/redfish/v1/",
+  "@odata.type": "#ServiceRoot.v1_3_1.ServiceRoot",
+  "AccountService": {
+   "@odata.id": "/redfish/v1/AccountService"
+  },
+  "Chassis": {
+   "@odata.id": "/redfish/v1/Chassis"
+  },
+  "CompositionService": {
+   "@odata.id": "/redfish/v1/CompositionService"
+  },
+  "Description": "The service root for all Redfish requests on this host",
+  "EventService": {
+   "@odata.id": "/redfish/v1/EventService"
+  },
+  "Id": "RootService",
+  "JsonSchemas": {
+   "@odata.id": "/redfish/v1/JsonSchemas"
+  },
+  "Links": {
+   "Sessions": {
+    "@odata.id": "/redfish/v1/SessionService/Sessions"
+   }
+  },
+  "Managers": {
+   "@odata.id": "/redfish/v1/Managers"
+  },
+  "Name": "Root Service",
+  "Oem": {
+   "Ami": {
+    "@odata.type": "AMIServiceRoot.v1_0_0.AMIServiceRoot",
+    "Configurations": {
+     "@odata.id": "/redfish/v1/configurations"
+    },
+    "RtpVersion": "1.5.b"
+   },
+   "Dre": {
+    "@odata.type": "#AMIDynamicExtension.v1_0_0.AMIDynamicExtension",
+    "DynamicExtension": {
+     "@odata.id": "/redfish/v1/DynamicExtension"
+    }
+   }
+  },
+  "Product": "AMI Redfish Server",
+  "ProtocolFeaturesSupported": {
+   "ExpandQuery": {
+    "ExpandAll": true,
+    "Levels": true,
+    "Links": true,
+    "MaxLevels": 5,
+    "NoLinks": true
+   },
+   "FilterQuery": true,
+   "SelectQuery": true
+  },
+  "RedfishVersion": "1.5.0",
+  "Registries": {
+   "@odata.id": "/redfish/v1/Registries"
+  },
+  "SessionService": {
+   "@odata.id": "/redfish/v1/SessionService"
+  },
+  "Systems": {
+   "@odata.id": "/redfish/v1/Systems"
+  },
+  "Tasks": {
+   "@odata.id": "/redfish/v1/TaskService"
+  },
+  "TelemetryService": {
+   "@odata.id": "/redfish/v1/TelemetryService"
+  },
+  "UpdateService": {
+   "@odata.id": "/redfish/v1/UpdateService"
+  }
+ },
+ "service_root_headers_note": "Server: AMI MegaRAC Redfish Service; OData-Version: 4.0; Cache-Control: no-cache, must-revalidate; ETag W/\"1794669113\" (same value on every resource seen = service LastModified epoch 2026-11-14T15:11:53Z); Link headers per top-level property; Access-Control-Allow-Origin: * with Allow-Credentials: true; Content-Length (not chunked).",
+ "odata_service_document": {
+  "@odata.context": "/redfish/v1/$metadata",
+  "@odata.etag": "W/\"1794669113\"",
+  "@odata.id": "/redfish/v1/odata",
+  "value": [
+   {
+    "kind": "Singleton",
+    "name": "Service",
+    "url": "/redfish/v1/"
+   },
+   {
+    "kind": "Singleton",
+    "name": "Systems",
+    "url": "/redfish/v1/Systems"
+   },
+   {
+    "kind": "Singleton",
+    "name": "Chassis",
+    "url": "/redfish/v1/Chassis"
+   },
+   {
+    "kind": "Singleton",
+    "name": "Managers",
+    "url": "/redfish/v1/Managers"
+   },
+   {
+    "kind": "Singleton",
+    "name": "Tasks",
+    "url": "/redfish/v1/TaskService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "AccountService",
+    "url": "/redfish/v1/AccountService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "SessionService",
+    "url": "/redfish/v1/SessionService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "EventService",
+    "url": "/redfish/v1/EventService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "JsonSchemas",
+    "url": "/redfish/v1/JsonSchemas"
+   },
+   {
+    "kind": "Singleton",
+    "name": "Registries",
+    "url": "/redfish/v1/Registries"
+   },
+   {
+    "kind": "Singleton",
+    "name": "CompositionService",
+    "url": "/redfish/v1/CompositionService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "TelemetryService",
+    "url": "/redfish/v1/TelemetryService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "UpdateService",
+    "url": "/redfish/v1/UpdateService"
+   },
+   {
+    "kind": "Singleton",
+    "name": "Sessions",
+    "url": "/redfish/v1/SessionService/Sessions"
+   },
+   {
+    "kind": "Singleton",
+    "name": "DynamicExtension",
+    "url": "/redfish/v1/DynamicExtension"
+   },
+   {
+    "kind": "Singleton",
+    "name": "configurations",
+    "url": "/redfish/v1/configurations"
+   }
+  ]
+ },
+ "metadata_schemas_declared": [
+  "AccountService",
+  "ActionInfo",
+  "Assembly",
+  "AttributeRegistry",
+  "Bios",
+  "BootOption",
+  "BootOptionCollection",
+  "Chassis",
+  "ChassisCollection",
+  "CollectionCapabilities",
+  "CompositionService",
+  "ComputerSystem",
+  "ComputerSystemCollection",
+  "Drive",
+  "Endpoint",
+  "EndpointCollection",
+  "EthernetInterface",
+  "EthernetInterfaceCollection",
+  "Event",
+  "EventDestination",
+  "EventDestinationCollection",
+  "EventService",
+  "ExternalAccountProvider",
+  "ExternalAccountProviderCollection",
+  "Fabric",
+  "FabricCollection",
+  "HostInterface",
+  "HostInterfaceCollection",
+  "IPAddresses",
+  "JsonSchemaFile",
+  "JsonSchemaFileCollection",
+  "JsonSchemas/AMIAccountServiceConfigurations",
+  "JsonSchemas/AMIDynamicExtension",
+  "JsonSchemas/AMIServiceRoot",
+  "JsonSchemas/AMIUpdateService",
+  "JsonSchemas/AccountServiceConfigurations",
+  "JsonSchemas/Configurations",
+  "JsonSchemas/DynamicExtension",
+  "LogEntry",
+  "LogEntryCollection",
+  "LogService",
+  "LogServiceCollection",
+  "Manager",
+  "ManagerAccount",
+  "ManagerAccountCollection",
+  "ManagerCollection",
+  "ManagerNetworkProtocol",
+  "Memory",
+  "MemoryChunks",
+  "MemoryChunksCollection",
+  "MemoryCollection",
+  "MemoryDomain",
+  "MemoryDomainCollection",
+  "MemoryMetrics",
+  "Message",
+  "MessageRegistry",
+  "MessageRegistryCollection",
+  "MessageRegistryFile",
+  "MessageRegistryFileCollection",
+  "NetworkAdapter",
+  "NetworkAdapterCollection",
+  "NetworkDeviceFunction",
+  "NetworkDeviceFunctionCollection",
+  "NetworkInterface",
+  "NetworkInterfaceCollection",
+  "NetworkPort",
+  "NetworkPortCollection",
+  "PCIeDevice",
+  "PCIeFunction",
+  "PhysicalContext",
+  "Port",
+  "PortCollection",
+  "Power",
+  "PrivilegeRegistry",
+  "Privileges",
+  "Processor",
+  "ProcessorCollection",
+  "Protocol",
+  "RedfishExtensions",
+  "Redundancy",
+  "Resource",
+  "ResourceBlock",
+  "ResourceBlockCollection",
+  "Role",
+  "RoleCollection",
+  "SecureBoot",
+  "SerialInterface",
+  "SerialInterfaceCollection",
+  "ServiceRoot",
+  "Session",
+  "SessionCollection",
+  "SessionService",
+  "Settings",
+  "SimpleStorage",
+  "SimpleStorageCollection",
+  "Storage",
+  "StorageCollection",
+  "Switch",
+  "SwitchCollection",
+  "Task",
+  "TaskCollection",
+  "TaskService",
+  "Thermal",
+  "UpdateService",
+  "VLanNetworkInterface",
+  "VLanNetworkInterfaceCollection",
+  "VirtualMedia",
+  "VirtualMediaCollection",
+  "Volume",
+  "VolumeCollection",
+  "Zone",
+  "ZoneCollection"
+ ],
+ "resources": [
+  {
+   "uri": "/redfish/v1/",
+   "status": 200,
+   "allow": "GET",
+   "etag": "W/\"1794669113\"",
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 1518,
+   "odata_type": "#ServiceRoot.v1_3_1.ServiceRoot"
+  },
+  {
+   "uri": "/redfish/v1/odata",
+   "status": 200,
+   "allow": "GET",
+   "etag": "W/\"1794669113\"",
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 1323,
+   "odata_type": null
+  },
+  {
+   "uri": "/redfish/v1/$metadata",
+   "status": 200,
+   "allow": "GET",
+   "etag": null,
+   "ctype": "application/xml",
+   "bytes": 46694
+  },
+  {
+   "uri": "/redfish/v1/Systems/Self",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 560,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/NoSuchThing",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 557,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/Registries",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 554,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/JsonSchemas",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 557,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/SessionService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 566,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/Managers/Self",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 563,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/Chassis/Self",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 560,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/CertificateService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 578,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/DynamicExtension",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 572,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/configurations",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 566,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/GlobalLuaTables",
+   "status": 200,
+   "allow": null,
+   "etag": "W/\"1794669113\"",
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 182,
+   "odata_type": null,
+   "members_count": 1,
+   "members_returned": 1
+  },
+  {
+   "uri": "/redfish/v1/AccountService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 566,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/Chassis",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 545,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/CompositionService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 578,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/EventService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 560,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/Managers",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 548,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/SessionService/Sessions",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 593,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/Systems",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 545,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/TaskService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 557,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/TelemetryService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 572,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  },
+  {
+   "uri": "/redfish/v1/UpdateService",
+   "status": 401,
+   "allow": null,
+   "etag": null,
+   "ctype": "application/json; charset=UTF-8",
+   "bytes": 563,
+   "odata_type": null,
+   "error": "Security.1.0.AccessDenied"
+  }
+ ],
+ "extra_requests": [
+  {
+   "uri": "/redfish",
+   "status": 200,
+   "note": "version document {\"v1\":\"/redfish/v1/\"}, unauthenticated"
+  },
+  {
+   "uri": "/redfish/v1",
+   "status": 302,
+   "note": "302 Location: /redfish/v1/ (empty text/html body); clients must follow the redirect or use the trailing slash"
+  },
+  {
+   "uri": "/redfish/v1/ (OPTIONS)",
+   "status": 405,
+   "note": "text/html 'Method Not Allowed'; OPTIONS is not implemented"
+  },
+  {
+   "uri": "/redfish/v1/ (HEAD)",
+   "status": 200,
+   "note": "Allow: GET, ETag present, Content-Type text/html, Content-Length 0"
+  },
+  {
+   "uri": "/redfish/v1/?$select=RedfishVersion",
+   "status": 200,
+   "note": "$select honoured without auth on the service root"
+  },
+  {
+   "uri": "/redfish/v1/?$expand=.($levels=1)",
+   "status": 401,
+   "note": "$expand on the root without auth fails as a whole (Security.1.0.AccessDenied)"
+  },
+  {
+   "uri": "/redfish/v1/?$foo=1",
+   "status": 501,
+   "note": "Base.1.0.QueryNotSupported, MessageArgs [\"foo\"]"
+  }
+ ],
+ "static_prediction_x470_302_uri_patterns": [
+  "/redfish",
+  "/redfish/*",
+  "/redfish/... trailing \"/\"",
+  "/redfish/v1",
+  "/redfish/v1/",
+  "/redfish/v1/$metadata",
+  "/redfish/v1/AccountService",
+  "/redfish/v1/AccountService/Accounts",
+  "/redfish/v1/AccountService/Accounts/HI-FW",
+  "/redfish/v1/AccountService/Accounts/HI-FW/{AccountId}",
+  "/redfish/v1/AccountService/Accounts/{AccountId}",
+  "/redfish/v1/AccountService/Configurations",
+  "/redfish/v1/AccountService/Roles",
+  "/redfish/v1/AccountService/Roles/{RoleId}",
+  "/redfish/v1/BiosStaticFiles",
+  "/redfish/v1/BiosStaticFiles/PostStatus/{Id}",
+  "/redfish/v1/BiosStaticFiles/{FileId}",
+  "/redfish/v1/Chassis",
+  "/redfish/v1/Chassis/{ChassisId}",
+  "/redfish/v1/Chassis/{ChassisId}/$ref",
+  "/redfish/v1/Chassis/{ChassisId}/Actions/{Action}",
+  "/redfish/v1/Chassis/{ChassisId}/Assembly",
+  "/redfish/v1/Chassis/{ChassisId}/LogServices",
+  "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}",
+  "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Actions/{Action}",
+  "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Entries",
+  "/redfish/v1/Chassis/{ChassisId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Actions/{Action}",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkPorts",
+  "/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkPorts/{NetworkPortId}",
+  "/redfish/v1/Chassis/{ChassisId}/PCIeDevices",
+  "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}",
+  "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Actions/AmiBios.ChangeState",
+  "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/ChangeStateActionInfo",
+  "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Functions/{FunctionId}",
+  "/redfish/v1/Chassis/{ChassisId}/Power",
+  "/redfish/v1/Chassis/{ChassisId}/ResetActionInfo",
+  "/redfish/v1/Chassis/{ChassisId}/Thermal",
+  "/redfish/v1/Chassis/{ChassisId}/Thermal/... (Thermal-Instance)",
+  "/redfish/v1/Chassis/{ChassisId}/Thermal/Fans/{FanId}",
+  "/redfish/v1/CompositionService",
+  "/redfish/v1/CompositionService/ResourceBlocks",
+  "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}",
+  "/redfish/v1/CompositionService/ResourceZones",
+  "/redfish/v1/CompositionService/ResourceZones/{ZoneId}",
+  "/redfish/v1/DynamicExtension",
+  "/redfish/v1/EventService",
+  "/redfish/v1/EventService/Actions/EventService.SubmitDelayedTestEvent",
+  "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+  "/redfish/v1/EventService/SubmitDelayedTestEventActionInfo",
+  "/redfish/v1/EventService/SubmitTestEventActionInfo",
+  "/redfish/v1/EventService/Subscriptions",
+  "/redfish/v1/EventService/Subscriptions/Members",
+  "/redfish/v1/EventService/Subscriptions/{SubscriptionId}",
+  "/redfish/v1/Fabrics/{FabricId}/Endpoints",
+  "/redfish/v1/Fabrics/{FabricId}/Endpoints/{EndpointId}",
+  "/redfish/v1/GlobalLuaTables",
+  "/redfish/v1/JsonSchemas",
+  "/redfish/v1/JsonSchemas/{SchemaFile}",
+  "/redfish/v1/Managers",
+  "/redfish/v1/Managers/Self/Actions/RedfishDBReset",
+  "/redfish/v1/Managers/Self/FactoryResetActionInfo",
+  "/redfish/v1/Managers/{ManagerId}",
+  "/redfish/v1/Managers/{ManagerId}/Actions/{Action}",
+  "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces",
+  "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{EthernetInterfaceId}",
+  "/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{EthernetInterfaceId}/{Id}",
+  "/redfish/v1/Managers/{ManagerId}/HostInterfaces",
+  "/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}",
+  "/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}/HostEthernetInterfaces",
+  "/redfish/v1/Managers/{ManagerId}/LogServices",
+  "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}",
+  "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Actions/{Action}",
+  "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries",
+  "/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "/redfish/v1/Managers/{ManagerId}/NetworkProtocol",
+  "/redfish/v1/Managers/{ManagerId}/ResetActionInfo",
+  "/redfish/v1/Managers/{ManagerId}/SerialInterfaces",
+  "/redfish/v1/Managers/{ManagerId}/SerialInterfaces/{SerialInterfaceId}",
+  "/redfish/v1/Managers/{ManagerId}/VirtualMedia",
+  "/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}",
+  "/redfish/v1/Oem/Ami/BiosStaticFiles",
+  "/redfish/v1/Oem/Ami/BiosStaticFiles/PostStatus/{Id}",
+  "/redfish/v1/Oem/Ami/BiosStaticFiles/{FileId}",
+  "/redfish/v1/Oem/Ami/InventoryData",
+  "/redfish/v1/Oem/Ami/InventoryData/Status",
+  "/redfish/v1/Registries",
+  "/redfish/v1/Registries/Static/{RegistryFile}",
+  "/redfish/v1/Registries/{RegistryFile}",
+  "/redfish/v1/SessionService",
+  "/redfish/v1/SessionService/Sessions",
+  "/redfish/v1/SessionService/Sessions/{SessionId}",
+  "/redfish/v1/Systems",
+  "/redfish/v1/Systems/{SystemId}",
+  "/redfish/v1/Systems/{SystemId}/Actions/{Action}",
+  "/redfish/v1/Systems/{SystemId}/Bios",
+  "/redfish/v1/Systems/{SystemId}/Bios/Actions/{Action}",
+  "/redfish/v1/Systems/{SystemId}/Bios/ChangePasswordActionInfo",
+  "/redfish/v1/Systems/{SystemId}/Bios/ResetBiosActionInfo",
+  "/redfish/v1/Systems/{SystemId}/Bios/SD",
+  "/redfish/v1/Systems/{SystemId}/BootOptions",
+  "/redfish/v1/Systems/{SystemId}/BootOptions/{BootOptionId}",
+  "/redfish/v1/Systems/{SystemId}/EthernetInterfaces",
+  "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}",
+  "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs",
+  "/redfish/v1/Systems/{SystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VlanId}",
+  "/redfish/v1/Systems/{SystemId}/LogServices",
+  "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}",
+  "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Actions/{Action}",
+  "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries",
+  "/redfish/v1/Systems/{SystemId}/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "/redfish/v1/Systems/{SystemId}/Memory",
+  "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}",
+  "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/Actions/{Action}",
+  "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/ChangeStateActionInfo",
+  "/redfish/v1/Systems/{SystemId}/Memory/{MemoryId}/Metrics",
+  "/redfish/v1/Systems/{SystemId}/MemoryDomains",
+  "/redfish/v1/Systems/{SystemId}/MemoryDomains/{MemoryDomainId}",
+  "/redfish/v1/Systems/{SystemId}/MemoryDomains/{MemoryDomainId}/MemoryChunks",
+  "/redfish/v1/Systems/{SystemId}/MemoryDomains/{MemoryDomainId}/MemoryChunks/{MemoryChunkId}",
+  "/redfish/v1/Systems/{SystemId}/NetworkInterfaces",
+  "/redfish/v1/Systems/{SystemId}/NetworkInterfaces/{NetworkInterfaceId}",
+  "/redfish/v1/Systems/{SystemId}/NetworkInterfaces/{NetworkInterfaceId}/NetworkDeviceFunctions",
+  "/redfish/v1/Systems/{SystemId}/Oem/Ami/Inventory/Crc",
+  "/redfish/v1/Systems/{SystemId}/Processors",
+  "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}",
+  "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors",
+  "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}",
+  "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/SubProcessors",
+  "/redfish/v1/Systems/{SystemId}/Processors/{ProcessorId}/SubProcessors/{SubProcessorId}/SubProcessors/{SubProcessorId2}",
+  "/redfish/v1/Systems/{SystemId}/ResetActionInfo",
+  "/redfish/v1/Systems/{SystemId}/SecureBoot",
+  "/redfish/v1/Systems/{SystemId}/SecureBoot/Actions/{Action}",
+  "/redfish/v1/Systems/{SystemId}/SecureBoot/ResetKeysActionInfo",
+  "/redfish/v1/Systems/{SystemId}/SimpleStorage",
+  "/redfish/v1/Systems/{SystemId}/SimpleStorage/{SimpleStorageId}",
+  "/redfish/v1/Systems/{SystemId}/Storage",
+  "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}",
+  "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Drives/{DriveId}",
+  "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes",
+  "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}",
+  "/redfish/v1/Systems/{SystemId}/Storage/{StorageId}/Volumes/{VolumeId}/Actions/{Action}",
+  "/redfish/v1/TaskService",
+  "/redfish/v1/TaskService/Tasks",
+  "/redfish/v1/TaskService/Tasks/Members",
+  "/redfish/v1/TaskService/Tasks/{TaskId}",
+  "/redfish/v1/TelemetryService",
+  "/redfish/v1/TelemetryService/LogServices",
+  "/redfish/v1/TelemetryService/LogServices/{LogServiceId}",
+  "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Actions/{Action}",
+  "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/ClearlogActionInfo",
+  "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Entries",
+  "/redfish/v1/TelemetryService/LogServices/{LogServiceId}/Entries/{EntryId}",
+  "/redfish/v1/TelemetryService/MetricDefinitions",
+  "/redfish/v1/TelemetryService/MetricDefinitions/{MetricDefinitionId}",
+  "/redfish/v1/TelemetryService/MetricReportDefinitions",
+  "/redfish/v1/TelemetryService/MetricReportDefinitions/{MetricReportDefinitionId}",
+  "/redfish/v1/TelemetryService/MetricReports",
+  "/redfish/v1/TelemetryService/MetricReports/{MetricReportId}",
+  "/redfish/v1/TelemetryService/Triggers",
+  "/redfish/v1/TelemetryService/Triggers/{TriggerId}",
+  "/redfish/v1/UpdateService",
+  "/redfish/v1/UpdateService/Actions/AmiOemBMCUpdate",
+  "/redfish/v1/UpdateService/Actions/Oem/UpdateService.UploadFirmwareImage",
+  "/redfish/v1/UpdateService/Actions/Oem/{Action}",
+  "/redfish/v1/UpdateService/Actions/SimpleUpdate",
+  "/redfish/v1/UpdateService/{ActionInfoName}",
+  "/redfish/v1/configurations",
+  "/redfish/v1/odata",
+  "/redfish/v1/odata/",
+  "/redfish/v1/oem/ami/configuredbsnapshot"
+ ]
+}

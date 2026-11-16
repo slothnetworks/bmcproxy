@@ -1,0 +1,43 @@
+{
+ "firmware_live": "2.32.00 (built 2021-05-11), BIOS P4.20; dumped image is 3.02.00",
+ "auth": "form POST /api/session -> QSESSIONID cookie (30 chars, path=/, no HttpOnly/Secure/SameSite) + 8-char CSRF",
+ "csrf_on_writes": "ENFORCED: PUT with bogus or empty X-CSRFTOKEN -> 401 {cc:7}; correct token -> 200",
+ "csrf_on_gets": "NOT enforced: GET with a bogus token -> 200 (empty/no token -> 401)",
+ "invalid_session": "401 {\"cc\":7,\"error\":\"Invalid Authentication\"}",
+ "unknown_route": "404 {\"error\":\"Invalid API Call\",\"code\":1010}",
+ "feature_disabled": "405 code 8500 \"Feature is not enabled\"",
+ "options_head": "always 200, empty, no Allow header, even for nonexistent paths",
+ "method_override": "X-HTTP-Method-Override honoured by the backend; a proxy MUST strip it",
+ "help_data_crash": "GET /api/logs/help-data (no ?file=) -> HTML 500 and crashes the backend; two-session test showed it invalidates ALL web sessions, not just the caller's",
+ "html500_crashers": [
+  "logs/help-data",
+  "hpm/upgradestatus",
+  "hpm/verifyimagestatus"
+ ],
+ "bad_gateway_502": [
+  "asrr/mca-file",
+  "maintenance/download_config",
+  "settings/download_image"
+ ],
+ "mem_leak_suspect": [
+  "settings/dns server dns_iface",
+  "maintenance/firmware/dwldfwstatus-progress progress/state"
+ ],
+ "write_500_payload_format": [
+  "settings/date-time",
+  "settings/pef/lan_destinations/1",
+  "settings/smtp/1"
+ ],
+ "static_no_auth_symlinks": [
+  "/config.bak",
+  "/SELLog",
+  "/bsod",
+  "/capture",
+  "/video"
+ ],
+ "hidden_accounts": [
+  "sysadmin (uid0, enable_user_access=1)",
+  "fwupd (ipmi user id 3)"
+ ],
+ "tls_cert": "CN=AMI self-signed, expired 2026-05-30; private key ships in firmware"
+}
