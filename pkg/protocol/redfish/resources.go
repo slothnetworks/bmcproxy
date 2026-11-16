@@ -512,7 +512,47 @@ func OffsetMinutes(s string) int {
 
 // SetDateTime PATCHes Manager.DateTime (keeping the BMC's local offset).
 func (c *Client) SetDateTime(ctx context.Context, mgr *Manager, t time.Time) (*Response, error) {
-	return c.Patch(ctx, mgr.ODataID, map[string]string{"DateTime": FormatDateTime(t, mgr.DateTimeLocalOffset)})
+	resp, err := c.Patch(ctx, mgr.ODataID, map[string]string{"DateTime": FormatDateTime(t, mgr.DateTimeLocalOffset)})
+	if err != nil {
+		return resp, err
+	}
+	return c.WaitAccepted(ctx, resp, DefaultWriteTaskTimeout)
+}
+
+// DefaultWriteTaskTimeout bounds how long a synchronous northbound write
+// waits for the BMC task behind a 202 PATCH (the client's TaskTimeout is
+// sized for firmware updates and is far too long for an HTTP request).
+const DefaultWriteTaskTimeout = 60 * time.Second
+
+// WaitAccepted completes a write that the service answered with 202
+// Accepted. AMI MegaRAC firmware (B650D4U and others) applies PATCHes such
+// as NetworkProtocol asynchronously: the PATCH only queues the change and
+// starts a task (e.g. NetworkProtocolTask), so a 202 means "queued", not
+// "applied". When the response references a task it is polled until it
+// finishes (bounded by timeout, and by the client's TaskTimeout if that is
+// shorter); a failed task returns an ErrUpstream OpError carrying the task's
+// messages. Any other response, or a 202 without a task reference, is
+// returned unchanged; callers should then verify the result by reading it
+// back.
+func (c *Client) WaitAccepted(ctx context.Context, resp *Response, timeout time.Duration) (*Response, error) {
+	if resp == nil || resp.Status != http.StatusAccepted {
+		return resp, nil
+	}
+	ref := TaskRef(resp)
+	if ref == "" {
+		return resp, nil
+	}
+	if timeout <= 0 || (c.opts.TaskTimeout > 0 && c.opts.TaskTimeout < timeout) {
+		timeout = c.opts.TaskTimeout
+	}
+	res, err := c.WaitTask(ctx, ref, WaitOptions{Timeout: timeout})
+	if err != nil {
+		return resp, err
+	}
+	if res.Final != nil {
+		return res.Final, nil
+	}
+	return resp, nil
 }
 
 // NTPUpdate is the PATCH body for NetworkProtocol.NTP.
@@ -521,9 +561,17 @@ type NTPUpdate struct {
 	NTPServers      []string `json:"NTPServers,omitempty"`
 }
 
-// SetNTP PATCHes {"NTP": {...}} on a NetworkProtocol resource.
+// SetNTP PATCHes {"NTP": {...}} on a NetworkProtocol resource and, when the
+// service answers 202 with a task (AMI MegaRAC queues NetworkProtocol
+// changes into a NetworkProtocolTask), waits for that task (see
+// WaitAccepted). A 2xx return still does not prove the change took effect;
+// read NetworkProtocol back to confirm.
 func (c *Client) SetNTP(ctx context.Context, netProtoPath string, u NTPUpdate) (*Response, error) {
-	return c.Patch(ctx, netProtoPath, map[string]any{"NTP": u})
+	resp, err := c.Patch(ctx, netProtoPath, map[string]any{"NTP": u})
+	if err != nil {
+		return resp, err
+	}
+	return c.WaitAccepted(ctx, resp, DefaultWriteTaskTimeout)
 }
 
 // InsertMediaRequest is the VirtualMedia.InsertMedia body.

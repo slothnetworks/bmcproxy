@@ -2,6 +2,7 @@ package genericredfish
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"slices"
 	"strconv"
@@ -1024,6 +1025,9 @@ func (s *Session) SetTime(ctx context.Context, u bmc.TimeUpdate) error {
 		if _, err := s.C.SetNTP(ctx, mgr.NetworkProtocol.ID, rf.NTPUpdate{ProtocolEnabled: u.NTPEnabled, NTPServers: u.NTPServers}); err != nil {
 			return err
 		}
+		if err := s.verifyNTP(ctx, mgr, u); err != nil {
+			return err
+		}
 	}
 	if u.Time != nil {
 		if _, err := s.C.SetDateTime(ctx, mgr, *u.Time); err != nil {
@@ -1031,6 +1035,72 @@ func (s *Session) SetTime(ctx context.Context, u bmc.TimeUpdate) error {
 		}
 	}
 	return nil
+}
+
+// NTP read-back verification bounds. Variables so tests can shorten them.
+var (
+	ntpVerifyTimeout  = 30 * time.Second
+	ntpVerifyInterval = 2 * time.Second
+)
+
+// verifyNTP re-reads NetworkProtocol until it reflects the requested NTP
+// change. Some services (AMI MegaRAC) answer the PATCH with 202 and apply it
+// later, or not at all, so a successful PATCH is not proof. It returns an
+// ErrUpstream OpError describing what the BMC still reports if the change
+// does not appear within ntpVerifyTimeout.
+func (s *Session) verifyNTP(ctx context.Context, mgr *rf.Manager, u bmc.TimeUpdate) error {
+	deadline := time.Now().Add(ntpVerifyTimeout)
+	var last string
+	for {
+		np, err := s.C.GetNetworkProtocol(ctx, mgr)
+		if err != nil {
+			return err
+		}
+		ok, state := ntpMatches(np.NTP, u)
+		if ok {
+			return nil
+		}
+		last = state
+		if !time.Now().Add(ntpVerifyInterval).Before(deadline) {
+			return &bmc.OpError{Pkg: Pkg, Op: "SetTime NTP", Backend: bmc.BackendRedfish, Err: bmc.ErrUpstream,
+				Detail: fmt.Sprintf("BMC accepted the NTP change but did not apply it within %s; NetworkProtocol still reports %s", ntpVerifyTimeout, last)}
+		}
+		t := time.NewTimer(ntpVerifyInterval)
+		select {
+		case <-ctx.Done():
+			t.Stop()
+			return bmc.Wrap(Pkg, "SetTime NTP", ctx.Err())
+		case <-t.C:
+		}
+	}
+}
+
+// ntpMatches reports whether the NTP setting reflects u, plus a short
+// description of the current state for error messages.
+func ntpMatches(n *rf.NTPSetting, u bmc.TimeUpdate) (bool, string) {
+	if n == nil {
+		return false, "no NTP object"
+	}
+	enabled := n.ProtocolEnabled != nil && *n.ProtocolEnabled
+	var servers []string
+	for _, srv := range n.NTPServers {
+		if srv != nil && *srv != "" {
+			servers = append(servers, *srv)
+		}
+	}
+	state := fmt.Sprintf("ProtocolEnabled=%t NTPServers=%q", enabled, servers)
+	if u.NTPEnabled != nil && enabled != *u.NTPEnabled {
+		return false, state
+	}
+	for _, want := range u.NTPServers {
+		if want == "" {
+			continue
+		}
+		if !slices.Contains(servers, want) {
+			return false, state
+		}
+	}
+	return true, state
 }
 
 // SyncTime implements bmc.TimeManager: sets the BMC clock to the proxy's
