@@ -93,6 +93,14 @@ func Unit(units string, t bmc.SensorType, readingType string) string {
 	default:
 		return units
 	}
+	switch lower(readingType) {
+	case "energyjoules":
+		return "J"
+	case "energykwh":
+		return "kWh"
+	case "energywh":
+		return "Wh"
+	}
 	switch t {
 	case bmc.SensorTemperature:
 		return "C"

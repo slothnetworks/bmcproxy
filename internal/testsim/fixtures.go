@@ -85,6 +85,22 @@ func (fs *FixtureSet) Find(method, p string, captures ...string) (Endpoint, bool
 	return cands[0], true
 }
 
+// LoadRedfishTree returns a fresh copy of the embedded Redfish resource
+// tree of board (fixtures/<board>/redfish.json: Gigabyte boards).
+func LoadRedfishTree(board string) (map[string]map[string]any, error) {
+	b, err := fixtureFS.ReadFile(path.Join("fixtures", board, "redfish.json"))
+	if err != nil {
+		return nil, fmt.Errorf("testsim: no Redfish tree for board %q: %w", board, err)
+	}
+	var t struct {
+		Resources map[string]map[string]any `json:"resources"`
+	}
+	if err := json.Unmarshal(b, &t); err != nil {
+		return nil, fmt.Errorf("testsim: decode %s Redfish tree: %w", board, err)
+	}
+	return t.Resources, nil
+}
+
 // rawFixture reads another embedded fixture file (e.g. the X470 ServiceRoot).
 func rawFixture(board, name string) ([]byte, error) {
 	return fixtureFS.ReadFile(path.Join("fixtures", board, name))

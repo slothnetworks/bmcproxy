@@ -134,9 +134,9 @@ func (f *fakeBMC) serve(w http.ResponseWriter, r *http.Request) {
 		csrf, ok = f.sessions[ck.Value]
 	}
 	f.mu.Unlock()
-	// No session, or a missing or wrong token -> 401 cc:7. Live, GETs accept
-	// any non-empty token, but writes enforce it. This fake enforces it on
-	// every request, which is stricter.
+	// No session, or a missing or wrong token -> 401 cc:7. Live, the X470
+	// and B650 accept any non-empty token on GETs but enforce it on writes;
+	// the X570 1.20 enforces it on every request, as this fake does.
 	if !ok || r.Header.Get("X-CSRFTOKEN") != csrf {
 		f.unauth(w)
 		return

@@ -44,7 +44,7 @@ func oemRoutes() []bmc.Route {
 // handleBonding serves GET /api/v1/vendor/asrock/bonding.
 //
 //	@Summary		BMC LAN bonding status
-//	@Description	Tier: **read**. Both boards: AMI /api `GET settings/network-bond` ({id,bond_enable,bond_mode,auto_configuration_enable}; B650 also bond_ifc).
+//	@Description	Tier: **read**. All boards: AMI /api `GET settings/network-bond` ({id,bond_enable,bond_mode,auto_configuration_enable}; B650 also bond_ifc, X470/X570 never).
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -180,7 +180,7 @@ func handleSetNCSIMode(s *Session, r *http.Request) (any, error) {
 // handleKeepNicLinkUp serves GET /api/v1/vendor/asrock/keepNicLinkUp.
 //
 //	@Summary		Keep NIC link up while host is off
-//	@Description	Tier: **read**. X470 (and B650 1.x): `GET asrr/getvetobit` {vetobit}. B650 4.x/B550: `GET settings/ncsilinkup` {sharednic, sharednic2}. The dialect is chosen by board profile, probed when unknown.
+//	@Description	Tier: **read**. X470, X570 (live 1.20: {"vetobit":0}; settings/ncsilinkup 404) and B650 1.x: `GET asrr/getvetobit` {vetobit}. B650 4.x/B550: `GET settings/ncsilinkup` {sharednic, sharednic2}. The dialect is chosen by board profile, probed when unknown.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -203,7 +203,7 @@ func handleKeepNicLinkUp(s *Session, r *http.Request) (any, error) {
 // handleSetKeepNicLinkUp serves POST /api/v1/vendor/asrock/setKeepNicLinkUp.
 //
 //	@Summary		Set keep-NIC-link-up
-//	@Description	Tier: **write**. X470: `PUT asrr/setvetobit` {vetobit}. B650 4.x: `PUT settings/ncsilinkup` {sharednic, sharednic2} (enabled sets both unless given individually).
+//	@Description	Tier: **write**. X470/X570: `PUT asrr/setvetobit` {vetobit}. B650 4.x: `PUT settings/ncsilinkup` {sharednic, sharednic2} (enabled sets both unless given individually).
 //	@Tags			asrock
 //	@Accept			json
 //	@Produce		json
@@ -232,7 +232,7 @@ func handleSetKeepNicLinkUp(s *Session, r *http.Request) (any, error) {
 // handleFanMode serves GET /api/v1/vendor/asrock/fanMode.
 //
 //	@Summary		Fan control mode
-//	@Description	Tier: **read**. X470: `GET asrr/settings/getfancontrolmode` (an array with one {mode1..mode16} object, live-confirmed on 2.32 with every fan at 0 = the default; the meaning of the other codes is unverified). B650 4.x: `GET settings/fan/mode`. Raw vendor object included.
+//	@Description	Tier: **read**. X470/X570: `GET asrr/settings/getfancontrolmode` (an array with one {mode1..mode16} object, live-confirmed on X470 2.32 and X570 1.20 with every fan at 0 = the default; the meaning of the other codes is unverified). B650 4.x: `GET settings/fan/mode`. Raw vendor object included.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -255,7 +255,7 @@ func handleFanMode(s *Session, r *http.Request) (any, error) {
 // handleSetFanMode serves POST /api/v1/vendor/asrock/setFanMode.
 //
 //	@Summary		Set fan control mode
-//	@Description	Tier: **write**. X470: `POST asrr/settings/setfancontrolmode` (full mode1..16 object; unspecified fans keep their mode). B650 4.x: `PUT settings/fan/mode` (raw object merged over the current one).
+//	@Description	Tier: **write**. X470/X570: `POST asrr/settings/setfancontrolmode` (full mode1..16 object; unspecified fans keep their mode). B650 4.x: `PUT settings/fan/mode` (raw object merged over the current one).
 //	@Tags			asrock
 //	@Accept			json
 //	@Produce		json
@@ -284,7 +284,7 @@ func handleSetFanMode(s *Session, r *http.Request) (any, error) {
 // handleFanTables serves GET /api/v1/vendor/asrock/fanTables.
 //
 //	@Summary		Fan curve tables
-//	@Description	Tier: **read**. X470: two-step per table, held under the per-host exclusive AMI lane so no other request interleaves: `POST asrr/settings/setopenlooptablenumber {table_numble}` then `GET asrr/settings/getfanopenloopcontroltable` (Get_Temp1..24/Get_Duty1..24); closed loop uses setcloselooptablenumber + getfancloseloopcontroltable. B650 4.x: `GET settings/fan/openloop` / `closedloop` (one call, no selection step).
+//	@Description	Tier: **read**. X470/X570: two-step per table, held under the per-host exclusive AMI lane so no other request interleaves: `POST asrr/settings/setopenlooptablenumber {table_numble}` then `GET asrr/settings/getfanopenloopcontroltable` (Get_Temp1..24/Get_Duty1..24); closed loop uses setcloselooptablenumber + getfancloseloopcontroltable. B650 4.x: `GET settings/fan/openloop` / `closedloop` (one call, no selection step).
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -313,7 +313,7 @@ func handleFanTables(s *Session, r *http.Request) (any, error) {
 // handleSetFanTable serves POST /api/v1/vendor/asrock/setFanTable.
 //
 //	@Summary		Write a fan curve table
-//	@Description	Tier: **write**. X470: one `POST asrr/settings/setfanopenloopcontroltable` {table_numble 1..8, temp1..24, duty1..24} or `setfancloseloopcontroltable` {table_numble 1..10 plus the closed-loop fields in raw} (names and keys from the X470 UI JS; never written on hardware). B650 4.x: `PUT settings/fan/openloop/{table}` / `closedloop/{table}` (raw object; the collections themselves are GET-only). Returns 204.
+//	@Description	Tier: **write**. X470/X570: one `POST asrr/settings/setfanopenloopcontroltable` {table_numble 1..8, temp1..24, duty1..24} or `setfancloseloopcontroltable` {table_numble 1..10 plus the closed-loop fields in raw} (names and keys from the X470 UI JS; never written on hardware). B650 4.x: `PUT settings/fan/openloop/{table}` / `closedloop/{table}` (raw object; the collections themselves are GET-only). Returns 204.
 //	@Tags			asrock
 //	@Accept			json
 //	@Produce		json
@@ -342,7 +342,7 @@ func handleSetFanTable(s *Session, r *http.Request) (any, error) {
 // handleFanDuty serves GET /api/v1/vendor/asrock/fanDuty.
 //
 //	@Summary		Current fan duty
-//	@Description	Tier: **read**. X470: `GET asrr/GetFanDuty` (FANn_Duty %). B650 4.x: `GET settings/fan/manual`.
+//	@Description	Tier: **read**. X470: `GET asrr/GetFanDuty` (current FANn_Duty %, source `current`). X570: GetFanDuty is absent (404 on 1.20), so `GET asrr/settings/getfandutymanualmode` (configured manual duty1..16, source `manual`). B650 4.x: `GET settings/fan/manual` (source `manual`).
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -365,7 +365,7 @@ func handleFanDuty(s *Session, r *http.Request) (any, error) {
 // handleSetManualFanDuty serves POST /api/v1/vendor/asrock/setManualFanDuty.
 //
 //	@Summary		Set manual fan duty
-//	@Description	Tier: **write**. X470: `POST asrr/settings/setfandutymanualmode` {duty1..16} (fans must be in manual mode). B650 4.x: `PUT settings/fan/manual` (raw object merged over the current one). Duty is 0..100 percent. Returns 204.
+//	@Description	Tier: **write**. X470/X570: `POST asrr/settings/setfandutymanualmode` {duty1..16} (fans must be in manual mode). B650 4.x: `PUT settings/fan/manual` (raw object merged over the current one). Duty is 0..100 percent. Returns 204.
 //	@Tags			asrock
 //	@Accept			json
 //	@Produce		json
@@ -394,7 +394,7 @@ func handleSetManualFanDuty(s *Session, r *http.Request) (any, error) {
 // handleResetFanSettings serves POST /api/v1/vendor/asrock/resetFanSettings.
 //
 //	@Summary		Reset fan settings to defaults
-//	@Description	Tier: **write**. X470: `POST asrr/settings/setclearallfansetting`. B650 4.x: `POST settings/fan/load_default`. Returns 204.
+//	@Description	Tier: **write**. X470/X570: `POST asrr/settings/setclearallfansetting`. B650 4.x: `POST settings/fan/load_default`. Returns 204.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -440,7 +440,7 @@ func handlePowerSource(s *Session, r *http.Request) (any, error) {
 // handlePostCode serves GET /api/v1/vendor/asrock/postCode.
 //
 //	@Summary		Last BIOS POST code
-//	@Description	Tier: **read**. X470 (and B650 1.x): `GET asrr/getbioscode` {poststatus, postdata}. B650 4.x: `GET logs/postcode`.
+//	@Description	Tier: **read**. X470 (and B650 1.x): `GET asrr/getbioscode` {poststatus, postdata}. B650 4.x and X570: `GET logs/postcode`.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -486,7 +486,7 @@ func handleMCALog(s *Session, r *http.Request) (any, error) {
 // handleClearMCALog serves POST /api/v1/vendor/asrock/clearMcaLog.
 //
 //	@Summary		Clear the MCA dump
-//	@Description	Tier: **disruptive** (diagnostic data is lost). X470: `DELETE asrr/clearmcalog`. B650/B550: 501 (no handler). Returns 204.
+//	@Description	Tier: **disruptive** (diagnostic data is lost). X470: `DELETE asrr/clearmcalog`. B650/B550/X570: 501 (no handler). Returns 204.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -510,7 +510,7 @@ func handleClearMCALog(s *Session, r *http.Request) (any, error) {
 // handleProchot serves GET /api/v1/vendor/asrock/prochot.
 //
 //	@Summary		CPU PROCHOT assertion setting
-//	@Description	Tier: **read**. X470 only: `GET asrr/getprochot` {prochot}. B650/B550: 501.
+//	@Description	Tier: **read**. X470 only: `GET asrr/getprochot` {prochot}. B650/B550/X570: 501.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
@@ -533,7 +533,7 @@ func handleProchot(s *Session, r *http.Request) (any, error) {
 // handleSetProchot serves POST /api/v1/vendor/asrock/setProchot.
 //
 //	@Summary		Set CPU PROCHOT assertion
-//	@Description	Tier: **write**. X470 only: `PUT asrr/setprochot` {prochot}. B650/B550: 501.
+//	@Description	Tier: **write**. X470 only: `PUT asrr/setprochot` {prochot}. B650/B550/X570: 501.
 //	@Tags			asrock
 //	@Accept			json
 //	@Produce		json
@@ -637,7 +637,7 @@ func handleBIOSUpdateOption(s *Session, r *http.Request) (any, error) {
 // handleComponentStatus serves GET /api/v1/vendor/asrock/componentStatus/{component}.
 //
 //	@Summary		Firmware component flash status
-//	@Description	Tier: **read**. Both boards: `GET asrr/maintenance/{C}/status` and `.../flash-progress`. Components per board: X470 BIOS, CPLD; B650 4.x BIOS, CPLD, FPGA, RETIMER; others 501. Accepted names: BIOS, CPLD, FPGA, RETIMER, PSU, BP.
+//	@Description	Tier: **read**. Both boards: `GET asrr/maintenance/{C}/status` and `.../flash-progress`. Components per board: X470 BIOS, CPLD; B650 4.x BIOS, CPLD, FPGA, RETIMER; X570 BIOS, BP; others 501. Accepted names: BIOS, CPLD, FPGA, RETIMER, PSU, BP.
 //	@Tags			asrock
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"

@@ -653,25 +653,33 @@ func (c *Client) SetFanTable(ctx context.Context, req SetFanTableRequest) error 
 	return c.API.DoJSON(ctx, http.MethodPost, p, body, nil)
 }
 
-// FanDuty reads current fan duties (X470 asrr/GetFanDuty; B650
-// settings/fan/manual).
+// FanDuty reads fan duties: X470 asrr/GetFanDuty (current duty); X570
+// asrr/settings/getfandutymanualmode (configured manual duty: GetFanDuty is
+// absent, 404 on live 1.20); B650 settings/fan/manual.
 func (c *Client) FanDuty(ctx context.Context) (FanDutyResponse, error) {
 	d, err := c.fanDialect(ctx)
 	if err != nil {
 		return FanDutyResponse{}, err
+	}
+	if d == boards.FanASRR && c.P.FanDutyManual {
+		m, _, err := getFirst(ctx, c.API, "asrr/settings/getfandutymanualmode")
+		if err != nil {
+			return FanDutyResponse{}, err
+		}
+		return FanDutyResponse{Dialect: d.String(), Source: "manual", Duties: fanNumbered(m, "duty", ""), Raw: m}, nil
 	}
 	if d == boards.FanASRR {
 		m, _, err := getFirst(ctx, c.API, "asrr/GetFanDuty")
 		if err != nil {
 			return FanDutyResponse{}, err
 		}
-		return FanDutyResponse{Dialect: d.String(), Duties: fanNumbered(m, "FAN", "_Duty"), Raw: m}, nil
+		return FanDutyResponse{Dialect: d.String(), Source: "current", Duties: fanNumbered(m, "FAN", "_Duty"), Raw: m}, nil
 	}
 	var raw any
 	if err := c.API.DoJSON(ctx, http.MethodGet, "settings/fan/manual", nil, &raw); err != nil {
 		return FanDutyResponse{}, err
 	}
-	return FanDutyResponse{Dialect: d.String(), Raw: raw}, nil
+	return FanDutyResponse{Dialect: d.String(), Source: "manual", Raw: raw}, nil
 }
 
 // SetManualFanDuty writes manual fan duties (read-merge-write).
@@ -909,9 +917,11 @@ func (c *Client) BMCColdReset(ctx context.Context) error {
 // ---- power restore policy (B650 asrr) ----
 
 // Restore codes of asrr/{Get,Set}PowerRestore. The field name powerRestore
-// is confirmed by the B650 7.02/9.05 UI JS (docs/api/legacy-api-catalog.md);
-// UNVERIFIED: the values are assumed to follow the IPMI chassis encoding
-// (0 always off, 1 last state, 2 always on); no capture or live read exists.
+// is confirmed by the B650 7.02/9.05 UI JS (docs/api/legacy-api-catalog.md)
+// and by a live read on the X570D4U 1.20 ({"powerRestore": 1},
+// docs/x570/live-probe.md). UNVERIFIED: the values are assumed to follow the
+// IPMI chassis encoding (0 always off, 1 last state, 2 always on); the X570
+// Redfish PowerRestorePolicy is null, so nothing cross-checks the 1.
 const (
 	restoreAlwaysOff = 0
 	restoreLastState = 1

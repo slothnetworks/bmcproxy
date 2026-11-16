@@ -130,6 +130,69 @@ func TestLogout(t *testing.T) {
 	}
 }
 
+// TestLogoutRetriesHTML500: the X570D4U 1.20 answered DELETE /api/session
+// with a lighttpd HTML 500 while the session stayed valid; Logout retries
+// once so the slot is not leaked, and reports a second failure.
+func TestLogoutRetriesHTML500(t *testing.T) {
+	f := newFakeBMC(t)
+	c := newClient(t, f, func(cfg *Config) { cfg.LogoutRetryDelay = time.Millisecond })
+	ctx := context.Background()
+	if err := c.Login(ctx); err != nil {
+		t.Fatal(err)
+	}
+	var calls atomic.Int32
+	f.handle("DELETE /api/session", func(w http.ResponseWriter, r *http.Request) {
+		if calls.Add(1) == 1 {
+			w.Header().Set("Content-Type", "text/html")
+			w.WriteHeader(500)
+			_, _ = w.Write([]byte("<?xml version=\"1.0\"?><html><title>500 - Internal Server Error</title></html>"))
+			return
+		}
+		ck, _ := r.Cookie("QSESSIONID")
+		f.mu.Lock()
+		delete(f.sessions, ck.Value)
+		f.mu.Unlock()
+		writeJSON(w, 200, `{ "ok": 0 }`)
+	})
+	if err := c.Logout(ctx); err != nil {
+		t.Fatalf("logout after one HTML 500: %v", err)
+	}
+	if calls.Load() != 2 {
+		t.Fatalf("DELETE sent %d times, want 2", calls.Load())
+	}
+	f.mu.Lock()
+	left := len(f.sessions)
+	f.mu.Unlock()
+	if left != 0 {
+		t.Fatalf("%d sessions left on the BMC", left)
+	}
+
+	// Two 5xx in a row: give up after the retry and report it.
+	if err := c.Login(ctx); err != nil {
+		t.Fatal(err)
+	}
+	calls.Store(0)
+	f.handle("DELETE /api/session", func(w http.ResponseWriter, r *http.Request) {
+		calls.Add(1)
+		writeJSON(w, 500, `{ "error": "busy", "code": 1 }`)
+	})
+	if err := c.Logout(ctx); err == nil || calls.Load() != 2 {
+		t.Fatalf("persistent 500: err %v, %d DELETEs (want error, 2)", err, calls.Load())
+	}
+	// A 4xx other than 401 is not retried.
+	if err := c.Login(ctx); err != nil {
+		t.Fatal(err)
+	}
+	calls.Store(0)
+	f.handle("DELETE /api/session", func(w http.ResponseWriter, r *http.Request) {
+		calls.Add(1)
+		writeJSON(w, 400, `{ "error": "bad", "code": 2 }`)
+	})
+	if err := c.Logout(ctx); err == nil || calls.Load() != 1 {
+		t.Fatalf("400: err %v, %d DELETEs (want error, 1)", err, calls.Load())
+	}
+}
+
 func TestCC7SingleReloginThenSuccess(t *testing.T) {
 	f := newFakeBMC(t)
 	var events []ReloginEvent

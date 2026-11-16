@@ -47,8 +47,14 @@ func (s *Session) SystemInfo(ctx context.Context) (bmc.SystemInfo, error) {
 		if s.prof.Firmware != "" {
 			si.BMCFirmware = s.prof.Firmware
 		}
-		if si.Manufacturer == "" {
+		// X570 1.20 Redfish reports the SMBIOS placeholders
+		// "To Be Filled By O.E.M." and " " (its /api FRU board area says
+		// ASRockRack).
+		if isOEMPlaceholder(si.Manufacturer) {
 			si.Manufacturer = "ASRockRack"
+		}
+		if isOEMPlaceholder(si.Model) {
+			si.Model = ""
 		}
 		if s.amiOK {
 			if fw, err := s.fwInfoMap(ctx, false); err == nil {
@@ -60,6 +66,17 @@ func (s *Session) SystemInfo(ctx context.Context) (bmc.SystemInfo, error) {
 		return s.amiSystemInfo(ctx)
 	}
 	return bmc.SystemInfo{}, s.unsupported("SystemInfo")
+}
+
+// isOEMPlaceholder reports whether v is empty or an unfilled SMBIOS/FRU
+// placeholder string.
+func isOEMPlaceholder(v string) bool {
+	switch strings.ToLower(strings.TrimSpace(v)) {
+	case "", "to be filled by o.e.m.", "to be filled by oem", "default string", "system manufacturer",
+		"system product name", "not specified", "n/a", "na", "0123456789":
+		return true
+	}
+	return false
 }
 
 func addFWOem(si *bmc.SystemInfo, fw map[string]any) {
@@ -94,7 +111,7 @@ func (s *Session) amiSystemInfo(ctx context.Context) (bmc.SystemInfo, error) {
 	// except a lost session.
 	if frus, err := s.amiFRU(ctx); err == nil && len(frus) > 0 {
 		b := frus[0].Board
-		if b.Manufacturer != "" {
+		if !isOEMPlaceholder(b.Manufacturer) {
 			si.Manufacturer = b.Manufacturer
 		}
 		si.Serial = b.Serial

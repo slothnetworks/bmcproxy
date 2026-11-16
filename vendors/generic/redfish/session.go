@@ -593,19 +593,69 @@ func (s *Session) Sensors(ctx context.Context) ([]bmc.Sensor, error) {
 	if err != nil {
 		return nil, err
 	}
+	var out []bmc.Sensor
 	if ch.Sensors.ID != "" {
 		list, err := s.C.Sensors(ctx, ch)
 		if err == nil {
-			out := make([]bmc.Sensor, 0, len(list))
+			out = make([]bmc.Sensor, 0, len(list))
 			for _, x := range list {
 				out = append(out, SensorFromRedfish(x))
 			}
-			return out, nil
+			// Some services (Gigabyte MC13-LE0, AMI 13.04) list only the
+			// power/energy monitors in Sensors and keep temperatures, fans
+			// and voltages in the legacy Thermal/Power resources. Merge
+			// those in when the modern collection has no thermal reading.
+			if hasThermalSensor(out) || (ch.Thermal.ID == "" && ch.Power.ID == "") {
+				return out, nil
+			}
+			legacy, lerr := s.legacySensors(ctx, ch)
+			if lerr != nil {
+				obs.FromContext(ctx, obs.SubDriverRedfish).DebugContext(ctx, "redfish legacy sensor merge failed", "err", lerr)
+				return out, nil
+			}
+			return mergeSensors(out, legacy), nil
 		}
 		if ch.Thermal.ID == "" && ch.Power.ID == "" {
 			return nil, err
 		}
 	}
+	legacy, err := s.legacySensors(ctx, ch)
+	if err != nil {
+		return nil, err
+	}
+	out = append(out, legacy...)
+	if out == nil && ch.Thermal.ID == "" && ch.Power.ID == "" {
+		return nil, bmc.Unsupported(Pkg, "Sensors")
+	}
+	return out, nil
+}
+
+// hasThermalSensor reports whether ss holds a temperature or fan sensor.
+func hasThermalSensor(ss []bmc.Sensor) bool {
+	for _, x := range ss {
+		if x.Type == bmc.SensorTemperature || x.Type == bmc.SensorFan {
+			return true
+		}
+	}
+	return false
+}
+
+// mergeSensors appends the legacy sensors whose name is not already present.
+func mergeSensors(modern, legacy []bmc.Sensor) []bmc.Sensor {
+	have := make(map[string]bool, len(modern))
+	for _, x := range modern {
+		have[lower(x.Name)] = true
+	}
+	for _, x := range legacy {
+		if !have[lower(x.Name)] {
+			modern = append(modern, x)
+		}
+	}
+	return modern
+}
+
+// legacySensors reads the Thermal and Power resources of ch.
+func (s *Session) legacySensors(ctx context.Context, ch *rf.Chassis) ([]bmc.Sensor, error) {
 	var out []bmc.Sensor
 	if ch.Thermal.ID != "" {
 		th, err := s.C.Thermal(ctx, ch)
@@ -620,9 +670,6 @@ func (s *Session) Sensors(ctx context.Context) ([]bmc.Sensor, error) {
 			return nil, err
 		}
 		out = append(out, SensorsFromPower(p)...)
-	}
-	if out == nil && ch.Thermal.ID == "" && ch.Power.ID == "" {
-		return nil, bmc.Unsupported(Pkg, "Sensors")
 	}
 	return out, nil
 }

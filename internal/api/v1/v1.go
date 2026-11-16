@@ -135,6 +135,8 @@ func (a *api) routes() []server.Route {
 		{Method: "GET", Path: "/api/v1/inventory/{kind}", Tier: R, Summary: "inventory by kind", Handler: a.getInventory},
 		{Method: "GET", Path: "/api/v1/network", Tier: R, Summary: "BMC network interfaces", Handler: a.getNetwork},
 		{Method: "PUT", Path: "/api/v1/network", Tier: D, Summary: "update a BMC network interface", Handler: a.putNetwork},
+		{Method: "GET", Path: "/api/v1/network/bond", Tier: R, Summary: "BMC NIC bonding", Handler: a.getBond},
+		{Method: "PUT", Path: "/api/v1/network/bond", Tier: D, Summary: "set BMC NIC bonding", Handler: a.putBond},
 		{Method: "GET", Path: "/api/v1/users", Tier: R, Summary: "BMC accounts", Handler: a.getUsers},
 		{Method: "GET", Path: "/api/v1/services", Tier: R, Summary: "BMC network services", Handler: a.getServices},
 		{Method: "GET", Path: "/api/v1/time", Tier: R, Summary: "BMC clock and NTP", Handler: a.getTime},

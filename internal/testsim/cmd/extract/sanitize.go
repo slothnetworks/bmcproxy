@@ -83,7 +83,8 @@ func (s *Sanitizer) Value(key string, v any) any {
 }
 
 func placeholderFor(key, val string) string {
-	if key == "" || benign[strings.ToLower(strings.TrimSpace(val))] || strings.HasPrefix(val, "<REDACTED") {
+	if key == "" || benign[strings.ToLower(strings.TrimSpace(val))] || strings.HasPrefix(val, "<REDACTED") ||
+		strings.HasPrefix(strings.TrimSpace(val), "0123456789") { // SMBIOS/FRU placeholder, not identifying
 		return ""
 	}
 	for _, sk := range sensitiveKeys {

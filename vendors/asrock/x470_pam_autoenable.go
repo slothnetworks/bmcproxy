@@ -29,6 +29,11 @@ import (
 // afterwards the caller's IPMI/web credentials work on Redfish too.
 // This mirrors scripts/x470d4u-redfish-pam-auth.sh -a enable.
 //
+// The X570D4U is deliberately excluded (Key "x570d4u" never matches): its
+// 1.20 Redfish already accepts the /api admin (UNIFIED_USER_ACCOUNT sync,
+// PAMEnabled false), so there is nothing to enable and no reason to PATCH
+// AccountService on it (docs/x570/live-probe.md).
+//
 // Environment:
 //
 //	BMCPROXY_X470_PAM_ADMIN_USER  bootstrap Redfish admin (default Administrator)

@@ -65,6 +65,9 @@ type Config struct {
 	// burst of requests does not hammer the BMC with bad logins (and trip
 	// its lockout). Default DefaultLoginFailureBackoff; negative disables.
 	LoginFailureBackoff time.Duration
+	// LogoutRetryDelay is the pause before Logout retries a 5xx answer
+	// (default 1s).
+	LogoutRetryDelay time.Duration
 	// Now is the clock (tests). Default time.Now.
 	Now func() time.Time
 	// ReportSessionLost makes a backend restart a hard, sticky signal: once
@@ -629,20 +632,50 @@ func (c *Client) Logout(ctx context.Context) error {
 	}
 	setCommonHeaders(req.Header)
 	setAuth(req.Header, s)
-	resp, err := c.ep.Do(req)
-	c.logouts.Add(1)
 	log := c.log(ctx)
-	if err != nil {
-		log.DebugContext(ctx, "amimegarac logout failed", "bmc", c.host, "generation", s.gen, "err", err)
-		return err
+	var (
+		status int
+		hdr    http.Header
+		body   []byte
+	)
+	// X570D4U 1.20 answered DELETE /api/session with a lighttpd HTML 500
+	// while the session stayed valid (docs/x570/live-probe.md), which leaks
+	// one of the BMC's web session slots. Logout is idempotent (401 = gone),
+	// so a 5xx is retried once after a short pause.
+	for attempt := 1; attempt <= 2; attempt++ {
+		resp, err := c.ep.Do(req.Clone(ctx))
+		c.logouts.Add(1)
+		if err != nil {
+			log.DebugContext(ctx, "amimegarac logout failed", "bmc", c.host, "generation", s.gen, "err", err)
+			return err
+		}
+		body, _ = io.ReadAll(resp.Body)
+		resp.Body.Close()
+		status, hdr = resp.StatusCode, resp.Header
+		log.DebugContext(ctx, "amimegarac logout", "bmc", c.host, "generation", s.gen, "status", status, "attempt", attempt)
+		if status == http.StatusUnauthorized || status/100 == 2 {
+			return nil
+		}
+		if status < 500 || attempt == 2 {
+			break
+		}
+		t := time.NewTimer(c.logoutRetryDelay())
+		select {
+		case <-ctx.Done():
+			t.Stop()
+			return bmc.Wrap(Pkg, op, ctx.Err())
+		case <-t.C:
+		}
 	}
-	body, _ := io.ReadAll(resp.Body)
-	resp.Body.Close()
-	log.DebugContext(ctx, "amimegarac logout", "bmc", c.host, "generation", s.gen, "status", resp.StatusCode)
-	if resp.StatusCode == http.StatusUnauthorized || resp.StatusCode/100 == 2 {
-		return nil
+	return StatusError(op, status, hdr, body)
+}
+
+// logoutRetryDelay is the pause before retrying a 5xx logout.
+func (c *Client) logoutRetryDelay() time.Duration {
+	if c.cfg.LogoutRetryDelay > 0 {
+		return c.cfg.LogoutRetryDelay
 	}
-	return StatusError(op, resp.StatusCode, resp.Header, body)
+	return time.Second
 }
 
 // ---- requests ----

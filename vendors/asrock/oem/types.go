@@ -144,7 +144,9 @@ type SetFanTableRequest struct {
 type FanDutyResponse struct {
 	// Backend dialect: "asrr" or "settings/fan".
 	Dialect string `json:"dialect" example:"asrr"`
-	// Current duty in percent keyed by fan number ("1".."8") (X470 GetFanDuty FANn_Duty).
+	// Source says what the duties are: "current" (X470 asrr/GetFanDuty) or "manual" (the configured manual-mode duty: X570 asrr/settings/getfandutymanualmode, B650 settings/fan/manual).
+	Source string `json:"source,omitempty" example:"current" enums:"current,manual"`
+	// Duty in percent keyed by fan number ("1".."16") (X470 GetFanDuty FANn_Duty; X570 getfandutymanualmode dutyN).
 	Duties map[string]int `json:"duties,omitempty"`
 	// Raw is the BMC object as returned.
 	Raw any `json:"raw,omitempty"`

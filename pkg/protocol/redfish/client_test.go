@@ -560,3 +560,123 @@ func TestAllowableValuesAndActions(t *testing.T) {
 		t.Fatalf("FormatDateTime %q", got)
 	}
 }
+
+// Gigabyte MC13-LE0 13.04.15 truncates collections at 50 members with no
+// nextLink (Members@odata.count = page length) and rejects $skip=0; the
+// SkipPageSize quirk pages on with $skip.
+func TestSkipPageSizeQuirk(t *testing.T) {
+	srv := newServer(t)
+	srv.Lock()
+	srv.TruncatedPaging = true
+	srv.Unlock()
+
+	plain := newClient(t, srv, rf.Options{})
+	links, err := plain.MemberLinks(ctx, "/redfish/v1/Chassis/Self/Sensors")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(links) != 50 {
+		t.Fatalf("without quirk: %d links, want the truncated 50", len(links))
+	}
+
+	srv.ResetLog()
+	c := newClient(t, srv, rf.Options{Quirks: rf.Quirks{SkipPageSize: 50}})
+	links, err = c.MemberLinks(ctx, "/redfish/v1/Chassis/Self/Sensors")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(links) != 60 {
+		t.Fatalf("with quirk: %d links, want 60", len(links))
+	}
+	seen := map[string]bool{}
+	for _, l := range links {
+		if seen[l] {
+			t.Fatalf("duplicate member %s", l)
+		}
+		seen[l] = true
+	}
+	var queries []string
+	for _, r := range srv.Reqs() {
+		if r.Path == "/redfish/v1/Chassis/Self/Sensors" {
+			queries = append(queries, r.RawQuery)
+		}
+	}
+	if len(queries) != 2 || queries[0] != "" || queries[1] != "$skip=50" {
+		t.Fatalf("collection GETs %q, want [\"\" \"$skip=50\"]", queries)
+	}
+
+	// A collection of exactly one page: the follow-up page is empty and
+	// the walk stops there.
+	srv.Lock()
+	sens := srv.Resources["/redfish/v1/Chassis/Self/Sensors"]
+	ms := sens["Members"].([]any)
+	sens["Members"] = ms[:50]
+	srv.Unlock()
+	srv.ResetLog()
+	links, err = c.MemberLinks(ctx, "/redfish/v1/Chassis/Self/Sensors")
+	if err != nil || len(links) != 50 {
+		t.Fatalf("exact page: %d links, err %v", len(links), err)
+	}
+	if n := srv.Count("GET", "/redfish/v1/Chassis/Self/Sensors"); n != 2 {
+		t.Fatalf("exact page: %d GETs, want 2", n)
+	}
+}
+
+// A service that ignores $skip must not make the quirk loop or duplicate.
+func TestSkipPageSizeIgnoredSkip(t *testing.T) {
+	srv := newServer(t)
+	srv.Lock()
+	srv.Handlers["/redfish/v1/Same"] = func(w http.ResponseWriter, r *http.Request) {
+		ms := make([]any, 50)
+		for i := range ms {
+			ms[i] = map[string]any{"@odata.id": fmt.Sprintf("/x/%d", i)}
+		}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]any{"Members": ms, "Members@odata.count": 50})
+	}
+	srv.Unlock()
+	c := newClient(t, srv, rf.Options{Quirks: rf.Quirks{SkipPageSize: 50}})
+	links, err := c.MemberLinks(ctx, "/redfish/v1/Same")
+	if err != nil || len(links) != 50 {
+		t.Fatalf("links=%d err=%v", len(links), err)
+	}
+	if n := srv.Count("GET", "/redfish/v1/Same"); n != 2 {
+		t.Fatalf("%d GETs, want 2", n)
+	}
+}
+
+// Whole resources inlined in an unexpanded collection (AMI 13.x LogEntry
+// collections) are used without per-member GETs; link-only and partial
+// members are still fetched.
+func TestMembersUsesFullInlineWithoutExpand(t *testing.T) {
+	srv := newServer(t)
+	srv.Lock()
+	srv.Handlers["/redfish/v1/Inline"] = func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]any{"Members": []any{
+			map[string]any{"@odata.id": "/redfish/v1/Inline/1", "@odata.type": "#LogEntry.v1_4_3.LogEntry", "Id": "1", "Message": "inline"},
+			map[string]any{"@odata.id": "/redfish/v1/Inline/2", "Name": "partial"},
+			map[string]any{"@odata.id": "/redfish/v1/Inline/3"},
+		}, "Members@odata.count": 3})
+	}
+	for _, id := range []string{"2", "3"} {
+		id := id
+		srv.Handlers["/redfish/v1/Inline/"+id] = func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(map[string]any{"@odata.id": "/redfish/v1/Inline/" + id, "Id": id, "Message": "fetched"})
+		}
+	}
+	srv.Handlers["/redfish/v1/Inline/1"] = func(w http.ResponseWriter, r *http.Request) {
+		t.Error("full inline member was fetched")
+		w.WriteHeader(http.StatusNotFound)
+	}
+	srv.Unlock()
+	c := newClient(t, srv, rf.Options{Quirks: rf.Quirks{NoExpand: true}})
+	got, err := rf.Members[rf.LogEntry](ctx, c, "/redfish/v1/Inline")
+	if err != nil || len(got) != 3 {
+		t.Fatalf("members=%d err=%v", len(got), err)
+	}
+	if got[0].Message != "inline" || got[1].Message != "fetched" || got[2].Message != "fetched" {
+		t.Fatalf("messages: %q %q %q", got[0].Message, got[1].Message, got[2].Message)
+	}
+}

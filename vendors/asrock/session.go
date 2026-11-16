@@ -87,7 +87,7 @@ func capPrefs(p boards.Profile) map[bmc.Capability][]string {
 	case boards.RestoreIPMI:
 		restore = []string{I}
 	}
-	return map[bmc.Capability][]string{
+	prefs := map[bmc.Capability][]string{
 		bmc.CapIdentity:           {R, A},
 		bmc.CapPower:              {R, A, I},
 		bmc.CapPowerRestorePolicy: restore,
@@ -108,6 +108,26 @@ func capPrefs(p boards.Profile) map[bmc.Capability][]string {
 		bmc.CapVirtualMedia:       {R}, // /api virtual media: later (PLAN milestone 5)
 		bmc.CapBMCReset:           {R, A},
 	}
+	// Board-specific: the /api serves these better than this board's
+	// Redfish (X570: null sensor readings, a near-empty SEL, versionless
+	// firmware). Redfish stays as the fallback.
+	for _, c := range p.AMIFirst {
+		if order, ok := prefs[c]; ok {
+			prefs[c] = amiFirst(order)
+		}
+	}
+	return prefs
+}
+
+// amiFirst returns order with the AMI backend moved to the front.
+func amiFirst(order []string) []string {
+	out := []string{bmc.BackendAMI}
+	for _, b := range order {
+		if b != bmc.BackendAMI {
+			out = append(out, b)
+		}
+	}
+	return out
 }
 
 // redfishExclude lists capabilities the AMI /api serves better on a

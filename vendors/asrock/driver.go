@@ -19,6 +19,7 @@
 package asrock
 
 import (
+	"bytes"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -51,6 +52,14 @@ const (
 	scoreAMI = 30
 	// scoreAMIRedfish: /api plus an AMI Redfish ServiceRoot.
 	scoreAMIRedfish = 35
+	// scoreNonASRock: a MegaRAC that is evidently not an ASRock board:
+	// another vendor's markers in the unauthenticated ServiceRoot or
+	// $metadata (e.g. the Gigabyte GBT* OEM namespaces), or a successful
+	// /api login without the ASRock-only asrr namespace. It is below
+	// bmc.ScoreFallback, so the generic Redfish driver (and any vendor
+	// driver) wins; it stays above zero so a MegaRAC without a usable
+	// Redfish service can still be served over /api as a last resort.
+	scoreNonASRock = bmc.ScoreFallback / 2
 )
 
 // DefaultHandoffTTL is how long a session logged in by DetectWithCreds
@@ -181,6 +190,74 @@ func isASRockRoot(root *rf.ServiceRoot) bool {
 	return strings.Contains(s, "asrock")
 }
 
+// foreignRootOem are ServiceRoot Oem keys of other MegaRAC OEMs (lower
+// case). ASRock firmware only carries the stock AMI ones (Ami, Dre, Vendor).
+var foreignRootOem = map[string]bool{"gbt": true, "gigabyte": true, "gct": true, "supermicro": true, "dell": true,
+	"hpe": true, "hp": true, "lenovo": true, "inspur": true, "fujitsu": true, "quanta": true, "tyan": true}
+
+// foreignRoot reports why an unauthenticated ServiceRoot is evidently not
+// an ASRock board ("" = no evidence): a Vendor/Product naming neither AMI
+// nor ASRock (e.g. "Giga Computing"), or another OEM's ServiceRoot Oem
+// block. ASRock roots say Vendor "AMI" (B650/X570) or nothing (X470).
+func foreignRoot(root *rf.ServiceRoot) string {
+	if root == nil || isASRockRoot(root) {
+		return ""
+	}
+	for _, v := range []string{root.Vendor, root.Product} {
+		l := strings.ToLower(strings.TrimSpace(v))
+		if l != "" && !strings.Contains(l, "ami") && !strings.Contains(l, "megarac") && !strings.Contains(l, "american megatrends") {
+			return "ServiceRoot Vendor/Product " + strings.TrimSpace(v)
+		}
+	}
+	for k := range root.Oem {
+		if foreignRootOem[strings.ToLower(k)] {
+			return "ServiceRoot Oem." + k
+		}
+	}
+	return ""
+}
+
+// foreignMetadataMarkers are CSDL namespaces of other MegaRAC OEMs' Redfish
+// extensions (Gigabyte / Giga Computing GBT*, Gbt*, Gct*: MC13-LE0 13.04.15
+// and MZ32-AR0 12.61.39 declare them in the unauthenticated $metadata).
+var foreignMetadataMarkers = [][]byte{[]byte(`Namespace="GBT`), []byte(`Namespace="Gbt`), []byte(`Namespace="Gct`), []byte(`Namespace="GCT`)}
+
+// foreignMetadata GETs the unauthenticated /redfish/v1/$metadata (DMTF
+// requires it to be readable without credentials) and reports another
+// OEM's namespaces. Any failure (404, 401, timeout) is "no evidence".
+func (d *Driver) foreignMetadata(ctx context.Context, t bmc.Target) string {
+	o := d.opts.RedfishOptions
+	o.Creds, o.Auth = bmc.Creds{}, rf.AuthNone
+	c, err := rf.New(d.Transport().Endpoint(t.Addr(), transport.LaneRedfish), o)
+	if err != nil {
+		return ""
+	}
+	resp, err := c.Do(transport.WithOp(ctx, "asrock.Detect.metadata"), http.MethodGet, "/redfish/v1/$metadata", nil, rf.WithoutAuth())
+	if err != nil || resp.Status != http.StatusOK {
+		return ""
+	}
+	for _, m := range foreignMetadataMarkers {
+		if bytes.Contains(resp.Body, m) {
+			return "$metadata " + strings.TrimPrefix(string(m), "Namespace=") + "* OEM namespaces"
+		}
+	}
+	return ""
+}
+
+// nonASRockMatch is the capped match for a MegaRAC that is not ASRock.
+func nonASRockMatch(root *rf.ServiceRoot, ami bool, why string) bmc.Match {
+	m := bmc.Match{Score: scoreNonASRock, Vendor: Name, Manufacturer: "AMI", Details: map[string]string{"nonASRock": why}}
+	if root != nil {
+		m.Backends = append(m.Backends, bmc.BackendRedfish)
+		m.Details["redfishVersion"] = root.RedfishVersion
+		m.Details["serviceRootType"] = root.ODataType
+	}
+	if ami {
+		m.Backends = append(m.Backends, bmc.BackendAMI)
+	}
+	return m
+}
+
 // probeAMI sends one unauthenticated GET /api/asrr/model-name. A MegaRAC
 // answers 401 {"cc":7,...} (or 200 with mb_name if it does not enforce
 // auth). It never mutates the BMC.
@@ -251,6 +328,10 @@ func (d *Driver) Detect(ctx context.Context, t bmc.Target) (bmc.Match, error) {
 		m.Score, m.Board = bmc.ScoreCertain, board
 	case isASRockRoot(rp.root):
 		m.Score = bmc.ScoreLikely
+	case ami && foreignRoot(rp.root) != "":
+		// Another OEM's MegaRAC (free evidence: no extra request).
+		m.Score = scoreNonASRock
+		m.Details["nonASRock"] = foreignRoot(rp.root)
 	case ami && isAMIRoot(rp.root):
 		m.Score = scoreAMIRedfish
 	case ami:
@@ -304,8 +385,32 @@ func (d *Driver) family(ctx context.Context, t bmc.Target) string {
 // so a successful answer is bmc.ScoreCertain with board and live firmware.
 // The logged-in client is handed to the following Open (within
 // Options.HandoffTTL) to avoid a second 1.5 s login.
+//
+// Before logging in it looks at the unauthenticated evidence: a ServiceRoot
+// naming another vendor, or (for an AMI root that does not say ASRock) a
+// $metadata declaring another OEM's namespaces, means "not ASRock" and
+// returns the capped scoreNonASRock without sending credentials (no
+// session slot, no failed-login counter). A login that finds no asrr
+// namespace is capped the same way. Either way the generic Redfish driver
+// outranks ASRock on another vendor's MegaRAC.
 func (d *Driver) DetectWithCreds(ctx context.Context, t bmc.Target, c bmc.Creds) (bmc.Match, error) {
-	fam := d.family(ctx, t)
+	rp := d.probeRoot(ctx, t)
+	fam := familyFromRoot(rp.root)
+	if fam != "" {
+		d.setFamily(t.Addr(), fam)
+	} else {
+		fam = d.family(ctx, t)
+	}
+	if rp.root != nil {
+		why := foreignRoot(rp.root)
+		if why == "" && isAMIRoot(rp.root) && !isASRockRoot(rp.root) {
+			why = d.foreignMetadata(ctx, t)
+		}
+		if why != "" {
+			d.log(ctx).DebugContext(ctx, "asrock: not an ASRock BMC, skipping /api login", "bmc", t.Addr(), "evidence", why)
+			return nonASRockMatch(rp.root, false, why), nil
+		}
+	}
 	cl, err := d.newAMI(t, c, boards.ForFamily(fam))
 	if err != nil {
 		return bmc.Match{}, err
@@ -322,8 +427,11 @@ func (d *Driver) DetectWithCreds(ctx context.Context, t bmc.Target, c bmc.Creds)
 	if err != nil {
 		_ = cl.Logout(ctx)
 		if errors.Is(err, bmc.ErrUnsupported) || errors.Is(err, bmc.ErrNotFound) {
-			return bmc.Match{Score: scoreAMI, Vendor: Name, Manufacturer: "AMI", Backends: []string{bmc.BackendAMI},
-				Details: map[string]string{"ami": "logged in; no asrr namespace"}}, nil
+			// A MegaRAC, but not ASRock firmware: never outrank the generic
+			// Redfish fallback (or another vendor's driver) with it.
+			m := nonASRockMatch(rp.root, true, "logged in; no asrr namespace")
+			m.Details["ami"] = "logged in; no asrr namespace"
+			return m, nil
 		}
 		return bmc.Match{}, err
 	}

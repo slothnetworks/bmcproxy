@@ -1,0 +1,15 @@
+{
+ "_comment": "Live GET /api/settings/network-bond of a Gigabyte MZ32-AR0-00 (BMC 12.61.39) on 2026-11-16, read-only (login, this GET, logout; docs/gigabyte/mz32-ar0-live-probe.md). The object carries no addresses or serials; values verbatim.",
+ "api": {
+  "GET /api/settings/network-bond": {
+   "status": 200,
+   "body": {
+    "id": 1,
+    "bond_enable": 1,
+    "bond_mode": "active-backup",
+    "bond_ifc": "both",
+    "auto_configuration_enable": 1
+   }
+  }
+ }
+}

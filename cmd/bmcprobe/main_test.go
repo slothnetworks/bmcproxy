@@ -93,6 +93,84 @@ func backendAuthenticated(bs []bmc.BackendStatus, name string) bool {
 	return false
 }
 
+// TestDetectGigabyte: detect picks gigabyte on both Gigabyte sims (over
+// asrock's MegaRAC guess) without credentials and without an /api login;
+// with credentials the match is certain with the board name, and the
+// password is never printed.
+func TestDetectGigabyte(t *testing.T) {
+	for name, start := range map[string]func(testing.TB, ...func(*testsim.Options)) *testsim.Sim{
+		"MC13-LE0-000": testsim.StartMC13LE0, "MZ32-AR0-00": testsim.StartMZ32AR0} {
+		t.Run(name, func(t *testing.T) {
+			sim := start(t)
+			code, out, errs := runProbe(t, "--host", sim.Host(), "--json", "detect")
+			if code != 0 {
+				t.Fatalf("exit %d: %s", code, errs)
+			}
+			var rep DetectReport
+			if err := json.Unmarshal([]byte(out), &rep); err != nil {
+				t.Fatalf("%v: %s", err, out)
+			}
+			if rep.Driver != "gigabyte" || rep.Score <= 35 || sim.Count("POST", "/api/session") != 0 {
+				t.Fatalf("unauthenticated detect: %+v", rep)
+			}
+			code, out, errs = runProbe(t, append([]string{"detect", "--json"}, withPassword(t, sim)...)...)
+			if code != 0 {
+				t.Fatalf("exit %d: %s", code, errs)
+			}
+			rep = DetectReport{}
+			_ = json.Unmarshal([]byte(out), &rep)
+			if rep.Driver != "gigabyte" || rep.Score != 100 || rep.Board != name || rep.Firmware != sim.Profile().Firmware {
+				t.Fatalf("credentialed detect: %+v", rep)
+			}
+			if sim.Count("POST", "/api/session") != 0 {
+				t.Fatal("asrock logged in to a Gigabyte /api during detection")
+			}
+			if strings.Contains(out+errs, sim.Creds().Pass) {
+				t.Fatal("password printed")
+			}
+		})
+	}
+}
+
+// TestDetectX570: unauthenticated detect picks asrock on the X570's AMI
+// Redfish 1.8.0 root; with credentials the board profile is the verified
+// X570D4U one (not "unknown"), and every request went out one at a time.
+func TestDetectX570(t *testing.T) {
+	sim := testsim.StartX570(t)
+	code, out, errs := runProbe(t, "--host", sim.Host(), "--json", "detect")
+	if code != 0 {
+		t.Fatalf("exit %d: %s", code, errs)
+	}
+	var rep DetectReport
+	if err := json.Unmarshal([]byte(out), &rep); err != nil {
+		t.Fatalf("%v: %s", err, out)
+	}
+	if rep.Driver != "asrock" || rep.Score <= 10 || rep.Details["redfishVersion"] != "1.8.0" || sim.Logins() != 0 {
+		t.Fatalf("detect: %+v", rep)
+	}
+
+	code, out, errs = runProbe(t, append([]string{"detect", "--json"}, withPassword(t, sim)...)...)
+	if code != 0 {
+		t.Fatalf("exit %d: %s", code, errs)
+	}
+	rep = DetectReport{}
+	_ = json.Unmarshal([]byte(out), &rep)
+	if rep.Driver != "asrock" || rep.Score != 100 || rep.Board != "X570D4U" || rep.Firmware != "1.20.00" {
+		t.Fatalf("credentialed detect: %+v", rep)
+	}
+	if rep.Session == nil || rep.Session.Board != "X570D4U" || rep.Session.Degraded != "" ||
+		!backendAuthenticated(rep.Session.Backends, "redfish") || !backendAuthenticated(rep.Session.Backends, "ami") {
+		t.Fatalf("session: %+v", rep.Session)
+	}
+	if st := sim.Stats(); st.MaxInFlight > 1 || st.CSRFRejects != 0 {
+		t.Fatalf("max in-flight %d (default --max-inflight 1), CSRF rejects %d", st.MaxInFlight, st.CSRFRejects)
+	}
+	if strings.Contains(out+errs, sim.Creds().Pass) {
+		t.Fatal("password printed")
+	}
+	testsim.Eventually(t, 2*time.Second, func() bool { return sim.LiveSessions() == 0 }, "X570 sessions logged out")
+}
+
 func TestDetectX470CredentialsRejected(t *testing.T) {
 	sim := testsim.StartX470(t)
 	code, out, errs := runProbe(t, append([]string{"--json", "detect"}, withPassword(t, sim)...)...)
@@ -238,6 +316,7 @@ func TestUsageErrors(t *testing.T) {
 		{[]string{"--host", sim.Host(), "frobnicate"}, "unknown command"},
 		{[]string{"--host", sim.Host(), "--user", "admin", "--password-env", "BMCPROBE_UNSET_VAR", "get", "power"}, "is not set"},
 		{[]string{}, "usage"},
+		{[]string{"--host", sim.Host(), "--max-inflight", "0", "detect"}, "--max-inflight must be at least 1"},
 	}
 	for _, c := range cases {
 		code, _, errs := runProbe(t, c.args...)

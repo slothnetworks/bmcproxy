@@ -24,15 +24,27 @@ import (
 	"github.com/getkin/kin-openapi/openapi3"
 )
 
-// shared header parameters: name -> component key, required flag and text.
+// shared header parameters: name -> component key, required flag, text,
+// example value, and whether operations reference it.
+//
+//   - X-BMC-Host's example is the client-side variable {{bmcHost}}, so tools
+//     that import the spec (Postman, Bruno, Insomnia) fill the header from an
+//     environment variable instead of a hard-coded address.
+//   - X-BMC-Vendor is defined in components/parameters (and described in the
+//     API description) but deliberately NOT attached to operations: importers
+//     add optional header parameters switched on by default, which would send
+//     an empty vendor override on every request. Auto-detection is the
+//     default; clients add the header by hand when they need to force a driver.
 var shared = []struct {
 	name, key   string
 	required    bool
 	description string
+	example     string
+	attach      bool
 }{
-	{"X-BMC-Host", "XBMCHost", true, "BMC address: ip, host or host:port (IPv6 in brackets)."},
-	{"X-BMC-Vendor", "XBMCVendor", false, "Force a driver (e.g. asrock) instead of auto-detection."},
-	{"X-BMC-Confirm", "XBMCConfirm", true, `Must be "true" for disruptive operations; the proxy must also run with --allow-disruptive.`},
+	{"X-BMC-Host", "XBMCHost", true, "BMC address: ip, host or host:port (IPv6 in brackets).", "{{bmcHost}}", true},
+	{"X-BMC-Vendor", "XBMCVendor", false, "Optional: force a driver (e.g. asrock, gigabyte, redfish) instead of auto-detection. Not attached to operations by default; add the header manually when needed.", "", false},
+	{"X-BMC-Confirm", "XBMCConfirm", true, `Must be "true" for disruptive operations; the proxy must also run with --allow-disruptive.`, "", true},
 }
 
 func main() {
@@ -118,26 +130,37 @@ func hoistHeaders(doc *openapi3.T) {
 	}
 	for _, item := range doc.Paths.Map() {
 		for _, op := range item.Operations() {
-			for i, pr := range op.Parameters {
-				if pr == nil || pr.Value == nil || pr.Value.In != openapi3.ParameterInHeader {
-					continue
-				}
-				for _, sh := range shared {
-					if pr.Value.Name == sh.name && pr.Value.Required == sh.required {
-						op.Parameters[i] = &openapi3.ParameterRef{Ref: "#/components/parameters/" + sh.key}
-						used[sh.key] = true
+			kept := op.Parameters[:0]
+		params:
+			for _, pr := range op.Parameters {
+				if pr != nil && pr.Value != nil && pr.Value.In == openapi3.ParameterInHeader {
+					for _, sh := range shared {
+						if pr.Value.Name == sh.name && pr.Value.Required == sh.required {
+							used[sh.key] = true
+							if !sh.attach {
+								continue params // defined in components only
+							}
+							pr = &openapi3.ParameterRef{Ref: "#/components/parameters/" + sh.key}
+							break
+						}
 					}
 				}
+				kept = append(kept, pr)
 			}
+			op.Parameters = kept
 		}
 	}
 	for _, sh := range shared {
 		if !used[sh.key] {
 			continue
 		}
-		doc.Components.Parameters[sh.key] = &openapi3.ParameterRef{Value: &openapi3.Parameter{
+		prm := &openapi3.Parameter{
 			Name: sh.name, In: openapi3.ParameterInHeader, Required: sh.required, Description: sh.description,
 			Schema: openapi3.NewSchemaRef("", openapi3.NewStringSchema()),
-		}}
+		}
+		if sh.example != "" {
+			prm.Example = sh.example
+		}
+		doc.Components.Parameters[sh.key] = &openapi3.ParameterRef{Value: prm}
 	}
 }

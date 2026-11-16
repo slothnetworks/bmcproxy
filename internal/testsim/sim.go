@@ -31,17 +31,30 @@ type Board string
 const (
 	BoardX470 Board = "x470"
 	BoardB650 Board = "b650"
+	BoardX570 Board = "x570"
 )
 
 // Profile captures a board+firmware's documented behaviour.
 type Profile struct {
-	Board     Board
-	BoardName string // asrr/model-name mb_name
+	Board Board
+	// Vendor is the driver the board belongs to ("asrock", "gigabyte").
+	Vendor    string
+	BoardName string // asrr/model-name mb_name (ASRock); Redfish ComputerSystem.Model (Gigabyte)
 	Firmware  string // live-reported BMC firmware
 	// Captures is the preferred HAR capture order for fixture lookup.
 	Captures []string
 	// SecureCookie: B650 sets QSESSIONID with Secure; HttpOnly; SameSite=Lax.
 	SecureCookie bool
+	// CookieAttrs, when set, replaces the cookie attributes after
+	// "path=/" verbatim (X570: "; secure;HttpOnly", no SameSite).
+	CookieAttrs string
+	// CSRFOnGET: GETs need the session's exact X-CSRFTOKEN too (X570 1.20;
+	// X470/B650 accept any non-empty token on GETs).
+	CSRFOnGET bool
+	// RedfishIgnoresQuery: $select and $expand are silently ignored (X570
+	// 1.20 answers the full, unexpanded resource although the ServiceRoot
+	// advertises both).
+	RedfishIgnoresQuery bool
 	// LoginExtras: B650 login response adds user_id, channel, passwordStatus.
 	LoginExtras bool
 	// EventLogTrailer: B650 appends {"event_log_count":N} to SEL arrays.
@@ -59,20 +72,58 @@ type Profile struct {
 	// MaxSessions is the number of free web session slots (the live boards
 	// report maximum_sessions 148 with a 128 baseline, i.e. 20 usable).
 	MaxSessions int
+
+	// CSRFKillsSession: a missing or wrong X-CSRFTOKEN on a request with a
+	// valid session cookie also logs that session out (MC13-LE0 13.04.15).
+	CSRFKillsSession bool
+	// NoASRR: the /api has no ASRock asrr namespace; every asrr/* path is
+	// 404 {"code":1010} (Gigabyte).
+	NoASRR bool
+	// SyntheticAPI: no /api capture exists; the bodies are synthesized
+	// (mz32APIFixtures).
+	SyntheticAPI bool
+	// RedfishTree: the Redfish resources come from
+	// fixtures/<board>/redfish.json instead of the B650 tree.
+	RedfishTree bool
+	// MetadataNamespaces are OEM CSDL namespaces declared by the
+	// unauthenticated $metadata, on top of the stock AMI ones.
+	MetadataNamespaces []string
+	// RedfishTruncatedPaging: collections stop at 50 members without a
+	// nextLink and $skip<1 is a 400 (MC13-LE0 13.04.15).
+	RedfishTruncatedPaging bool
+	// RedfishLiteralDollar: query options are only recognised with a
+	// literal "$"; percent-encoded "%24..." options are silently ignored
+	// (MZ32-AR0 12.61.39).
+	RedfishLiteralDollar bool
+	// RedfishFilterPageLocal: $filter is applied to the returned page only
+	// (MZ32-AR0 12.61.39).
+	RedfishFilterPageLocal bool
+	// RedfishStrictDollar: an unknown "$" query option is a 501
+	// (MZ32-AR0 12.61.39).
+	RedfishStrictDollar bool
 }
 
 // X470 is the X470D4U on BMC 2.32.00 (docs/x470/live-probe.md).
 func X470() Profile {
-	return Profile{Board: BoardX470, BoardName: "X470D4U", Firmware: "2.32.00", LegacyTLS: true, MaxSessions: 20}
+	return Profile{Board: BoardX470, Vendor: "asrock", BoardName: "X470D4U", Firmware: "2.32.00", LegacyTLS: true, MaxSessions: 20}
 }
 
 // B650 is the B650D4U on BMC 4.10.00 (docs/b650/live-probe.md); /api
 // bodies come from the 1.10.00 HAR with the firmware version overridden.
 func B650() Profile {
-	return Profile{Board: BoardB650, BoardName: "B650D4U", Firmware: "4.10.00",
+	return Profile{Board: BoardB650, Vendor: "asrock", BoardName: "B650D4U", Firmware: "4.10.00",
 		Captures:     []string{"b650d4u.har", "b650d4u-2t.har"},
 		SecureCookie: true, LoginExtras: true, EventLogTrailer: true, ChassisCycleInterval: true,
 		RedfishAuth: true, EvasiveMaxConcurrent: 10, MaxSessions: 20}
+}
+
+// X570 is the X570D4U on BMC 1.20.00 (docs/x570/live-probe.md); /api
+// bodies come from the live read-only probe (docs/x570/har-endpoints.json),
+// Redfish from the B650 tree reshaped to the X570 quirks (x570.go).
+func X570() Profile {
+	return Profile{Board: BoardX570, Vendor: "asrock", BoardName: "X570D4U", Firmware: "1.20.00",
+		CookieAttrs: "; secure;HttpOnly", CSRFOnGET: true, LoginExtras: true,
+		RedfishAuth: true, RedfishIgnoresQuery: true, EvasiveMaxConcurrent: 10, MaxSessions: 20}
 }
 
 // Options configure a Sim. Zero values pick the defaults noted.
@@ -139,7 +190,7 @@ type Sim struct {
 	opts     Options
 	profile  Profile
 	fixtures *FixtureSet
-	rf       *redfishtest.Server // B650 Redfish backend (nil on X470)
+	rf       *redfishtest.Server // Redfish backend (B650, X570; nil on X470)
 	x470Root []byte
 
 	apiMu sync.Mutex // the single FastCGI worker: /api is serialised
@@ -177,12 +228,15 @@ func Start(t testing.TB, o Options) *Sim {
 	return s
 }
 
-// StartX470 / StartB650 start a Sim with the board's profile; mod adjusts
+// StartX470 / StartB650 / StartX570 start a Sim with the board's profile; mod adjusts
 // the options first.
 func StartX470(t testing.TB, mod ...func(*Options)) *Sim { return startProfile(t, X470(), mod) }
 
 // StartB650 starts a B650D4U 4.10.00 Sim.
 func StartB650(t testing.TB, mod ...func(*Options)) *Sim { return startProfile(t, B650(), mod) }
+
+// StartX570 starts an X570D4U 1.20.00 Sim.
+func StartX570(t testing.TB, mod ...func(*Options)) *Sim { return startProfile(t, X570(), mod) }
 
 func startProfile(t testing.TB, p Profile, mod []func(*Options)) *Sim {
 	o := Options{Profile: p, PowerOn: true}
@@ -209,9 +263,14 @@ func New(o Options) (*Sim, error) {
 	if o.HelpDataStatus == 0 {
 		o.HelpDataStatus = http.StatusInternalServerError
 	}
-	fx, err := LoadFixtures(string(o.Profile.Board))
-	if err != nil {
-		return nil, err
+	var fx *FixtureSet
+	if o.Profile.SyntheticAPI {
+		fx = mz32APIFixtures()
+	} else {
+		var err error
+		if fx, err = LoadFixtures(string(o.Profile.Board)); err != nil {
+			return nil, err
+		}
 	}
 	s := &Sim{opts: o, profile: o.Profile, fixtures: fx, latency: o.Latency,
 		evasiveN: o.Profile.EvasiveMaxConcurrent, closed: make(chan struct{}),
@@ -225,9 +284,25 @@ func New(o Options) (*Sim, error) {
 	if err := s.initDateTime(); err != nil {
 		return nil, err
 	}
-	if o.Profile.Board == BoardB650 {
+	var err error
+	if o.Profile.RedfishAuth {
+		var tree map[string]map[string]any
+		if o.Profile.RedfishTree {
+			if tree, err = LoadRedfishTree(string(o.Profile.Board)); err != nil {
+				return nil, err
+			}
+		}
 		s.rf = redfishtest.New(o.User, o.Pass)
 		s.rf.Lock()
+		switch {
+		case tree != nil:
+			s.rf.Resources = tree
+			s.rf.ETags = map[string]string{}
+			s.rf.TruncatedPaging = o.Profile.RedfishTruncatedPaging
+			gigabyteRedfish(s.rf.Resources)
+		case o.Profile.Board == BoardX570:
+			x570Redfish(s.rf.Resources)
+		}
 		s.rf.ClockSkew = o.ClockOffset
 		// A Redfish DateTime PATCH moves the whole BMC clock.
 		s.rf.OnClockSet = func(skew time.Duration) { s.offset.Store(int64(skew)) }
@@ -298,7 +373,7 @@ func (s *Sim) Target() bmc.Target {
 // Creds returns the accepted credentials.
 func (s *Sim) Creds() bmc.Creds { return bmc.Creds{User: s.opts.User, Pass: s.opts.Pass} }
 
-// Redfish returns the B650 Redfish backend (nil on X470) for direct
+// Redfish returns the B650/X570 Redfish backend (nil on X470) for direct
 // inspection (LiveSessions, AddSELEntry, Count...).
 func (s *Sim) Redfish() *redfishtest.Server { return s.rf }
 

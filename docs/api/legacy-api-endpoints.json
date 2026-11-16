@@ -24,7 +24,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -63,7 +64,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -83,7 +85,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Session & authentication",
   "request_fields": [
@@ -99,7 +102,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -120,7 +124,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Session & authentication",
   "request_fields": [
@@ -147,7 +152,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -281,7 +287,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -299,7 +306,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Session & authentication",
   "request_fields": [
@@ -312,7 +320,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -342,7 +351,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -378,7 +388,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -398,7 +409,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Feature discovery & UI configuration",
   "request_fields": [],
@@ -412,7 +424,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -475,7 +488,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Feature discovery & UI configuration",
   "request_fields": [],
@@ -491,7 +505,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -545,7 +560,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -563,7 +579,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Feature discovery & UI configuration",
   "request_fields": [],
@@ -571,7 +588,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -592,7 +610,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Feature discovery & UI configuration",
   "request_fields": [],
@@ -604,7 +623,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -663,7 +683,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Dashboard & identity",
   "request_fields": [],
@@ -691,7 +712,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -778,7 +800,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Dashboard & identity",
   "request_fields": [],
@@ -794,7 +817,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -864,7 +888,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Dashboard & identity",
   "request_fields": [],
@@ -874,7 +899,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -925,7 +951,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -999,7 +1026,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1088,7 +1116,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Dashboard & identity",
   "request_fields": [],
@@ -1113,7 +1142,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -1174,7 +1204,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Dashboard & identity",
   "request_fields": [],
@@ -1192,7 +1223,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1316,7 +1348,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1412,7 +1445,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1441,7 +1475,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1462,7 +1497,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [
@@ -1474,7 +1510,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1496,7 +1533,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [
@@ -1512,7 +1550,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -1561,7 +1600,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [],
@@ -1571,7 +1611,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1590,7 +1631,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [],
@@ -1654,7 +1696,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -1731,7 +1774,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1749,7 +1793,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [
@@ -1759,7 +1804,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1778,7 +1824,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [],
@@ -1786,7 +1833,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1814,7 +1862,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1844,7 +1893,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -1877,7 +1927,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -1922,7 +1973,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Power, chassis & UID",
   "request_fields": [],
@@ -1942,7 +1994,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -2047,7 +2100,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2069,7 +2123,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Sensors & SDR",
   "request_fields": [],
@@ -2079,7 +2134,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2108,7 +2164,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2137,7 +2194,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2159,7 +2217,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Sensors & SDR",
   "request_fields": [],
@@ -2176,7 +2235,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -2255,7 +2315,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Sensors & SDR",
   "request_fields": [
@@ -2337,7 +2398,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -2523,7 +2585,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Sensors & SDR",
   "request_fields": [
@@ -2574,7 +2637,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2596,7 +2660,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "FRU & PLDM inventory",
   "request_fields": [],
@@ -2617,7 +2682,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -2714,7 +2780,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2740,7 +2807,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2766,7 +2834,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2796,7 +2865,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2831,7 +2901,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2852,7 +2923,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -2860,7 +2932,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2878,7 +2951,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -2888,7 +2962,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2906,7 +2981,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -2914,7 +2990,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2932,7 +3009,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [
@@ -2942,7 +3020,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2961,7 +3040,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -2969,7 +3049,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -2989,7 +3070,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3003,7 +3085,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -3057,7 +3140,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3065,7 +3149,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3099,7 +3184,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3131,7 +3217,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3157,7 +3244,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3175,7 +3263,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3183,7 +3272,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3201,7 +3291,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3209,7 +3300,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3227,7 +3319,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [
@@ -3247,7 +3340,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3318,7 +3412,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3326,7 +3421,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3346,7 +3442,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3386,7 +3483,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3414,7 +3512,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3422,7 +3521,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3442,7 +3542,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3491,7 +3592,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -3665,7 +3767,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3696,7 +3799,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3724,7 +3828,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3745,7 +3850,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3753,7 +3859,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3775,7 +3882,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3783,7 +3891,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3802,7 +3911,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3810,7 +3920,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3828,7 +3939,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3838,7 +3950,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3860,7 +3973,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3870,7 +3984,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -3906,7 +4021,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3917,7 +4033,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3936,7 +4053,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [],
@@ -3947,7 +4065,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -3966,7 +4085,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [
@@ -3976,7 +4096,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4002,7 +4123,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4025,7 +4147,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [
@@ -4071,7 +4194,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4092,7 +4216,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [
@@ -4102,7 +4227,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4122,7 +4248,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Logs, crash dumps & diagnostics",
   "request_fields": [
@@ -4140,7 +4267,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4174,7 +4302,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4200,7 +4329,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4228,7 +4358,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4259,7 +4390,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4297,7 +4429,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4326,7 +4459,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4344,7 +4478,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -4357,7 +4492,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4385,7 +4521,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4416,7 +4553,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4444,7 +4582,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4473,7 +4612,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4492,7 +4632,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -4505,7 +4646,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4573,7 +4715,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -4596,7 +4739,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -4689,7 +4833,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -4702,7 +4847,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -4781,7 +4927,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -4794,7 +4941,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -4866,7 +5014,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -4911,7 +5060,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -5006,7 +5156,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -5019,7 +5170,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -5155,7 +5307,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5223,7 +5376,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Host inventory",
   "request_fields": [],
@@ -5231,7 +5385,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5263,7 +5418,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5299,7 +5455,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5360,7 +5517,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5389,7 +5547,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5418,7 +5577,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5447,7 +5607,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5479,7 +5640,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5509,7 +5671,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5547,7 +5710,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5583,7 +5747,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5619,7 +5784,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5655,7 +5821,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5703,7 +5870,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5732,7 +5900,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5758,7 +5927,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5787,7 +5957,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5820,7 +5991,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5855,7 +6027,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5884,7 +6057,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5902,7 +6076,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -5939,7 +6114,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5960,7 +6136,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -5968,7 +6145,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -5986,7 +6164,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6008,7 +6187,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6029,7 +6209,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6052,7 +6233,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6073,7 +6255,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6091,7 +6274,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6109,7 +6293,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6131,7 +6316,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6149,7 +6335,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6159,7 +6346,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6180,7 +6368,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6201,7 +6390,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6222,7 +6412,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6230,7 +6421,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6248,7 +6440,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6258,7 +6451,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6276,7 +6470,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6297,7 +6492,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6320,7 +6516,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6332,7 +6529,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6354,7 +6552,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6362,7 +6561,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6380,7 +6580,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6388,7 +6589,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6406,7 +6608,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6414,7 +6617,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6432,7 +6636,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6440,7 +6645,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6458,7 +6664,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6469,7 +6676,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6487,7 +6695,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6497,7 +6706,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6515,7 +6725,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6527,7 +6738,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6550,7 +6762,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6569,7 +6782,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6590,7 +6804,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6600,7 +6815,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6619,7 +6835,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6650,7 +6867,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6673,7 +6891,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6721,7 +6940,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6742,7 +6962,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6755,7 +6976,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6774,7 +6996,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6786,7 +7009,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6805,7 +7029,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6817,7 +7042,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6836,7 +7062,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -6896,7 +7123,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6925,7 +7153,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6938,7 +7167,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6958,7 +7188,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -6971,7 +7202,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -6990,7 +7222,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7005,7 +7238,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7023,7 +7257,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7053,7 +7288,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7078,7 +7314,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7092,7 +7329,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7110,7 +7348,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7125,7 +7364,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7143,7 +7383,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7175,7 +7416,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7197,7 +7439,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7208,7 +7451,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7227,7 +7471,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7241,7 +7486,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7260,7 +7506,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -7312,7 +7559,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7354,7 +7602,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7373,7 +7622,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7385,7 +7635,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7404,7 +7655,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7416,7 +7668,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7435,7 +7688,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7447,7 +7701,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7466,7 +7721,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7482,7 +7738,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7500,7 +7757,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7511,7 +7769,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7530,7 +7789,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -7662,7 +7922,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7701,7 +7962,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7725,7 +7987,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7749,7 +8012,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7762,7 +8026,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7782,7 +8047,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -7793,7 +8059,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7812,7 +8079,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -7820,7 +8088,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7841,7 +8110,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -7879,7 +8149,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7901,7 +8172,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -7939,7 +8211,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -7962,7 +8235,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -7981,7 +8255,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8003,7 +8278,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -8061,7 +8337,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8090,7 +8367,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -8116,7 +8394,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8139,7 +8418,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [
@@ -8157,7 +8437,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8180,7 +8461,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -8211,7 +8493,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8249,7 +8532,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8268,7 +8552,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Storage / PCIe device management",
   "request_fields": [],
@@ -8297,7 +8582,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8327,7 +8613,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8359,7 +8646,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8378,7 +8666,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [],
@@ -8386,7 +8675,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8405,7 +8695,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [],
@@ -8416,7 +8707,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8434,7 +8726,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [],
@@ -8449,7 +8742,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8472,7 +8766,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [],
@@ -8506,7 +8801,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -8609,7 +8905,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8630,7 +8927,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [
@@ -8699,7 +8997,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8722,7 +9021,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [
@@ -8734,7 +9034,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8786,7 +9087,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8807,7 +9109,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [],
@@ -8819,7 +9122,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8885,7 +9189,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8903,7 +9208,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "KVM, H5Viewer & SOL",
   "request_fields": [],
@@ -8911,7 +9217,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -8931,7 +9238,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9091,7 +9399,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9116,7 +9425,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9193,7 +9503,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9215,7 +9526,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [],
@@ -9229,7 +9541,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9252,7 +9565,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9262,7 +9576,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9282,7 +9597,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [],
@@ -9293,7 +9609,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9313,7 +9630,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [],
@@ -9327,7 +9645,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9350,7 +9669,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9361,7 +9681,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9380,7 +9701,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9392,7 +9714,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9411,7 +9734,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9422,7 +9746,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9441,7 +9766,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9459,7 +9785,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9482,7 +9809,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9500,7 +9828,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9523,7 +9852,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9540,7 +9870,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9564,7 +9895,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9584,7 +9916,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9608,7 +9941,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9622,7 +9956,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9642,7 +9977,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Virtual media / remote storage",
   "request_fields": [
@@ -9655,7 +9991,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9672,7 +10009,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -9686,7 +10024,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9727,7 +10066,8 @@
    "PUT"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -9737,7 +10077,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9756,7 +10097,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -9769,7 +10111,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9788,7 +10131,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -9796,7 +10140,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9880,7 +10225,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9902,7 +10248,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -9965,7 +10312,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -9987,7 +10335,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10000,7 +10349,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10022,7 +10372,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10053,7 +10404,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10077,7 +10429,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10087,7 +10440,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10106,7 +10460,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -10114,7 +10469,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10136,7 +10492,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10147,7 +10504,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10166,7 +10524,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -10174,7 +10533,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10197,7 +10557,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10215,7 +10576,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10251,7 +10613,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10285,7 +10648,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10307,7 +10671,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10390,7 +10755,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -10531,7 +10897,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10555,7 +10922,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -10670,7 +11038,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10692,7 +11061,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [
@@ -10727,7 +11097,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10748,7 +11119,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -10756,7 +11128,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10785,7 +11158,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10807,7 +11181,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -10815,7 +11190,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10837,7 +11213,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: network",
   "request_fields": [],
@@ -10852,7 +11229,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -10906,7 +11284,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: users & PAM",
   "request_fields": [
@@ -10932,7 +11311,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10954,7 +11334,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: users & PAM",
   "request_fields": [
@@ -10968,7 +11349,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -10992,7 +11374,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: users & PAM",
   "request_fields": [
@@ -11002,7 +11385,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11022,7 +11406,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: users & PAM",
   "request_fields": [
@@ -11171,7 +11556,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -11288,7 +11674,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: users & PAM",
   "request_fields": [
@@ -11299,7 +11686,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11320,7 +11708,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: users & PAM",
   "request_fields": [],
@@ -11330,7 +11719,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11360,7 +11750,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11387,7 +11778,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11406,7 +11798,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: services & sessions",
   "request_fields": [
@@ -11427,7 +11820,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11474,7 +11868,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: services & sessions",
   "request_fields": [],
@@ -11497,7 +11892,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11521,7 +11917,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: services & sessions",
   "request_fields": [
@@ -11590,7 +11987,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11708,7 +12106,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11731,7 +12130,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SSL",
   "request_fields": [
@@ -11774,7 +12174,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11798,7 +12199,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SSL",
   "request_fields": [
@@ -11833,7 +12235,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11857,7 +12260,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SSL",
   "request_fields": [
@@ -11877,7 +12281,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11900,7 +12305,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -11934,7 +12340,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -11956,7 +12363,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -12005,7 +12413,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12029,7 +12438,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -12046,7 +12456,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12066,7 +12477,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -12118,7 +12530,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12140,7 +12553,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -12189,7 +12603,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12214,7 +12629,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -12241,7 +12657,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12264,7 +12681,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: LDAP / AD / RADIUS",
   "request_fields": [
@@ -12291,7 +12709,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12314,7 +12733,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: date & time / NTP",
   "request_fields": [
@@ -12437,7 +12857,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -12528,7 +12949,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12547,7 +12969,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -12562,7 +12985,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12584,7 +13008,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -12702,7 +13127,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12726,7 +13152,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [],
@@ -12734,7 +13161,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12756,7 +13184,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [],
@@ -12764,7 +13193,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12786,7 +13216,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -12913,7 +13344,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -12937,7 +13369,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -12984,7 +13417,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13008,7 +13442,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -13025,7 +13460,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13055,7 +13491,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13074,7 +13511,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -13155,7 +13593,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13177,7 +13616,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: SMTP, PEF, alerts & SNMP",
   "request_fields": [
@@ -13193,7 +13633,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13219,7 +13660,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13238,7 +13680,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: firewall",
   "request_fields": [
@@ -13274,7 +13717,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13336,7 +13780,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13358,7 +13803,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: firewall",
   "request_fields": [
@@ -13399,7 +13845,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13479,7 +13926,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13501,7 +13949,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: firewall",
   "request_fields": [
@@ -13559,7 +14008,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13585,7 +14035,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: firewall",
   "request_fields": [],
@@ -13593,7 +14044,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13632,7 +14084,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -13685,7 +14138,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -13700,7 +14154,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13717,7 +14172,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -13742,7 +14198,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13759,7 +14216,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -13784,7 +14242,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13801,7 +14260,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -13859,7 +14319,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -13945,7 +14406,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -13998,7 +14460,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14015,7 +14478,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14040,7 +14504,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14057,7 +14522,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14082,7 +14548,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14099,7 +14566,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14107,7 +14575,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14124,7 +14593,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14148,7 +14618,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14165,7 +14636,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14195,7 +14667,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14212,7 +14685,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14237,7 +14711,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14254,7 +14729,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14279,7 +14755,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14296,7 +14773,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14366,7 +14844,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14383,7 +14862,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14411,7 +14891,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14428,7 +14909,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14450,7 +14932,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14487,7 +14970,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [
@@ -14497,7 +14981,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14539,7 +15024,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14596,7 +15082,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14616,7 +15103,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14624,7 +15112,8 @@
   "handler_present": {
    "X470-3.02": "unknown",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14644,7 +15133,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14652,7 +15142,8 @@
   "handler_present": {
    "X470-3.02": "unknown",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14672,7 +15163,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14680,7 +15172,8 @@
   "handler_present": {
    "X470-3.02": "unknown",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14700,7 +15193,8 @@
    "GET"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Settings: fan control",
   "request_fields": [],
@@ -14712,7 +15206,8 @@
   "handler_present": {
    "X470-3.02": "unknown",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14741,7 +15236,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14774,7 +15270,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14814,7 +15311,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14845,7 +15343,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14903,7 +15402,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14932,7 +15432,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14954,7 +15455,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [],
@@ -14962,7 +15464,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -14982,7 +15485,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [],
@@ -14994,7 +15498,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15018,7 +15523,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [
@@ -15068,7 +15574,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15091,7 +15598,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [
@@ -15153,7 +15661,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -15210,7 +15719,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [
@@ -15258,7 +15768,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15281,7 +15792,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [
@@ -15308,7 +15820,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15331,7 +15844,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: video recording / BSOD / SOL recording",
   "request_fields": [
@@ -15359,7 +15873,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15382,7 +15897,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: licensing",
   "request_fields": [
@@ -15397,7 +15913,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15419,7 +15936,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: licensing",
   "request_fields": [],
@@ -15435,7 +15953,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15459,7 +15978,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Settings: BIOS / platform OEM",
   "request_fields": [],
@@ -15477,7 +15997,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15535,7 +16056,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15581,7 +16103,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15601,7 +16124,8 @@
    "POST"
   ],
   "boards": [
-   "X470-3.02"
+   "X470-3.02",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15613,7 +16137,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15630,7 +16155,9 @@
   "methods": [
    "GET"
   ],
-  "boards": [],
+  "boards": [
+   "X570-2.11"
+  ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
   "response_fields": [
@@ -15643,7 +16170,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15683,7 +16211,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15695,7 +16224,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15715,7 +16245,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15729,7 +16260,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15749,7 +16281,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -15760,7 +16293,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15779,7 +16313,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -15789,7 +16324,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15809,7 +16345,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15821,7 +16358,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15840,7 +16378,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15852,7 +16391,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15870,7 +16410,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15884,7 +16425,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15902,7 +16444,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -15913,7 +16456,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15931,7 +16475,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -15943,7 +16488,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15961,7 +16507,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -15973,7 +16520,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -15991,7 +16539,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16003,7 +16552,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16021,7 +16571,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16036,7 +16587,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16054,7 +16606,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16065,7 +16618,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16083,7 +16637,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16095,7 +16650,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16113,7 +16669,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16125,7 +16682,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16143,7 +16701,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16155,7 +16714,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16173,7 +16733,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16187,7 +16748,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16205,7 +16767,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16216,7 +16779,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16234,7 +16798,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16246,7 +16811,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16264,7 +16830,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16276,7 +16843,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16294,7 +16862,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16306,7 +16875,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16324,7 +16894,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16338,7 +16909,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16356,7 +16928,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16367,7 +16940,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16385,7 +16959,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16397,7 +16972,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16415,7 +16991,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16427,7 +17004,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16445,7 +17023,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16457,7 +17036,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16475,7 +17055,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16489,7 +17070,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16507,7 +17089,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16518,7 +17101,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16536,7 +17120,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16548,7 +17133,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16566,7 +17152,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16578,7 +17165,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16620,7 +17208,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16648,7 +17237,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16658,7 +17248,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16684,7 +17275,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16708,7 +17300,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16731,7 +17324,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16757,7 +17351,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16791,7 +17386,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16823,7 +17419,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16842,7 +17439,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -16850,7 +17448,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16870,7 +17469,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16896,7 +17496,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16919,7 +17520,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16938,7 +17540,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -16958,7 +17561,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -16968,7 +17572,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17000,7 +17605,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17022,7 +17628,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17041,7 +17648,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17062,7 +17670,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17074,7 +17683,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17093,7 +17703,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17103,7 +17714,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17125,7 +17737,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17137,7 +17750,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17159,7 +17773,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17174,7 +17789,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17197,7 +17813,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17211,7 +17828,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17233,7 +17851,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17252,7 +17871,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17291,7 +17911,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17310,7 +17931,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17318,7 +17940,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17338,7 +17961,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17387,7 +18011,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -17476,7 +18101,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17495,7 +18121,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17505,7 +18132,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17524,7 +18152,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17534,7 +18163,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17553,7 +18183,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17563,7 +18194,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17582,7 +18214,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17596,7 +18229,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17617,7 +18251,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17634,7 +18269,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17653,7 +18289,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17661,7 +18298,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17682,7 +18320,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17690,7 +18329,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17709,7 +18349,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17726,7 +18367,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17747,7 +18389,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17757,7 +18400,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17778,7 +18422,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17793,7 +18438,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17813,7 +18459,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17827,7 +18474,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17846,7 +18494,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -17861,7 +18510,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17903,7 +18553,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17926,7 +18577,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17934,7 +18586,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17956,7 +18609,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17964,7 +18618,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -17986,7 +18641,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -17994,7 +18650,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18016,7 +18673,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -18026,7 +18684,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18048,7 +18707,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -18056,7 +18716,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18079,7 +18740,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [],
@@ -18087,7 +18749,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18110,7 +18773,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18121,7 +18785,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18143,7 +18808,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18154,7 +18820,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18172,7 +18839,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18183,7 +18851,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18201,7 +18870,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18217,7 +18887,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18235,7 +18906,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18245,7 +18917,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18273,7 +18946,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18301,7 +18975,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18327,7 +19002,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18361,7 +19037,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18387,7 +19064,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18413,7 +19091,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18441,7 +19120,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18471,7 +19151,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18513,7 +19194,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18553,7 +19235,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18583,7 +19266,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18621,7 +19305,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18651,7 +19336,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18683,7 +19369,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18701,7 +19388,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18714,7 +19402,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18732,7 +19421,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18749,7 +19439,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18767,7 +19458,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18778,7 +19470,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18796,7 +19489,8 @@
   ],
   "boards": [
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18809,7 +19503,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18829,7 +19524,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18871,7 +19567,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18910,7 +19607,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18936,7 +19634,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18965,7 +19664,8 @@
   "handler_present": {
    "X470-3.02": "no",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -18984,7 +19684,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -18996,7 +19697,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19021,7 +19723,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -19036,7 +19739,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19061,7 +19765,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -19123,7 +19828,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19185,7 +19891,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -19200,7 +19907,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "no",
-   "B650-9.05": "no"
+   "B650-9.05": "no",
+   "X570-2.11": "no"
   },
   "seen_in_har": {
    "x470d4u.har": [
@@ -19248,7 +19956,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -19280,7 +19989,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19328,7 +20038,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Maintenance & firmware update",
   "request_fields": [
@@ -19338,7 +20049,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19358,7 +20070,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Automation engine (scripts/tasks)",
   "request_fields": [
@@ -19373,7 +20086,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19394,7 +20108,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Automation engine (scripts/tasks)",
   "request_fields": [
@@ -19410,7 +20125,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19436,7 +20152,8 @@
   "boards": [
    "X470-3.02",
    "B650-7.02",
-   "B650-9.05"
+   "B650-9.05",
+   "X570-2.11"
   ],
   "area": "Automation engine (scripts/tasks)",
   "request_fields": [
@@ -19463,7 +20180,8 @@
   "handler_present": {
    "X470-3.02": "yes",
    "B650-7.02": "yes",
-   "B650-9.05": "yes"
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
   },
   "seen_in_har": {
    "x470d4u.har": [],
@@ -19479,5 +20197,622 @@
   "js_modules": [
    "collection/tasks"
   ]
+ },
+ {
+  "path": "/api/ae/results",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/ae/run",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/maintenance/BMC/configuration",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/maintenance/BMC/firmware",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/maintenance/BMC/flash-progress",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/maintenance/BMC/status",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/maintenance/BMC/upgrade",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/settings/getfan100druingbmcupdate",
+  "methods": [],
+  "boards": [
+   "X570-2.11"
+  ],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "no",
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/settings/getsupportfanname",
+  "methods": [],
+  "boards": [
+   "X570-2.11"
+  ],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "no",
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/settings/setfan100druingbmcupdate",
+  "methods": [],
+  "boards": [
+   "X570-2.11"
+  ],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "no",
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/asrr/smbiosdata",
+  "methods": [],
+  "boards": [
+   "X570-2.11"
+  ],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "no",
+   "B650-9.05": "no",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/hsc-info",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/firmware/redfish",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/fwimage/info",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/fwimage/remote/info",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/hpm/biosfw",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/hpm/cpldfw",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/hpm/mmcfw",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/maintenance/redfish",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "no",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/previewer",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/sensors/basic",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/dns/domain",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/dns/general",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/dns/host",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/dns/server",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/dns/tsig",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/email-format",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/media/remote/configuration",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
+ },
+ {
+  "path": "/api/settings/ssl",
+  "methods": [],
+  "boards": [],
+  "area": "X570 additions",
+  "request_fields": [],
+  "response_fields": [],
+  "handler_present": {
+   "X470-3.02": "yes",
+   "B650-7.02": "yes",
+   "B650-9.05": "yes",
+   "X570-2.11": "yes"
+  },
+  "seen_in_har": {
+   "x470d4u.har": [],
+   "b650d4u.har": [],
+   "b650d4u-2t.har": []
+  },
+  "ui": [],
+  "notes": "Route string found in the X570D4U 2.11.00 /api binaries (x570_handlers.py); not in the original UI-derived catalog. Methods unknown from strings."
  }
 ]

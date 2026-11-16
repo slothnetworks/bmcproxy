@@ -466,3 +466,45 @@ func TestNewSessionReuseForVendorDriver(t *testing.T) {
 		t.Fatalf("session not logged out")
 	}
 }
+
+// Gigabyte MC13-LE0 13.04.15 lists only power/energy monitors in Sensors;
+// temperatures, fans and voltages live in Thermal/Power and are merged in.
+func TestSensorsMergeLegacyWhenCollectionHasNoThermal(t *testing.T) {
+	srv, d, tg := setup(t)
+	srv.Lock()
+	srv.Resources["/redfish/v1/Chassis/Self/Sensors"] = map[string]any{"@odata.id": "/redfish/v1/Chassis/Self/Sensors",
+		"Members": []any{map[string]any{"@odata.id": "/redfish/v1/Chassis/Self/Sensors/Energy"},
+			map[string]any{"@odata.id": "/redfish/v1/Chassis/Self/Sensors/Power"}}}
+	srv.Resources["/redfish/v1/Chassis/Self/Sensors/Energy"] = map[string]any{"@odata.id": "/redfish/v1/Chassis/Self/Sensors/Energy",
+		"Id": "Power Energy Monitor", "Name": "Power Energy Monitor", "Reading": 152043585, "ReadingType": "EnergyJoules"}
+	srv.Resources["/redfish/v1/Chassis/Self/Sensors/Power"] = map[string]any{"@odata.id": "/redfish/v1/Chassis/Self/Sensors/Power",
+		"Id": "Power Consumption Monitor", "Name": "Power Consumption Monitor", "Reading": 168, "ReadingType": "Power"}
+	srv.Unlock()
+	s := open(t, d, tg)
+	sensors, err := s.Sensors(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	m := map[string]bmc.Sensor{}
+	for _, x := range sensors {
+		m[x.Name] = x
+	}
+	if len(sensors) != 2+5 {
+		t.Fatalf("sensors=%d (want 2 modern + 5 legacy): %+v", len(sensors), sensors)
+	}
+	if e := m["Power Energy Monitor"]; e.Unit != "J" || e.Type != bmc.SensorPower {
+		t.Fatalf("energy sensor %+v", e)
+	}
+	if _, ok := m["TEMP_CPU"]; !ok {
+		t.Fatalf("thermal sensors not merged: %+v", sensors)
+	}
+
+	// A collection that already has temperatures is used alone (B650).
+	srv2, d2, tg2 := setup(t)
+	_ = srv2
+	s2 := open(t, d2, tg2)
+	all, err := s2.Sensors(ctx)
+	if err != nil || len(all) != 60 {
+		t.Fatalf("B650 sensors=%d err=%v", len(all), err)
+	}
+}

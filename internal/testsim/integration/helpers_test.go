@@ -14,6 +14,7 @@ import (
 	"github.com/slothnetworks/bmcproxy/pkg/transport"
 	"github.com/slothnetworks/bmcproxy/vendors/asrock"
 	genericredfish "github.com/slothnetworks/bmcproxy/vendors/generic/redfish"
+	"github.com/slothnetworks/bmcproxy/vendors/gigabyte"
 )
 
 // fakeIPMI is an in-memory IPMI backend for the X470's IPMI-backed
@@ -71,27 +72,58 @@ func (f *fakeIPMI) Close(context.Context) error                             { re
 
 var _ ipmi.Conn = (*fakeIPMI)(nil)
 
-// drivers returns the production driver set (asrock + generic Redfish
-// fallback), bound to the proxy's transport.
+// drivers returns the production driver set (gigabyte, asrock and the
+// generic Redfish fallback, as registered by cmd/bmcproxy/drivers.go),
+// bound to the proxy's transport.
 func drivers(ip *fakeIPMI) func(tm *transport.Manager) []bmc.Driver {
 	return func(tm *transport.Manager) []bmc.Driver {
 		return []bmc.Driver{
+			gigabyte.New(gigabyte.Options{Transport: tm}),
 			asrock.New(asrock.Options{Transport: tm, IPMIDialer: ip.dial}),
 			genericredfish.New(tm),
 		}
 	}
 }
 
+// allBoards is the board matrix every board-generic test runs on.
+var allBoards = []string{"x470", "b650", "x570"}
+
+// gigabyteBoards is the Gigabyte board matrix (gigabyte_test.go).
+var gigabyteBoards = []string{"mc13le0", "mz32ar0"}
+
+// boardName is the live board name of each sim board (asrr/model-name on
+// ASRock, Redfish ComputerSystem.Model on Gigabyte).
+var boardName = map[string]string{"x470": "X470D4U", "b650": "B650D4U", "x570": "X570D4U",
+	"mc13le0": "MC13-LE0-000", "mz32ar0": "MZ32-AR0-00"}
+
+// boardVendor is the driver that must serve each sim board.
+var boardVendor = map[string]string{"x470": "asrock", "b650": "asrock", "x570": "asrock", "mc13le0": "gigabyte", "mz32ar0": "gigabyte"}
+
+// asrrDialect: the board uses the X470-era /api OEM dialect (asrr/settings
+// fan endpoints, asrr/getvetobit) rather than settings/fan + ncsilinkup.
+func asrrDialect(board string) bool { return board == "x470" || board == "x570" }
+
+// amiSEL: the driver reads the SEL over /api logs/event (X470: no Redfish;
+// X570: its Redfish SEL is near-empty) rather than Redfish.
+func amiSEL(board string) bool { return board == "x470" || board == "x570" }
+
 func startSim(t *testing.T, board string, smod ...func(*testsim.Options)) *testsim.Sim {
 	t.Helper()
-	if board == "x470" {
+	switch board {
+	case "x470":
 		return testsim.StartX470(t, smod...)
+	case "x570":
+		return testsim.StartX570(t, smod...)
+	case "mc13le0":
+		return testsim.StartMC13LE0(t, smod...)
+	case "mz32ar0":
+		return testsim.StartMZ32AR0(t, smod...)
 	}
 	return testsim.StartB650(t, smod...)
 }
 
-// setupBoard starts a sim for board ("x470" | "b650") and a full proxy with
-// the asrock + generic Redfish drivers.
+// setupBoard starts a sim for board (see allBoards, gigabyteBoards) and a
+// full proxy with the production driver set.
 func setupBoard(t *testing.T, board string, popt func(*testsim.ProxyOptions), smod ...func(*testsim.Options)) (*testsim.Sim, *testsim.Proxy, *fakeIPMI) {
 	t.Helper()
 	sim := startSim(t, board, smod...)

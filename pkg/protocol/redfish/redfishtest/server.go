@@ -69,6 +69,11 @@ type Server struct {
 	// BrokenNextLink makes collections always return a nextLink to
 	// themselves (loop guard test).
 	BrokenNextLink bool
+	// TruncatedPaging reproduces the Gigabyte MC13-LE0 (AMI 13.04.15)
+	// collections: pages stop at PageSize without a nextLink,
+	// Members@odata.count is the page length, and $skip=0 answers 400
+	// Base.1.12.QueryParameterOutOfRange.
+	TruncatedPaging bool
 	// SessionIdle is the idle timeout of sessions (0 = never).
 	SessionIdle time.Duration
 	// ResetTask: when > 0, ComputerSystem.Reset answers 202 with a task
@@ -334,6 +339,11 @@ func (s *Server) get(w http.ResponseWriter, r *http.Request, path string) {
 		skip, top := 0, len(members)
 		if v := q.Get("$skip"); v != "" {
 			skip, _ = strconv.Atoi(v)
+			if s.TruncatedPaging && skip < 1 {
+				writeJSON(w, http.StatusBadRequest, ErrorBody("Base.1.12.QueryParameterOutOfRange",
+					"The value '"+v+"' for the query parameter $skip is out of range [1, inf).", v, "$skip", "[1, inf)"))
+				return
+			}
 		}
 		if v := q.Get("$top"); v != "" {
 			top, _ = strconv.Atoi(v)
@@ -365,7 +375,10 @@ func (s *Server) get(w http.ResponseWriter, r *http.Request, path string) {
 		}
 		out["Members"] = page
 		out["Members@odata.count"] = total
-		if s.BrokenNextLink {
+		if s.TruncatedPaging {
+			out["Members@odata.count"] = len(page)
+			delete(out, "Members@odata.nextLink")
+		} else if s.BrokenNextLink {
 			out["Members@odata.nextLink"] = path
 		} else if end < total && (q.Get("$top") == "" || end < skip+top) {
 			out["Members@odata.nextLink"] = path + "?$skip=" + strconv.Itoa(end)

@@ -1509,6 +1509,175 @@
                 }
             }
         },
+        "/api/v1/network/bond": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **read** (cached briefly, concurrent calls coalesced). ASRock AMI /api: `settings/network-bond`; Gigabyte (MC13-LE0, MZ32-AR0) AMI /api: `settings/network-bond` (live: `{id, bond_enable, bond_mode, bond_ifc, auto_configuration_enable}`, bond0 holds the BMC address by default). 501 when the driver has no bonding support (Redfish-only and IPMI targets). `/api/v1/capabilities` reports the backend under `bond`.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "network"
+                ],
+                "summary": "BMC NIC bonding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (e.g. asrock)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api_v1.BondResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "capability not supported",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "Gateway Timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **disruptive** (the BMC restarts its networking and can drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Omitted fields keep their current value: the driver reads the full `settings/network-bond` object, mutates it and PUTs the whole object back (AMI answers 500 to partial bodies). ASRock AMI /api: `PUT settings/network-bond`; Gigabyte AMI /api: `PUT settings/network-bond` (bond_mode is not configurable; write **UNVERIFIED** on hardware, shape from the MZ32-AR0 web UI). Cached reads for the host are dropped after the call.",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "network"
+                ],
+                "summary": "Set BMC NIC bonding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (e.g. asrock)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Must be \\",
+                        "name": "X-BMC-Confirm",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Bonding change (enabled required)",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api_v1.BondRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "disruptive operation denied",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "capability not supported",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "Service Unavailable",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "Gateway Timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/power": {
             "get": {
                 "security": [
@@ -2574,7 +2743,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. Both boards: AMI /api `GET settings/network-bond` ({id,bond_enable,bond_mode,auto_configuration_enable}; B650 also bond_ifc).",
+                "description": "Tier: **read**. All boards: AMI /api `GET settings/network-bond` ({id,bond_enable,bond_mode,auto_configuration_enable}; B650 also bond_ifc, X470/X570 never).",
                 "produces": [
                     "application/json"
                 ],
@@ -2662,7 +2831,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive** (diagnostic data is lost). X470: `DELETE asrr/clearmcalog`. B650/B550: 501 (no handler). Returns 204.",
+                "description": "Tier: **disruptive** (diagnostic data is lost). X470: `DELETE asrr/clearmcalog`. B650/B550/X570: 501 (no handler). Returns 204.",
                 "produces": [
                     "application/json"
                 ],
@@ -2754,7 +2923,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. Both boards: `GET asrr/maintenance/{C}/status` and `.../flash-progress`. Components per board: X470 BIOS, CPLD; B650 4.x BIOS, CPLD, FPGA, RETIMER; others 501. Accepted names: BIOS, CPLD, FPGA, RETIMER, PSU, BP.",
+                "description": "Tier: **read**. Both boards: `GET asrr/maintenance/{C}/status` and `.../flash-progress`. Components per board: X470 BIOS, CPLD; B650 4.x BIOS, CPLD, FPGA, RETIMER; X570 BIOS, BP; others 501. Accepted names: BIOS, CPLD, FPGA, RETIMER, PSU, BP.",
                 "produces": [
                     "application/json"
                 ],
@@ -3069,7 +3238,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. X470: `GET asrr/GetFanDuty` (FANn_Duty %). B650 4.x: `GET settings/fan/manual`.",
+                "description": "Tier: **read**. X470: `GET asrr/GetFanDuty` (current FANn_Duty %, source `current`). X570: GetFanDuty is absent (404 on 1.20), so `GET asrr/settings/getfandutymanualmode` (configured manual duty1..16, source `manual`). B650 4.x: `GET settings/fan/manual` (source `manual`).",
                 "produces": [
                     "application/json"
                 ],
@@ -3157,7 +3326,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. X470: `GET asrr/settings/getfancontrolmode` (an array with one {mode1..mode16} object, live-confirmed on 2.32 with every fan at 0 = the default; the meaning of the other codes is unverified). B650 4.x: `GET settings/fan/mode`. Raw vendor object included.",
+                "description": "Tier: **read**. X470/X570: `GET asrr/settings/getfancontrolmode` (an array with one {mode1..mode16} object, live-confirmed on X470 2.32 and X570 1.20 with every fan at 0 = the default; the meaning of the other codes is unverified). B650 4.x: `GET settings/fan/mode`. Raw vendor object included.",
                 "produces": [
                     "application/json"
                 ],
@@ -3245,7 +3414,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. X470: two-step per table, held under the per-host exclusive AMI lane so no other request interleaves: `POST asrr/settings/setopenlooptablenumber {table_numble}` then `GET asrr/settings/getfanopenloopcontroltable` (Get_Temp1..24/Get_Duty1..24); closed loop uses setcloselooptablenumber + getfancloseloopcontroltable. B650 4.x: `GET settings/fan/openloop` / `closedloop` (one call, no selection step).",
+                "description": "Tier: **read**. X470/X570: two-step per table, held under the per-host exclusive AMI lane so no other request interleaves: `POST asrr/settings/setopenlooptablenumber {table_numble}` then `GET asrr/settings/getfanopenloopcontroltable` (Get_Temp1..24/Get_Duty1..24); closed loop uses setcloselooptablenumber + getfancloseloopcontroltable. B650 4.x: `GET settings/fan/openloop` / `closedloop` (one call, no selection step).",
                 "produces": [
                     "application/json"
                 ],
@@ -3347,7 +3516,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. X470 (and B650 1.x): `GET asrr/getvetobit` {vetobit}. B650 4.x/B550: `GET settings/ncsilinkup` {sharednic, sharednic2}. The dialect is chosen by board profile, probed when unknown.",
+                "description": "Tier: **read**. X470, X570 (live 1.20: {\"vetobit\":0}; settings/ncsilinkup 404) and B650 1.x: `GET asrr/getvetobit` {vetobit}. B650 4.x/B550: `GET settings/ncsilinkup` {sharednic, sharednic2}. The dialect is chosen by board profile, probed when unknown.",
                 "produces": [
                     "application/json"
                 ],
@@ -3611,7 +3780,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. X470 (and B650 1.x): `GET asrr/getbioscode` {poststatus, postdata}. B650 4.x: `GET logs/postcode`.",
+                "description": "Tier: **read**. X470 (and B650 1.x): `GET asrr/getbioscode` {poststatus, postdata}. B650 4.x and X570: `GET logs/postcode`.",
                 "produces": [
                     "application/json"
                 ],
@@ -3787,7 +3956,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **read**. X470 only: `GET asrr/getprochot` {prochot}. B650/B550: 501.",
+                "description": "Tier: **read**. X470 only: `GET asrr/getprochot` {prochot}. B650/B550/X570: 501.",
                 "produces": [
                     "application/json"
                 ],
@@ -4889,7 +5058,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **write**. X470: `POST asrr/settings/setclearallfansetting`. B650 4.x: `POST settings/fan/load_default`. Returns 204.",
+                "description": "Tier: **write**. X470/X570: `POST asrr/settings/setclearallfansetting`. B650 4.x: `POST settings/fan/load_default`. Returns 204.",
                 "produces": [
                     "application/json"
                 ],
@@ -4974,7 +5143,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **write**. X470: `POST asrr/settings/setfancontrolmode` (full mode1..16 object; unspecified fans keep their mode). B650 4.x: `PUT settings/fan/mode` (raw object merged over the current one).",
+                "description": "Tier: **write**. X470/X570: `POST asrr/settings/setfancontrolmode` (full mode1..16 object; unspecified fans keep their mode). B650 4.x: `PUT settings/fan/mode` (raw object merged over the current one).",
                 "consumes": [
                     "application/json"
                 ],
@@ -5074,7 +5243,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **write**. X470: one `POST asrr/settings/setfanopenloopcontroltable` {table_numble 1..8, temp1..24, duty1..24} or `setfancloseloopcontroltable` {table_numble 1..10 plus the closed-loop fields in raw} (names and keys from the X470 UI JS; never written on hardware). B650 4.x: `PUT settings/fan/openloop/{table}` / `closedloop/{table}` (raw object; the collections themselves are GET-only). Returns 204.",
+                "description": "Tier: **write**. X470/X570: one `POST asrr/settings/setfanopenloopcontroltable` {table_numble 1..8, temp1..24, duty1..24} or `setfancloseloopcontroltable` {table_numble 1..10 plus the closed-loop fields in raw} (names and keys from the X470 UI JS; never written on hardware). B650 4.x: `PUT settings/fan/openloop/{table}` / `closedloop/{table}` (raw object; the collections themselves are GET-only). Returns 204.",
                 "consumes": [
                     "application/json"
                 ],
@@ -5171,7 +5340,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **write**. X470: `PUT asrr/setvetobit` {vetobit}. B650 4.x: `PUT settings/ncsilinkup` {sharednic, sharednic2} (enabled sets both unless given individually).",
+                "description": "Tier: **write**. X470/X570: `PUT asrr/setvetobit` {vetobit}. B650 4.x: `PUT settings/ncsilinkup` {sharednic, sharednic2} (enabled sets both unless given individually).",
                 "consumes": [
                     "application/json"
                 ],
@@ -5271,7 +5440,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **write**. X470: `POST asrr/settings/setfandutymanualmode` {duty1..16} (fans must be in manual mode). B650 4.x: `PUT settings/fan/manual` (raw object merged over the current one). Duty is 0..100 percent. Returns 204.",
+                "description": "Tier: **write**. X470/X570: `POST asrr/settings/setfandutymanualmode` {duty1..16} (fans must be in manual mode). B650 4.x: `PUT settings/fan/manual` (raw object merged over the current one). Duty is 0..100 percent. Returns 204.",
                 "consumes": [
                     "application/json"
                 ],
@@ -5475,7 +5644,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **write**. X470 only: `PUT asrr/setprochot` {prochot}. B650/B550: 501.",
+                "description": "Tier: **write**. X470 only: `PUT asrr/setprochot` {prochot}. B650/B550/X570: 501.",
                 "consumes": [
                     "application/json"
                 ],
@@ -5826,6 +5995,1742 @@
                     },
                     "403": {
                         "description": "tier gate (disruptive) or forbidden path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/bonding": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **read**. AMI /api `GET settings/network-bond` on boards with the MegaRAC /api (MC13-LE0, MZ32-AR0): bond_enable, bond_mode (read-only), bond_ifc (eth0 shared / eth1 dedicated / both failover), auto_configuration_enable. Shape confirmed live on MC13-LE0 13.04.15 and MZ32-AR0 12.61.39 (`{id:1, bond_enable:1, bond_mode:\"active-backup\", bond_ifc:\"both\", auto_configuration_enable:1}`: bond0 in failover holds the BMC address). The generic equivalent is `GET /api/v1/network/bond`.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "NIC bonding (AMI settings/network-bond)",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GigabyteBondingStatus"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/disableBonding": {
+            "post": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **disruptive** (the BMC restarts its networking and may drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Reads `settings/network-bond`, sets bond_enable=0 (bond_ifc = the interface to keep when given: eth0 or eth1) and PUTs the whole object back. **UNVERIFIED** on hardware.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Disable NIC bonding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Must be \\",
+                        "name": "X-BMC-Confirm",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "interface to keep (optional)",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/GigabyteDisableBondingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GigabyteBondingStatus"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "disruptive operation denied",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/enableBonding": {
+            "post": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **disruptive** (the BMC restarts its networking and may drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Reads `settings/network-bond`, sets bond_enable=1 (and bond_ifc when given) and PUTs the whole object back. `mode` must be empty or the current bond_mode (not configurable on Gigabyte). **UNVERIFIED**: write shape from the MZ32-AR0 12.61.39 web UI and the ASRock handler; never exercised on hardware.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Enable NIC bonding",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Must be \\",
+                        "name": "X-BMC-Confirm",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "interface (bond_ifc) and mode; both optional",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/GigabyteEnableBondingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GigabyteBondingStatus"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "disruptive operation denied",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/fanMode": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **read**. AMI /api `GET settings/fanprofile/mode` ({\"strMode\"}) on boards with the MegaRAC /api (MC13-LE0; verified live), else the `strMode` of the Redfish Fanprofile. `default` is the factory curve.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Active fan profile",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/gigabyte.FanMode"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/fanProfileDevices": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **read**. Redfish GBT OEM `FanprofileService/SupportPCIEDevice` ({arrPCIEDevices[{strName, hexVendorID, hexDeviceID, UNC, UC}]}): the PCIe devices (mostly GPUs) a fan policy can follow, with their upper non-critical / critical temperatures. MC13-LE0 13.04.15: verified live.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "PCIe devices the fan profiles can key on",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/gigabyte.FanProfileDevices"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/fanProfiles": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **read**. Redfish GBT OEM: `Chassis/{id}/Thermal` → `Oem.Gbt.FanprofileService` → `Fanprofile` ({strMode, strVersion, arrProfile[{strName, arrPolicy[]}]}), normalised. `active` marks the profile named by the current mode. MC13-LE0 13.04.15: verified live. 501 on boards whose Thermal has no `Oem.Gbt.FanprofileService`.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Gigabyte fan profiles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/gigabyte.FanProfiles"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/firmwareInfo": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **read**. AMI /api `GET firmware-info` (IPMI Get Device ID view): `fw_ver`, build date/time, IPMI IANA manufacturer id (15370 = Giga-Byte), product id and `active_image`, the running image of a dual-image BMC, which Redfish does not expose. MC13-LE0 13.04.15: verified live (`active_image 1`, `mfg_id_0..2`). MZ32-AR0 12.61.39: from the research probe (`active_image 1`, prod_id 4104). 501 on boards without the MegaRAC /api.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "BMC firmware info incl. active image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/gigabyte.BMCFirmwareInfo"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / X-BMC-Host",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "404": {
+                        "description": "target handled by another driver",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "not supported on this board/firmware",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error (vendor detail included)",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/raw/api/{path}": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PUT/PATCH disruptive when the path matches flash/firmware/upgrade/upload/hpm/maintenance/restore/reset/factory/network/ncsi/users/logs/one-touch-settings/GBT/GpuManager/save/license, else write. Sends the request through the proxy's lazily logged-in AMI session (QSESSIONID cookie + X-CSRFTOKEN on every method — MC13-LE0 13.x rejects even GETs without the token and drops the session) to `/api/{path}`; the BMC status, body and content type are returned verbatim. Always refused (403 forbidden): the amimegarac defaults (`logs/help-data`, `settings/download_image`, `maintenance/download_config`, `hpm/*status`, GlobalLuaTables, ...), Gigabyte `hostinterface/diag`, `logs/*-file`, `maintenance/firmware/dump`, `save/*brokenimage`, `acd/`, `host/get_crash_dump`, and `session`. 501 on boards without the MegaRAC /api.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw AMI /api passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "no MegaRAC /api on this board",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PUT/PATCH disruptive when the path matches flash/firmware/upgrade/upload/hpm/maintenance/restore/reset/factory/network/ncsi/users/logs/one-touch-settings/GBT/GpuManager/save/license, else write. Sends the request through the proxy's lazily logged-in AMI session (QSESSIONID cookie + X-CSRFTOKEN on every method — MC13-LE0 13.x rejects even GETs without the token and drops the session) to `/api/{path}`; the BMC status, body and content type are returned verbatim. Always refused (403 forbidden): the amimegarac defaults (`logs/help-data`, `settings/download_image`, `maintenance/download_config`, `hpm/*status`, GlobalLuaTables, ...), Gigabyte `hostinterface/diag`, `logs/*-file`, `maintenance/firmware/dump`, `save/*brokenimage`, `acd/`, `host/get_crash_dump`, and `session`. 501 on boards without the MegaRAC /api.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw AMI /api passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "no MegaRAC /api on this board",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PUT/PATCH disruptive when the path matches flash/firmware/upgrade/upload/hpm/maintenance/restore/reset/factory/network/ncsi/users/logs/one-touch-settings/GBT/GpuManager/save/license, else write. Sends the request through the proxy's lazily logged-in AMI session (QSESSIONID cookie + X-CSRFTOKEN on every method — MC13-LE0 13.x rejects even GETs without the token and drops the session) to `/api/{path}`; the BMC status, body and content type are returned verbatim. Always refused (403 forbidden): the amimegarac defaults (`logs/help-data`, `settings/download_image`, `maintenance/download_config`, `hpm/*status`, GlobalLuaTables, ...), Gigabyte `hostinterface/diag`, `logs/*-file`, `maintenance/firmware/dump`, `save/*brokenimage`, `acd/`, `host/get_crash_dump`, and `session`. 501 on boards without the MegaRAC /api.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw AMI /api passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "no MegaRAC /api on this board",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PUT/PATCH disruptive when the path matches flash/firmware/upgrade/upload/hpm/maintenance/restore/reset/factory/network/ncsi/users/logs/one-touch-settings/GBT/GpuManager/save/license, else write. Sends the request through the proxy's lazily logged-in AMI session (QSESSIONID cookie + X-CSRFTOKEN on every method — MC13-LE0 13.x rejects even GETs without the token and drops the session) to `/api/{path}`; the BMC status, body and content type are returned verbatim. Always refused (403 forbidden): the amimegarac defaults (`logs/help-data`, `settings/download_image`, `maintenance/download_config`, `hpm/*status`, GlobalLuaTables, ...), Gigabyte `hostinterface/diag`, `logs/*-file`, `maintenance/firmware/dump`, `save/*brokenimage`, `acd/`, `host/get_crash_dump`, and `session`. 501 on boards without the MegaRAC /api.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw AMI /api passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "no MegaRAC /api on this board",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PUT/PATCH disruptive when the path matches flash/firmware/upgrade/upload/hpm/maintenance/restore/reset/factory/network/ncsi/users/logs/one-touch-settings/GBT/GpuManager/save/license, else write. Sends the request through the proxy's lazily logged-in AMI session (QSESSIONID cookie + X-CSRFTOKEN on every method — MC13-LE0 13.x rejects even GETs without the token and drops the session) to `/api/{path}`; the BMC status, body and content type are returned verbatim. Always refused (403 forbidden): the amimegarac defaults (`logs/help-data`, `settings/download_image`, `maintenance/download_config`, `hpm/*status`, GlobalLuaTables, ...), Gigabyte `hostinterface/diag`, `logs/*-file`, `maintenance/firmware/dump`, `save/*brokenimage`, `acd/`, `host/get_crash_dump`, and `session`. 501 on boards without the MegaRAC /api.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw AMI /api passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "501": {
+                        "description": "no MegaRAC /api on this board",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/raw/redfish/{path}": {
+            "get": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PATCH/PUT disruptive for UpdateService, AccountService, SessionService, EthernetInterfaces, NetworkProtocol, certificates, *.Reset, ResetToDefaults, ClearLog, SimpleUpdate, firmware, AMI RedfishDBReset/PowerSaveMode, GBT Firewall/BiosLogo/license, else write. Forwards to `/redfish/v1/{path}` with the session's Redfish client (Basic auth; If-Match / Content-Type forwarded); the BMC status and body are returned verbatim. Note MC13-LE0 13.04.15 truncates collections at 50 members without a nextLink: page with `?$skip=50` (never `$skip=0`, which is a 400). Refused (403): GlobalLuaTables, the Gigabyte denylist, and session create/delete.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw Redfish passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /redfish/v1, e.g. Systems/Self",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PATCH/PUT disruptive for UpdateService, AccountService, SessionService, EthernetInterfaces, NetworkProtocol, certificates, *.Reset, ResetToDefaults, ClearLog, SimpleUpdate, firmware, AMI RedfishDBReset/PowerSaveMode, GBT Firewall/BiosLogo/license, else write. Forwards to `/redfish/v1/{path}` with the session's Redfish client (Basic auth; If-Match / Content-Type forwarded); the BMC status and body are returned verbatim. Note MC13-LE0 13.04.15 truncates collections at 50 members without a nextLink: page with `?$skip=50` (never `$skip=0`, which is a 400). Refused (403): GlobalLuaTables, the Gigabyte denylist, and session create/delete.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw Redfish passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /redfish/v1, e.g. Systems/Self",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PATCH/PUT disruptive for UpdateService, AccountService, SessionService, EthernetInterfaces, NetworkProtocol, certificates, *.Reset, ResetToDefaults, ClearLog, SimpleUpdate, firmware, AMI RedfishDBReset/PowerSaveMode, GBT Firewall/BiosLogo/license, else write. Forwards to `/redfish/v1/{path}` with the session's Redfish client (Basic auth; If-Match / Content-Type forwarded); the BMC status and body are returned verbatim. Note MC13-LE0 13.04.15 truncates collections at 50 members without a nextLink: page with `?$skip=50` (never `$skip=0`, which is a 400). Refused (403): GlobalLuaTables, the Gigabyte denylist, and session create/delete.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw Redfish passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /redfish/v1, e.g. Systems/Self",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PATCH/PUT disruptive for UpdateService, AccountService, SessionService, EthernetInterfaces, NetworkProtocol, certificates, *.Reset, ResetToDefaults, ClearLog, SimpleUpdate, firmware, AMI RedfishDBReset/PowerSaveMode, GBT Firewall/BiosLogo/license, else write. Forwards to `/redfish/v1/{path}` with the session's Redfish client (Basic auth; If-Match / Content-Type forwarded); the BMC status and body are returned verbatim. Note MC13-LE0 13.04.15 truncates collections at 50 members without a nextLink: page with `?$skip=50` (never `$skip=0`, which is a 400). Refused (403): GlobalLuaTables, the Gigabyte denylist, and session create/delete.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw Redfish passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /redfish/v1, e.g. Systems/Self",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **dynamic** — GET/HEAD/OPTIONS read; DELETE disruptive; POST/PATCH/PUT disruptive for UpdateService, AccountService, SessionService, EthernetInterfaces, NetworkProtocol, certificates, *.Reset, ResetToDefaults, ClearLog, SimpleUpdate, firmware, AMI RedfishDBReset/PowerSaveMode, GBT Firewall/BiosLogo/license, else write. Forwards to `/redfish/v1/{path}` with the session's Redfish client (Basic auth; If-Match / Content-Type forwarded); the BMC status and body are returned verbatim. Note MC13-LE0 13.04.15 truncates collections at 50 members without a nextLink: page with `?$skip=50` (never `$skip=0`, which is a 400). Refused (403): GlobalLuaTables, the Gigabyte denylist, and session create/delete.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Raw Redfish passthrough",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "true, required for disruptive requests (with --allow-disruptive)",
+                        "name": "X-BMC-Confirm",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "path under /redfish/v1, e.g. Systems/Self",
+                        "name": "path",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "forwarded verbatim",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "BMC response, verbatim (any status is passed through)",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "bad path",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "denylisted path / tier gate",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "502": {
+                        "description": "BMC error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "503": {
+                        "description": "BMC busy / circuit open",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "504": {
+                        "description": "BMC timeout",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vendor/gigabyte/setFanMode": {
+            "post": {
+                "security": [
+                    {
+                        "BMCBasicAuth": []
+                    }
+                ],
+                "description": "Tier: **write**. Validates `mode` against the profile names from fanProfiles (plus `default`), then AMI /api `POST settings/fanprofile/mode` {\"strMode\": mode} and reads the mode back (502 if the BMC still reports another mode). `default` stops the custom profile. **UNVERIFIED**: request shape taken from the 13.06.30 web UI; never exercised on hardware. 501 on boards without the MegaRAC /api.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "gigabyte"
+                ],
+                "summary": "Activate a fan profile",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BMC address: ip, host or host:port",
+                        "name": "X-BMC-Host",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Force a driver instead of auto-detection (gigabyte)",
+                        "name": "X-BMC-Vendor",
+                        "in": "header"
+                    },
+                    {
+                        "description": "profile name or default",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/gigabyte.SetFanModeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/gigabyte.FanMode"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request / unknown profile",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "401": {
+                        "description": "BMC rejected the credentials",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorBody"
+                        }
+                    },
+                    "403": {
+                        "description": "tier gate (write)",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -6501,7 +8406,7 @@
                     "example": "asrr"
                 },
                 "duties": {
-                    "description": "Current duty in percent keyed by fan number (\"1\"..\"8\") (X470 GetFanDuty FANn_Duty).",
+                    "description": "Duty in percent keyed by fan number (\"1\"..\"16\") (X470 GetFanDuty FANn_Duty; X570 getfandutymanualmode dutyN).",
                     "type": "object",
                     "additionalProperties": {
                         "type": "integer"
@@ -6509,6 +8414,15 @@
                 },
                 "raw": {
                     "description": "Raw is the BMC object as returned."
+                },
+                "source": {
+                    "description": "Source says what the duties are: \"current\" (X470 asrr/GetFanDuty) or \"manual\" (the configured manual-mode duty: X570 asrr/settings/getfandutymanualmode, B650 settings/fan/manual).",
+                    "type": "string",
+                    "enum": [
+                        "current",
+                        "manual"
+                    ],
+                    "example": "current"
                 }
             }
         },
@@ -6918,6 +8832,66 @@
                 }
             }
         },
+        "GigabyteBondingStatus": {
+            "type": "object",
+            "properties": {
+                "autoConfig": {
+                    "description": "Whether the bond configures itself automatically.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "enabled": {
+                    "description": "Whether NIC bonding is enabled.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "id": {
+                    "description": "Bond id on the BMC (1 when the BMC does not report one).",
+                    "type": "integer",
+                    "example": 1
+                },
+                "interface": {
+                    "description": "Interface selection bond_ifc: eth0 (shared), eth1 (dedicated) or both (failover).",
+                    "type": "string",
+                    "example": "both"
+                },
+                "mode": {
+                    "description": "Bonding mode in effect (read-only on Gigabyte).",
+                    "type": "string",
+                    "example": "active-backup"
+                },
+                "raw": {
+                    "description": "Raw is the BMC object as returned.",
+                    "type": "object",
+                    "additionalProperties": {}
+                }
+            }
+        },
+        "GigabyteDisableBondingRequest": {
+            "type": "object",
+            "properties": {
+                "interface": {
+                    "description": "bond_ifc to keep after un-bonding (eth0 or eth1); default the current one.",
+                    "type": "string",
+                    "example": "eth1"
+                }
+            }
+        },
+        "GigabyteEnableBondingRequest": {
+            "type": "object",
+            "properties": {
+                "interface": {
+                    "description": "bond_ifc: eth0 (shared), eth1 (dedicated) or both (failover); default the current one.",
+                    "type": "string",
+                    "example": "both"
+                },
+                "mode": {
+                    "description": "Bonding mode. Gigabyte does not let it be changed: it must be empty or the current mode.",
+                    "type": "string",
+                    "example": "active-backup"
+                }
+            }
+        },
         "api_v1.AuditResponse": {
             "type": "object",
             "properties": {
@@ -6969,6 +8943,76 @@
                         }
                     ],
                     "example": "cold"
+                }
+            }
+        },
+        "api_v1.BondRequest": {
+            "type": "object",
+            "properties": {
+                "autoConfig": {
+                    "description": "Automatic configuration; default the current setting.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "enabled": {
+                    "description": "Enable or disable bonding (required).",
+                    "type": "boolean",
+                    "example": true
+                },
+                "interfaces": {
+                    "description": "Interface selection (bond_ifc; one entry); default the current one. ASRock B650: eth0/eth1 (required there to un-bond); Gigabyte: eth0, eth1 or both (both only while enabled).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "both"
+                    ]
+                },
+                "mode": {
+                    "description": "Bonding mode; default the current one. Gigabyte: not configurable (must be empty or the current mode).",
+                    "type": "string",
+                    "example": "active-backup"
+                }
+            }
+        },
+        "api_v1.BondResponse": {
+            "type": "object",
+            "properties": {
+                "autoConfig": {
+                    "description": "Whether the bond configures itself automatically (auto_configuration_enable).",
+                    "type": "boolean",
+                    "example": true
+                },
+                "enabled": {
+                    "description": "Whether the BMC NICs are bonded.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "id": {
+                    "description": "Bond id on the BMC (1 on the known AMI boards).",
+                    "type": "integer",
+                    "example": 1
+                },
+                "interfaces": {
+                    "description": "Interfaces in (or selected for) the bond, as the BMC names them. ASRock B650: bond_ifc (eth0/eth1); Gigabyte: bond_ifc (eth0 shared, eth1 dedicated, both failover). Empty when the BMC has no such field (ASRock X470).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "both"
+                    ]
+                },
+                "mode": {
+                    "description": "Bonding mode (Linux bonding mode name as the BMC reports it, e.g. active-backup).",
+                    "type": "string",
+                    "example": "active-backup"
+                },
+                "oem": {
+                    "description": "The vendor object as returned by the BMC (AMI settings/network-bond).",
+                    "type": "object",
+                    "additionalProperties": {}
                 }
             }
         },
@@ -8595,6 +10639,264 @@
                 "misses": {
                     "description": "loader executions",
                     "type": "integer"
+                }
+            }
+        },
+        "gigabyte.BMCFirmwareInfo": {
+            "type": "object",
+            "properties": {
+                "activeImage": {
+                    "description": "ActiveImage is the running image on dual-image BMCs (0 = not reported).",
+                    "type": "integer",
+                    "example": 1
+                },
+                "date": {
+                    "type": "string",
+                    "example": "Jul 2 2025"
+                },
+                "deviceId": {
+                    "type": "integer",
+                    "example": 32
+                },
+                "manufacturerId": {
+                    "description": "ManufacturerID is the IPMI IANA number (15370 = Giga-Byte).",
+                    "type": "integer",
+                    "example": 15370
+                },
+                "productId": {
+                    "type": "integer",
+                    "example": 4104
+                },
+                "raw": {
+                    "description": "Raw is the BMC body with nothing removed (it holds no secrets).",
+                    "type": "object",
+                    "additionalProperties": {}
+                },
+                "time": {
+                    "type": "string",
+                    "example": "11:14:05 CST"
+                },
+                "version": {
+                    "type": "string",
+                    "example": "12.61.39"
+                }
+            }
+        },
+        "gigabyte.FanMode": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "description": "Mode is the active profile name; \"default\" = factory curve.",
+                    "type": "string",
+                    "example": "default"
+                },
+                "source": {
+                    "description": "Source is the backend that served it (\"ami\" or \"redfish\").",
+                    "type": "string",
+                    "example": "ami"
+                }
+            }
+        },
+        "gigabyte.FanPolicy": {
+            "type": "object",
+            "properties": {
+                "ambientSensor": {
+                    "description": "AmbientSensor / AmbientSensorTemp are the ambient compensation inputs.",
+                    "type": "integer",
+                    "example": 0
+                },
+                "ambientSensorTemp": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "cpuTdp": {
+                    "description": "CPUTDP is the iCpuTdp selector (0 = any).",
+                    "type": "integer",
+                    "example": 0
+                },
+                "duties": {
+                    "description": "Duties are the fan duties in % at the reference points (arrDuty).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        30,
+                        100
+                    ]
+                },
+                "fanSensors": {
+                    "description": "FanSensors are the IPMI sensor numbers of the fans it drives.",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        160,
+                        162
+                    ]
+                },
+                "hysteresis": {
+                    "description": "Hysteresis in °C (iHysteresis).",
+                    "type": "integer",
+                    "example": 0
+                },
+                "inSdr": {
+                    "description": "InSDR: the sensor is an SDR sensor (iInSDR).",
+                    "type": "integer",
+                    "example": 1
+                },
+                "initDuty": {
+                    "description": "InitDuty is the starting duty in % (iInitDuty).",
+                    "type": "integer",
+                    "example": 30
+                },
+                "pcieDeviceEnable": {
+                    "description": "PCIeDeviceEnable makes the policy apply only when a matching PCIe\ndevice (PCIeVendorIDs/PCIeDeviceIDs) is present.",
+                    "type": "integer",
+                    "example": 0
+                },
+                "pcieDeviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pcieVendorIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "policyType": {
+                    "description": "PolicyType is the GBT iPolicyType (2 = linear between the two\nreference points on the live board; 1 is the UI default).",
+                    "type": "integer",
+                    "example": 2
+                },
+                "referenceTemps": {
+                    "description": "ReferenceTemps are the temperature points in °C (arrRef).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        70,
+                        85
+                    ]
+                },
+                "sensorCode": {
+                    "description": "SensorCode is the GBT iSensorCode.",
+                    "type": "integer",
+                    "example": 1
+                },
+                "sensors": {
+                    "description": "Sensors are the IPMI sensor numbers the policy follows (arrSensor).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1
+                    ]
+                }
+            }
+        },
+        "gigabyte.FanProfile": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "description": "Active is true when the BMC's current mode is this profile.",
+                    "type": "boolean",
+                    "example": false
+                },
+                "name": {
+                    "description": "Name is the profile name (strName); the mode selects one by name.",
+                    "type": "string",
+                    "example": "default"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/gigabyte.FanPolicy"
+                    }
+                },
+                "version": {
+                    "description": "Version is strVersion.",
+                    "type": "string",
+                    "example": "1.00"
+                }
+            }
+        },
+        "gigabyte.FanProfileDevice": {
+            "type": "object",
+            "properties": {
+                "deviceId": {
+                    "type": "string",
+                    "example": "0x15f8"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "P100_16GB"
+                },
+                "upperCritical": {
+                    "type": "integer",
+                    "example": 85
+                },
+                "upperNonCritical": {
+                    "description": "UpperNonCritical / UpperCritical are °C limits (UNC/UC).",
+                    "type": "integer",
+                    "example": 80
+                },
+                "vendorId": {
+                    "type": "string",
+                    "example": "0x10de"
+                }
+            }
+        },
+        "gigabyte.FanProfileDevices": {
+            "type": "object",
+            "properties": {
+                "devices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/gigabyte.FanProfileDevice"
+                    }
+                }
+            }
+        },
+        "gigabyte.FanProfiles": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "description": "Mode is the active profile name (strMode); \"default\" = factory curve.",
+                    "type": "string",
+                    "example": "NEW_PROFILE"
+                },
+                "profiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/gigabyte.FanProfile"
+                    }
+                },
+                "source": {
+                    "description": "Source is the backend that served the data.",
+                    "type": "string",
+                    "example": "redfish"
+                },
+                "version": {
+                    "description": "Version is the service strVersion.",
+                    "type": "string",
+                    "example": "1.00"
+                }
+            }
+        },
+        "gigabyte.SetFanModeRequest": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "description": "Mode is a profile name from GET fanProfiles, or \"default\" to stop the\ncustom profile and return to the factory curve.",
+                    "type": "string",
+                    "example": "default"
                 }
             }
         },

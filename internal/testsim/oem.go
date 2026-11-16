@@ -25,7 +25,9 @@ import (
 //     JS; values not captured, 0/0 assumed).
 //   - B650 GET asrr/GetPowerRestore {powerRestore}, POST asrr/SetPowerRestore
 //     {powerRestore} (7.02/9.05 UI JS; values not captured, 1 assumed).
-//   - Both: PUT settings/network-bond with the full object
+//   - X570 (live 1.20): the X470 fan-mode and vetobit objects plus
+//     asrr/GetPowerRestore (live {"powerRestore": 1}).
+//   - All: PUT settings/network-bond with the full object
 //     {id, bond_enable, bond_mode, auto_configuration_enable[, bond_ifc]}
 //     (B650 HAR); GET then reflects it (bond_ifc is not returned by GET).
 type oemState struct {
@@ -40,9 +42,37 @@ type oemDoc struct {
 	array                   bool
 	hidden                  []string
 	initial                 func(s *Sim) map[string]any
+	// full: a write must carry every key of the current object, else a
+	// JSON 500 (the AMI handlers' answer to partial bodies).
+	full bool
 }
 
 func oemDocs(b Board) []oemDoc {
+	if b == BoardMC13LE0 || b == BoardMZ32AR0 {
+		// Gigabyte: GET settings/fanprofile/mode {"strMode"} (live on both
+		// boards); POST of the same object from the 13.06.30 UI
+		// (FanProfileModeModel.save; UNVERIFIED on hardware).
+		//
+		// settings/network-bond: live GET on both boards (2026-11-16,
+		// MC13-LE0 13.04.15 and MZ32-AR0 12.61.39, identical):
+		// {id 1, bond_enable 1, bond_mode "active-backup", bond_ifc "both",
+		// auto_configuration_enable 1} (bond0 in failover holds the BMC
+		// address; docs/gigabyte/*-live-probe.md). The MZ32-AR0 UI saves
+		// the whole fetched object with PUT; a write must carry every key
+		// of it (UNVERIFIED on hardware: no PUT was sent live).
+		return []oemDoc{{get: "/api/settings/fanprofile/mode", writeMethod: http.MethodPost, write: "/api/settings/fanprofile/mode",
+			initial: func(s *Sim) map[string]any {
+				m, _ := s.fixtureObject(http.MethodGet, "/api/settings/fanprofile/mode").(map[string]any)
+				if m == nil {
+					m = map[string]any{"strMode": "NEW_PROFILE"}
+				}
+				return m
+			}},
+			{get: "/api/settings/network-bond", writeMethod: http.MethodPut, write: "/api/settings/network-bond", full: true,
+				initial: func(*Sim) map[string]any {
+					return map[string]any{"id": 1, "bond_enable": 1, "bond_mode": "active-backup", "bond_ifc": "both", "auto_configuration_enable": 1}
+				}}}
+	}
 	bond := oemDoc{get: "/api/settings/network-bond", writeMethod: http.MethodPut, write: "/api/settings/network-bond",
 		hidden: []string{"bond_ifc"}, initial: func(s *Sim) map[string]any {
 			m, _ := s.fixtureObject(http.MethodGet, "/api/settings/network-bond").(map[string]any)
@@ -51,8 +81,10 @@ func oemDocs(b Board) []oemDoc {
 			}
 			return m
 		}}
-	if b == BoardX470 {
-		return []oemDoc{bond,
+	restore := oemDoc{get: "/api/asrr/GetPowerRestore", writeMethod: http.MethodPost, write: "/api/asrr/SetPowerRestore",
+		initial: func(*Sim) map[string]any { return map[string]any{"powerRestore": 1} }}
+	if b == BoardX470 || b == BoardX570 {
+		docs := []oemDoc{bond,
 			{get: "/api/asrr/settings/getfancontrolmode", writeMethod: http.MethodPost, write: "/api/asrr/settings/setfancontrolmode",
 				array: true, initial: func(*Sim) map[string]any {
 					m := map[string]any{}
@@ -64,6 +96,12 @@ func oemDocs(b Board) []oemDoc {
 			{get: "/api/asrr/getvetobit", writeMethod: http.MethodPut, write: "/api/asrr/setvetobit",
 				initial: func(*Sim) map[string]any { return map[string]any{"vetobit": 0} }},
 		}
+		if b == BoardX570 {
+			// X570 1.20: the X470 fan/vetobit dialect plus the B650 restore
+			// handler (live {"powerRestore": 1}).
+			docs = append(docs, restore)
+		}
+		return docs
 	}
 	return []oemDoc{bond,
 		{get: "/api/settings/fan/mode", writeMethod: http.MethodPut, write: "/api/settings/fan/mode",
@@ -72,8 +110,7 @@ func oemDocs(b Board) []oemDoc {
 			}},
 		{get: "/api/settings/ncsilinkup", writeMethod: http.MethodPut, write: "/api/settings/ncsilinkup",
 			initial: func(*Sim) map[string]any { return map[string]any{"sharednic": 0, "sharednic2": 0} }},
-		{get: "/api/asrr/GetPowerRestore", writeMethod: http.MethodPost, write: "/api/asrr/SetPowerRestore",
-			initial: func(*Sim) map[string]any { return map[string]any{"powerRestore": 1} }},
+		restore,
 	}
 }
 
@@ -101,6 +138,15 @@ func (s *Sim) oemAPI(w http.ResponseWriter, method, p string, body []byte) bool 
 			}
 			s.oem.mu.Lock()
 			cur := s.oemDocLocked(d)
+			if d.full {
+				for k := range cur {
+					if _, ok := m[k]; !ok {
+						s.oem.mu.Unlock()
+						writeJSON(w, http.StatusInternalServerError, map[string]any{"error": "missing field " + k, "code": 1001})
+						return true
+					}
+				}
+			}
 			for k, v := range m {
 				cur[k] = v
 			}

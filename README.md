@@ -10,9 +10,25 @@
 The first full driver is **ASRock Rack** (AMI MegaRAC). It covers:
 
 - **X470D4U** (AST2500, firmware 2.32), through the legacy AMI `/api` REST interface plus IPMI;
-- **B650D4U** (AST2600, firmware 4.x), Redfish-first, using `/api` for the OEM gaps.
+- **B650D4U** (AST2600, firmware 4.x), Redfish-first, using `/api` for the OEM gaps;
+- **X570D4U** (AST2500, firmware 1.20), Redfish for control and identity. `/api` serves its sensors, SEL and firmware versions, and the X470-style OEM dialect.
+
+The second driver is **Gigabyte / Giga Computing** (AMI MegaRAC SP-X), Redfish-first with the AMI `/api` used lazily. It covers the **MC13-LE0** (AM5, AST2600, firmware 13.04.15) and the **MZ32-AR0** (EPYC SP3, AST2500, firmware 12.61.39). See [Gigabyte](#gigabyte).
 
 A generic DMTF Redfish driver is the fallback for everything else.
+
+### Supported hardware
+
+| Board | BMC / firmware | Driver (`X-BMC-Vendor`) | Southbound | Evidence |
+| --- | --- | --- | --- | --- |
+| ASRock Rack X470D4U | AST2500, 2.32.00 | `asrock` | AMI `/api` + IPMI (Redfish only with `x470_pam`) | live probe + HAR |
+| ASRock Rack B650D4U | AST2600, 4.10.00 (1.10 HAR) | `asrock` | Redfish, `/api` for OEM gaps | live probe + HAR |
+| ASRock Rack X570D4U | AST2500, 1.20.00 (2.11 image analysed) | `asrock` | Redfish control/identity; `/api` sensors, SEL, firmware, X470-style OEM | read-only live probe |
+| Gigabyte MC13-LE0 | AST2600, 13.04.15 | `gigabyte` | Redfish (Basic), `/api` lazily for the fan mode, firmware-info, raw | read-only live probe + HAR |
+| Gigabyte MZ32-AR0 | AST2500, 12.61.39 | `gigabyte` | Redfish (Basic), `/api` lazily for the decoded SEL, fan mode, firmware-info, raw | read-only research probe + firmware image |
+| anything else with DMTF Redfish | | `redfish` | Redfish | fallback |
+
+Other firmware versions of a known board fall back to capability probing (ASRock and Gigabyte both have an "unknown" profile).
 
 `bmcprobe` is a companion one-shot CLI. It runs the same drivers against one BMC, for diagnostics.
 
@@ -74,9 +90,9 @@ On SIGINT or SIGTERM the proxy stops accepting requests and drains in-flight one
 
 Every BMC route takes:
 
-- `X-BMC-Host`: required. The BMC as `ip`, `host` or `host:port`.
+- `X-BMC-Host`: required. The BMC as `ip`, `host` or `host:port`. In `/openapi.json` its example is the variable `{{bmcHost}}`, so a Postman, Bruno or Insomnia import gives every request a `{{bmcHost}}` placeholder: define `bmcHost` once in the environment.
 - `Authorization: Basic ...`: required. The **BMC's** credentials. The proxy uses them to log in southbound and keys its session cache on them; they are never logged.
-- `X-BMC-Vendor`: optional. Forces a driver (`asrock`, `redfish`) instead of auto-detection.
+- `X-BMC-Vendor`: optional. Forces a driver (`asrock`, `gigabyte`, `redfish`) instead of auto-detection. It is defined once in the spec's `components/parameters` and deliberately not attached to the operations, so an imported collection does not send it; add the header manually when you want to override detection.
 - `X-BMC-Confirm: true`: required for disruptive operations (see below).
 
 ```sh
@@ -90,12 +106,16 @@ curl -s $B 'localhost:8080/api/v1/events?since=1234'   # incremental SEL read
 curl -s $B localhost:8080/api/v1/fru
 curl -s $B localhost:8080/api/v1/inventory/memory      # cpus|memory|pcie|storage|baseboard
 curl -s $B localhost:8080/api/v1/firmware
+curl -s $B localhost:8080/api/v1/network               # BMC network interfaces
+curl -s $B localhost:8080/api/v1/network/bond          # BMC NIC bonding (ASRock and Gigabyte: AMI settings/network-bond)
 
 # writes
 curl -s $B -X POST localhost:8080/api/v1/led   -d '{"state":"on"}'
 curl -s $B -X POST localhost:8080/api/v1/power -d '{"action":"shutdown","timeoutSeconds":120}'
 curl -s $B -X PUT  localhost:8080/api/v1/boot  -d '{"target":"pxe","mode":"once"}'
 curl -s $B -X POST localhost:8080/api/v1/time/sync
+# disruptive (proxy started with --allow-disruptive): the BMC restarts its networking
+curl -s $B -H 'X-BMC-Confirm: true' -X PUT localhost:8080/api/v1/network/bond -d '{"enabled":false,"interfaces":["eth1"]}'
 
 # vendor routes: /api/v1/vendor/{driver}/{op}
 curl -s $B localhost:8080/api/v1/vendor/asrock/bonding
@@ -113,6 +133,46 @@ Behaviour worth knowing:
 - Southbound requests never carry `X-HTTP-Method-Override`, `X-HTTP-Method` or `X-Method-Override`.
 
 The full contract is in `/openapi.json` and [docs/CONTRACTS.md](docs/CONTRACTS.md).
+
+## Gigabyte
+
+The `gigabyte` driver (`vendors/gigabyte`, board profiles in `vendors/gigabyte/boards`) serves Gigabyte / Giga Computing boards running AMI MegaRAC SP-X:
+
+| Board | Firmware | Profile | Status |
+| --- | --- | --- | --- |
+| MC13-LE0 (AM5, AST2600) | 13.04.15 | `mc13le0` | verified by a read-only live probe ([docs/gigabyte/mc13-le0-live-probe.md](docs/gigabyte/mc13-le0-live-probe.md)) |
+| MZ32-AR0 (EPYC SP3, AST2500) | 12.61.39 | `mz32ar0` | research probe and firmware image ([docs/gigabyte/mz32-ar0-live-probe.md](docs/gigabyte/mz32-ar0-live-probe.md), [docs/firmware/mz32-ar0.md](docs/firmware/mz32-ar0.md)) |
+| other Gigabyte MegaRAC | any | `unknown` | capability probing; SP-X 12.x / 13.x query quirks chosen by firmware major |
+
+Detection is automatic (`gigabyte` has priority 10, ahead of `asrock`): an unauthenticated `$metadata` with the `GBT*` namespaces scores 60, and with credentials the Redfish `ComputerSystem.Model` and `Manager.FirmwareVersion` select the profile (score 100). To force it, send `X-BMC-Vendor: gigabyte`.
+
+**Southbound.** Redfish with Basic auth is primary (the MZ32-AR0's Redfish `SessionTimeout` is 30 s, and Basic creates no session). The AMI `/api` (form login, `QSESSIONID` + `X-CSRFTOKEN`, CSRF enforced on GETs) is logged in **lazily**, only for the routes that need it, one request at a time, and logged out on session close and on graceful shutdown. No IPMI is used. Every generic capability except firmware update and KVM is served; `capabilities` reports the backend of each (bond, and MZ32-AR0 events, come from `ami`).
+
+**Vendor routes** (`/api/v1/vendor/gigabyte/...`):
+
+| Route | Tier | What |
+| --- | --- | --- |
+| `GET fanProfiles` | read | Redfish GBT OEM `FanprofileService` profiles, the active one marked |
+| `GET fanProfileDevices` | read | PCIe devices the fan profiles can key on |
+| `GET fanMode` | read | active fan profile (`/api settings/fanprofile/mode`, else Redfish `strMode`) |
+| `POST setFanMode` `{"mode"}` | write | activate a profile (validated against `fanProfiles` plus `default`, read back) |
+| `GET firmwareInfo` | read | `/api firmware-info`: version, build, IANA id, active image of the dual-image BMC |
+| `ANY raw/api/{path}`, `ANY raw/redfish/{path}` | per method/path | passthrough on the proxy's sessions; GET is read, DELETE and sensitive writes disruptive |
+
+| `GET bonding` | read | `/api settings/network-bond`: enabled, mode (read-only, `active-backup`), `bond_ifc` (eth0 shared / eth1 dedicated / both failover), auto configuration |
+| `POST enableBonding` `{"interface","mode"}` | disruptive | full-object PUT of `settings/network-bond` with `bond_enable=1` (`mode` must be empty or the current mode) |
+| `POST disableBonding` `{"interface"}` | disruptive | same with `bond_enable=0`; `interface` (eth0 or eth1) keeps the BMC address |
+
+NIC bonding is also served by the generic `GET/PUT /api/v1/network/bond` (backend `ami`). Both boards answered the read live with `{"id":1,"bond_enable":1,"bond_mode":"active-backup","bond_ifc":"both","auto_configuration_enable":1}` (bond0 in failover holds the BMC address); the PUT has never been sent to hardware.
+
+**Per-board quirks** (encoded as data in `vendors/gigabyte/boards`, emulated by `testsim`):
+
+- MC13-LE0 13.04.15: collections stop at 50 members with no `nextLink` and `$skip=0` is a 400 (`rf.Quirks.SkipPageSize` pages with `?$skip=50,100,...`); `$expand` returns bare links but log collections inline members; `Chassis/Self/Sensors` lists only energy/power (sensors are merged from `Thermal`/`Power`); SEL `Created` is the import time, so the event time comes from the `Message` "Timestamp :" field; the real board serial is in `Oem.GBTChassisOemProperty` (the FRU serial is a `0123456789...` placeholder); a bad CSRF token kills the `/api` session.
+- MZ32-AR0 12.61.39: query options work only with a literal `$` (the client never percent-encodes it), `$filter` is page-local (disabled; filtering is client-side), unknown `$` options are a 501; ResetTypes are On/ForceOff/GracefulShutdown/ForceRestart only, so power `cycle` and `nmi` answer 501; the Redfish SEL is split over three LogServices with hex messages, so events come from `/api/logs/event`; `Processors/CPU0/SubProcessors` is a ~200-resource crawl trap the inventory never walks; the BIOS `@Redfish.Settings` is a stub.
+
+**Security summary.** The units probed ship AMI's shared default TLS certificate, and the MZ32-AR0 also had a well-known default admin password with `PasswordChangeRequired false`, an image-wide uid-0 `sysadmin` account and a Redfish Host Interface mapping `AuthNone` to Administrator. The raw passthrough refuses (403, never sent) the AMI defaults plus every Gigabyte profile's denylist: host diagnostics, log/firmware/crash dumps, broken-image saves, configuration backup/restore, firmware-update and dual-image state machines, the sysadmin account control, and on the MZ32-AR0 the Automation Engine, raw IPMI, sample handlers, KVM token minting and CMC power. Details and evidence: [docs/gigabyte/](docs/gigabyte/), [docs/firmware/mc13-le0.md](docs/firmware/mc13-le0.md), [docs/firmware/mz32-ar0.md](docs/firmware/mz32-ar0.md).
+
+**ASRock detection on non-ASRock MegaRAC.** The `asrock` driver no longer over-claims other AMI MegaRAC boards: when the root or the unauthenticated `$metadata` names another vendor (GBT, Supermicro, Dell, ...), `DetectWithCreds` returns a sub-fallback score (5) without logging in, and a login that finds no `asrr` namespace is capped the same way, so the generic Redfish driver (10) wins when `gigabyte` is not registered.
 
 ## Tiers and disruptive gating
 
@@ -184,7 +244,7 @@ go test -race ./...
 ```
 
 - **Unit tests** live next to the code. Protocol clients are tested against in-process fakes such as `pkg/protocol/redfish/redfishtest`.
-- **Simulator integration.** `internal/testsim` replays the captured HARs as a stateful BMC simulator, with one profile for each of `StartX470` and `StartB650`. It models:
+- **Simulator integration.** `internal/testsim` replays the captured HARs as a stateful BMC simulator, with one profile for each of `StartX470`, `StartB650`, `StartX570`, `StartMC13LE0` and `StartMZ32AR0`. It models:
   - AMI login, CSRF and session slots;
   - mod_evasive 403s;
   - the date-time full-object PUT;
@@ -192,11 +252,13 @@ go test -race ./...
   - backend restarts;
   - power delays and ignored soft-offs;
   - clock offset;
-  - a Redfish tree for the B650.
+  - a Redfish tree for the B650, reshaped for the X570 (3 null sensors, a 2-entry SEL, versionless BIOS, `$select`/`$expand` ignored);
+  - CSRF enforced on GETs (X570, both Gigabyte boards);
+  - Gigabyte: unauthenticated `$metadata` with GBT namespaces, no `asrr` namespace, MC13-LE0 50-member truncated paging and session-killing bad CSRF, MZ32-AR0 literal-`$`/page-local `$filter`/strict `$` options and a synthesized `/api` (decoded SEL, firmware-info, fan mode).
 
   It counts everything (`Stats()`), including in-flight `/api`, logins, logouts, method overrides and interleaves. `testsim.StartProxy` runs the real server, sessions, cache, handlers and transport in-process.
 
-  `internal/testsim/integration` runs the production ASRock and generic Redfish drivers against both boards, with a fake IPMI dialer for the X470's IPMI-backed capabilities.
+  `internal/testsim/integration` runs the production driver set (gigabyte, ASRock, generic Redfish) against every ASRock board (`allBoards`) and every Gigabyte board (`gigabyteBoards`), with a fake IPMI dialer for the X470's IPMI-backed capabilities. A registry test checks that the five sims resolve to the right driver with and without credentials.
 - **Live tests** (`//go:build live`, `internal/testsim/live`) hit one real BMC. They are read-only apart from an identify-LED round trip that restores the original state, and they skip unless all of `BMCPROXY_LIVE_HOST`, `BMCPROXY_LIVE_USER` and `BMCPROXY_LIVE_PASS` are set:
 
   ```sh
@@ -230,7 +292,7 @@ The manual equivalent is `scripts/x470d4u-redfish-pam-auth.sh`.
 
 The ASRock driver is built from four kinds of evidence:
 
-- live probes of one X470D4U 2.32 and one B650D4U 4.10;
+- live probes of one X470D4U 2.32, one B650D4U 4.10 and one X570D4U 1.20 (read-only);
 - browser HAR captures;
 - the web UI JavaScript in the firmware images;
 - the vendor Redfish guide.
@@ -247,13 +309,24 @@ Anything not seen working on hardware carries an `// UNVERIFIED:` comment in the
 - X470 `getfancontrolmode` shape (array of `{mode1..mode16}`, all 0). A same-value `setfancontrolmode` write returned 200. The open/closed-loop table-number selects returned 200.
 - B650 4.10 `settings/fan/mode` (GET/PUT); B650 Redfish paging (`$skip=50` nextLink without `$expand`; the proxy re-applies `$expand`).
 - B650 `settings/network-bond` PUT body (from the HAR).
-- SEL, sensors, FRU, inventory, network, users, services and firmware reads on both boards.
+- SEL, sensors, FRU, inventory, network, users, services and firmware reads on all three boards.
+- X570D4U 1.20 (read-only probe, `docs/x570/live-probe.md`):
+  - Redfish accepts the `/api` admin (synced account; `PAMEnabled` false), so `x470_pam` is not needed there.
+  - `/api` enforces the CSRF token on GETs too.
+  - Read shapes: `asrr/getvetobit` `{vetobit}`, `asrr/settings/getfancontrolmode` (`{mode1..mode16}`, all 0), `asrr/settings/getfandutymanualmode` (`{duty1..duty16}`) and `asrr/GetPowerRestore` `{powerRestore}`.
+  - `asrr/GetFanDuty`, `settings/fan/*` and `settings/ncsilinkup` are absent (404).
+  - `ntp_auto_date` 0 agrees with Redfish NTP `ProtocolEnabled` false (0 = off).
 
 **Corrected from evidence during integration:**
 
 - X470 `PUT settings/date-time` now omits the response-only `id` and `localized_timestamp` fields. The live board answered 500 to a verbatim echo of the GET object (`docs/x470/scripts/rt.py`, `docs/x470/endpoint-reference.json`).
 - B650 fan-table writes go to the item, `PUT settings/fan/{openloop,closedloop}/{table}`, not the GET-only collection (`docs/api/legacy-api-endpoints.json` item_path).
 - Fan-table numbers are range-checked against the UI's allowed values: open loop 1..8, closed loop 1..10.
+- X570 (`docs/x570/live-probe.md`):
+  - Its Redfish has 3 null-reading sensors, a 2-entry SEL and versionless firmware, so sensors, SEL and firmware come from `/api` (`Profile.AMIFirst`).
+  - The SMBIOS placeholder "To Be Filled By O.E.M." is no longer reported as the manufacturer.
+  - FanDuty reads `getfandutymanualmode`, because `GetFanDuty` is absent.
+  - Logout retries once on a 5xx: the board answered `DELETE /api/session` with an HTML 500 and kept the session alive.
 
 **Still UNVERIFIED** (implemented from the UI JS or by analogy; never exercised on hardware):
 
@@ -263,11 +336,21 @@ Anything not seen working on hardware carries an `// UNVERIFIED:` comment in the
 - `PUT settings/date-time` succeeding with the trimmed body. Also, what `ntp_auto_date` value 2 means on the B650 4.10.
 - Writing X470 fan tables (`setfanopenloopcontroltable` / `setfancloseloopcontroltable`), and fan-mode codes other than 0.
 - B650 fan-table item PUT (`{id}` being the table number).
-- `asrr/{Get,Set}PowerRestore` `powerRestore` values (assumed to follow IPMI encoding).
+- `asrr/{Get,Set}PowerRestore` `powerRestore` values (assumed to follow IPMI encoding). The X570 GET returned 1; nothing on hardware cross-checks what 1 means.
 - Keep-NIC-link-up:
-  - X470 `PUT asrr/setvetobit {vetobit}`;
+  - X470/X570 `PUT asrr/setvetobit {vetobit}`;
   - B650 4.10 `settings/ncsilinkup` (seen only in the 7.02/9.05 builds).
 - NC-SI mode codes (0 auto failover / 1 manual) and bonding mode values.
 - `asrr/maintenance/BIOS/UpdateOption` value encoding.
+- X570: Redfish `ManagerNetworkProtocol` PATCH answering synchronously, as on the X470, rather than 202 plus a task as on the B650. This comes from the 2.11 image; it was never written live.
+- X570 firmware other than 1.20.00. The 2.11.00 image keeps the same handler set, so 2.x uses the same profile, unverified.
+
+**Gigabyte** (`vendors/gigabyte`; MC13-LE0 13.04.15 verified read-only live, MZ32-AR0 12.61.39 from the research probe and the firmware image):
+
+- Confirmed: `settings/network-bond` GET on both boards (read-only, 2026-11-16), Redfish Basic on the whole tree, the 50-member truncation and `$skip=0` 400, SEL time in `Message`, the OEM board serial, `/api` login with CSRF on GETs, `settings/fanprofile/mode` GET, `firmware-info`, the MZ32-AR0 query parser quirks and its decoded `/api/logs/event` (research probe).
+- Still UNVERIFIED:
+  - `POST settings/fanprofile/mode {"strMode"}` (setFanMode): body from the 13.06.30 web UI, never written on hardware.
+  - Bonding writes (`PUT settings/network-bond`, full fetched object with `bond_enable`/`bond_ifc`/`auto_configuration_enable` replaced): method and body from the MZ32-AR0 web UI and the ASRock handler, never written on hardware (it restarts BMC networking). The GET shape is confirmed live on both boards.
+  - Firmware other than MC13-LE0 13.04.15 and MZ32-AR0 12.61.39 (the `unknown` profile probes capabilities), and the MZ32-AR0 driver paths in general, which were tested only against the simulator.
 
 When you verify one of these on hardware, record the evidence under `docs/` and remove the `UNVERIFIED` comment. If a run with `--har-out` captures it, keep the HAR.

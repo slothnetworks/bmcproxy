@@ -1,0 +1,1152 @@
+{
+ "board": "mc13le0",
+ "source": "read-only live probe (scratchpad rp.py/crawl.py, sequential, GET plus session create/delete only), 2026-11-16",
+ "sanitized": "Derived from docs/gigabyte/mc13-le0-har-endpoints.json by internal/testsim/cmd/extract: passwords, CSRF tokens, session ids, serials, MACs, UUIDs, host names and e-mails are <REDACTED_*> placeholders; private IPv4 addresses are mapped to 192.0.2.0/24.",
+ "endpoints": [
+  {
+   "method": "GET",
+   "path": "/api/asrr/model-name",
+   "status": 404,
+   "contentType": "application/json",
+   "response": {
+    "code": 1010,
+    "error": "Invalid API Call"
+   },
+   "note": "unauth"
+  },
+  {
+   "method": "GET",
+   "path": "/api/chassis-status",
+   "status": 401,
+   "contentType": "application/json",
+   "response": {
+    "cc": 7,
+    "error": "Invalid Authentication"
+   },
+   "note": "unauth"
+  },
+  {
+   "method": "GET",
+   "path": "/api/configuration/project",
+   "status": 200,
+   "contentType": "application/json",
+   "response": [
+    {
+     "feature": "NWLINK"
+    },
+    {
+     "feature": "SYSTEM_FIREWALL"
+    },
+    {
+     "feature": "SYSTEM_FIREWALL_TIMEOUT"
+    },
+    {
+     "feature": "BLOCK_ICMP_TIMESTAMP"
+    },
+    {
+     "feature": "IPV6_SUPPORT"
+    },
+    {
+     "feature": "EXTENDED_PRIV"
+    },
+    {
+     "feature": "SNMP"
+    },
+    {
+     "feature": "NTP_SERVER_SUPPORT"
+    },
+    {
+     "feature": "NWBONDING"
+    },
+    {
+     "feature": "POWER_CONSUMPTION"
+    },
+    {
+     "feature": "SERVICES"
+    },
+    {
+     "feature": "SESSION_MANAGEMENT"
+    },
+    {
+     "feature": "ACD_SUPPORT"
+    },
+    {
+     "feature": "DUAL_IMAGE"
+    },
+    {
+     "feature": "FIRMWARE_FLASH_SUPPORT"
+    },
+    {
+     "feature": "SECTIONFLASH"
+    },
+    {
+     "feature": "ENC_IMAGE"
+    },
+    {
+     "feature": "VERSION_CMP_FLASH"
+    },
+    {
+     "feature": "FW_IMAGE"
+    },
+    {
+     "feature": "BACKUP_CONFIG"
+    },
+    {
+     "feature": "PRESERVECONF"
+    },
+    {
+     "feature": "BOOTFW_SUPPORT"
+    },
+    {
+     "feature": "SINGLE_PORT_APP"
+    },
+    {
+     "feature": "USB_PORT_B_HOST_SUPPORT"
+    },
+    {
+     "feature": "TSIG"
+    },
+    {
+     "feature": "YES"
+    },
+    {
+     "feature": "SOL_SUPPORT"
+    },
+    {
+     "feature": "SOLSSH_SUPPORT"
+    },
+    {
+     "feature": "SAVE_SELLOG"
+    },
+    {
+     "feature": "SET_SENSOR_THRESHOLDS"
+    },
+    {
+     "feature": "WEB_APP_PROXY"
+    },
+    {
+     "feature": "MDNS"
+    },
+    {
+     "feature": "TIMEZONE_SUPPORT"
+    },
+    {
+     "feature": "UARTLOG"
+    },
+    {
+     "feature": "UARTLOG_REMOTE"
+    },
+    {
+     "feature": "ASD_REMOTE_DBG_SUPPORT"
+    },
+    {
+     "feature": "ASD_TLS_UPLOAD_SUPPORT"
+    },
+    {
+     "feature": "ASD_JTAG1_SUPPORT"
+    },
+    {
+     "feature": "CIRCULAR_SEL"
+    },
+    {
+     "feature": "DISABLE_EMPTY_PASSWORD"
+    },
+    {
+     "feature": "OEM_PROPRIETARY_LEVEL_SUPPORT"
+    },
+    {
+     "feature": "IPV6_COMPLIANCE"
+    },
+    {
+     "feature": "DYNAMIC_KCS_LAN_SUPPORT"
+    },
+    {
+     "feature": "YES"
+    },
+    {
+     "feature": "HW_FAILSAFE_BOOT"
+    },
+    {
+     "feature": "HPM_SUPPORT"
+    },
+    {
+     "feature": "IPMI_SOL_SUPPORT"
+    },
+    {
+     "feature": "AUTOVDORECORD"
+    },
+    {
+     "feature": "AUTOVDORECORD_REMOTE"
+    },
+    {
+     "feature": "ADVISER_SUPPORT"
+    },
+    {
+     "feature": "KB_LANG_SELECT_SUPPORT"
+    },
+    {
+     "feature": "RUNTIME_HOST_LOCK"
+    },
+    {
+     "feature": "HOST_LOCK_AUTO"
+    },
+    {
+     "feature": "KVM_SESSION_TIMEOUT"
+    },
+    {
+     "feature": "KVM_SESSION_RECONNECT"
+    },
+    {
+     "feature": "HTML5_KVM"
+    },
+    {
+     "feature": "AUTO_RESIZE_KVM_CLIENT_WINDOW"
+    },
+    {
+     "feature": "MEDIA_REDIR_READ_WRITE_ONLY"
+    },
+    {
+     "feature": "JAVA_KVM"
+    },
+    {
+     "feature": "FOLDER_REDIRECTION"
+    },
+    {
+     "feature": "CAPTURE_BSOD_JPEG"
+    },
+    {
+     "feature": "CAPTURE_BSOD_JPEG"
+    },
+    {
+     "feature": "MULTIPLE_USER_VMEDIA"
+    },
+    {
+     "feature": "VMEDIA_MAX_COUNT_FOR_KVM"
+    },
+    {
+     "feature": "CD_SERVER_APP"
+    },
+    {
+     "feature": "HD_SERVER_APP"
+    },
+    {
+     "feature": "IMG_REDIRECTION"
+    },
+    {
+     "feature": "RMEDIA"
+    },
+    {
+     "feature": "RMEDIA_MULTI_IMAGE_SUPPORT"
+    },
+    {
+     "feature": "RMEDIA_MULTI_CD_SUPPORT"
+    },
+    {
+     "feature": "RMEDIA_MULTI_HD_SUPPORT"
+    },
+    {
+     "feature": "RMEDIA_SESSION_RECONNECT"
+    },
+    {
+     "feature": "NCSI_SUPPORT"
+    },
+    {
+     "feature": "SET_SENSOR_THRESHOLDS_RESET"
+    },
+    {
+     "feature": "PAM_REORDERING"
+    },
+    {
+     "feature": "AD_SUPPORT"
+    },
+    {
+     "feature": "LDAP_SUPPORT"
+    },
+    {
+     "feature": "RADIUS_SUPPORT"
+    },
+    {
+     "feature": "REDFISH"
+    },
+    {
+     "feature": "REDFISH_HOSTINTERFACE"
+    },
+    {
+     "feature": "REDFISH_BIOS_WEB_STATIC_SUPPORT"
+    },
+    {
+     "feature": "UNIFIED_USER_ACCOUNT"
+    },
+    {
+     "feature": "BIOS_SUPPORT"
+    },
+    {
+     "feature": "CPLD_SUPPORT"
+    },
+    {
+     "feature": "RAID_BRCM_SUPPORT"
+    },
+    {
+     "feature": "KVM_OR_MEDIA_AVAILABLE"
+    },
+    {
+     "feature": "PRESERVE_SSH_SUPPORT"
+    },
+    {
+     "feature": "FAN_PROFILE"
+    },
+    {
+     "feature": "POWER_CONSUMPTION_MANAGER"
+    },
+    {
+     "feature": "AMD_PLATFORM"
+    },
+    {
+     "feature": "BIOS_UPDATE"
+    },
+    {
+     "feature": "MB_CPLD_UPDATE"
+    },
+    {
+     "feature": "SECOND_BMC_NOT_SUPPORT"
+    },
+    {
+     "feature": "BPB_CPLD_UPDATE"
+    },
+    {
+     "feature": "SYSTEM_INVENTORY_INFO_SUPPORT"
+    },
+    {
+     "feature": "PSU_UPDATE"
+    }
+   ],
+   "note": "unauth"
+  },
+  {
+   "method": "GET",
+   "path": "/api/firmware-info",
+   "status": 200,
+   "contentType": "application/json",
+   "response": {
+    "active_image": 1,
+    "aux": 15,
+    "bios_ver": "",
+    "date": "Mar 6 2023",
+    "dev_support": 191,
+    "device_id": 32,
+    "fw_rev_1": 13,
+    "fw_rev_2": 4,
+    "fw_ver": "13.04.15",
+    "ipmi_version": 2,
+    "mfg_id_0": 10,
+    "mfg_id_1": 60,
+    "mfg_id_2": 0,
+    "prod_id": 4213,
+    "revision": 129,
+    "sdr_ver": "1678087378",
+    "sku_ver": "1.0",
+    "time": "07:37:00 UTC"
+   },
+   "note": "ami"
+  },
+  {
+   "method": "GET",
+   "path": "/api/fru",
+   "status": 200,
+   "contentType": "application/json",
+   "response": [
+    {
+     "board": {
+      "custom_fields": "NULL ",
+      "date": "Sat Jan  1 00:12:00 2022",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 10,
+      "manufacturer": "Giga Computing",
+      "part_number": "123456789AB",
+      "product_name": "MC13-LE0-000",
+      "serial_number": "<REDACTED_SERIAL>",
+      "version": 1
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 6,
+      "part_number": "01234567",
+      "serial_number": "01234567890123456789AB",
+      "type": "Main Server Chassis",
+      "version": 1
+     },
+     "common_header": {
+      "board_info_area_start_offset": 7,
+      "chassis_info_area_start_offset": 1,
+      "internal_use_area_start_offset": 0,
+      "multi_record_area_start_offset": 0,
+      "product_info_area_start_offset": 17,
+      "version": 1
+     },
+     "device": {
+      "id": 0,
+      "name": "FRU"
+     },
+     "product": {
+      "asset_tag": "01234567890123456789AB",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 15,
+      "manufacturer": "Giga Computing",
+      "part_number": "000000000001",
+      "product_name": "MC13-LE0-000",
+      "product_version": "5MC13LE0MR-000",
+      "serial_number": "01234567890123456789AB",
+      "version": 1
+     }
+    },
+    {
+     "board": {
+      "custom_fields": "NULL ",
+      "date": "Sat Jan  1 00:12:00 2022",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 9,
+      "manufacturer": "NULL",
+      "part_number": "01234567",
+      "product_name": "MC13-LE0-000",
+      "serial_number": "01234567890123456789AB",
+      "version": 1
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 6,
+      "part_number": "01234567",
+      "serial_number": "01234567890123456789AB",
+      "type": "Main Server Chassis",
+      "version": 1
+     },
+     "common_header": {
+      "board_info_area_start_offset": 7,
+      "chassis_info_area_start_offset": 1,
+      "internal_use_area_start_offset": 0,
+      "multi_record_area_start_offset": 0,
+      "product_info_area_start_offset": 16,
+      "version": 1
+     },
+     "device": {
+      "id": 1,
+      "name": "FRU01"
+     },
+     "product": {
+      "asset_tag": "01234567890123456789AB",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 12,
+      "manufacturer": "NULL",
+      "part_number": "000000000001",
+      "product_name": "MC13-LE0-000",
+      "product_version": "0100",
+      "serial_number": "01234567890123456789AB",
+      "version": 1
+     }
+    },
+    {
+     "board": {
+      "custom_fields": "",
+      "date": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 0,
+      "manufacturer": "",
+      "part_number": "",
+      "product_name": "",
+      "serial_number": "",
+      "version": 0
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 0,
+      "part_number": "",
+      "serial_number": "",
+      "type": "",
+      "version": 0
+     },
+     "common_header": {
+      "board_info_area_start_offset": 0,
+      "chassis_info_area_start_offset": 0,
+      "internal_use_area_start_offset": 1,
+      "multi_record_area_start_offset": 11,
+      "product_info_area_start_offset": 3,
+      "version": 1
+     },
+     "device": {
+      "id": 2,
+      "name": "BMC_FRU"
+     },
+     "product": {
+      "asset_tag": "",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 8,
+      "manufacturer": "SUPERMICRO",
+      "part_number": "PWS-804P-1R",
+      "product_name": "PWS-804P-1R",
+      "product_version": "1.1",
+      "serial_number": "<REDACTED_SERIAL>",
+      "version": 1
+     }
+    },
+    {
+     "board": {
+      "custom_fields": "",
+      "date": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 0,
+      "manufacturer": "",
+      "part_number": "",
+      "product_name": "",
+      "serial_number": "",
+      "version": 0
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 0,
+      "part_number": "",
+      "serial_number": "",
+      "type": "",
+      "version": 0
+     },
+     "common_header": {
+      "board_info_area_start_offset": 0,
+      "chassis_info_area_start_offset": 0,
+      "internal_use_area_start_offset": 1,
+      "multi_record_area_start_offset": 11,
+      "product_info_area_start_offset": 3,
+      "version": 1
+     },
+     "device": {
+      "id": 3,
+      "name": "BMC_FRU"
+     },
+     "product": {
+      "asset_tag": "",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 8,
+      "manufacturer": "SUPERMICRO",
+      "part_number": "PWS-804P-1R",
+      "product_name": "PWS-804P-1R",
+      "product_version": "1.1",
+      "serial_number": "<REDACTED_SERIAL>",
+      "version": 1
+     }
+    },
+    {
+     "board": {
+      "custom_fields": "",
+      "date": "Mon Jan  1 00:00:00 1996",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 5,
+      "manufacturer": "Unspecified/Dummy.",
+      "part_number": "",
+      "product_name": "",
+      "serial_number": "",
+      "version": 1
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 2,
+      "part_number": "",
+      "serial_number": "",
+      "type": "Unspecified",
+      "version": 1
+     },
+     "common_header": {
+      "board_info_area_start_offset": 3,
+      "chassis_info_area_start_offset": 1,
+      "internal_use_area_start_offset": 0,
+      "multi_record_area_start_offset": 0,
+      "product_info_area_start_offset": 8,
+      "version": 1
+     },
+     "device": {
+      "id": 4,
+      "name": "BMC_FRU"
+     },
+     "product": {
+      "asset_tag": "",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 3,
+      "manufacturer": "",
+      "part_number": "",
+      "product_name": "",
+      "product_version": "",
+      "serial_number": "",
+      "version": 1
+     }
+    },
+    {
+     "board": {
+      "custom_fields": "",
+      "date": "Mon Jan  1 00:00:00 1996",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 5,
+      "manufacturer": "Unspecified/Dummy.",
+      "part_number": "",
+      "product_name": "",
+      "serial_number": "",
+      "version": 1
+     },
+     "chassis": {
+      "custom_fields": "",
+      "length": 2,
+      "part_number": "",
+      "serial_number": "",
+      "type": "Unspecified",
+      "version": 1
+     },
+     "common_header": {
+      "board_info_area_start_offset": 3,
+      "chassis_info_area_start_offset": 1,
+      "internal_use_area_start_offset": 0,
+      "multi_record_area_start_offset": 0,
+      "product_info_area_start_offset": 8,
+      "version": 1
+     },
+     "device": {
+      "id": 5,
+      "name": "BMC_FRU"
+     },
+     "product": {
+      "asset_tag": "",
+      "custom_fields": "",
+      "fru_file_id": "",
+      "language": 0,
+      "length": 3,
+      "manufacturer": "",
+      "part_number": "",
+      "product_name": "",
+      "product_version": "",
+      "serial_number": "",
+      "version": 1
+     }
+    }
+   ],
+   "note": "ami"
+  },
+  {
+   "method": "DELETE",
+   "path": "/api/session",
+   "status": 200,
+   "contentType": "application/json",
+   "response": {
+    "ok": 0
+   },
+   "note": "ami-logout"
+  },
+  {
+   "method": "POST",
+   "path": "/api/session",
+   "status": 200,
+   "contentType": "application/json",
+   "requestBody": {
+    "password": "<REDACTED_PASSWORD>",
+    "username": "admin"
+   },
+   "response": {
+    "CSRFToken": "<REDACTED_CSRF>",
+    "HTTPSEnabled": 1,
+    "channel": 1,
+    "extendedpriv": 259,
+    "ok": 0,
+    "passwordStatus": 0,
+    "privilege": 4,
+    "racsession_id": 85,
+    "remote_addr": "192.0.2.250",
+    "server_addr": "192.0.2.67",
+    "server_name": "192.0.2.67"
+   },
+   "note": "ami-login"
+  },
+  {
+   "method": "GET",
+   "path": "/api/settings/date-time",
+   "status": 200,
+   "contentType": "application/json",
+   "response": {
+    "id": 1,
+    "localized_timestamp": 1794849829,
+    "ntp_auto_date": 0,
+    "primary_ntp": "pool.ntp.org",
+    "secondary_ntp": "time.nist.gov",
+    "timestamp": 1794849829,
+    "timezone": "Etc/GMT",
+    "utc_minutes": 0
+   },
+   "note": "ami"
+  },
+  {
+   "method": "GET",
+   "path": "/api/settings/fanprofile",
+   "status": 200,
+   "contentType": "application/json",
+   "response": {
+    "arrProfile": [
+     {
+      "arrPolicy": [
+       {
+        "arrDuty": [
+         30,
+         100
+        ],
+        "arrFanSensor": [
+         160,
+         162,
+         163,
+         164,
+         165,
+         166
+        ],
+        "arrHexDeviceID": [],
+        "arrHexVendorID": [],
+        "arrRef": [
+         70,
+         85
+        ],
+        "arrSensor": [
+         1
+        ],
+        "iAmbientSensor": 0,
+        "iAmbientSensorTemp": 0,
+        "iCpuTdp": 0,
+        "iHysteresis": 0,
+        "iInSDR": 1,
+        "iInitDuty": 30,
+        "iPCIEDeviceEnable": 0,
+        "iPolicyType": 2,
+        "iSensorCode": 1
+       },
+       {
+        "arrDuty": [
+         30,
+         100
+        ],
+        "arrFanSensor": [
+         160,
+         162,
+         163,
+         164,
+         165,
+         166
+        ],
+        "arrHexDeviceID": [],
+        "arrHexVendorID": [],
+        "arrRef": [
+         70,
+         83
+        ],
+        "arrSensor": [
+         4
+        ],
+        "iAmbientSensor": 0,
+        "iAmbientSensorTemp": 0,
+        "iCpuTdp": 0,
+        "iHysteresis": 0,
+        "iInSDR": 1,
+        "iInitDuty": 30,
+        "iPCIEDeviceEnable": 0,
+        "iPolicyType": 2,
+        "iSensorCode": 1
+       },
+       {
+        "arrDuty": [
+         30,
+         100
+        ],
+        "arrFanSensor": [
+         160,
+         162,
+         163,
+         164,
+         165,
+         166
+        ],
+        "arrHexDeviceID": [],
+        "arrHexVendorID": [],
+        "arrRef": [
+         100,
+         115
+        ],
+        "arrSensor": [
+         80
+        ],
+        "iAmbientSensor": 0,
+        "iAmbientSensorTemp": 0,
+        "iCpuTdp": 0,
+        "iHysteresis": 0,
+        "iInSDR": 1,
+        "iInitDuty": 30,
+        "iPCIEDeviceEnable": 0,
+        "iPolicyType": 2,
+        "iSensorCode": 1
+       },
+       {
+        "arrDuty": [
+         30,
+         100
+        ],
+        "arrFanSensor": [
+         162,
+         163,
+         164,
+         165,
+         166
+        ],
+        "arrHexDeviceID": [],
+        "arrHexVendorID": [],
+        "arrRef": [
+         60,
+         70
+        ],
+        "arrSensor": [
+         23
+        ],
+        "iAmbientSensor": 0,
+        "iAmbientSensorTemp": 0,
+        "iCpuTdp": 0,
+        "iHysteresis": 0,
+        "iInSDR": 1,
+        "iInitDuty": 30,
+        "iPCIEDeviceEnable": 0,
+        "iPolicyType": 2,
+        "iSensorCode": 1
+       }
+      ],
+      "strName": "default",
+      "strVersion": "1.00"
+     },
+     {
+      "arrPolicy": [
+       {
+        "arrDuty": [
+         30,
+         100
+        ],
+        "arrFanSensor": [
+         160,
+         162,
+         163,
+         164,
+         165,
+         166
+        ],
+        "arrHexDeviceID": [],
+        "arrHexVendorID": [],
+        "arrRef": [
+         60,
+         75
+        ],
+        "arrSensor": [
+         1
+        ],
+        "iAmbientSensor": 0,
+        "iAmbientSensorTemp": 0,
+        "iCpuTdp": 0,
+        "iHysteresis": 0,
+        "iInSDR": 1,
+        "iInitDuty": 30,
+        "iPCIEDeviceEnable": 0,
+        "iPolicyType": 2,
+        "iSensorCode": 1
+       }
+      ],
+      "strName": "NEW_PROFILE",
+      "strVersion": "1.00"
+     }
+    ],
+    "strMode": "NEW_PROFILE",
+    "strVersion": "1.00"
+   },
+   "note": "ami"
+  },
+  {
+   "method": "GET",
+   "path": "/api/settings/fanprofile/collection",
+   "status": 200,
+   "contentType": "application/json",
+   "response": [
+    {
+     "arrPolicy": [
+      {
+       "arrDuty": [
+        30,
+        100
+       ],
+       "arrFanSensor": [
+        160,
+        162,
+        163,
+        164,
+        165,
+        166
+       ],
+       "arrHexDeviceID": [],
+       "arrHexVendorID": [],
+       "arrRef": [
+        70,
+        85
+       ],
+       "arrSensor": [
+        1
+       ],
+       "iAmbientSensor": 0,
+       "iAmbientSensorTemp": 0,
+       "iCpuTdp": 0,
+       "iHysteresis": 0,
+       "iInSDR": 1,
+       "iInitDuty": 30,
+       "iPCIEDeviceEnable": 0,
+       "iPolicyType": 2,
+       "iSensorCode": 1
+      },
+      {
+       "arrDuty": [
+        30,
+        100
+       ],
+       "arrFanSensor": [
+        160,
+        162,
+        163,
+        164,
+        165,
+        166
+       ],
+       "arrHexDeviceID": [],
+       "arrHexVendorID": [],
+       "arrRef": [
+        70,
+        83
+       ],
+       "arrSensor": [
+        4
+       ],
+       "iAmbientSensor": 0,
+       "iAmbientSensorTemp": 0,
+       "iCpuTdp": 0,
+       "iHysteresis": 0,
+       "iInSDR": 1,
+       "iInitDuty": 30,
+       "iPCIEDeviceEnable": 0,
+       "iPolicyType": 2,
+       "iSensorCode": 1
+      },
+      {
+       "arrDuty": [
+        30,
+        100
+       ],
+       "arrFanSensor": [
+        160,
+        162,
+        163,
+        164,
+        165,
+        166
+       ],
+       "arrHexDeviceID": [],
+       "arrHexVendorID": [],
+       "arrRef": [
+        100,
+        115
+       ],
+       "arrSensor": [
+        80
+       ],
+       "iAmbientSensor": 0,
+       "iAmbientSensorTemp": 0,
+       "iCpuTdp": 0,
+       "iHysteresis": 0,
+       "iInSDR": 1,
+       "iInitDuty": 30,
+       "iPCIEDeviceEnable": 0,
+       "iPolicyType": 2,
+       "iSensorCode": 1
+      },
+      {
+       "arrDuty": [
+        30,
+        100
+       ],
+       "arrFanSensor": [
+        162,
+        163,
+        164,
+        165,
+        166
+       ],
+       "arrHexDeviceID": [],
+       "arrHexVendorID": [],
+       "arrRef": [
+        60,
+        70
+       ],
+       "arrSensor": [
+        23
+       ],
+       "iAmbientSensor": 0,
+       "iAmbientSensorTemp": 0,
+       "iCpuTdp": 0,
+       "iHysteresis": 0,
+       "iInSDR": 1,
+       "iInitDuty": 30,
+       "iPCIEDeviceEnable": 0,
+       "iPolicyType": 2,
+       "iSensorCode": 1
+      }
+     ],
+     "strName": "default",
+     "strVersion": "1.00"
+    },
+    {
+     "arrPolicy": [
+      {
+       "arrDuty": [
+        30,
+        100
+       ],
+       "arrFanSensor": [
+        160,
+        162,
+        163,
+        164,
+        165,
+        166
+       ],
+       "arrHexDeviceID": [],
+       "arrHexVendorID": [],
+       "arrRef": [
+        60,
+        75
+       ],
+       "arrSensor": [
+        1
+       ],
+       "iAmbientSensor": 0,
+       "iAmbientSensorTemp": 0,
+       "iCpuTdp": 0,
+       "iHysteresis": 0,
+       "iInSDR": 1,
+       "iInitDuty": 30,
+       "iPCIEDeviceEnable": 0,
+       "iPolicyType": 2,
+       "iSensorCode": 1
+      }
+     ],
+     "strName": "NEW_PROFILE",
+     "strVersion": "1.00"
+    }
+   ],
+   "note": "ami"
+  },
+  {
+   "method": "GET",
+   "path": "/api/settings/fanprofile/mode",
+   "status": 200,
+   "contentType": "application/json",
+   "response": {
+    "strMode": "NEW_PROFILE"
+   },
+   "note": "ami"
+  },
+  {
+   "method": "GET",
+   "path": "/api/settings/service-sessions",
+   "status": 200,
+   "contentType": "application/json",
+   "response": [],
+   "note": "ami"
+  },
+  {
+   "method": "GET",
+   "path": "/api/settings/services",
+   "status": 200,
+   "contentType": "application/json",
+   "response": [
+    {
+     "active_session": 129,
+     "id": 1,
+     "interface_name": "bond0",
+     "maximum_sessions": 148,
+     "non_secure_port": -1,
+     "secure_port": 443,
+     "service_id": 1,
+     "service_name": "web",
+     "singleport_status": 1,
+     "state": 1,
+     "time_out": 1800
+    },
+    {
+     "active_session": 128,
+     "id": 2,
+     "interface_name": "bond0",
+     "maximum_sessions": 130,
+     "non_secure_port": -1,
+     "secure_port": 443,
+     "service_id": 2,
+     "service_name": "kvm",
+     "singleport_status": 1,
+     "state": 1,
+     "time_out": 1800,
+     "viewer_count": 0
+    },
+    {
+     "active_session": 128,
+     "id": 3,
+     "interface_name": "bond0",
+     "maximum_sessions": 129,
+     "non_secure_port": -1,
+     "secure_port": 443,
+     "service_id": 4,
+     "service_name": "cd-media",
+     "singleport_status": 1,
+     "state": 1,
+     "time_out": -1
+    },
+    {
+     "active_session": 128,
+     "id": 4,
+     "interface_name": "bond0",
+     "maximum_sessions": 129,
+     "non_secure_port": -1,
+     "secure_port": 443,
+     "service_id": 16,
+     "service_name": "hd-media",
+     "singleport_status": 1,
+     "state": 1,
+     "time_out": -1
+    },
+    {
+     "active_session": 128,
+     "id": 5,
+     "interface_name": "NA",
+     "maximum_sessions": 255,
+     "non_secure_port": -1,
+     "secure_port": 22,
+     "service_id": 32,
+     "service_name": "ssh",
+     "singleport_status": 1,
+     "state": 1,
+     "time_out": 600
+    }
+   ],
+   "note": "ami"
+  }
+ ]
+}

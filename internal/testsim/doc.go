@@ -14,8 +14,22 @@
 //     trailer, Secure/HttpOnly cookie, and a working Redfish service backed
 //     by pkg/protocol/redfish/redfishtest (the live 4.10 resource tree),
 //     with mod_evasive's 10-per-IP /redfish cap answered by an HTML 403.
+//   - X570() — X570D4U, BMC 1.20.00: the B650 Redfish tree reshaped (null
+//     sensors, 2-entry SEL, versionless BIOS, $select/$expand ignored),
+//     X470-style asrr /api dialect, CSRF enforced on GETs.
+//   - MC13LE0() — Gigabyte MC13-LE0-000, BMC 13.04.15: the live Redfish
+//     tree (fixtures/mc13le0) with collections truncated at 50 members
+//     (no nextLink, $skip=0 = 400), SEL times only in Message, GBT
+//     $metadata namespaces served unauthenticated, the HAR /api with no
+//     asrr namespace, CSRF on GETs, and a bad token killing the session.
+//   - MZ32AR0() — Gigabyte MZ32-AR0-00, BMC 12.61.39: the research Redfish
+//     tree (fixtures/mz32ar0, incl. the SubProcessors crawl trap) whose
+//     query options need a literal $ (%24 ignored), $filter page-local,
+//     unknown $ options 501, and a synthesized /api (decoded logs/event,
+//     firmware-info, fan-profile mode). Both Gigabyte profiles serve the
+//     OEM objects settings/fanprofile/mode and settings/network-bond.
 //
-// Both profiles emulate the documented /api quirks: form login at
+// The ASRock profiles emulate the documented /api quirks: form login at
 // /api/session issuing QSESSIONID + an 8-char CSRFToken; the auth gate's
 // 401 {"cc":7}; CSRF enforced on writes but not on GETs (any non-empty
 // token passes, a missing one fails); X-HTTP-Method-Override honoured;

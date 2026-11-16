@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/slothnetworks/bmcproxy/pkg/bmc"
@@ -23,6 +24,9 @@ func (c *Client) WalkCollection(ctx context.Context, path string, q *Query, fn f
 	seen := map[string]bool{}
 	next := path
 	first := true
+	total := 0
+	firstMember := ""
+	skipped := false
 	log := obs.FromContext(ctx, obs.SubRedfish)
 	for page := 0; next != ""; page++ {
 		if page >= c.opts.MaxPages {
@@ -49,13 +53,31 @@ func (c *Client) WalkCollection(ctx context.Context, path string, q *Query, fn f
 		}
 		seen[key] = true
 		seen[next] = true
+		if len(coll.Members) > 0 {
+			if first {
+				firstMember = string(coll.Members[0])
+			} else if skipped && string(coll.Members[0]) == firstMember {
+				// The service ignored $skip and served page one again.
+				log.WarnContext(ctx, "redfish $skip page repeats the first page; stopping", "path", path, "next", next)
+				return nil
+			}
+		}
 		if err := fn(coll.Members); err != nil {
 			return err
 		}
 		first = false
+		total += len(coll.Members)
 		nl := coll.NextLink
 		if nl == "" {
-			return nil
+			ps := c.opts.Quirks.SkipPageSize
+			if ps <= 0 || len(coll.Members) != ps {
+				return nil
+			}
+			// Truncated page without a nextLink: ask for the next one.
+			nl = skipLink(path, total)
+			skipped = true
+		} else {
+			skipped = false
 		}
 		nl = c.pathOf(nl)
 		if seen[nl] {
@@ -69,6 +91,26 @@ func (c *Client) WalkCollection(ctx context.Context, path string, q *Query, fn f
 		next = nl
 	}
 	return nil
+}
+
+// skipLink returns path with $skip=n (replacing any $skip already there).
+func skipLink(path string, n int) string {
+	base, rawQuery, _ := strings.Cut(path, "?")
+	var keep []string
+	if rawQuery != "" {
+		for _, kv := range strings.Split(rawQuery, "&") {
+			k, _, _ := strings.Cut(kv, "=")
+			if uk, err := url.QueryUnescape(k); err == nil {
+				k = uk
+			}
+			if strings.EqualFold(k, "$skip") {
+				continue
+			}
+			keep = append(keep, kv)
+		}
+	}
+	keep = append(keep, "$skip="+strconv.Itoa(n))
+	return base + "?" + strings.Join(keep, "&")
 }
 
 // carryQuery returns the shape-preserving options of q ($expand/$levels and
@@ -123,10 +165,26 @@ func isInlined(m json.RawMessage) bool {
 	return false
 }
 
+// isFullInline reports whether an unexpanded collection member is a whole
+// resource rather than a link: some services (AMI MegaRAC 13.x LogEntry
+// collections on the Gigabyte MC13-LE0) inline every member without
+// $expand. A member counts only when it carries @odata.type and Id, so
+// partial summaries are still fetched.
+func isFullInline(m json.RawMessage) bool {
+	var probe map[string]json.RawMessage
+	if json.Unmarshal(m, &probe) != nil {
+		return false
+	}
+	_, typ := probe["@odata.type"]
+	_, id := probe["Id"]
+	return typ && id
+}
+
 // Members fetches every member of a collection as T. When the service
 // advertises $expand (and Quirks.NoExpand is unset) one expanded walk is
 // tried first; members that come back as bare links are fetched one by
-// one. Members that 404 are skipped.
+// one (whole resources inlined without $expand are used as-is, see
+// isFullInline). Members that 404 are skipped.
 func Members[T any](ctx context.Context, c *Client, path string) ([]T, error) {
 	var out []T
 	var pending []string
@@ -136,7 +194,7 @@ func Members[T any](ctx context.Context, c *Client, path string) ([]T, error) {
 	}
 	err := c.WalkCollection(ctx, path, q, func(ms []json.RawMessage) error {
 		for _, m := range ms {
-			if q != nil && isInlined(m) {
+			if (q != nil && isInlined(m)) || (q == nil && isFullInline(m)) {
 				var v T
 				if err := decodeLenient(m, &v, c.opts.Quirks); err == nil {
 					out = append(out, v)

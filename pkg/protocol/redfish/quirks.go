@@ -48,6 +48,13 @@ type Quirks struct {
 	// name ("#ComputerSystem.Reset", "#Manager.Reset") when the service
 	// does not advertise them.
 	ResetTypes map[string][]string
+	// SkipPageSize, when > 0, continues a collection walk with $skip when a
+	// page carries no Members@odata.nextLink but holds exactly SkipPageSize
+	// members. Gigabyte MC13-LE0 (AMI 13.04.15) truncates collections at 50
+	// members without a nextLink, reports Members@odata.count as the page
+	// length and answers 400 to $skip=0 (docs/gigabyte/mc13-le0-live-probe.md).
+	// The walk stops at the first short or empty page (or MaxPages).
+	SkipPageSize int
 }
 
 // Logical path keys usable in Quirks.PathOverrides.

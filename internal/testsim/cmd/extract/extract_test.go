@@ -70,7 +70,20 @@ func TestFixturesUpToDate(t *testing.T) {
 	if err := run(docs, tmp); err != nil {
 		t.Fatal(err)
 	}
-	for _, f := range []string{"x470/endpoints.json", "b650/endpoints.json", "x470/redfish-serviceroot.json"} {
+	var files []string
+	for _, b := range Boards {
+		files = append(files, b+"/endpoints.json")
+	}
+	for _, b := range ServiceRootBoards {
+		files = append(files, b+"/redfish-serviceroot.json")
+	}
+	for _, g := range GigabyteBoards {
+		if g.HAR != "" {
+			files = append(files, g.Board+"/endpoints.json")
+		}
+		files = append(files, g.Board+"/redfish.json")
+	}
+	for _, f := range files {
 		got, err := os.ReadFile(filepath.Join(tmp, f))
 		if err != nil {
 			t.Fatal(err)

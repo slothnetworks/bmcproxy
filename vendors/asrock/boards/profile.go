@@ -17,6 +17,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/slothnetworks/bmcproxy/pkg/bmc"
 	"github.com/slothnetworks/bmcproxy/pkg/protocol/amimegarac"
 	"github.com/slothnetworks/bmcproxy/pkg/transport"
 )
@@ -79,8 +80,9 @@ const (
 	// LinkUpProbe: try settings/ncsilinkup, fall back to asrr/getvetobit.
 	LinkUpProbe LinkUpDialect = iota
 	// LinkUpVetobit: asrr/getvetobit + PUT asrr/setvetobit {vetobit}
-	// (X470 UI JS; also seen on B650 1.10). UNVERIFIED: the PUT body
-	// {vetobit} comes from the UI JS and was never written on hardware.
+	// (X470 UI JS; also seen on B650 1.10; GET {"vetobit":0} read live on
+	// X470 2.32 and X570 1.20). UNVERIFIED: the PUT body {vetobit} comes
+	// from the UI JS and was never written on hardware.
 	LinkUpVetobit
 	// LinkUpNCSI: settings/ncsilinkup GET/PUT {sharednic, sharednic2}
 	// (B650 7.02/9.05 binaries and UI JS). UNVERIFIED: not probed on the
@@ -143,7 +145,7 @@ const (
 // Profile describes one board+firmware generation.
 type Profile struct {
 	// Key is a stable profile id: "x470d4u", "b650d4u", "b650d4u-1.x",
-	// "b550d4u", "unknown".
+	// "b550d4u", "x570d4u", "unknown".
 	Key string `json:"key"`
 	// Board is the live board name (asrr/model-name mb_name).
 	Board string `json:"board"`
@@ -162,11 +164,15 @@ type Profile struct {
 	// IPMI allows the lazy IPMI backend (boot override / restore policy).
 	IPMI bool `json:"ipmi"`
 
-	Fan       FanDialect       `json:"-"`
-	LinkUp    LinkUpDialect    `json:"-"`
-	Inventory InventoryDialect `json:"-"`
-	Restore   RestoreBackend   `json:"-"`
-	PostCode  PostCodeDialect  `json:"-"`
+	Fan FanDialect `json:"-"`
+	// FanDutyManual: asrr/GetFanDuty is absent, so FanDuty reads the
+	// configured manual duties from asrr/settings/getfandutymanualmode
+	// (X570 1.20; like settings/fan/manual on the B650).
+	FanDutyManual bool             `json:"fanDutyManual,omitempty"`
+	LinkUp        LinkUpDialect    `json:"-"`
+	Inventory     InventoryDialect `json:"-"`
+	Restore       RestoreBackend   `json:"-"`
+	PostCode      PostCodeDialect  `json:"-"`
 	// AutoDateField is the NTP enable field of settings/date-time:
 	// "auto_date" (X470) or "ntp_auto_date" (B650/B550). The driver also
 	// adapts to whichever key the BMC actually returns.
@@ -191,6 +197,11 @@ type Profile struct {
 	// handler on this generation.
 	Components []string `json:"components"`
 
+	// AMIFirst lists capabilities whose /api implementation beats the
+	// board's Redfish data, so the AMI backend is tried before Redfish even
+	// on a Redfish-capable board (X570: Sensors, EventLog, FirmwareInventory).
+	AMIFirst []bmc.Capability `json:"amiFirst,omitempty"`
+
 	// ExtraDeny adds board-specific deny rules on top of
 	// amimegarac.DefaultDenyRules.
 	ExtraDeny []amimegarac.DenyRule `json:"-"`
@@ -198,6 +209,16 @@ type Profile struct {
 	// /api path (e.g. "/api/asrr/selsummary"). Matching requests are also
 	// never retried.
 	Timeouts map[string]time.Duration `json:"-"`
+}
+
+// PrefersAMI reports whether c is in AMIFirst.
+func (p Profile) PrefersAMI(c bmc.Capability) bool {
+	for _, x := range p.AMIFirst {
+		if x == c {
+			return true
+		}
+	}
+	return false
 }
 
 // AllComponents lists every asrr/maintenance component name the vendor
@@ -244,6 +265,8 @@ func Lookup(board, firmware string) Profile {
 		p = B650D4U(firmware)
 	case strings.HasPrefix(b, "B550D4U"):
 		p = B550D4U(firmware)
+	case strings.HasPrefix(b, "X570D4U"):
+		p = X570D4U(firmware)
 	default:
 		p = Unknown(firmware)
 	}

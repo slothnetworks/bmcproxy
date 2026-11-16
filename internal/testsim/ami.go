@@ -16,7 +16,7 @@ import (
 )
 
 // AMI MegaRAC /api emulation: form login (QSESSIONID + CSRFToken), the auth
-// gate (cc:7), CSRF enforced on writes but not on GETs, honoured
+// gate (cc:7), CSRF enforced on writes (and on GETs for the X570), honoured
 // X-HTTP-Method-Override, crash endpoints, slot cap, and fixture replay with
 // dynamic overlays for power, LED, date-time, SEL and the fan cursor.
 
@@ -82,7 +82,10 @@ func randString(n int) string {
 
 func (s *Sim) setCookie(w http.ResponseWriter, v string) {
 	c := "QSESSIONID=" + v + "; path=/"
-	if s.profile.SecureCookie {
+	switch {
+	case s.profile.CookieAttrs != "":
+		c += s.profile.CookieAttrs
+	case s.profile.SecureCookie:
 		c += "; secure; HttpOnly; Samesite=Lax"
 	}
 	w.Header().Add("Set-Cookie", c)
@@ -155,6 +158,10 @@ func (s *Sim) serveAPI(w http.ResponseWriter, r *http.Request, body []byte) stri
 	}
 	s.mu.Unlock()
 
+	if s.profile.NoASRR && strings.HasPrefix(p, "/api/asrr/") {
+		writeJSON(w, http.StatusNotFound, map[string]any{"error": "Invalid API Call", "code": 1010})
+		return sid
+	}
 	if s.dynamicAPI(w, r, method, p, body, sess) || s.oemAPI(w, method, p, body) {
 		return sid
 	}
@@ -171,7 +178,8 @@ func (s *Sim) serveAPI(w http.ResponseWriter, r *http.Request, body []byte) stri
 }
 
 // authLocked validates the session cookie and CSRF token. GETs need a valid
-// cookie and any non-empty token; writes need the session's exact token.
+// cookie and any non-empty token (the exact token with Profile.CSRFOnGET);
+// writes need the session's exact token.
 func (s *Sim) authLocked(r *http.Request, method string) (*amiSession, string) {
 	c, err := r.Cookie("QSESSIONID")
 	if err != nil || c.Value == "" {
@@ -187,7 +195,10 @@ func (s *Sim) authLocked(r *http.Request, method string) (*amiSession, string) {
 		return nil, "session"
 	}
 	tok := r.Header.Get("X-CSRFTOKEN")
-	if tok == "" || (isWrite(method) && tok != sess.csrf) {
+	if tok == "" || ((isWrite(method) || s.profile.CSRFOnGET) && tok != sess.csrf) {
+		if s.profile.CSRFKillsSession {
+			delete(s.ami.sessions, sess.id) // MC13-LE0: a bad token logs the session out
+		}
 		return nil, "csrf"
 	}
 	sess.used = now
@@ -265,7 +276,7 @@ var crossBoardFallback = map[string]bool{
 }
 
 func (s *Sim) crossBoard(method, p string) (any, bool) {
-	if !crossBoardFallback[method+" "+p] {
+	if s.profile.NoASRR || !crossBoardFallback[method+" "+p] {
 		return nil, false
 	}
 	other := BoardX470
@@ -305,8 +316,8 @@ func (s *Sim) dynamicAPI(w http.ResponseWriter, r *http.Request, method, p strin
 		led := s.power.led
 		s.mu.Unlock()
 		m, _ := s.fixtureObject(http.MethodGet, p).(map[string]any)
-		if m == nil {
-			m = map[string]any{}
+		if m == nil || m["cc"] != nil {
+			m = map[string]any{} // no (or only an auth-gate) example captured
 		}
 		m["power_status"] = b2i(on)
 		m["led_status"] = led
@@ -507,6 +518,11 @@ type eventStore struct {
 func (s *Sim) initEvents() error {
 	v := s.fixtureObject(http.MethodGet, "/api/logs/eventlog")
 	arr, _ := v.([]any)
+	if len(arr) == 0 {
+		// X570: the 4 MB eventlog body was not kept; seed from the
+		// incremental logs/event capture instead.
+		arr, _ = s.fixtureObject(http.MethodGet, "/api/logs/event").([]any)
+	}
 	seen := map[int]bool{}
 	for _, e := range arr {
 		m, ok := e.(map[string]any)

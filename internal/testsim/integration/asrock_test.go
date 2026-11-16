@@ -1,7 +1,7 @@
 // Package integration_test runs the full bmcproxy (server, sessions,
 // cache, /api/v1, vendor routes, health, metrics, transport) with the
 // production driver set (vendors/asrock + vendors/generic/redfish) against
-// the HAR-replay simulators of both boards (internal/testsim), covering the
+// the HAR-replay simulators of every board (internal/testsim), covering the
 // PLAN "Verification" list. No hardware is contacted.
 package integration_test
 
@@ -21,8 +21,6 @@ import (
 	"github.com/slothnetworks/bmcproxy/pkg/protocol/ipmi"
 	"github.com/slothnetworks/bmcproxy/vendors/asrock/oem"
 )
-
-var bothBoards = []string{"x470", "b650"}
 
 func wantStatus(t *testing.T, r *testsim.Resp, want int) {
 	t.Helper()
@@ -48,18 +46,18 @@ func capMap(t *testing.T, r *testsim.Resp) (v1.CapabilitiesResponse, map[bmc.Cap
 	return caps, m
 }
 
-// TestReadsBothBoards: capabilities, system, power, sensors, events
+// TestReadsAllBoards: capabilities, system, power, sensors, events
 // (incremental), audit, fru, inventory, network, users, services, time and
-// firmware on both boards, all through the asrock driver.
-func TestReadsBothBoards(t *testing.T) {
-	for _, board := range bothBoards {
+// firmware on every board, all through the asrock driver.
+func TestReadsAllBoards(t *testing.T) {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil)
 
 			r := p.Get(sim, "/api/v1/capabilities")
 			wantStatus(t, r, 200)
 			caps, cm := capMap(t, r)
-			wantBoard := map[string]string{"x470": "X470D4U", "b650": "B650D4U"}[board]
+			wantBoard := boardName[board]
 			if caps.Driver != "asrock" || caps.Board != wantBoard {
 				t.Fatalf("capabilities: driver %q board %q", caps.Driver, caps.Board)
 			}
@@ -78,6 +76,10 @@ func TestReadsBothBoards(t *testing.T) {
 			if sys.Board != wantBoard || sys.BMCFirmware == "" || sys.BIOSVersion == "" || sys.PowerState != bmc.PowerOn {
 				t.Fatalf("system: %+v", sys)
 			}
+			// X570 Redfish says "To Be Filled By O.E.M." / " ".
+			if strings.Contains(sys.Manufacturer, "O.E.M") || strings.TrimSpace(sys.Model) != sys.Model {
+				t.Fatalf("SMBIOS placeholder leaked: %+v", sys)
+			}
 
 			var ps v1.PowerStateResponse
 			p.Get(sim, "/api/v1/power").JSON(t, &ps)
@@ -95,6 +97,9 @@ func TestReadsBothBoards(t *testing.T) {
 			if board == "b650" && len(sens.Sensors) != 60 {
 				t.Fatalf("B650 sensors = %d, want all 60 (two Redfish pages)", len(sens.Sensors))
 			}
+			if board == "x570" && sim.Count("GET", "/redfish/v1/Chassis/Self/Sensors") != 0 {
+				t.Fatal("X570 sensors read from Redfish (3 null readings) instead of /api")
+			}
 
 			// Events, then incremental since=lastId.
 			var ev v1.EventsResponse
@@ -105,7 +110,7 @@ func TestReadsBothBoards(t *testing.T) {
 				t.Fatalf("events: %s", r.Body)
 			}
 			var newID string
-			if board == "x470" {
+			if amiSEL(board) {
 				newID = fmt.Sprint(sim.AddEvent("CPU Temp", "Upper Critical going high"))
 			} else {
 				newID = sim.Redfish().AddSELEntry("CPU Temp upper critical", "Critical")
@@ -117,8 +122,8 @@ func TestReadsBothBoards(t *testing.T) {
 			if len(inc.Entries) != 1 || inc.Entries[0].ID != newID {
 				t.Fatalf("incremental: %s (want only %s)", r.Body, newID)
 			}
-			if board == "x470" && sim.Count("GET", "/api/logs/event") == 0 {
-				t.Fatal("X470 incremental read did not use logs/event?LASTEVENTID")
+			if amiSEL(board) && sim.Count("GET", "/api/logs/event") == 0 {
+				t.Fatalf("%s incremental read did not use logs/event?LASTEVENTID", board)
 			}
 
 			var audit v1.AuditResponse
@@ -195,7 +200,8 @@ func TestReadsBothBoards(t *testing.T) {
 }
 
 // TestCapabilityBackends: the B650 serves its Redfish-backed capabilities
-// from Redfish and ASRock OEM gaps from /api; the X470 is /api + IPMI.
+// from Redfish and ASRock OEM gaps from /api; the X470 is /api + IPMI; the
+// X570 mixes both.
 func TestCapabilityBackends(t *testing.T) {
 	sim, p, _ := setupBoard(t, "b650", nil)
 	_, cm := capMap(t, p.Get(sim, "/api/v1/capabilities"))
@@ -222,6 +228,21 @@ func TestCapabilityBackends(t *testing.T) {
 	// The X470 Redfish (admin rejected) is never touched by the driver.
 	if n := xsim.Count("", "/redfish/v1/Systems"); n != 0 {
 		t.Fatalf("X470 Redfish below the root was queried %d times", n)
+	}
+
+	// X570: Redfish for control and identity, /api where its Redfish data
+	// is poor (sensors, SEL, firmware versions) and for the ASRock gaps.
+	zsim, zp, _ := setupBoard(t, "x570", nil)
+	_, zm := capMap(t, zp.Get(zsim, "/api/v1/capabilities"))
+	for c, want := range map[bmc.Capability]string{
+		bmc.CapIdentity: "redfish", bmc.CapPower: "redfish", bmc.CapIndicatorLED: "redfish", bmc.CapBootOverride: "redfish",
+		bmc.CapInventory: "redfish", bmc.CapUsers: "redfish", bmc.CapTime: "redfish",
+		bmc.CapSensors: "ami", bmc.CapEventLog: "ami", bmc.CapEventLogClear: "ami", bmc.CapFirmwareInventory: "ami",
+		bmc.CapFRU: "ami", bmc.CapBond: "ami", bmc.CapPowerRestorePolicy: "ami",
+	} {
+		if zm[c].Backend != want {
+			t.Errorf("X570 %s backend %q want %q", c, zm[c].Backend, want)
+		}
 	}
 }
 
@@ -266,7 +287,7 @@ func TestB650RestorePolicyASRR(t *testing.T) {
 }
 
 func TestLEDRoundTrip(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil)
 			for _, st := range []bmc.LEDState{bmc.LEDOn, bmc.LEDOff} {
@@ -298,7 +319,7 @@ func TestLEDRoundTrip(t *testing.T) {
 // TestPowerActionsPolling: on/off converge after polling; a soft-off the
 // host ignores (mid-POST) yields 202 + warning, not a false success.
 func TestPowerActionsPolling(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil, func(o *testsim.Options) { o.PowerDelay = 30 * time.Millisecond })
 			post := func(body string) *testsim.Resp { return p.Do(req(sim, "POST", "/api/v1/power", body, nil)) }
@@ -337,7 +358,7 @@ func TestPowerActionsPolling(t *testing.T) {
 // TestTimeSyncFullObject: X470 PUT settings/date-time carries the full
 // writable object (never a partial body: DateTime500s == 0) and fixes skew.
 func TestTimeSyncFullObject(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil, func(o *testsim.Options) { o.ClockOffset = -2 * time.Hour })
 			var tc bmc.TimeConfig
@@ -411,9 +432,9 @@ func TestClockSkewNormalization(t *testing.T) {
 	}
 }
 
-// TestVendorRoutes: bonding, fan mode, keep-NIC-link-up on both boards.
+// TestVendorRoutes: bonding, fan mode, keep-NIC-link-up on every board.
 func TestVendorRoutes(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil)
 			var bond oem.BondingStatus
@@ -425,7 +446,7 @@ func TestVendorRoutes(t *testing.T) {
 			}
 
 			var fm oem.FanModeResponse
-			if board == "x470" {
+			if asrrDialect(board) {
 				r = p.Do(req(sim, "POST", "/api/v1/vendor/asrock/setFanMode", map[string]any{"modes": map[string]int{"3": 1}}, nil))
 				wantStatus(t, r, 200)
 				r.JSON(t, &fm)
@@ -456,7 +477,7 @@ func TestVendorRoutes(t *testing.T) {
 			if !ku.Enabled {
 				t.Fatalf("setKeepNicLinkUp: %s", r.Body)
 			}
-			if board == "x470" {
+			if asrrDialect(board) {
 				if ku.Dialect != "vetobit" || fmt.Sprint(sim.OEMObject("/api/asrr/getvetobit")["vetobit"]) != "1" {
 					t.Fatalf("vetobit: %s", r.Body)
 				}
@@ -538,7 +559,7 @@ func TestX470FanTablesTwoStepUnderLoad(t *testing.T) {
 // TestRawPassthroughAndDenylist: raw/api works with the proxy's session;
 // crash-prone and leaky paths are 403 and never reach the BMC.
 func TestRawPassthroughAndDenylist(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil)
 			r := p.Do(req(sim, "GET", "/api/v1/vendor/asrock/raw/api/asrr/fw-info", nil, nil))
@@ -574,7 +595,7 @@ func TestRawPassthroughAndDenylist(t *testing.T) {
 // TestDisruptiveGating: disableBonding needs --allow-disruptive AND
 // X-BMC-Confirm: true; with both it reaches the sim (only the sim).
 func TestDisruptiveGating(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			// Without --allow-disruptive: 403 even with the confirm header.
 			sim, p, _ := setupBoard(t, board, nil)
@@ -620,7 +641,7 @@ func TestDisruptiveGating(t *testing.T) {
 // TestConcurrencyOneLoginSerialisedAPI: N concurrent mixed calls → one
 // login, never more than one in-flight /api request per host.
 func TestConcurrencyOneLoginSerialisedAPI(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil, func(o *testsim.Options) { o.Latency = 2 * time.Millisecond })
 			paths := []string{"/api/v1/power", "/api/v1/sensors", "/api/v1/fru", "/api/v1/vendor/asrock/bonding",
@@ -650,7 +671,7 @@ func TestConcurrencyOneLoginSerialisedAPI(t *testing.T) {
 			if st.MaxInFlightAPI > 1 {
 				t.Fatalf("max in-flight /api = %d, want <= 1", st.MaxInFlightAPI)
 			}
-			if board == "b650" && st.Evasive403s != 0 {
+			if board != "x470" && st.Evasive403s != 0 {
 				t.Fatalf("tripped mod_evasive %d times", st.Evasive403s)
 			}
 		})
@@ -661,10 +682,10 @@ func TestConcurrencyOneLoginSerialisedAPI(t *testing.T) {
 // the driver return ErrSessionLost; the session manager invalidates the
 // host, logs in once more and the request succeeds.
 func TestBackendRestartSessionLost(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil)
-			wantStatus(t, p.Get(sim, "/api/v1/fru"), 200) // FRU is /api on both boards
+			wantStatus(t, p.Get(sim, "/api/v1/fru"), 200) // FRU is /api on every board
 			logins := sim.Logins()
 			var once sync.Once
 			sim.Handle("GET /api/fru", func(w http.ResponseWriter, r *http.Request) {
@@ -704,10 +725,12 @@ func TestBackendRestartSessionLost(t *testing.T) {
 // TestGracefulShutdownLogsOut: shutdown logs out every cached session on
 // every BMC.
 func TestGracefulShutdownLogsOut(t *testing.T) {
-	x := startSim(t, "x470")
-	b := startSim(t, "b650")
+	var sims []*testsim.Sim
+	for _, board := range allBoards {
+		sims = append(sims, startSim(t, board))
+	}
 	p := testsim.StartProxy(t, testsim.ProxyOptions{Drivers: drivers(&fakeIPMI{})})
-	for _, sim := range []*testsim.Sim{x, b} {
+	for _, sim := range sims {
 		wantStatus(t, p.Get(sim, "/api/v1/fru"), 200)
 		if sim.APISessions() != 1 {
 			t.Fatalf("%v: %d /api sessions", sim, sim.APISessions())
@@ -718,7 +741,7 @@ func TestGracefulShutdownLogsOut(t *testing.T) {
 	if err := p.Shutdown(ctx); err != nil {
 		t.Fatal(err)
 	}
-	for _, sim := range []*testsim.Sim{x, b} {
+	for _, sim := range sims {
 		if sim.LiveSessions() != 0 || sim.Stats().Logouts != 1 {
 			t.Fatalf("%v: live %d logouts %d after shutdown", sim, sim.LiveSessions(), sim.Stats().Logouts)
 		}
@@ -728,7 +751,7 @@ func TestGracefulShutdownLogsOut(t *testing.T) {
 // TestMethodOverrideNeverReachesBMC: method-override headers on northbound
 // requests (generic and raw passthrough) are stripped.
 func TestMethodOverrideNeverReachesBMC(t *testing.T) {
-	for _, board := range bothBoards {
+	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
 			sim, p, _ := setupBoard(t, board, nil)
 			h := map[string]string{"X-HTTP-Method-Override": "DELETE", "X-HTTP-Method": "DELETE", "X-Method-Override": "DELETE"}
@@ -742,5 +765,57 @@ func TestMethodOverrideNeverReachesBMC(t *testing.T) {
 				t.Fatal("session was logged out by an override")
 			}
 		})
+	}
+}
+
+// TestX570Specifics: the X570D4U 1.20 quirks the proxy depends on. CSRF is
+// enforced on GETs (every /api read carried the right token), the fan duty
+// comes from getfandutymanualmode (GetFanDuty is absent), firmware versions
+// come from asrr/fw-info (Redfish has only the BMC's), the restore policy
+// from asrr/GetPowerRestore, and the near-empty Redfish SEL is never read.
+func TestX570Specifics(t *testing.T) {
+	sim, p, ip := setupBoard(t, "x570", nil)
+	var fd oem.FanDutyResponse
+	r := p.Get(sim, "/api/v1/vendor/asrock/fanDuty")
+	wantStatus(t, r, 200)
+	r.JSON(t, &fd)
+	if fd.Source != "manual" || len(fd.Duties) != 16 || sim.Count("GET", "/api/asrr/GetFanDuty") != 0 {
+		t.Fatalf("fanDuty: %s", r.Body)
+	}
+	var fw v1.FirmwareResponse
+	r = p.Get(sim, "/api/v1/firmware")
+	wantStatus(t, r, 200)
+	r.JSON(t, &fw)
+	versions := map[string]string{}
+	for _, c := range fw.Components {
+		versions[c.ID] = c.Version
+	}
+	if versions["bmc"] != "1.20.00" || versions["bios"] != "L1.57" || versions["me"] == "" {
+		t.Fatalf("firmware: %s", r.Body)
+	}
+	var rp v1.RestorePolicyBody
+	r = p.Get(sim, "/api/v1/power/restore-policy")
+	wantStatus(t, r, 200)
+	r.JSON(t, &rp)
+	if rp.Policy != bmc.RestoreLastState || ip.dials != 0 {
+		t.Fatalf("restore policy %v (ipmi dials %d)", rp.Policy, ip.dials)
+	}
+	wantStatus(t, p.Get(sim, "/api/v1/events"), 200)
+	r = p.Get(sim, "/api/v1/inventory/baseboard")
+	wantStatus(t, r, 200)
+	if strings.Contains(string(r.Body), "O.E.M") {
+		t.Fatalf("baseboard placeholder leaked: %s", r.Body)
+	}
+	// Discovery may list the LogServices; the entries (2 SEL records live,
+	// and single EventLog entries that stalled Redfish ~3 minutes) are
+	// never read.
+	for _, pfx := range []string{"/redfish/v1/Managers/Self/LogServices/SEL/Entries", "/redfish/v1/Managers/Self/LogServices/EventLog/Entries"} {
+		if n := sim.Count("", pfx); n != 0 {
+			t.Fatalf("X570 %s queried %d times", pfx, n)
+		}
+	}
+	st := sim.Stats()
+	if st.CSRFRejects != 0 || st.AuthRejects != 0 || st.Logins != 1 {
+		t.Fatalf("CSRF rejects %d, auth rejects %d, logins %d", st.CSRFRejects, st.AuthRejects, st.Logins)
 	}
 }

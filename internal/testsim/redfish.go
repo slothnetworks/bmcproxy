@@ -12,7 +12,8 @@ import (
 //
 // B650 (4.10.00): delegated to redfishtest (the live B650 resource tree),
 // with the sim's power state machine, clock offset and session drops layered
-// on top. X470 (2.32.00): only the unauthenticated ServiceRoot
+// on top. X570 (1.20.00): the same, with the tree reshaped by x570Redfish
+// and $select/$expand ignored. X470 (2.32.00): only the unauthenticated ServiceRoot
 // (v1_3_1 / RedfishVersion 1.5.0) and GlobalLuaTables answer; everything
 // else, including SessionService logins, is 401 Security.1.0.AccessDenied,
 // as on the live board.
@@ -31,13 +32,31 @@ func (s *Sim) serveRedfish(w http.ResponseWriter, r *http.Request, body []byte) 
 		return
 	}
 	if s.profile.RedfishAuth && s.rf != nil {
-		s.serveB650Redfish(w, r, body, p)
+		// DMTF: $metadata is readable without credentials.
+		if r.Method == http.MethodGet && p == "/redfish/v1/$metadata" {
+			w.Header().Set("Content-Type", "application/xml")
+			w.Header().Set("OData-Version", "4.0")
+			w.WriteHeader(http.StatusOK)
+			_, _ = w.Write(s.metadataXML())
+			return
+		}
+		if s.profile.RedfishIgnoresQuery {
+			stripSelectExpand(r)
+		}
+		filter := ""
+		if r.Method == http.MethodGet {
+			var handled bool
+			if filter, handled = s.gbtQuery(w, r); handled {
+				return
+			}
+		}
+		s.serveB650Redfish(w, r, body, p, filter)
 		return
 	}
 	s.serveX470Redfish(w, r, p)
 }
 
-func (s *Sim) serveB650Redfish(w http.ResponseWriter, r *http.Request, body []byte, p string) {
+func (s *Sim) serveB650Redfish(w http.ResponseWriter, r *http.Request, body []byte, p, filter string) {
 	// Mirror the power state machine into the resource tree (this also
 	// undoes redfishtest's own instant PowerState flip after a Reset).
 	s.mu.Lock()
@@ -56,7 +75,11 @@ func (s *Sim) serveB650Redfish(w http.ResponseWriter, r *http.Request, body []by
 	s.rf.Unlock()
 
 	sw := &statusWriter{ResponseWriter: w}
-	s.rf.Config.Handler.ServeHTTP(sw, r)
+	if filter != "" {
+		s.serveFiltered(sw, r, filter)
+	} else {
+		s.rf.Config.Handler.ServeHTTP(sw, r)
+	}
 
 	// redfishtest authenticated and validated the action; apply it to the
 	// sim's state machine (delay, ignored soft-off).

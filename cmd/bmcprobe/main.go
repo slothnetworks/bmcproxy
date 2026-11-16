@@ -89,6 +89,7 @@ type config struct {
 	json        bool
 	since       string
 	limit       int
+	maxInflight int
 }
 
 // refuse is a flag that rejects any value: passwords never go on the
@@ -119,6 +120,7 @@ func run(ctx context.Context, args []string, stdout, stderr io.Writer) int {
 	fs.BoolVar(&cfg.json, "json", false, "JSON output (get always prints JSON)")
 	fs.StringVar(&cfg.since, "since", "", "get events: only entries after this record id")
 	fs.IntVar(&cfg.limit, "limit", 0, "get events: maximum entries (0 = all)")
+	fs.IntVar(&cfg.maxInflight, "max-inflight", 1, "maximum concurrent southbound requests across all lanes (1 = strictly one at a time, like the live probes)")
 	showVersion := fs.Bool("version", false, "print the version and exit")
 	fs.Usage = func() {
 		fmt.Fprint(stderr, usageText)
@@ -201,11 +203,15 @@ func execute(ctx context.Context, cfg *config, pos []string, stdout, stderr io.W
 	ctx, cancel := context.WithTimeout(ctx, cfg.timeout)
 	defer cancel()
 
+	if cfg.maxInflight < 1 {
+		return usageError{"--max-inflight must be at least 1"}
+	}
 	tm := transport.NewManager(transport.Config{
-		Obs:            ob,
-		AttemptTimeout: cfg.timeout,
-		Retry:          transport.RetryPolicy{MaxAttempts: 2},
-		Breaker:        transport.BreakerConfig{Disabled: true}, // one-shot: never fail fast
+		Obs:               ob,
+		GlobalConcurrency: cfg.maxInflight, // BMCs fall over under concurrency; one-shot probes go one request at a time
+		AttemptTimeout:    cfg.timeout,
+		Retry:             transport.RetryPolicy{MaxAttempts: 2},
+		Breaker:           transport.BreakerConfig{Disabled: true}, // one-shot: never fail fast
 	})
 	defer tm.Close()
 	prev := transport.Default()

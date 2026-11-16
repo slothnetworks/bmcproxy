@@ -59,7 +59,8 @@ func (d *Driver) Open(ctx context.Context, t bmc.Target, c bmc.Creds) (bmc.Sessi
 			return nil, &bmc.OpError{Pkg: "fake", Op: "Open", Backend: "redfish", UpstreamStatus: 401, Detail: "AccessDenied", Err: bmc.ErrAuth}
 		}
 	}
-	s := &Session{DriverName: d.NameV, Target: t.Key(), User: c.User, State: bmc.PowerOn, ConvergeAfter: 1, LED: bmc.LEDOff, calls: map[string]int{}}
+	s := &Session{DriverName: d.NameV, Target: t.Key(), User: c.User, State: bmc.PowerOn, ConvergeAfter: 1, LED: bmc.LEDOff, calls: map[string]int{},
+		BondCfg: bmc.BondConfig{ID: 1, Mode: "active-backup", AutoConfig: true}}
 	if d.Configure != nil {
 		d.Configure(s)
 	}
@@ -96,6 +97,7 @@ type Session struct {
 	LED           bmc.LEDState
 	Clock         time.Duration // BMC clock offset reported by Time()
 	SEL           []bmc.SELEntry
+	BondCfg       bmc.BondConfig // returned by Bond, replaced by SetBond
 	// SensorsGate, if non-nil, blocks Sensors until closed.
 	SensorsGate chan struct{}
 	// FailAuth makes the next N capability calls fail with ErrAuth.
@@ -249,6 +251,25 @@ func (s *Session) NetworkInterfaces(ctx context.Context) ([]bmc.NetworkInterface
 
 func (s *Session) SetNetworkInterface(ctx context.Context, u bmc.NetworkInterfaceUpdate) error {
 	return s.count("SetNetworkInterface")
+}
+
+func (s *Session) Bond(ctx context.Context) (bmc.BondConfig, error) {
+	if err := s.count("Bond"); err != nil {
+		return bmc.BondConfig{}, err
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.BondCfg, nil
+}
+
+func (s *Session) SetBond(ctx context.Context, b bmc.BondConfig) error {
+	if err := s.count("SetBond"); err != nil {
+		return err
+	}
+	s.mu.Lock()
+	s.BondCfg = b
+	s.mu.Unlock()
+	return nil
 }
 
 // MinimalSession implements only Identity.

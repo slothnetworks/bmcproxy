@@ -7,7 +7,7 @@ All findings come from four sources:
 
 | Source | What it gave us | Limits |
 |---|---|---|
-| Static firmware analysis of the three `.ima` images in `bmc-firmware/` | configs, init scripts, web UI JS, Redfish schemas, `strings` of binaries | **No disassembly or decompilation.** Redfish Lua is stripped LuaJIT bytecode, so it was read with `strings` only. |
+| Static firmware analysis of the `.ima` images in `bmc-firmware/` | configs, init scripts, web UI JS, Redfish schemas, `strings` of binaries | **No disassembly or decompilation.** Redfish Lua is stripped LuaJIT bytecode, so it was read with `strings` only. |
 | ASRock Rack "BMC AST2600 Generic Redfish v1.11 API User Guide" (PDF, Rev 1.00, Dec 2023) | vendor reference for each resource | names no board or firmware version; some examples are DMTF samples |
 | Three HAR captures of the web UI | real `/api` request/response shapes | cookies stripped from the browser export; no Redfish traffic |
 | Live probe of one X470D4U, read-only apart from an identify-LED toggle | TLS, auth, latency, Redfish presence | Redfish rejected the credentials, so no authenticated Redfish crawl |
@@ -22,6 +22,9 @@ All findings come from four sources:
 | B650D4U (AST2600) | **1.10.00**: HAR | 7.02.00 |
 | B550D4U-2T (AST2600?) | **1.10.00**: HAR (file is misnamed `b650d4u-2t.har`) | *none* |
 | B650D4U_2L2T (AST2600) | not seen in the field | 9.05.00 |
+| X570D4U (AST2500) | **1.20.00**: read-only live probe | 2.11.00 |
+| Gigabyte MC13-LE0 (AST2600) | **13.04.15**: read-only live probe + HAR ([gigabyte/mc13-le0-live-probe.md](gigabyte/mc13-le0-live-probe.md)) | 13.06.30 ([firmware/mc13-le0.md](firmware/mc13-le0.md)) |
+| Gigabyte MZ32-AR0 (AST2500) | **12.61.39**: research probe ([gigabyte/mz32-ar0-live-probe.md](gigabyte/mz32-ar0-live-probe.md)) | 12.61.39 ([firmware/mz32-ar0.md](firmware/mz32-ar0.md)) |
 
 Consequences:
 - The proxy must detect **board + firmware version at runtime** (`GET /api/asrr/model-name`, `GET /api/asrr/fw-info`, Redfish `Managers/Self.FirmwareVersion`) and choose per-version behaviour. Field shapes already differ between generations (see §4).
@@ -46,6 +49,8 @@ Consequences:
 | [x470/har-analysis.md](x470/har-analysis.md) · [har-endpoints.json](x470/har-endpoints.json) | X470D4U 2.32 HAR: auth flow, 32 endpoints, polling, latency |
 | [b650/har-analysis.md](b650/har-analysis.md) · [har-endpoints.json](b650/har-endpoints.json) | B650D4U 1.10 + B550D4U-2T 1.10 HARs: writes (network-bond, fan tables), the 401 explained, a cross-board table |
 | [x470/live-probe.md](x470/live-probe.md) · [live-redfish-inventory.json](x470/live-redfish-inventory.json) | Live X470D4U 2.32 probe: TLS, auth, latency, ports, Redfish root, "needs approval" list |
+| [firmware/x570d4u.md](firmware/x570d4u.md) | X570D4U 2.11 stack: identity, `/api` handlers vs X470/B650, Redfish, accounts/PAM, NetworkProtocol PATCH, TLS |
+| [x570/live-probe.md](x570/live-probe.md) · [live-redfish-inventory.json](x570/live-redfish-inventory.json) · [har-endpoints.json](x570/har-endpoints.json) | Live X570D4U 1.20 read-only probe: comparison with X470 2.32 / B650 4.10, quirks, southbound decision, bmcprobe before and after |
 
 Extracted filesystems live in `../firmware-dumped/<firmware>/{raw,rootfs,www,conf,extlog}` (gitignored because it contains private keys). See §7.
 

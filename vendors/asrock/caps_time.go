@@ -101,7 +101,9 @@ func (s *Session) timeConfigFromAMI(dt amiDateTime) bmc.TimeConfig {
 	}
 	// auto_date/ntp_auto_date: 1 = NTP sync (X470 HAR: auto_date 1 with NTP
 	// servers set; docs/x470/har-analysis.md), 0 = off (B550-2T HAR,
-	// docs/b650/har-analysis.md). UNVERIFIED: the live B650 4.10 reports
+	// docs/b650/har-analysis.md; the live X570 1.20 reports ntp_auto_date 0
+	// while its Redfish NetworkProtocol says NTP ProtocolEnabled false,
+	// docs/x570/live-probe.md). UNVERIFIED: the live B650 4.10 reports
 	// ntp_auto_date 2, read as "servers configured, auto-sync off"
 	// (docs/b650/live-probe.md §5); it is reported as NTP disabled, and the
 	// proxy only ever writes 0 or 1.

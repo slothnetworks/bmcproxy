@@ -349,8 +349,11 @@ func (s *Session) Baseboard(ctx context.Context) (bmc.Baseboard, error) {
 	switch s.backend(bmc.CapInventory) {
 	case bmc.BackendRedfish:
 		bb, err := s.Session.Baseboard(ctx)
-		if err == nil && bb.Product == "" {
+		if err == nil && isOEMPlaceholder(bb.Product) {
 			bb.Product = s.prof.Board
+		}
+		if err == nil && isOEMPlaceholder(bb.Manufacturer) {
+			bb.Manufacturer = "ASRockRack" // X570 1.20 Redfish: "To Be Filled By O.E.M."
 		}
 		return bb, err
 	case bmc.BackendAMI:
