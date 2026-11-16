@@ -5,3 +5,4 @@ bmc-firmware/*
 /bin/
 /bmcprobe
 /bmcproxy
+docs/redfishdocs/*.pdf
