@@ -21,15 +21,14 @@ build: generate
 	@mkdir -p $(BIN)
 	$(GO) build -ldflags "$(LDFLAGS)" -o $(BIN)/ ./cmd/...
 
-## dev: build, then run bmcproxy in dev mode: disruptive ops enabled, debug
-##      endpoints, DEBUG logging. Stays on localhost; disruptive requests still
-##      need the X-BMC-Confirm: true header. Override e.g.
+## dev: build, then run bmcproxy in dev mode: debug endpoints, DEBUG
+##      logging. Stays on localhost. Override e.g.
 ##      make dev DEV_LISTEN=127.0.0.1:9090 DEV_DEBUG=transport=trace DEV_ARGS=--trace-http
 DEV_LISTEN ?= 127.0.0.1:8080
 DEV_DEBUG  ?= all
 DEV_ARGS   ?=
 dev: build
-	$(BIN)/bmcproxy --listen $(DEV_LISTEN) --allow-disruptive --debug-endpoints \
+	$(BIN)/bmcproxy --listen $(DEV_LISTEN) --debug-endpoints \
 		--log-level debug --debug $(DEV_DEBUG) $(DEV_ARGS)
 
 ## test: run all tests

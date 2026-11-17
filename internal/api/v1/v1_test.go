@@ -97,11 +97,11 @@ func TestCacheInvalidatedAfterWrite(t *testing.T) {
 
 func TestMissingCapability501(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake", Minimal: true}
-	h := harness(t, d, servertest.Options{AllowDisruptive: true})
+	h := harness(t, d, servertest.Options{})
 	for _, rq := range []servertest.Req{
 		{Path: "/api/v1/power"}, {Path: "/api/v1/boot"}, {Path: "/api/v1/sensors"}, {Path: "/api/v1/inventory/cpus"},
 		{Path: "/api/v1/kvm"}, {Path: "/api/v1/firmware"},
-		{Method: "POST", Path: "/api/v1/firmware/update", Body: map[string]string{"component": "BMC", "imageUri": "http://x/y"}, Header: map[string]string{"X-BMC-Confirm": "true"}},
+		{Method: "POST", Path: "/api/v1/firmware/update", Body: map[string]string{"component": "BMC", "imageUri": "http://x/y"}},
 	} {
 		rq.Host = host
 		r := h.Do(rq)
@@ -204,8 +204,8 @@ func TestReloginOnStaleSession(t *testing.T) {
 
 func TestBMCResetInvalidatesSessions(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake"}
-	h := harness(t, d, servertest.Options{AllowDisruptive: true})
-	r := h.Do(servertest.Req{Method: "POST", Path: "/api/v1/bmc/reset", Host: host, Header: map[string]string{"X-BMC-Confirm": "true"}})
+	h := harness(t, d, servertest.Options{})
+	r := h.Do(servertest.Req{Method: "POST", Path: "/api/v1/bmc/reset", Host: host})
 	if r.Status != 202 {
 		t.Fatalf("reset %d %s", r.Status, r.Body)
 	}
@@ -220,8 +220,8 @@ func TestInventoryUnknownKind(t *testing.T) {
 	h := harness(t, d, servertest.Options{})
 	// Session lacks Inventory -> 501 regardless of kind validity is acceptable;
 	// network PUT requires name.
-	r := h.Do(servertest.Req{Method: "PUT", Path: "/api/v1/network", Host: host, Body: map[string]any{}, Header: map[string]string{"X-BMC-Confirm": "true"}})
-	if r.Status != 403 {
-		t.Fatalf("network put without --allow-disruptive: %d", r.Status)
+	r := h.Do(servertest.Req{Method: "PUT", Path: "/api/v1/network", Host: host, Body: map[string]any{}})
+	if r.Status != 400 {
+		t.Fatalf("network put without name: %d %s", r.Status, r.Body)
 	}
 }

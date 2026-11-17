@@ -14,7 +14,7 @@
 //	@description	## Tiers
 //	@description	- `read`: never changes BMC state.
 //	@description	- `write`: reversible (LED, boot override, power, time).
-//	@description	- `disruptive`: may cut connectivity or lose data (network, BMC reset, firmware, log clear). Returns 403 unless the proxy runs with `--allow-disruptive` **and** the request carries `X-BMC-Confirm: true`.
+//	@description	- `disruptive`: may cut connectivity or lose data (network, BMC reset, firmware, log clear). Tiers are informational: the proxy does not gate on them; the calling management layer is responsible for authorising disruptive operations.
 //	@description
 //	@description	## Errors
 //	@description	Errors use the envelope `{"error":{"status","class","message","request_id","debug"?}}` (debug block only in debug mode).
@@ -22,7 +22,7 @@
 //	@description	|---|---|---|
 //	@description	| 400 | invalid_argument | malformed request |
 //	@description	| 401 | auth | BMC rejected (or request lacks) credentials |
-//	@description	| 403 | disruptive_denied / forbidden | tier gate or proxy policy |
+//	@description	| 403 | forbidden | proxy policy (e.g. denylisted raw path) |
 //	@description	| 404 | not_found | object or route not found |
 //	@description	| 501 | unsupported | capability not supported by this BMC/driver |
 //	@description	| 502 | upstream | BMC error, with vendor detail |
@@ -69,7 +69,6 @@ func run() error {
 	var (
 		o                obs.Options
 		listen           = flag.String("listen", server.DefaultAddr, "listen address (keep it on localhost: there is no proxy API auth yet)")
-		allowDisruptive  = flag.Bool("allow-disruptive", false, "allow disruptive operations (each request must also send X-BMC-Confirm: true)")
 		debugEndpoints   = flag.Bool("debug-endpoints", false, "serve /debug/* (pprof, expvar, levels, targets, sessions, capabilities, stats) to loopback clients and add debug blocks to error envelopes")
 		swagger          = flag.Bool("swagger", true, "serve the API docs: Swagger UI at /swagger/, OpenAPI 3 at /openapi.json, Swagger 2 at /swagger/doc.json")
 		sessionTTL       = flag.Duration("session-ttl", 5*time.Minute, "idle TTL of cached BMC sessions (keep below the BMC's own session timeout)")
@@ -127,15 +126,14 @@ func run() error {
 	met.SetSources(metrics.Sources{Sessions: sm, Cache: rc})
 
 	srv := server.New(server.Config{
-		Addr:            *listen,
-		AllowDisruptive: *allowDisruptive,
-		DebugEndpoints:  *debugEndpoints,
-		Obs:             ob,
-		Sessions:        sm,
-		Cache:           rc,
-		Stats:           tm,
-		Observer:        met,
-		Version:         version,
+		Addr:           *listen,
+		DebugEndpoints: *debugEndpoints,
+		Obs:            ob,
+		Sessions:       sm,
+		Cache:          rc,
+		Stats:          tm,
+		Observer:       met,
+		Version:        version,
 	})
 	v1.Register(srv, v1.Config{PowerPollInterval: *powerPoll, PowerPollTimeout: *powerTimeout, SkewWarn: *skewWarn})
 	n := vendorroutes.Mount(srv, nil)

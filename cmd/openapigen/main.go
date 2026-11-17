@@ -4,8 +4,7 @@
 //	openapigen -in internal/apidocs/swagger.json -out internal/apidocs/openapi.json
 //
 // Besides the conversion (kin-openapi openapi2conv) it hoists the request
-// model's repeated header parameters (X-BMC-Host, X-BMC-Vendor,
-// X-BMC-Confirm) into shared components/parameters, validates the result
+// model's repeated header parameters (X-BMC-Host, X-BMC-Vendor) into shared components/parameters, validates the result
 // with the kin-openapi loader, and writes deterministic, pretty-printed JSON
 // (encoding/json sorts map keys) so the committed file only changes when the
 // API does. It is run by `go generate ./internal/apidocs`.
@@ -44,7 +43,6 @@ var shared = []struct {
 }{
 	{"X-BMC-Host", "XBMCHost", true, "BMC address: ip, host or host:port (IPv6 in brackets).", "{{bmcHost}}", true},
 	{"X-BMC-Vendor", "XBMCVendor", false, "Optional: force a driver (e.g. asrock, gigabyte, redfish) instead of auto-detection. Not attached to operations by default; add the header manually when needed.", "", false},
-	{"X-BMC-Confirm", "XBMCConfirm", true, `Must be "true" for disruptive operations; the proxy must also run with --allow-disruptive.`, "", true},
 }
 
 func main() {

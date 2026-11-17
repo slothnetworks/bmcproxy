@@ -7,9 +7,8 @@ import (
 	"strings"
 )
 
-// Tier classifies an operation's risk. The server gates TierDisruptive behind
-// --allow-disruptive plus the X-BMC-Confirm: true header (else
-// ErrDisruptiveDenied / 403).
+// Tier classifies an operation's risk. It is informational (reported in route
+// listings and docs); the server does not gate requests on it.
 type Tier int
 
 const (

@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "bmcproxy exposes one vendor-neutral HTTP API over heterogeneous BMCs (Redfish, AMI MegaRAC /api, IPMI) and picks the right southbound protocol per board and firmware.\n\n## Request model (no stored secrets)\nEvery BMC request names its target and carries the BMC's own credentials:\n- `X-BMC-Host: \u003cip|host[:port]\u003e` (required) selects the BMC.\n- `Authorization: Basic base64(user:pass)` is the BMC's own account, passed through for the life of the request (never logged, never stored; sessions are cached in memory only, keyed by host+user+hash(password)).\n- `X-BMC-Vendor: \u003cdriver\u003e` (optional) forces a driver instead of auto-detection.\n- `X-Request-Id` (optional) is echoed back; one is generated otherwise.\n\n## Tiers\n- `read`: never changes BMC state.\n- `write`: reversible (LED, boot override, power, time).\n- `disruptive`: may cut connectivity or lose data (network, BMC reset, firmware, log clear). Returns 403 unless the proxy runs with `--allow-disruptive` **and** the request carries `X-BMC-Confirm: true`.\n\n## Errors\nErrors use the envelope `{\"error\":{\"status\",\"class\",\"message\",\"request_id\",\"debug\"?}}` (debug block only in debug mode).\n| Status | Class | Meaning |\n|---|---|---|\n| 400 | invalid_argument | malformed request |\n| 401 | auth | BMC rejected (or request lacks) credentials |\n| 403 | disruptive_denied / forbidden | tier gate or proxy policy |\n| 404 | not_found | object or route not found |\n| 501 | unsupported | capability not supported by this BMC/driver |\n| 502 | upstream | BMC error, with vendor detail |\n| 503 | busy | BMC busy, connection-capped or circuit open |\n| 504 | timeout | BMC did not answer in time |",
+        "description": "bmcproxy exposes one vendor-neutral HTTP API over heterogeneous BMCs (Redfish, AMI MegaRAC /api, IPMI) and picks the right southbound protocol per board and firmware.\n\n## Request model (no stored secrets)\nEvery BMC request names its target and carries the BMC's own credentials:\n- `X-BMC-Host: \u003cip|host[:port]\u003e` (required) selects the BMC.\n- `Authorization: Basic base64(user:pass)` is the BMC's own account, passed through for the life of the request (never logged, never stored; sessions are cached in memory only, keyed by host+user+hash(password)).\n- `X-BMC-Vendor: \u003cdriver\u003e` (optional) forces a driver instead of auto-detection.\n- `X-Request-Id` (optional) is echoed back; one is generated otherwise.\n\n## Tiers\n- `read`: never changes BMC state.\n- `write`: reversible (LED, boot override, power, time).\n- `disruptive`: may cut connectivity or lose data (network, BMC reset, firmware, log clear). Tiers are informational: the proxy does not gate on them; the calling management layer is responsible for authorising disruptive operations.\n\n## Errors\nErrors use the envelope `{\"error\":{\"status\",\"class\",\"message\",\"request_id\",\"debug\"?}}` (debug block only in debug mode).\n| Status | Class | Meaning |\n|---|---|---|\n| 400 | invalid_argument | malformed request |\n| 401 | auth | BMC rejected (or request lacks) credentials |\n| 403 | forbidden | proxy policy (e.g. denylisted raw path) |\n| 404 | not_found | object or route not found |\n| 501 | unsupported | capability not supported by this BMC/driver |\n| 502 | upstream | BMC error, with vendor detail |\n| 503 | busy | BMC busy, connection-capped or circuit open |\n| 504 | timeout | BMC did not answer in time |",
         "title": "bmcproxy API",
         "contact": {},
         "version": "1.0"
@@ -15,7 +15,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive**: requires `--allow-disruptive` and `X-BMC-Confirm: true`. Body optional (default cold). All cached sessions to the BMC are dropped and the target is marked degraded while it reboots. ASRock AMI /api: `asrr/bmccoldreset`; Redfish: `Manager.Reset`; IPMI: mc reset cold.",
+                "description": "Tier: **disruptive**. Body optional (default cold). All cached sessions to the BMC are dropped and the target is marked degraded while it reboots. ASRock AMI /api: `asrr/bmccoldreset`; Redfish: `Manager.Reset`; IPMI: mc reset cold.",
                 "consumes": [
                     "application/json"
                 ],
@@ -41,13 +41,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "Reset kind",
                         "name": "body",
                         "in": "body",
@@ -71,12 +64,6 @@
                     },
                     "401": {
                         "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -474,7 +461,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive** (log data is lost): requires `--allow-disruptive` and `X-BMC-Confirm: true`, else 403. ASRock AMI /api: `DELETE logs/event`; Redfish: `LogService.ClearLog`; IPMI: sel clear.",
+                "description": "Tier: **disruptive** (log data is lost). ASRock AMI /api: `DELETE logs/event`; Redfish: `LogService.ClearLog`; IPMI: sel clear.",
                 "tags": [
                     "logs"
                 ],
@@ -492,13 +479,6 @@
                         "description": "Force a driver instead of auto-detection (e.g. asrock)",
                         "name": "X-BMC-Vendor",
                         "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -513,12 +493,6 @@
                     },
                     "401": {
                         "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -722,7 +696,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive**: requires `--allow-disruptive` and `X-BMC-Confirm: true`. Pull: JSON `{component, imageUri}` (Redfish SimpleUpdate). Push: `application/octet-stream` body with `?component=\u0026imageName=`. Returns 501 until the driver implements firmware update (PLAN milestone 5). Poll the returned task via `GET /api/v1/firmware/tasks/{id}`.",
+                "description": "Tier: **disruptive**. Pull: JSON `{component, imageUri}` (Redfish SimpleUpdate). Push: `application/octet-stream` body with `?component=\u0026imageName=`. Returns 501 until the driver implements firmware update (PLAN milestone 5). Poll the returned task via `GET /api/v1/firmware/tasks/{id}`.",
                 "consumes": [
                     "application/json",
                     "application/octet-stream"
@@ -747,13 +721,6 @@
                         "description": "Force a driver instead of auto-detection (e.g. asrock)",
                         "name": "X-BMC-Vendor",
                         "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
                     },
                     {
                         "type": "string",
@@ -791,12 +758,6 @@
                     },
                     "401": {
                         "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -1421,7 +1382,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive** (can cut BMC connectivity): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Null fields are unchanged; the driver reads the full vendor object, mutates and writes it back. ASRock AMI /api: `PUT settings/network`; Redfish: `EthernetInterfaces` PATCH.",
+                "description": "Tier: **disruptive** (can cut BMC connectivity). Null fields are unchanged; the driver reads the full vendor object, mutates and writes it back. ASRock AMI /api: `PUT settings/network`; Redfish: `EthernetInterfaces` PATCH.",
                 "consumes": [
                     "application/json"
                 ],
@@ -1442,13 +1403,6 @@
                         "description": "Force a driver instead of auto-detection (e.g. asrock)",
                         "name": "X-BMC-Vendor",
                         "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
                     },
                     {
                         "description": "Interface update (name required)",
@@ -1472,12 +1426,6 @@
                     },
                     "401": {
                         "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -1590,7 +1538,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive** (the BMC restarts its networking and can drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Omitted fields keep their current value: the driver reads the full `settings/network-bond` object, mutates it and PUTs the whole object back (AMI answers 500 to partial bodies). ASRock AMI /api: `PUT settings/network-bond`; Gigabyte AMI /api: `PUT settings/network-bond` (bond_mode is not configurable; write **UNVERIFIED** on hardware, shape from the MZ32-AR0 web UI). Cached reads for the host are dropped after the call.",
+                "description": "Tier: **disruptive** (the BMC restarts its networking and can drop off the network). Omitted fields keep their current value: the driver reads the full `settings/network-bond` object, mutates it and PUTs the whole object back (AMI answers 500 to partial bodies). ASRock AMI /api: `PUT settings/network-bond`; Gigabyte AMI /api: `PUT settings/network-bond` (bond_mode is not configurable; write **UNVERIFIED** on hardware, shape from the MZ32-AR0 web UI). Cached reads for the host are dropped after the call.",
                 "consumes": [
                     "application/json"
                 ],
@@ -1611,13 +1559,6 @@
                         "description": "Force a driver instead of auto-detection (e.g. asrock)",
                         "name": "X-BMC-Vendor",
                         "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
                     },
                     {
                         "description": "Bonding change (enabled required)",
@@ -1641,12 +1582,6 @@
                     },
                     "401": {
                         "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -2603,7 +2538,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -2669,13 +2604,6 @@
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
                         "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Must be true; the proxy must also run with --allow-disruptive",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -2698,7 +2626,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -2786,7 +2714,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -2852,13 +2780,6 @@
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
                         "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Must be true; the proxy must also run with --allow-disruptive",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -2878,7 +2799,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -2981,7 +2902,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3052,13 +2973,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be true; the proxy must also run with --allow-disruptive",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "interface to keep (B650)",
                         "name": "body",
                         "in": "body",
@@ -3087,7 +3001,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3158,13 +3072,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be true; the proxy must also run with --allow-disruptive",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "bond mode and (B650) interface",
                         "name": "body",
                         "in": "body",
@@ -3193,7 +3100,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3281,7 +3188,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3369,7 +3276,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3471,7 +3378,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3559,7 +3466,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3647,7 +3554,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3735,7 +3642,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3823,7 +3730,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3911,7 +3818,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -3999,7 +3906,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -4067,12 +3974,6 @@
                         "type": "string",
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
                         "in": "header"
                     },
                     {
@@ -4169,12 +4070,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or asrr/fw-info",
                         "name": "path",
                         "in": "path",
@@ -4263,12 +4158,6 @@
                         "type": "string",
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
                         "in": "header"
                     },
                     {
@@ -4365,12 +4254,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or asrr/fw-info",
                         "name": "path",
                         "in": "path",
@@ -4459,12 +4342,6 @@
                         "type": "string",
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
                         "in": "header"
                     },
                     {
@@ -4563,12 +4440,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -4663,12 +4534,6 @@
                         "type": "string",
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
                         "in": "header"
                     },
                     {
@@ -4771,12 +4636,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -4875,12 +4734,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -4975,12 +4828,6 @@
                         "type": "string",
                         "description": "Force a driver instead of auto-detection (asrock)",
                         "name": "X-BMC-Vendor",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
                         "in": "header"
                     },
                     {
@@ -5098,7 +4945,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5198,7 +5045,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5295,7 +5142,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5395,7 +5242,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5492,7 +5339,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5563,13 +5410,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be true; the proxy must also run with --allow-disruptive",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "fields to change",
                         "name": "body",
                         "in": "body",
@@ -5599,7 +5439,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5699,7 +5539,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5799,7 +5639,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5867,13 +5707,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be true; the proxy must also run with --allow-disruptive",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "enum": [
                             "BIOS",
                             "CPLD",
@@ -5906,7 +5739,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -5994,7 +5827,7 @@
                         }
                     },
                     "403": {
-                        "description": "tier gate (disruptive) or forbidden path",
+                        "description": "forbidden path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -6121,7 +5954,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive** (the BMC restarts its networking and may drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Reads `settings/network-bond`, sets bond_enable=0 (bond_ifc = the interface to keep when given: eth0 or eth1) and PUTs the whole object back. **UNVERIFIED** on hardware.",
+                "description": "Tier: **disruptive** (the BMC restarts its networking and may drop off the network). Reads `settings/network-bond`, sets bond_enable=0 (bond_ifc = the interface to keep when given: eth0 or eth1) and PUTs the whole object back. **UNVERIFIED** on hardware.",
                 "consumes": [
                     "application/json"
                 ],
@@ -6147,13 +5980,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "interface to keep (optional)",
                         "name": "body",
                         "in": "body",
@@ -6177,12 +6003,6 @@
                     },
                     "401": {
                         "description": "BMC rejected the credentials",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -6227,7 +6047,7 @@
                         "BMCBasicAuth": []
                     }
                 ],
-                "description": "Tier: **disruptive** (the BMC restarts its networking and may drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Reads `settings/network-bond`, sets bond_enable=1 (and bond_ifc when given) and PUTs the whole object back. `mode` must be empty or the current bond_mode (not configurable on Gigabyte). **UNVERIFIED**: write shape from the MZ32-AR0 12.61.39 web UI and the ASRock handler; never exercised on hardware.",
+                "description": "Tier: **disruptive** (the BMC restarts its networking and may drop off the network). Reads `settings/network-bond`, sets bond_enable=1 (and bond_ifc when given) and PUTs the whole object back. `mode` must be empty or the current bond_mode (not configurable on Gigabyte). **UNVERIFIED**: write shape from the MZ32-AR0 12.61.39 web UI and the ASRock handler; never exercised on hardware.",
                 "consumes": [
                     "application/json"
                 ],
@@ -6253,13 +6073,6 @@
                         "in": "header"
                     },
                     {
-                        "type": "string",
-                        "description": "Must be \\",
-                        "name": "X-BMC-Confirm",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "interface (bond_ifc) and mode; both optional",
                         "name": "body",
                         "in": "body",
@@ -6283,12 +6096,6 @@
                     },
                     "401": {
                         "description": "BMC rejected the credentials",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "disruptive operation denied",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -6688,12 +6495,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
                         "name": "path",
                         "in": "path",
@@ -6728,7 +6529,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -6792,12 +6593,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
                         "name": "path",
                         "in": "path",
@@ -6832,7 +6627,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -6896,12 +6691,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
                         "name": "path",
                         "in": "path",
@@ -6936,7 +6725,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7000,12 +6789,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
                         "name": "path",
                         "in": "path",
@@ -7040,7 +6823,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7104,12 +6887,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /api, e.g. chassis-status or settings/fanprofile/mode",
                         "name": "path",
                         "in": "path",
@@ -7144,7 +6921,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7210,12 +6987,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -7250,7 +7021,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7308,12 +7079,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -7348,7 +7113,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7406,12 +7171,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -7446,7 +7205,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7504,12 +7263,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -7544,7 +7297,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7602,12 +7355,6 @@
                     },
                     {
                         "type": "string",
-                        "description": "true, required for disruptive requests (with --allow-disruptive)",
-                        "name": "X-BMC-Confirm",
-                        "in": "header"
-                    },
-                    {
-                        "type": "string",
                         "description": "path under /redfish/v1, e.g. Systems/Self",
                         "name": "path",
                         "in": "path",
@@ -7642,7 +7389,7 @@
                         }
                     },
                     "403": {
-                        "description": "denylisted path / tier gate",
+                        "description": "denylisted path",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -7725,12 +7472,6 @@
                     },
                     "401": {
                         "description": "BMC rejected the credentials",
-                        "schema": {
-                            "$ref": "#/definitions/server.ErrorBody"
-                        }
-                    },
-                    "403": {
-                        "description": "tier gate (write)",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorBody"
                         }
@@ -10923,11 +10664,6 @@
         "health.Health": {
             "type": "object",
             "properties": {
-                "allowDisruptive": {
-                    "description": "The server runs with --allow-disruptive.",
-                    "type": "boolean",
-                    "example": false
-                },
                 "drivers": {
                     "description": "Compiled-in drivers in detection order.",
                     "type": "array",
@@ -11292,7 +11028,6 @@
                     "enum": [
                         "invalid_argument",
                         "auth",
-                        "disruptive_denied",
                         "forbidden",
                         "not_found",
                         "unsupported",

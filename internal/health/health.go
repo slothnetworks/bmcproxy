@@ -54,8 +54,6 @@ type Health struct {
 	Sessions int `json:"sessions" example:"3"`
 	// Hosts in the target cache.
 	Targets int `json:"targets" example:"2"`
-	// The server runs with --allow-disruptive.
-	AllowDisruptive bool `json:"allowDisruptive" example:"false"`
 }
 
 // Status is the body of GET /api/v1/bmcs/{host}/status.
@@ -185,7 +183,6 @@ func Snapshot(s *server.Server) Health {
 		Status: "ok", Version: s.Version(), GoVersion: runtime.Version(),
 		StartedAt: s.Started(), UptimeSeconds: math.Round(time.Since(s.Started()).Seconds()*1000) / 1000,
 		Drivers: drivers, Sessions: s.Sessions().Len(), Targets: len(s.Sessions().Targets().Snapshot()),
-		AllowDisruptive: s.AllowDisruptive(),
 	}
 }
 

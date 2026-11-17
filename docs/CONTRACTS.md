@@ -179,7 +179,6 @@ Capability interfaces. The API layer type-asserts the session against these. A m
 |---|---|
 | `ErrInvalidArgument` | 400 |
 | `ErrAuth` | 401 |
-| `ErrDisruptiveDenied` | 403 |
 | `ErrForbidden` (denylist/policy) | 403 |
 | `ErrNotFound` | 404 |
 | `ErrUnsupported` | 501 |
@@ -212,7 +211,7 @@ type Route struct {
     Summary string
 }
 ```
-- The server mounts each route at `route.Pattern("/api/v1/vendor/"+driver.Name())` and checks the tier from `route.EffectiveTier(r)`. A disruptive route needs both `--allow-disruptive` and the `X-BMC-Confirm: true` header; otherwise the server returns `ErrDisruptiveDenied`. It then resolves and opens the session and calls the handler.
+- The server mounts each route at `route.Pattern("/api/v1/vendor/"+driver.Name())` and evaluates `route.EffectiveTier(r)` (a `TierFor` error such as `ErrForbidden` rejects the request; the tier itself is informational and not gated). It then resolves and opens the session and calls the handler.
 - The server encodes the handler's result as follows:
 
   | Result | Response |
@@ -313,7 +312,7 @@ hc := ep.HTTPClient()        // *http.Client routed through Do (no jar, no redir
 
 - `transport.SetDefault(m)` / `transport.Default()` — the process-wide `*transport.Manager`. `cmd/bmcproxy` installs it at startup; drivers registered via `init()` MUST obtain their Manager with `transport.Default()` (or an explicit setter that defaults to it) so limiter/breaker/stats/metrics are shared. `genericredfish.Default.Transport()` already falls back to it.
 - `bmc.ErrSessionLost` — wraps `ErrUpstream` (→ 502). Return it (wrapped in an OpError) when the BMC backend restarted and every session on the host is gone (e.g. amimegarac `Hooks.OnHostInvalidated`, 502 / HTML 500). `sessions.Manager.Do` then calls `InvalidateHost` and retries once.
-- Swagger: handlers carry swaggo annotations; `make build` regenerates `internal/apidocs/{swagger,openapi}.json` (swag scans ./cmd/bmcproxy, ./internal, ./pkg/bmc, ./vendors). Vendor route handlers must carry their own `@Router /api/v1/vendor/<vendor>/...` annotations with the same conventions as internal/api/v1 (shared header params X-BMC-Host/X-BMC-Vendor/X-BMC-Confirm, `@Security BMCBasicAuth`, `server.ErrorBody` failures, named exported request/response structs with field comments and `example:` tags).
+- Swagger: handlers carry swaggo annotations; `make build` regenerates `internal/apidocs/{swagger,openapi}.json` (swag scans ./cmd/bmcproxy, ./internal, ./pkg/bmc, ./vendors). Vendor route handlers must carry their own `@Router /api/v1/vendor/<vendor>/...` annotations with the same conventions as internal/api/v1 (shared header params X-BMC-Host/X-BMC-Vendor, `@Security BMCBasicAuth`, `server.ErrorBody` failures, named exported request/response structs with field comments and `example:` tags).
 
 ## Additions for X570 and Gigabyte (shared API changes)
 

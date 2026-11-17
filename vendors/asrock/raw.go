@@ -185,7 +185,6 @@ func rawResponse(status int, h http.Header, body []byte) *bmc.RawResponse {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	false	"true, required for disruptive requests (with --allow-disruptive)"
 //	@Param			path			path		string	true	"path under /api, e.g. chassis-status or asrr/fw-info"
 //	@Param			body			body		object	false	"forwarded verbatim"
 //	@Success		200				{object}	object	"BMC response, verbatim (any status is passed through)"
@@ -237,7 +236,6 @@ func handleRawAPI(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	false	"true, required for disruptive requests (with --allow-disruptive)"
 //	@Param			path			path		string	true	"path under /redfish/v1, e.g. Systems/Self"
 //	@Param			body			body		object	false	"forwarded verbatim"
 //	@Success		200				{object}	object	"BMC response, verbatim (any status is passed through)"

@@ -18,42 +18,15 @@ const host = "10.9.9.9"
 
 func fake() *servertest.Driver { return &servertest.Driver{NameV: "fake"} }
 
-func TestTierGateMatrix(t *testing.T) {
-	for _, tc := range []struct {
-		name    string
-		allow   bool
-		confirm bool
-		want    int
-	}{
-		{"no flag no header", false, false, 403},
-		{"no flag with header", false, true, 403},
-		{"flag without header", true, false, 403},
-		{"flag and header", true, true, 204},
-	} {
-		t.Run(tc.name, func(t *testing.T) {
-			d := fake()
-			h := servertest.New(t, servertest.Options{Drivers: []bmc.Driver{d}, AllowDisruptive: tc.allow})
-			hdr := map[string]string{}
-			if tc.confirm {
-				hdr["X-BMC-Confirm"] = "true"
-			}
-			r := h.Do(servertest.Req{Method: "DELETE", Path: "/api/v1/events", Host: host, Header: hdr})
-			if r.Status != tc.want {
-				t.Fatalf("status %d want %d: %s", r.Status, tc.want, r.Body)
-			}
-			if tc.want == 403 {
-				e := r.Envelope(t)
-				if e.Error.Class != "disruptive_denied" {
-					t.Fatalf("class %q", e.Error.Class)
-				}
-				if d.Opens.Load() != 0 {
-					t.Fatal("denied request opened a BMC session")
-				}
-			}
-		})
+func TestTiersNotGated(t *testing.T) {
+	// Disruptive tier is not gated: no flag or confirmation header needed.
+	d := fake()
+	h := servertest.New(t, servertest.Options{Drivers: []bmc.Driver{d}})
+	if r := h.Do(servertest.Req{Method: "DELETE", Path: "/api/v1/events", Host: host}); r.Status != 204 {
+		t.Fatalf("events clear: %d %s", r.Status, r.Body)
 	}
 	// Write tier is not gated.
-	h := servertest.New(t, servertest.Options{Drivers: []bmc.Driver{fake()}})
+	h = servertest.New(t, servertest.Options{Drivers: []bmc.Driver{fake()}})
 	if r := h.Do(servertest.Req{Method: "POST", Path: "/api/v1/led", Host: host, Body: map[string]string{"state": "on"}}); r.Status != 204 {
 		t.Fatalf("led: %d %s", r.Status, r.Body)
 	}

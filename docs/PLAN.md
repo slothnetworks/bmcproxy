@@ -78,7 +78,7 @@ Content-Type: application/json
 **Safety without API auth**
 - Default bind is `127.0.0.1:8080`.
 - Operations are tiered: `read`, `write` (reversible: LED, boot override, fan mode) and `disruptive` (network/bond, BMC reset, firmware, factory reset, log clear, user changes).
-- `disruptive` returns 403 unless the server runs with `--allow-disruptive`, and the request also needs `X-BMC-Confirm: true`.
+- Tiers are informational (reported in capabilities and docs); the proxy does not gate on them. The higher-level management application that drives bmcproxy owns authorisation of disruptive operations.
 
 **Errors (JSON envelope)**
 
@@ -165,7 +165,7 @@ pkg/bmc/                          vendor-neutral contract (the "plug" interface)
                                     FirmwareInventory, FirmwareUpdater, VirtualMedia, KVMLauncher, BMCReset
   vendorroutes.go                 optional VendorRouter{VendorRoutes() []Route{Method,Path,Tier,Handler}}
   types.go                        normalized models (PowerState, Sensor, SELEntry, FRU, BondConfig, ...)
-  errors.go                       ErrUnsupported, ErrAuth, ErrBusy, ErrDisruptiveDenied
+  errors.go                       ErrUnsupported, ErrAuth, ErrBusy, ErrForbidden
 
 pkg/obs/                          shared instrumentation: named slog loggers, per-subsystem level
                                     registry (--debug csv), context logger, secret-redaction handler,
@@ -317,8 +317,7 @@ Board profiles resolve the dialect: X470 uses `asrr/settings/*`; B650 uses `sett
   - `"NA"` thresholds;
   - evasive-403 → 503;
   - the fan two-step lock;
-  - unsupported → 501;
-  - disruptive denied without the flag and confirm header.
+  - unsupported → 501.
 - **Redaction test:** a request with credentials produces no password or Basic header in the logs.
 - **Live tests** (build tag `live`, using `bmcprobe.env` for the X470 at 10.3.10.207):
   - `curl -H 'X-BMC-Host: …' -u admin:… localhost:8080/api/v1/{capabilities,system,power,sensors,events,fru}` matches direct `/api` results;

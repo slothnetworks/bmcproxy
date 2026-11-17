@@ -11,8 +11,6 @@ import (
 
 const bondPath = "/api/v1/network/bond"
 
-var confirmHdr = map[string]string{"X-BMC-Confirm": "true"}
-
 // TestBondRead: GET /api/v1/network/bond is a cached read of BondManager.
 func TestBondRead(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake", Configure: func(s *servertest.Session) {
@@ -36,50 +34,26 @@ func TestBondRead(t *testing.T) {
 	}
 }
 
-// TestBondPutDisruptiveGating: PUT needs --allow-disruptive AND
-// X-BMC-Confirm; denied requests never reach the driver.
-func TestBondPutDisruptiveGating(t *testing.T) {
-	body := map[string]any{"enabled": true, "interfaces": []string{"eth1"}}
-	for _, tc := range []struct {
-		name    string
-		allow   bool
-		hdr     map[string]string
-		status  int
-		class   string
-		setBond int
-	}{
-		{"no flag, no confirm", false, nil, 403, "disruptive_denied", 0},
-		{"no flag, confirm", false, confirmHdr, 403, "disruptive_denied", 0},
-		{"flag, no confirm", true, nil, 403, "disruptive_denied", 0},
-		{"flag, confirm=false", true, map[string]string{"X-BMC-Confirm": "false"}, 403, "disruptive_denied", 0},
-		{"flag, confirm", true, confirmHdr, 204, "", 1},
-	} {
-		t.Run(tc.name, func(t *testing.T) {
-			d := &servertest.Driver{NameV: "fake"}
-			h := harness(t, d, servertest.Options{AllowDisruptive: tc.allow})
-			r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: body, Header: tc.hdr})
-			if r.Status != tc.status {
-				t.Fatalf("status %d %s", r.Status, r.Body)
-			}
-			if tc.class != "" && r.Envelope(t).Error.Class != tc.class {
-				t.Fatalf("class %q", r.Envelope(t).Error.Class)
-			}
-			n := 0
-			for _, s := range d.Sessions() {
-				n += s.Calls("SetBond")
-			}
-			if n != tc.setBond {
-				t.Fatalf("SetBond called %d times, want %d", n, tc.setBond)
-			}
-		})
+// TestBondPutNotGated: disruptive-tier PUT reaches the driver without any
+// opt-in flag or confirmation header (the calling management layer owns
+// authorisation).
+func TestBondPutNotGated(t *testing.T) {
+	d := &servertest.Driver{NameV: "fake"}
+	h := harness(t, d, servertest.Options{})
+	r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true, "interfaces": []string{"eth1"}}})
+	if r.Status != 204 {
+		t.Fatalf("status %d %s", r.Status, r.Body)
+	}
+	if n := d.Sessions()[0].Calls("SetBond"); n != 1 {
+		t.Fatalf("SetBond called %d times, want 1", n)
 	}
 }
 
 // TestBondPutMergesCurrent: omitted fields keep their current value.
 func TestBondPutMergesCurrent(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake"}
-	h := harness(t, d, servertest.Options{AllowDisruptive: true})
-	r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true, "interfaces": []string{" eth1 "}}, Header: confirmHdr})
+	h := harness(t, d, servertest.Options{})
+	r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true, "interfaces": []string{" eth1 "}}})
 	if r.Status != 204 {
 		t.Fatalf("PUT: %d %s", r.Status, r.Body)
 	}
@@ -88,7 +62,7 @@ func TestBondPutMergesCurrent(t *testing.T) {
 		s.BondCfg.Interfaces[0] != "eth1" || !s.BondCfg.AutoConfig || s.BondCfg.ID != 1 {
 		t.Fatalf("SetBond: calls %d cfg %+v", s.Calls("SetBond"), s.BondCfg)
 	}
-	r = h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": false, "autoConfig": false}, Header: confirmHdr})
+	r = h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": false, "autoConfig": false}})
 	if r.Status != 204 {
 		t.Fatalf("PUT 2: %d %s", r.Status, r.Body)
 	}
@@ -100,7 +74,7 @@ func TestBondPutMergesCurrent(t *testing.T) {
 // TestBondPutValidation: malformed requests are 400 and never reach SetBond.
 func TestBondPutValidation(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake"}
-	h := harness(t, d, servertest.Options{AllowDisruptive: true})
+	h := harness(t, d, servertest.Options{})
 	for name, body := range map[string]any{
 		"missing enabled":   map[string]any{"mode": "active-backup"},
 		"enabled not bool":  map[string]any{"enabled": "yes"},
@@ -109,7 +83,7 @@ func TestBondPutValidation(t *testing.T) {
 		"empty interface":   map[string]any{"enabled": true, "interfaces": []string{" "}},
 		"interfaces string": map[string]any{"enabled": true, "interfaces": "eth0"},
 	} {
-		r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: body, Header: confirmHdr})
+		r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: body})
 		if r.Status != 400 || r.Envelope(t).Error.Class != "invalid_argument" {
 			t.Errorf("%s: %d %s", name, r.Status, r.Body)
 		}
@@ -124,13 +98,13 @@ func TestBondPutValidation(t *testing.T) {
 // TestBondCacheInvalidatedAfterPut: the write drops the cached read.
 func TestBondCacheInvalidatedAfterPut(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake"}
-	h := harness(t, d, servertest.Options{AllowDisruptive: true})
+	h := harness(t, d, servertest.Options{})
 	var b v1.BondResponse
 	h.Do(servertest.Req{Path: bondPath, Host: host}).JSON(t, &b)
 	if b.Enabled {
 		t.Fatalf("initial bond: %+v", b)
 	}
-	if r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true}, Header: confirmHdr}); r.Status != 204 {
+	if r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true}}); r.Status != 204 {
 		t.Fatalf("PUT: %d %s", r.Status, r.Body)
 	}
 	b = v1.BondResponse{}
@@ -145,15 +119,15 @@ func TestBondCacheInvalidatedAfterPut(t *testing.T) {
 }
 
 // TestBondUnsupported: a session without BondManager answers 501 for both
-// methods (PUT only once the disruptive gate passes) and /capabilities
+// methods and /capabilities
 // reports bond unsupported.
 func TestBondUnsupported(t *testing.T) {
 	d := &servertest.Driver{NameV: "fake", Minimal: true}
-	h := harness(t, d, servertest.Options{AllowDisruptive: true})
+	h := harness(t, d, servertest.Options{})
 	if r := h.Do(servertest.Req{Path: bondPath, Host: host}); r.Status != 501 || r.Envelope(t).Error.Class != "unsupported" {
 		t.Fatalf("GET: %d %s", r.Status, r.Body)
 	}
-	r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true}, Header: confirmHdr})
+	r := h.Do(servertest.Req{Method: "PUT", Path: bondPath, Host: host, Body: map[string]any{"enabled": true}})
 	if r.Status != 501 || r.Envelope(t).Error.Class != "unsupported" {
 		t.Fatalf("PUT: %d %s", r.Status, r.Body)
 	}

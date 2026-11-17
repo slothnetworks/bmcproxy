@@ -13,8 +13,8 @@ import (
 
 // Annotation conventions: every BMC route takes X-BMC-Host (required) and
 // X-BMC-Vendor (optional) headers plus Basic auth (the BMC's own
-// credentials); disruptive routes also take X-BMC-Confirm. cmd/openapigen
-// rewrites these header parameters into shared components in openapi.json.
+// credentials). cmd/openapigen rewrites these header
+// parameters into shared components in openapi.json.
 
 // getCapabilities reports what the target supports.
 //
@@ -382,15 +382,13 @@ func (a *api) getEvents(r *http.Request) (any, error) {
 // deleteEvents clears the system event log.
 //
 //	@Summary		Clear the system event log
-//	@Description	Tier: **disruptive** (log data is lost): requires `--allow-disruptive` and `X-BMC-Confirm: true`, else 403. ASRock AMI /api: `DELETE logs/event`; Redfish: `LogService.ClearLog`; IPMI: sel clear.
+//	@Description	Tier: **disruptive** (log data is lost). ASRock AMI /api: `DELETE logs/event`; Redfish: `LogService.ClearLog`; IPMI: sel clear.
 //	@Tags			logs
 //	@Param			X-BMC-Host		header	string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header	string	false	"Force a driver instead of auto-detection (e.g. asrock)"
-//	@Param			X-BMC-Confirm	header	string	true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Success		204
 //	@Failure		400	{object}	server.ErrorBody
 //	@Failure		401	{object}	server.ErrorBody
-//	@Failure		403	{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		501	{object}	server.ErrorBody
 //	@Failure		502	{object}	server.ErrorBody
 //	@Failure		503	{object}	server.ErrorBody
@@ -553,17 +551,15 @@ func (a *api) getNetwork(r *http.Request) (any, error) {
 // putNetwork updates one BMC network interface.
 //
 //	@Summary		Update a BMC network interface
-//	@Description	Tier: **disruptive** (can cut BMC connectivity): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Null fields are unchanged; the driver reads the full vendor object, mutates and writes it back. ASRock AMI /api: `PUT settings/network`; Redfish: `EthernetInterfaces` PATCH.
+//	@Description	Tier: **disruptive** (can cut BMC connectivity). Null fields are unchanged; the driver reads the full vendor object, mutates and writes it back. ASRock AMI /api: `PUT settings/network`; Redfish: `EthernetInterfaces` PATCH.
 //	@Tags			network
 //	@Accept			json
 //	@Param			X-BMC-Host		header	string						true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header	string						false	"Force a driver instead of auto-detection (e.g. asrock)"
-//	@Param			X-BMC-Confirm	header	string						true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Param			body			body	bmc.NetworkInterfaceUpdate	true	"Interface update (name required)"
 //	@Success		204
 //	@Failure		400	{object}	server.ErrorBody
 //	@Failure		401	{object}	server.ErrorBody
-//	@Failure		403	{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		501	{object}	server.ErrorBody
 //	@Failure		502	{object}	server.ErrorBody
 //	@Failure		503	{object}	server.ErrorBody
@@ -753,21 +749,19 @@ func (a *api) getFirmware(r *http.Request) (any, error) {
 // postFirmwareUpdate starts a firmware update.
 //
 //	@Summary		Start a firmware update
-//	@Description	Tier: **disruptive**: requires `--allow-disruptive` and `X-BMC-Confirm: true`. Pull: JSON `{component, imageUri}` (Redfish SimpleUpdate). Push: `application/octet-stream` body with `?component=&imageName=`. Returns 501 until the driver implements firmware update (PLAN milestone 5). Poll the returned task via `GET /api/v1/firmware/tasks/{id}`.
+//	@Description	Tier: **disruptive**. Pull: JSON `{component, imageUri}` (Redfish SimpleUpdate). Push: `application/octet-stream` body with `?component=&imageName=`. Returns 501 until the driver implements firmware update (PLAN milestone 5). Poll the returned task via `GET /api/v1/firmware/tasks/{id}`.
 //	@Tags			firmware
 //	@Accept			json
 //	@Accept			octet-stream
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string						true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string						false	"Force a driver instead of auto-detection (e.g. asrock)"
-//	@Param			X-BMC-Confirm	header		string						true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Param			component		query		string						false	"Component (push mode)"
 //	@Param			imageName		query		string						false	"Image file name (push mode)"
 //	@Param			body			body		bmc.FirmwareUpdateRequest	false	"Pull request (JSON mode)"
 //	@Success		202				{object}	bmc.Task
 //	@Failure		400				{object}	server.ErrorBody
 //	@Failure		401				{object}	server.ErrorBody
-//	@Failure		403				{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		501				{object}	server.ErrorBody
 //	@Failure		502				{object}	server.ErrorBody
 //	@Failure		503				{object}	server.ErrorBody
@@ -939,18 +933,16 @@ func (a *api) getKVM(r *http.Request) (any, error) {
 // postBMCReset resets the BMC.
 //
 //	@Summary		Reset the BMC
-//	@Description	Tier: **disruptive**: requires `--allow-disruptive` and `X-BMC-Confirm: true`. Body optional (default cold). All cached sessions to the BMC are dropped and the target is marked degraded while it reboots. ASRock AMI /api: `asrr/bmccoldreset`; Redfish: `Manager.Reset`; IPMI: mc reset cold.
+//	@Description	Tier: **disruptive**. Body optional (default cold). All cached sessions to the BMC are dropped and the target is marked degraded while it reboots. ASRock AMI /api: `asrr/bmccoldreset`; Redfish: `Manager.Reset`; IPMI: mc reset cold.
 //	@Tags			bmc
 //	@Accept			json
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string			true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string			false	"Force a driver instead of auto-detection (e.g. asrock)"
-//	@Param			X-BMC-Confirm	header		string			true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Param			body			body		BMCResetRequest	false	"Reset kind"
 //	@Success		202				{object}	BMCResetResponse
 //	@Failure		400				{object}	server.ErrorBody
 //	@Failure		401				{object}	server.ErrorBody
-//	@Failure		403				{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		501				{object}	server.ErrorBody
 //	@Failure		502				{object}	server.ErrorBody
 //	@Failure		503				{object}	server.ErrorBody

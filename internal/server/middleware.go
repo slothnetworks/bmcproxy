@@ -19,7 +19,6 @@ import (
 const (
 	HeaderHost      = "X-BMC-Host"
 	HeaderVendor    = "X-BMC-Vendor"
-	HeaderConfirm   = "X-BMC-Confirm"
 	HeaderRequestID = "X-Request-Id"
 )
 
@@ -255,26 +254,6 @@ func (s *Server) withTarget(r *http.Request) (*http.Request, error) {
 	ctx := context.WithValue(r.Context(), keyTarget, &targetVal{t: t, c: c})
 	ctx = obs.WithAttrs(ctx, "bmc", t.Key())
 	return r.WithContext(ctx), nil
-}
-
-// confirmed reports X-BMC-Confirm: true.
-func confirmed(r *http.Request) bool {
-	return strings.EqualFold(strings.TrimSpace(r.Header.Get(HeaderConfirm)), "true")
-}
-
-// GateTier enforces the tier policy: disruptive requires --allow-disruptive
-// AND X-BMC-Confirm: true.
-func (s *Server) GateTier(r *http.Request, t bmc.Tier, op string) error {
-	if t != bmc.TierDisruptive {
-		return nil
-	}
-	switch {
-	case !s.cfg.AllowDisruptive:
-		return &bmc.OpError{Pkg: "server", Op: op, Err: fmt.Errorf("%w: server not started with --allow-disruptive", bmc.ErrDisruptiveDenied)}
-	case !confirmed(r):
-		return &bmc.OpError{Pkg: "server", Op: op, Err: fmt.Errorf("%w: request lacks %s: true", bmc.ErrDisruptiveDenied, HeaderConfirm)}
-	}
-	return nil
 }
 
 var errNoTarget = errors.New("server: route has no target (Route.NeedsTarget false)")

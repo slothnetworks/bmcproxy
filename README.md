@@ -66,7 +66,6 @@ bin/bmcproxy --listen 127.0.0.1:8080
 | Flag | Default | Meaning |
 | --- | --- | --- |
 | `--listen` | `127.0.0.1:8080` | listen address |
-| `--allow-disruptive` | false | permit disruptive-tier operations (each request also needs `X-BMC-Confirm: true`) |
 | `--debug-endpoints` | false | serve `/debug/*` to loopback clients and add debug blocks to error envelopes |
 | `--swagger` | true | serve `/swagger/`, `/openapi.json` |
 | `--session-ttl` | 5m | idle TTL of cached BMC sessions (keep below the BMC's own timeout) |
@@ -93,7 +92,6 @@ Every BMC route takes:
 - `X-BMC-Host`: required. The BMC as `ip`, `host` or `host:port`. In `/openapi.json` its example is the variable `{{bmcHost}}`, so a Postman, Bruno or Insomnia import gives every request a `{{bmcHost}}` placeholder: define `bmcHost` once in the environment.
 - `Authorization: Basic ...`: required. The **BMC's** credentials. The proxy uses them to log in southbound and keys its session cache on them; they are never logged.
 - `X-BMC-Vendor`: optional. Forces a driver (`asrock`, `gigabyte`, `redfish`) instead of auto-detection. It is defined once in the spec's `components/parameters` and deliberately not attached to the operations, so an imported collection does not send it; add the header manually when you want to override detection.
-- `X-BMC-Confirm: true`: required for disruptive operations (see below).
 
 ```sh
 B="-u admin:secret -H X-BMC-Host:10.0.0.42"
@@ -114,8 +112,8 @@ curl -s $B -X POST localhost:8080/api/v1/led   -d '{"state":"on"}'
 curl -s $B -X POST localhost:8080/api/v1/power -d '{"action":"shutdown","timeoutSeconds":120}'
 curl -s $B -X PUT  localhost:8080/api/v1/boot  -d '{"target":"pxe","mode":"once"}'
 curl -s $B -X POST localhost:8080/api/v1/time/sync
-# disruptive (proxy started with --allow-disruptive): the BMC restarts its networking
-curl -s $B -H 'X-BMC-Confirm: true' -X PUT localhost:8080/api/v1/network/bond -d '{"enabled":false,"interfaces":["eth1"]}'
+# disruptive: the BMC restarts its networking
+curl -s $B -X PUT localhost:8080/api/v1/network/bond -d '{"enabled":false,"interfaces":["eth1"]}'
 
 # vendor routes: /api/v1/vendor/{driver}/{op}
 curl -s $B localhost:8080/api/v1/vendor/asrock/bonding
@@ -129,7 +127,7 @@ Behaviour worth knowing:
 - **Serialisation.** The AMI `/api` lane is one request at a time per host (the X470 web server falls over otherwise). Redfish allows 4 per host. The X470 fan-table read is a two-step select-then-read, held exclusively.
 - **Power actions** return `200` with the converged state after polling. If the state never converges, they return `202` with a `warning` (for example, a soft-off that the host ignored mid-POST) instead of claiming success.
 - **Clock skew.** Event timestamps carry both `raw` (BMC clock) and `corrected` (real UTC) values, and a skew warning shows up in `capabilities.warnings`.
-- **Errors** use one envelope: `{"error":{"status","class","message","request_id"}}`. The `class` is stable (`auth`, `unsupported`, `upstream`, `busy`, `timeout`, `disruptive_denied`, ...).
+- **Errors** use one envelope: `{"error":{"status","class","message","request_id"}}`. The `class` is stable (`auth`, `unsupported`, `upstream`, `busy`, `timeout`, `forbidden`, ...).
 - Southbound requests never carry `X-HTTP-Method-Override`, `X-HTTP-Method` or `X-Method-Override`.
 
 The full contract is in `/openapi.json` and [docs/CONTRACTS.md](docs/CONTRACTS.md).
@@ -174,17 +172,17 @@ NIC bonding is also served by the generic `GET/PUT /api/v1/network/bond` (backen
 
 **ASRock detection on non-ASRock MegaRAC.** The `asrock` driver no longer over-claims other AMI MegaRAC boards: when the root or the unauthenticated `$metadata` names another vendor (GBT, Supermicro, Dell, ...), `DetectWithCreds` returns a sub-fallback score (5) without logging in, and a login that finds no `asrr` namespace is capped the same way, so the generic Redfish driver (10) wins when `gigabyte` is not registered.
 
-## Tiers and disruptive gating
+## Tiers
 
 Every operation has a tier:
 
-| Tier | Examples | Gate |
-| --- | --- | --- |
-| read | all GETs | none |
-| write | LED, boot override, power, time, fan mode/tables, keep-NIC-link-up | none |
-| disruptive | enable/disable bonding, NC-SI mode, clear MCA log, BMC cold reset, firmware update, clearing the SEL, raw writes to sensitive paths | `--allow-disruptive` **and** `X-BMC-Confirm: true` |
+| Tier | Examples |
+| --- | --- |
+| read | all GETs |
+| write | LED, boot override, power, time, fan mode/tables, keep-NIC-link-up |
+| disruptive | enable/disable bonding, NC-SI mode, clear MCA log, BMC cold reset, firmware update, clearing the SEL, raw writes to sensitive paths |
 
-Without both, a disruptive request gets `403 disruptive_denied` and nothing reaches the BMC.
+Tiers are informational: they are reported in `/api/v1/capabilities` and the API docs, but the proxy does not gate requests on them. bmcproxy is meant to sit behind a higher-level management application, which is responsible for deciding who may run disruptive operations.
 
 Raw passthrough (`raw/api/...`, `raw/redfish/...`) is classified per method and path. A **denylist** answers `403` for paths that crash or leak on these BMCs, such as `logs/help-data`, `asrr/mca-file` and `GlobalLuaTables`, and those requests never reach the BMC. Paths are canonicalised (case, `./`, encoding) before the check.
 

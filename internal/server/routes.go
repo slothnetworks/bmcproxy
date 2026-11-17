@@ -100,10 +100,6 @@ func (s *Server) wrap(rt Route) http.Handler {
 			}
 			tier = t
 		}
-		if err := s.GateTier(r, tier, rt.Pattern()); err != nil {
-			s.WriteError(w, r, err)
-			return
-		}
 		if limit := rt.MaxBody; limit >= 0 && r.Body != nil {
 			if limit == 0 {
 				limit = s.cfg.MaxBodyBytes

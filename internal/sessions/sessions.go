@@ -445,7 +445,7 @@ func (m *Manager) Do(ctx context.Context, t bmc.Target, c bmc.Creds, fn func(ctx
 
 func (m *Manager) recordOpErr(host string, err error) {
 	switch bmc.Class(err) {
-	case "invalid_argument", "unsupported", "not_found", "disruptive_denied", "forbidden", "canceled":
+	case "invalid_argument", "unsupported", "not_found", "forbidden", "canceled":
 		// The BMC answered (or was never asked); not a target health signal.
 	default:
 		m.targets.RecordError(host, err)

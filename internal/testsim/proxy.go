@@ -45,8 +45,7 @@ type ProxyOptions struct {
 	// share a bound driver instance between parallel tests).
 	Registry *bmc.Registry
 
-	AllowDisruptive bool
-	DebugEndpoints  bool
+	DebugEndpoints bool
 	// IdleTTL of cached sessions (default 5m).
 	IdleTTL time.Duration
 	// CacheTTL of read results (default 0: coalesce only, never stale).
@@ -198,10 +197,9 @@ func StartProxy(t testing.TB, o ProxyOptions) *Proxy {
 	met.SetSources(metrics.Sources{Sessions: sm, Cache: rc})
 
 	srv := server.New(server.Config{
-		Addr:            "127.0.0.1:0",
-		AllowDisruptive: o.AllowDisruptive,
-		DebugEndpoints:  o.DebugEndpoints,
-		Obs:             ob, Sessions: sm, Cache: rc, Stats: tm, Observer: met, Version: "testsim",
+		Addr:           "127.0.0.1:0",
+		DebugEndpoints: o.DebugEndpoints,
+		Obs:            ob, Sessions: sm, Cache: rc, Stats: tm, Observer: met, Version: "testsim",
 	})
 	v1.Register(srv, o.V1)
 	vendorroutes.Mount(srv, reg)

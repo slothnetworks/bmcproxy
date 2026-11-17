@@ -275,7 +275,7 @@ func TestGigabyteVendorRoutes(t *testing.T) {
 				t.Fatalf("firmwareInfo: %s", r.Body)
 			}
 
-			// setFanMode: write tier (no --allow-disruptive / confirm).
+			// setFanMode: write tier.
 			posts := sim.Count("POST", "/api/settings/fanprofile/mode")
 			r = p.Do(req(sim, "POST", "/api/v1/vendor/gigabyte/setFanMode", map[string]any{"mode": "no-such-profile"}, nil))
 			wantStatus(t, r, 400)

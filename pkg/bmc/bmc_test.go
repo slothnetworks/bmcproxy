@@ -162,7 +162,6 @@ func TestHTTPStatusTable(t *testing.T) {
 		{ErrUpstream, 502, "upstream"},
 		{ErrBusy, 503, "busy"},
 		{ErrTimeout, 504, "timeout"},
-		{ErrDisruptiveDenied, 403, "disruptive_denied"},
 		{ErrForbidden, 403, "forbidden"},
 		{ErrInvalidArgument, 400, "invalid_argument"},
 		{ErrNotFound, 404, "not_found"},

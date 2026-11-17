@@ -26,9 +26,6 @@ var (
 	// ErrUpstream: the BMC returned an error or an undecodable response, or
 	// could not be reached. -> 502
 	ErrUpstream = errors.New("BMC error")
-	// ErrDisruptiveDenied: a disruptive operation was requested without
-	// --allow-disruptive and X-BMC-Confirm: true. -> 403
-	ErrDisruptiveDenied = errors.New("disruptive operation denied")
 	// ErrForbidden: the operation/endpoint is blocked by proxy policy (e.g.
 	// the logs/help-data denylist, X-HTTP-Method-Override). -> 403
 	ErrForbidden = errors.New("operation forbidden by proxy policy")
@@ -113,7 +110,7 @@ func Unsupported(pkg, op string) *OpError {
 	return &OpError{Pkg: pkg, Op: op, Err: ErrUnsupported}
 }
 
-var allSentinels = []error{ErrDisruptiveDenied, ErrForbidden, ErrUnsupported, ErrAuth, ErrInvalidArgument, ErrNotFound, ErrBusy, ErrTimeout, ErrUpstream}
+var allSentinels = []error{ErrForbidden, ErrUnsupported, ErrAuth, ErrInvalidArgument, ErrNotFound, ErrBusy, ErrTimeout, ErrUpstream}
 
 func hasSentinel(err error) bool {
 	for _, s := range allSentinels {
@@ -144,7 +141,6 @@ const StatusClientClosed = 499
 //	nil                    200
 //	ErrInvalidArgument     400
 //	ErrAuth                401
-//	ErrDisruptiveDenied    403
 //	ErrForbidden           403
 //	ErrNotFound            404
 //	ErrUnsupported         501
@@ -155,13 +151,13 @@ const StatusClientClosed = 499
 //	anything else          500
 //
 // When an error wraps several sentinels the first match in the order
-// DisruptiveDenied, Forbidden, Unsupported, Auth, InvalidArgument, NotFound,
+// Forbidden, Unsupported, Auth, InvalidArgument, NotFound,
 // Busy, Timeout, Upstream wins.
 func HTTPStatus(err error) int {
 	switch {
 	case err == nil:
 		return http.StatusOK
-	case errors.Is(err, ErrDisruptiveDenied), errors.Is(err, ErrForbidden):
+	case errors.Is(err, ErrForbidden):
 		return http.StatusForbidden
 	case errors.Is(err, ErrUnsupported):
 		return http.StatusNotImplemented
@@ -188,15 +184,13 @@ func HTTPStatus(err error) int {
 }
 
 // Class returns a short stable error class for envelopes and metrics labels:
-// "" (nil), "invalid_argument", "auth", "disruptive_denied", "forbidden",
+// "" (nil), "invalid_argument", "auth", "forbidden",
 // "not_found", "unsupported", "upstream", "busy", "timeout", "canceled",
 // "internal".
 func Class(err error) string {
 	switch {
 	case err == nil:
 		return ""
-	case errors.Is(err, ErrDisruptiveDenied):
-		return "disruptive_denied"
 	case errors.Is(err, ErrForbidden):
 		return "forbidden"
 	}

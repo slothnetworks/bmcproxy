@@ -143,7 +143,6 @@ func handleFanMode(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	FanMode
 //	@Failure		400				{object}	server.ErrorBody	"bad request / unknown profile"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (write)"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -206,16 +205,14 @@ func handleBonding(s *Session, r *http.Request) (any, error) {
 // handleEnableBonding serves POST /api/v1/vendor/gigabyte/enableBonding.
 //
 //	@Summary		Enable NIC bonding
-//	@Description	Tier: **disruptive** (the BMC restarts its networking and may drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Reads `settings/network-bond`, sets bond_enable=1 (and bond_ifc when given) and PUTs the whole object back. `mode` must be empty or the current bond_mode (not configurable on Gigabyte). **UNVERIFIED**: write shape from the MZ32-AR0 12.61.39 web UI and the ASRock handler; never exercised on hardware.
+//	@Description	Tier: **disruptive** (the BMC restarts its networking and may drop off the network). Reads `settings/network-bond`, sets bond_enable=1 (and bond_ifc when given) and PUTs the whole object back. `mode` must be empty or the current bond_mode (not configurable on Gigabyte). **UNVERIFIED**: write shape from the MZ32-AR0 12.61.39 web UI and the ASRock handler; never exercised on hardware.
 //	@Tags			gigabyte
 //	@Accept			json
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (gigabyte)"
-//	@Param			X-BMC-Confirm	header		string					true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Param			body			body		EnableBondingRequest	false	"interface (bond_ifc) and mode; both optional"
 //	@Success		200				{object}	BondingStatus
-//	@Failure		403				{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
@@ -236,16 +233,14 @@ func handleEnableBonding(s *Session, r *http.Request) (any, error) {
 // handleDisableBonding serves POST /api/v1/vendor/gigabyte/disableBonding.
 //
 //	@Summary		Disable NIC bonding
-//	@Description	Tier: **disruptive** (the BMC restarts its networking and may drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Reads `settings/network-bond`, sets bond_enable=0 (bond_ifc = the interface to keep when given: eth0 or eth1) and PUTs the whole object back. **UNVERIFIED** on hardware.
+//	@Description	Tier: **disruptive** (the BMC restarts its networking and may drop off the network). Reads `settings/network-bond`, sets bond_enable=0 (bond_ifc = the interface to keep when given: eth0 or eth1) and PUTs the whole object back. **UNVERIFIED** on hardware.
 //	@Tags			gigabyte
 //	@Accept			json
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (gigabyte)"
-//	@Param			X-BMC-Confirm	header		string					true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Param			body			body		DisableBondingRequest	false	"interface to keep (optional)"
 //	@Success		200				{object}	BondingStatus
-//	@Failure		403				{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"

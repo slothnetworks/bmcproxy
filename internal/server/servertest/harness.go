@@ -27,14 +27,13 @@ import (
 
 // Options configure a Harness.
 type Options struct {
-	Drivers         []bmc.Driver
-	AllowDisruptive bool
-	DebugEndpoints  bool
-	IdleTTL         time.Duration
-	CacheTTL        time.Duration // default 1 minute (so TTL never expires mid-test)
-	V1              v1.Config
-	Now             func() time.Time
-	LogSecrets      bool
+	Drivers        []bmc.Driver
+	DebugEndpoints bool
+	IdleTTL        time.Duration
+	CacheTTL       time.Duration // default 1 minute (so TTL never expires mid-test)
+	V1             v1.Config
+	Now            func() time.Time
+	LogSecrets     bool
 }
 
 // SyncBuffer is a goroutine-safe log sink.
@@ -94,8 +93,8 @@ func New(t testing.TB, o Options) *Harness {
 	rc := cache.New(cache.Config{TTL: o.CacheTTL, Obs: ob})
 	met.SetSources(metrics.Sources{Sessions: sm, Cache: rc})
 	srv := server.New(server.Config{
-		AllowDisruptive: o.AllowDisruptive, DebugEndpoints: o.DebugEndpoints,
-		Obs: ob, Sessions: sm, Cache: rc, Stats: tm, Observer: met, Version: "test",
+		DebugEndpoints: o.DebugEndpoints,
+		Obs:            ob, Sessions: sm, Cache: rc, Stats: tm, Observer: met, Version: "test",
 	})
 	v1.Register(srv, o.V1)
 	vendorroutes.Mount(srv, reg)

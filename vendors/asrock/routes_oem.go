@@ -52,7 +52,7 @@ func oemRoutes() []bmc.Route {
 //	@Success		200				{object}	oem.BondingStatus
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -73,12 +73,11 @@ func handleBonding(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	true	"Must be true; the proxy must also run with --allow-disruptive"
 //	@Param			body			body		oem.EnableBondingRequest	false	"bond mode and (B650) interface"
 //	@Success		200				{object}	oem.BondingStatus
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -103,12 +102,11 @@ func handleEnableBonding(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	true	"Must be true; the proxy must also run with --allow-disruptive"
 //	@Param			body			body		oem.DisableBondingRequest	false	"interface to keep (B650)"
 //	@Success		200				{object}	oem.BondingStatus
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -135,7 +133,7 @@ func handleDisableBonding(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.NCSIMode
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -156,12 +154,11 @@ func handleNCSIMode(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	true	"Must be true; the proxy must also run with --allow-disruptive"
 //	@Param			body			body		oem.SetNCSIModeRequest	true	"fields to change"
 //	@Success		200				{object}	oem.NCSIMode
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -188,7 +185,7 @@ func handleSetNCSIMode(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.KeepNicLinkUp
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -213,7 +210,7 @@ func handleKeepNicLinkUp(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.KeepNicLinkUp
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -240,7 +237,7 @@ func handleSetKeepNicLinkUp(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.FanModeResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -265,7 +262,7 @@ func handleFanMode(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.FanModeResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -294,7 +291,7 @@ func handleSetFanMode(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.FanTablesResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -323,7 +320,7 @@ func handleFanTables(s *Session, r *http.Request) (any, error) {
 //	@Success		204				"no content"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -350,7 +347,7 @@ func handleSetFanTable(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.FanDutyResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -375,7 +372,7 @@ func handleFanDuty(s *Session, r *http.Request) (any, error) {
 //	@Success		204				"no content"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -402,7 +399,7 @@ func handleSetManualFanDuty(s *Session, r *http.Request) (any, error) {
 //	@Success		204				"no content"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -425,7 +422,7 @@ func handleResetFanSettings(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.PowerSourceResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -448,7 +445,7 @@ func handlePowerSource(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.PostCodeResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -471,7 +468,7 @@ func handlePostCode(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.MCALogResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -491,11 +488,10 @@ func handleMCALog(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	true	"Must be true; the proxy must also run with --allow-disruptive"
 //	@Success		204				"no content"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -518,7 +514,7 @@ func handleClearMCALog(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.ProchotResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -543,7 +539,7 @@ func handleProchot(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.ProchotResponse
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -570,7 +566,7 @@ func handleSetProchot(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.WebEnableTimeout
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -595,7 +591,7 @@ func handleWebEnableTimeout(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.WebEnableTimeout
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -622,7 +618,7 @@ func handleSetWebEnableTimeout(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.BIOSUpdateOption
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -646,7 +642,7 @@ func handleBIOSUpdateOption(s *Session, r *http.Request) (any, error) {
 //	@Success		200				{object}	oem.ComponentStatus
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -666,12 +662,11 @@ func handleComponentStatus(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	true	"Must be true; the proxy must also run with --allow-disruptive"
 //	@Param			component		path		string	true	"component"	Enums(BIOS,CPLD,FPGA,RETIMER,PSU,BP)
 //	@Success		204				"no content"
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"
@@ -694,11 +689,10 @@ func handleUpdateComponent(s *Session, r *http.Request) (any, error) {
 //	@Produce		json
 //	@Param			X-BMC-Host		header		string	true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header		string	false	"Force a driver instead of auto-detection (asrock)"
-//	@Param			X-BMC-Confirm	header		string	true	"Must be true; the proxy must also run with --allow-disruptive"
 //	@Success		200				{object}	oem.ColdResetResult
 //	@Failure		400				{object}	server.ErrorBody	"bad request / X-BMC-Host"
 //	@Failure		401				{object}	server.ErrorBody	"BMC rejected the credentials"
-//	@Failure		403				{object}	server.ErrorBody	"tier gate (disruptive) or forbidden path"
+//	@Failure		403				{object}	server.ErrorBody	"forbidden path"
 //	@Failure		404				{object}	server.ErrorBody	"target handled by another driver"
 //	@Failure		501				{object}	server.ErrorBody	"not supported on this board/firmware"
 //	@Failure		502				{object}	server.ErrorBody	"BMC error (vendor detail included)"

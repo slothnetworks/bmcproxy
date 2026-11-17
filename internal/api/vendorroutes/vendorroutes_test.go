@@ -28,17 +28,12 @@ func TestVendorRoutes(t *testing.T) {
 	if r.Status != 200 || !strings.Contains(string(r.Body), "full") {
 		t.Fatalf("write route: %d %s", r.Status, r.Body)
 	}
-	// Disruptive gate.
-	r = h.Do(servertest.Req{Method: "POST", Path: "/api/v1/vendor/acme/disableBonding", Host: host, Header: map[string]string{"X-BMC-Confirm": "true"}})
-	if r.Status != 403 || r.Envelope(t).Error.Class != "disruptive_denied" {
-		t.Fatalf("disruptive: %d %s", r.Status, r.Body)
-	}
-	// Dynamic tier: GET passthrough is read, POST is disruptive, denylist is 403 forbidden.
+	// Dynamic tier: GET passthrough is read, POST is disruptive (not gated), denylist is 403 forbidden.
 	r = h.Do(servertest.Req{Path: "/api/v1/vendor/acme/raw/api/chassis-status", Host: host})
 	if r.Status != 207 || r.Header.Get("X-Raw") != "1" || string(r.Body) != "raw:chassis-status" {
 		t.Fatalf("raw responder: %d %s", r.Status, r.Body)
 	}
-	if r = h.Do(servertest.Req{Method: "POST", Path: "/api/v1/vendor/acme/raw/api/x", Host: host}); r.Status != 403 {
+	if r = h.Do(servertest.Req{Method: "POST", Path: "/api/v1/vendor/acme/raw/api/x", Host: host}); r.Status != 207 {
 		t.Fatalf("raw POST: %d", r.Status)
 	}
 	if r = h.Do(servertest.Req{Path: "/api/v1/vendor/acme/raw/api/logs/help-data", Host: host}); r.Status != 403 || r.Envelope(t).Error.Class != "forbidden" {
@@ -64,10 +59,10 @@ func TestVendorRoutes(t *testing.T) {
 	}
 }
 
-func TestVendorRoutesDisruptiveAllowed(t *testing.T) {
+func TestVendorRoutesDisruptive(t *testing.T) {
 	d := &servertest.Driver{NameV: "acme", Routes: servertest.SampleRoutes()}
-	h := servertest.New(t, servertest.Options{Drivers: []bmc.Driver{d}, AllowDisruptive: true})
-	r := h.Do(servertest.Req{Method: "POST", Path: "/api/v1/vendor/acme/disableBonding", Host: host, Header: map[string]string{"X-BMC-Confirm": "true"}})
+	h := servertest.New(t, servertest.Options{Drivers: []bmc.Driver{d}})
+	r := h.Do(servertest.Req{Method: "POST", Path: "/api/v1/vendor/acme/disableBonding", Host: host})
 	if r.Status != 204 {
 		t.Fatalf("nil result -> 204, got %d %s", r.Status, r.Body)
 	}

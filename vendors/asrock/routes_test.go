@@ -231,10 +231,6 @@ func TestEndToEndServer(t *testing.T) {
 	if r.Status != 200 || !strings.Contains(string(r.Body), `"active-backup"`) {
 		t.Fatalf("bonding: %d %s", r.Status, r.Body)
 	}
-	r = req("POST", "/api/v1/vendor/asrock/disableBonding", map[string]string{"X-BMC-Confirm": "true"}, nil)
-	if r.Status != 403 {
-		t.Fatalf("disruptive without --allow-disruptive: %d %s", r.Status, r.Body)
-	}
 	r = req("GET", "/api/v1/vendor/asrock/raw/api/logs/help-data", nil, nil)
 	if r.Status != 403 || !strings.Contains(string(r.Body), "forbidden") {
 		t.Fatalf("raw denylist: %d %s", r.Status, r.Body)

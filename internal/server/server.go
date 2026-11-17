@@ -36,9 +36,6 @@ type RequestObserver interface {
 type Config struct {
 	// Addr is the listen address. Default DefaultAddr.
 	Addr string
-	// AllowDisruptive enables disruptive-tier operations (each request must
-	// still carry X-BMC-Confirm: true).
-	AllowDisruptive bool
 	// DebugEndpoints mounts /debug/* (localhost clients only) and enables
 	// the envelope's debug block.
 	DebugEndpoints bool
@@ -142,9 +139,6 @@ func (s *Server) Version() string { return s.cfg.Version }
 // Started returns the server construction time.
 func (s *Server) Started() time.Time { return s.started }
 
-// AllowDisruptive reports whether --allow-disruptive is set.
-func (s *Server) AllowDisruptive() bool { return s.cfg.AllowDisruptive }
-
 // DebugMode reports whether error envelopes carry the debug block.
 func (s *Server) DebugMode() bool {
 	return s.cfg.Debug || s.cfg.DebugEndpoints || s.cfg.Obs.Enabled(obs.SubNorth, slog.LevelDebug)
@@ -180,8 +174,7 @@ func (s *Server) Serve(ln net.Listener) error {
 	s.mu.Lock()
 	s.httpSrv = hs
 	s.mu.Unlock()
-	s.log(context.Background()).Info("listening", "addr", ln.Addr().String(),
-		"allow_disruptive", s.cfg.AllowDisruptive, "debug_endpoints", s.cfg.DebugEndpoints)
+	s.log(context.Background()).Info("listening", "addr", ln.Addr().String(), "debug_endpoints", s.cfg.DebugEndpoints)
 	if !isLoopbackAddr(ln.Addr()) {
 		s.log(context.Background()).Warn("listening on a non-loopback address: there is no proxy API auth; any client can drive BMCs with credentials it holds")
 	}

@@ -20,7 +20,7 @@ type ErrorInfo struct {
 	// HTTP status (mirrors the response status).
 	Status int `json:"status" example:"501"`
 	// Stable error class for programmatic handling.
-	Class string `json:"class" example:"unsupported" enums:"invalid_argument,auth,disruptive_denied,forbidden,not_found,unsupported,upstream,busy,timeout,canceled,internal"`
+	Class string `json:"class" example:"unsupported" enums:"invalid_argument,auth,forbidden,not_found,unsupported,upstream,busy,timeout,canceled,internal"`
 	// Human-readable message naming the originating package and operation (redacted).
 	Message string `json:"message" example:"api.v1 BootOverride: capability not supported"`
 	// The request id (also the X-Request-Id response header).

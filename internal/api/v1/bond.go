@@ -68,17 +68,15 @@ func (a *api) getBond(r *http.Request) (any, error) {
 // putBond changes the BMC NIC bonding.
 //
 //	@Summary		Set BMC NIC bonding
-//	@Description	Tier: **disruptive** (the BMC restarts its networking and can drop off the network): requires `--allow-disruptive` and `X-BMC-Confirm: true`. Omitted fields keep their current value: the driver reads the full `settings/network-bond` object, mutates it and PUTs the whole object back (AMI answers 500 to partial bodies). ASRock AMI /api: `PUT settings/network-bond`; Gigabyte AMI /api: `PUT settings/network-bond` (bond_mode is not configurable; write **UNVERIFIED** on hardware, shape from the MZ32-AR0 web UI). Cached reads for the host are dropped after the call.
+//	@Description	Tier: **disruptive** (the BMC restarts its networking and can drop off the network). Omitted fields keep their current value: the driver reads the full `settings/network-bond` object, mutates it and PUTs the whole object back (AMI answers 500 to partial bodies). ASRock AMI /api: `PUT settings/network-bond`; Gigabyte AMI /api: `PUT settings/network-bond` (bond_mode is not configurable; write **UNVERIFIED** on hardware, shape from the MZ32-AR0 web UI). Cached reads for the host are dropped after the call.
 //	@Tags			network
 //	@Accept			json
 //	@Param			X-BMC-Host		header	string		true	"BMC address: ip, host or host:port"
 //	@Param			X-BMC-Vendor	header	string		false	"Force a driver instead of auto-detection (e.g. asrock)"
-//	@Param			X-BMC-Confirm	header	string		true	"Must be \"true\" (the proxy must also run with --allow-disruptive)"
 //	@Param			body			body	BondRequest	true	"Bonding change (enabled required)"
 //	@Success		204
 //	@Failure		400	{object}	server.ErrorBody
 //	@Failure		401	{object}	server.ErrorBody
-//	@Failure		403	{object}	server.ErrorBody	"disruptive operation denied"
 //	@Failure		501	{object}	server.ErrorBody	"capability not supported"
 //	@Failure		502	{object}	server.ErrorBody
 //	@Failure		503	{object}	server.ErrorBody

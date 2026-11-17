@@ -592,37 +592,20 @@ func TestRawPassthroughAndDenylist(t *testing.T) {
 	}
 }
 
-// TestDisruptiveGating: disableBonding needs --allow-disruptive AND
-// X-BMC-Confirm: true; with both it reaches the sim (only the sim).
-func TestDisruptiveGating(t *testing.T) {
+// TestDisruptiveNotGated: disableBonding (disruptive tier) reaches the sim
+// with no opt-in flag or confirmation header.
+func TestDisruptiveNotGated(t *testing.T) {
 	for _, board := range allBoards {
 		t.Run(board, func(t *testing.T) {
-			// Without --allow-disruptive: 403 even with the confirm header.
 			sim, p, _ := setupBoard(t, board, nil)
-			confirm := map[string]string{"X-BMC-Confirm": "true"}
-			for _, h := range []map[string]string{nil, confirm} {
-				r := p.Do(req(sim, "POST", "/api/v1/vendor/asrock/disableBonding", map[string]any{"interface": "eth0"}, h))
-				wantStatus(t, r, 403)
-				if e := r.Envelope(t); e.Error.Class != "disruptive_denied" {
-					t.Fatalf("class %q", e.Error.Class)
-				}
-			}
-			if n := sim.Count("PUT", "/api/settings/network-bond"); n != 0 {
-				t.Fatalf("denied request reached the BMC %d times", n)
-			}
-
-			// With --allow-disruptive: still 403 without the header.
-			sim2, p2, _ := setupBoard(t, board, func(o *testsim.ProxyOptions) { o.AllowDisruptive = true })
-			wantStatus(t, p2.Do(req(sim2, "POST", "/api/v1/vendor/asrock/disableBonding", map[string]any{"interface": "eth0"}, nil)), 403)
-			wantStatus(t, p2.Do(req(sim2, "DELETE", "/api/v1/events", nil, nil)), 403)
-			r := p2.Do(req(sim2, "POST", "/api/v1/vendor/asrock/disableBonding", map[string]any{"interface": "eth0"}, confirm))
+			r := p.Do(req(sim, "POST", "/api/v1/vendor/asrock/disableBonding", map[string]any{"interface": "eth0"}, nil))
 			wantStatus(t, r, 200)
 			var bond oem.BondingStatus
 			r.JSON(t, &bond)
 			if bond.Enabled {
 				t.Fatalf("still bonded: %s", r.Body)
 			}
-			body := lastBody(sim2, "PUT", "/api/settings/network-bond")
+			body := lastBody(sim, "PUT", "/api/settings/network-bond")
 			for _, k := range []string{`"id":1`, `"bond_enable":0`, `"bond_mode":"active-backup"`, `"auto_configuration_enable":1`} {
 				if !strings.Contains(body, k) {
 					t.Fatalf("network-bond PUT lacks %s: %s", k, body)
@@ -631,7 +614,7 @@ func TestDisruptiveGating(t *testing.T) {
 			if hasIfc := strings.Contains(body, `"bond_ifc":"eth0"`); hasIfc != (board == "b650") {
 				t.Fatalf("bond_ifc on %s: %s", board, body)
 			}
-			if fmt.Sprint(sim2.OEMObject("/api/settings/network-bond")["bond_enable"]) != "0" {
+			if fmt.Sprint(sim.OEMObject("/api/settings/network-bond")["bond_enable"]) != "0" {
 				t.Fatal("sim bond not disabled")
 			}
 		})
